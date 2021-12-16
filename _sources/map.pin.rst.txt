@@ -1,0 +1,7 @@
+map.pin module
+==============
+
+.. automodule:: map.pin
+   :members:
+   :undoc-members:
+   :show-inheritance:

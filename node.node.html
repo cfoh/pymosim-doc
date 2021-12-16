@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node.node module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="node.routemobi module" href="node.routemobi.html" />
+    <link rel="prev" title="node.mobility module" href="node.mobility.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.draw.html">
+   node.draw module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility.html">
+   node.mobility module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-node.node">
+<span id="node-node-module"></span><h1>node.node module<a class="headerlink" href="#module-node.node" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>node</cite> contains an abstract <cite>BaseNode</cite> class which is the base class for
+all communication node entities in the simulation.</p>
+<dl class="py class">
+<dt id="node.node.BaseNode">
+<em class="property">class </em><code class="sig-prename descclassname">node.node.</code><code class="sig-name descname">BaseNode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">node_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="node.draw.html#node.draw.Drawing" title="node.draw.Drawing"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.draw.Drawing</span></code></a></p>
+<p>This is an abstract base class for all communication node entities to
+extend.</p>
+<p>The subclass can access to several convenicent functions
+via the base class. Each node instance should have a unique <cite>id</cite>
+to be identified easily. Currently, the recommended data type for
+the <cite>id</cite> is string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID</span></dt><dd><p>The <cite>id</cite> of this node. Ideally, this should be unique for each node
+so that a lookup can always find the appropriate node instance based on the <cite>id</cite>.
+However, the code will not check for uniqueness.</p>
+</dd>
+<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type</span></dt><dd><p>The <cite>type</cite> of this node. The type is used in the simulation to draw the node
+on the screen. Different types will be drawn differently.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ID</span></code></a>(id_str)</p></td>
+<td><p>The data structure for the node id.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code></a>(node_type)</p></td>
+<td><p>The defination of a node type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
+<td><p>Clear the drawing for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
+<td><p>Remove an earlier added circle for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>Remove an earlier added line for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Remove an earlier added sector drawing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<td><p>Put a circle around this node where the node is the center of the circle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<td><p>Draw a text at around this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
+<td><p>Query the node to retrieve corresponding information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<td><p>Get the color that is used to draw this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
+<td><p>Provide the list of all nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.is_disabled" title="node.node.BaseNode.is_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code></a>()</p></td>
+<td><p>Use this method to check if a node is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.is_visible" title="node.node.BaseNode.is_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code></a>()</p></td>
+<td><p>Use this method to check if a node is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.lookup" title="node.node.BaseNode.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(id)</p></td>
+<td><p>Perform a lookup for the node with <cite>id</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
+<td><p>This method is used to remove this node from the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<td><p>Set the color to draw for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
+<td><p>Set the <cite>mobility</cite> for this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
+<td><p>Use this method to set a transceiver for the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
+<td><p>Use this method to set the visibility of a node.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="node.node.BaseNode.ID">
+<em class="property">class </em><code class="sig-name descname">ID</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id_str</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The data structure for the node id. The current implementation
+uses string for the id.</p>
+<dl class="py method">
+<dt id="node.node.BaseNode.ID.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id_str</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.ID.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.node.BaseNode.Type">
+<em class="property">class </em><code class="sig-name descname">Type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The defination of a node type. The animation process will use the 
+type to decide how to draw the node on the screen. Besides, this
+can be used for user simulation to check the belonging of a node and
+also conveniently retrieve all nodes of the same type.</p>
+<dl class="py attribute">
+<dt id="node.node.BaseNode.Type.BS">
+<code class="sig-name descname">BS</code><em class="property"> = 0</em><a class="headerlink" href="#node.node.BaseNode.Type.BS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use it to describe a base station. A small circle will be drawn to 
+to represent a base station.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="node.node.BaseNode.Type.Vehicle">
+<code class="sig-name descname">Vehicle</code><em class="property"> = 1</em><a class="headerlink" href="#node.node.BaseNode.Type.Vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use it to describe a vehicle. A triangle will be drawn to represent 
+a vehicle.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="node.node.BaseNode.Type.Drone">
+<code class="sig-name descname">Drone</code><em class="property"> = 2</em><a class="headerlink" href="#node.node.BaseNode.Type.Drone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use it to describe a drone. It is not implemented at the moment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="node.node.BaseNode.Type.UserDefined">
+<code class="sig-name descname">UserDefined</code><em class="property"> = 1000</em><a class="headerlink" href="#node.node.BaseNode.Type.UserDefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a node to this type for user defined type. If the simulation needs
+more than one user defined types, use <cite>UserDefined+1</cite>, <cite>UserDefined+2</cite>, and
+so on to extend user defined types. Any number that is larger or equal to
+<cite>UserDefined</cite> is considered a user defined type. The animation will not draw 
+user defined types on the screen, the user simulation must manually draw a 
+shape or show an image to indicate the presence of the node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.Type.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.Type.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.__init__">
+<em class="property">abstract </em><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">node_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and 
+super() must be called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+</dd>
+<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+</dd>
+<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.get_node_list">
+<em class="property">static </em><code class="sig-name descname">get_node_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.get_node_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide the list of all nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.remove_from_simulation">
+<code class="sig-name descname">remove_from_simulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.remove_from_simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to remove this node from the simulation.</p>
+<p>In the user simulation, if nodes are allocated dynamically, this method
+must be used to remove any unwanted node. Removing a node will inform 
+the simulation engine to disable it so that it will not interact with other
+nodes in the simulation world and will not be shown on the animation.</p>
+<p>The method does not immediately delete the node, it marks the node
+as disabled. The simulation will ignore the disabled nodes during
+the processing. In the simulation loop, when there is a substantial number
+of disabled nodes, the simulation will trigger garbage collector to 
+remove the disabled nodes from the global list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.is_disabled">
+<code class="sig-name descname">is_disabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.is_disabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to check if a node is disabled.</p>
+<p>This method is used in the simulation engine. There is no reason to use it
+in the user simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p>Whether the node is disabled. Disabled nodes will not appear on the
+simualtion world.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.is_visible">
+<code class="sig-name descname">is_visible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.is_visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to check if a node is visible. Note that the drawing 
+of user defined types is not managed by the simulation engine, thus the
+simulation engine simply ignores the flag. However, the user may use
+this flag for own indication to manually control the visibility of this 
+node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.set_visible">
+<code class="sig-name descname">set_visible</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flag</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to set the visibility of a node. Note that the drawing 
+of user defined types is not managed by the simulation engine, thus the
+simulation engine simply ignores the flag. However, the user may use
+this flag for own indication to manually control the visibility of this 
+node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query_str</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the node to retrieve corresponding information.</p>
+<p>The information can be queried includes:</p>
+<ul class="simple">
+<li><p>“location”: the current location of the node, return an instance of
+<cite>sim.loc.LOC</cite> subclass.</p></li>
+<li><p>“direction”: the current moving direction of the node, return an instance
+of <cite>sim.direction.DIR</cite> subclass.</p></li>
+<li><p>“speed”: the current moving direction of the node, return a float.</p></li>
+<li><p>“mobility”: the mobility instance of the node, return an instance of
+<cite>node.mobility.BaseMobility</cite> subclass.</p></li>
+<li><p>“transceiver”: the transceiver instance of the node.</p></li>
+<li><p>“simworld”: the simulation world instance, user simulation is 
+already given this instance during the creation event, so it is unnecessary 
+to use this method to get the instance again.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>query_str</strong><span class="classifier">str</span></dt><dd><p>The query string. See also above.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.set_mobility">
+<code class="sig-name descname">set_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mobility</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_mobility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the <cite>mobility</cite> for this instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mobility</strong><span class="classifier">node.mobility.BaseMobility subclass</span></dt><dd><p>The <cite>mobility</cite> model for this node.</p>
+</dd>
+<dt><strong>direction</strong><span class="classifier">sim.direction.DIR subclass, optional, default=None</span></dt><dd><p>The <cite>direction</cite> of the node. If None is given, the default setting will
+be a constant north pointing direction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.set_transceiver">
+<code class="sig-name descname">set_transceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transceiver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_transceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to set a transceiver for the node. A transceiver is 
+needed for communications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transceiver</strong><span class="classifier">comm.transceiver.Transceiver</span></dt><dd><p>The transceiver for this node. The transceiver provides a collection
+of functions for communications.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.lookup">
+<code class="sig-name descname">lookup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#node.node.BaseNode.ID" title="node.node.BaseNode.ID">node.node.BaseNode.ID</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a lookup for the node with <cite>id</cite>.</p>
+<p>This method acts like a local DNS, but we use <cite>id</cite> instead of a DNS 
+name, and we retrieve from the global lookup table instead of via 
+network DNS query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID</span></dt><dd><p>The <cite>id</cite> to lookup.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>node.node.BaseNode</dt><dd><p>The node instance that carries the <cite>id</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

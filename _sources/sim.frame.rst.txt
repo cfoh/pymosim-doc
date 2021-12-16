@@ -1,0 +1,7 @@
+sim.frame module
+================
+
+.. automodule:: sim.frame
+   :members:
+   :undoc-members:
+   :show-inheritance:

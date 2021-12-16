@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comm package &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="comm.channel module" href="comm.channel.html" />
+    <link rel="prev" title="List of Packages and Modules" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.channel.html">
+   comm.channel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.ltemodel.html">
+   comm.ltemodel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.mmwave28.html">
+   comm.mmwave28 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.signalwave.html">
+   comm.signalwave module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.transceiver.html">
+   comm.transceiver module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-comm">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="comm-package">
+<h1>comm package<a class="headerlink" href="#comm-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comm.channel.html">comm.channel module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comm.channel.html#list-of-classes">List of Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comm.channel.html#basechannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseChannel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.channel.html#discmodel"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.channel.html#logdistancemodel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogDistanceModel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comm.ltemodel.html">comm.ltemodel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comm.mmwave28.html">comm.mmwave28 module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comm.mmwave28.html#list-of-classes">List of Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comm.mmwave28.html#mmwavesignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">MMWaveSignal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.mmwave28.html#channel28ghz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel28GHz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.mmwave28.html#transceiver28ghz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.mmwave28.html#transceiver28ghzomni"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHzOmni</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.mmwave28.html#transceiver28ghzsteered"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHzSteered</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comm.signalwave.html">comm.signalwave module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comm.signalwave.html#list-of-classes">List of Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comm.signalwave.html#basesignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSignal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.signalwave.html#qualitybasedsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">QualityBasedSignal</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comm.transceiver.html">comm.transceiver module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comm.transceiver.html#list-of-classes">List of Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comm.transceiver.html#basetransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransceiver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.transceiver.html#transceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.transceiver.html#transceiverdir"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransceiverDir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="comm.transceiver.html#usertransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-comm">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-comm" title="Permalink to this headline">¶</a></h2>
+<p>This package provides three modules:</p>
+<ul class="simple">
+<li><p><cite>transceiver</cite>: it contains a number of transceiver classes suitable for various
+scenarios. When constructing a node, the node should ideally add a transceiver
+to enable communication. A transceiver must pair with an appropriate channel
+to function correctly.</p></li>
+<li><p><cite>channel</cite>: it contains various channel models. The purpose of a channel is 
+to describe signal propagation. Various models use different propagation model
+to capture the signal attenuation during the propagation.</p></li>
+<li><p><cite>signal</cite>: it acts as the data structure for transceiver and channel to communicate.
+When a user performs a transmission using a transceiver, the transceiver prepares
+the signal and passes it to the channel to perform propagation. The channel modify
+or write information on the signal to describe the propagation. After which, the
+transceiver passes the propagated signal to the receiving side for detection. The
+receiver transceiver then reads the signal to decide whether the received signal
+can be decoded successfully.</p></li>
+</ul>
+<p>For example, using <cite>Transceiver</cite>, <cite>DiscModel</cite> as the channel model, and 
+<cite>QualityBasedSignal</cite> as the signalwave, the procedure of a transmission can be described
+as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>User Simulation creates a signal
+|   and sends to Sender Transceiver for transmission
+|   |
+|   V
+|   Sender Transceiver writes `distance` to the signal
+|       |   and passes the signal to the channel for propagation
+|       |   |
+|       |   V
+|       |   The channel reads `distance` and compare to its coverage radius,
+|       |       ^   The channel writes `quality` to the signal accordingly
+|       |       |   |   and returns back to Sender Transceiver
+|       |       |   |   |
+|       |       |   |   V
+|       |       |   |   Sender Transceiver passes the signal to Receiver Transceiver
+|       |       |   |   |
+|       |       |   |   V
+|       |       |   |   Receiver Tranceiver reads `quality` and returns the outcome
+|       |       |   |       ^   of decodeability to Sender Tranceiver
+|       |       |   |       |   |
+|       |       |   |       |   V
+|       |       |   |       |   Sender Transceiver processes Receiver&#39;s outcome
+V       V       |   V       |   and inform User Simulation the final outcome
+[=====QualityBasedSignal=====]
+-------------------------------------------------------------------------------&gt; time
+</pre></div>
+</div>
+<p>The transmission process at the Sender Transceiver:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">multicast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">:</span><span class="n">QualityBasedSignal</span><span class="p">,</span> <span class="n">node_list</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;This method allows a node to perform a multicast on the channel, </span>
+<span class="sd">        and the method returns a list of tuple (node,received_signal)</span>
+<span class="sd">        that the multicast signal can be decoded, or None if no node can</span>
+<span class="sd">        decode the signal.</span>
+<span class="sd">        Note that this method can be used for unicast by putting a single node</span>
+<span class="sd">        in `node_list`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        signal : :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The signal to be transmitted. Use `create_signal()` method to create one.</span>
+<span class="sd">        node_list : a list of :class:`node.node.BaseNode` subclass</span>
+<span class="sd">            The list containing the nodes to receive the multicast signal</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        A list of tuple (:class:`node.node.BaseNode`, :class:`comm.signalwave.QualityBasedSignal`)</span>
+<span class="sd">            It returns a list of (node,signal) that the node can decode the </span>
+<span class="sd">            signal.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">receiver_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="n">sent_signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">source_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span>
+            <span class="n">dest_loc</span> <span class="o">=</span> <span class="n">destination</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span>
+            <span class="n">sent_signal</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">source_loc</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">dest_loc</span><span class="p">)</span>
+            <span class="n">sent_signal</span><span class="o">.</span><span class="n">LOS_dir</span> <span class="o">=</span> <span class="n">source_loc</span><span class="o">.</span><span class="n">azimuth_to</span><span class="p">(</span><span class="n">dest_loc</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_channel</span><span class="o">.</span><span class="n">do_propagation</span><span class="p">(</span><span class="n">sent_signal</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">destination</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;transceiver&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">can_detect</span><span class="p">(</span><span class="n">sent_signal</span><span class="p">):</span>
+                <span class="n">receiver_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">destination</span><span class="p">,</span><span class="n">sent_signal</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">receiver_list</span>
+</pre></div>
+</div>
+<p>The DiscModel channel propagation model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">do_propagation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">:</span><span class="n">QualityBasedSignal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QualityBasedSignal</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;This method derives the received signal after its propagation.</span>
+
+<span class="sd">        In this implementation, `signal` is used as the data structure for inputs</span>
+<span class="sd">        and outputs. `signal` contains `distance` and `LOS_dir` class properties </span>
+<span class="sd">        for this method to read and derive the propagation. It also contains </span>
+<span class="sd">        `quality` class property for this method to recorded the signal quality</span>
+<span class="sd">        after the propagation.</span>
+
+<span class="sd">        In this class, the quality of the signal is related to the distance</span>
+<span class="sd">        between the sender and the receiver, and normalized to 1. </span>
+<span class="sd">        When receiver is located at the sender, signal quality is 1 (i.e. the best), </span>
+<span class="sd">        and when the receiver is at or outside the edge of the radiation disc, </span>
+<span class="sd">        the signal quality is 0 (i.e. no connection).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        signal : :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The transmitted signal. This instance will be modified appropriately</span>
+<span class="sd">            within this method. The modification describes how the signal would</span>
+<span class="sd">            be attenuated and distorted. </span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        comm.signalwave.QualityBasedSignal</span>
+<span class="sd">            The received `signal` instance. The `quality` property contains a value</span>
+<span class="sd">            between 0 and 1 indicating the signal quality. The value is linear to the </span>
+<span class="sd">            distance between the transmitter and receiver, 1 being zero distance and 0 </span>
+<span class="sd">            being the distance that the signal can no longer reach the receiver.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">distance</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_radius</span><span class="p">:</span> <span class="c1"># too far</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">distance</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">_radius</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">signal</span>
+</pre></div>
+</div>
+<p>The detection process at the Receiver Transceiver:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">can_detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;See also the base class for description, this method allows a receiving node to </span>
+<span class="sd">        check if a receiving signal can be successfully detected and decoded. In this</span>
+<span class="sd">        implementation, it checks if the signal quality is zero for failed decoding, and </span>
+<span class="sd">        any non-zero positive value for successful decoding.&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">freq</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">_freq</span> <span class="ow">and</span> <span class="n">signal</span><span class="o">.</span><span class="n">quality</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># 0 is the quality threshold</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

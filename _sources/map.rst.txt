@@ -1,0 +1,19 @@
+map package
+===========
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   map.mapinfo
+   map.pin
+
+Module contents
+---------------
+
+.. automodule:: map
+   :members:
+   :undoc-members:
+   :show-inheritance:

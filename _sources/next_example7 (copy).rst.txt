@@ -1,0 +1,7 @@
+next\_example7 \(copy\) module
+==============================
+
+.. automodule:: next_example7 (copy)
+   :members:
+   :undoc-members:
+   :show-inheritance:

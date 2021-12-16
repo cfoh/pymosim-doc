@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node.draw module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="node.mobility module" href="node.mobility.html" />
+    <link rel="prev" title="node package" href="node.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   node.draw module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility.html">
+   node.mobility module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.node.html">
+   node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drawing">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Drawing
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-node.draw">
+<span id="node-draw-module"></span><h1>node.draw module<a class="headerlink" href="#module-node.draw" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>draw</cite> contains a <cite>Drawing</cite> class which can used to perform drawing
+for the node. Class <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> inherits <cite>Drawing</cite> to add the drawing
+capability. <cite>Drawing</cite> class provides a collection of methods useful for users
+to add additional drawing on the simulation map. The drawing can be used to 
+differentiate node status, shows coverage of a node, connectivity of a pair
+of nodes, text info beside a node, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class adds drawing capability to a node class. It should not be instantiated.</p>
+</div>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="drawing">
+<h3><a class="reference internal" href="#node.draw.Drawing" title="node.draw.Drawing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawing</span></code></a><a class="headerlink" href="#drawing" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="node.draw.Drawing">
+<em class="property">class </em><code class="sig-prename descclassname">node.draw.</code><code class="sig-name descname">Drawing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class provides methods to perform persistent drawing for a node.
+This class is inherited by <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a>, therefore the methods
+in this class are directly useable by a node instance. For example, to
+put a circle around a node, simply call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+<span class="o">...</span>
+<span class="n">my_node</span><span class="o">.</span><span class="n">draw_circle</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span> <span class="n">brush</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TRANSPARENT_BRUSH</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above will draw a blue circle around the node, and will follow the node if
+the node has moved to a new location. The circle will remain persistently 
+around the node on the screen until the user simulation explicitly delete it 
+or clear all shapes for the node.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To draw a shape or text on the map which is not necessary related to 
+a node, please use <a class="reference internal" href="sim.drawable.html#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a>. This can be done by 
+creating a drawable instance and then adding the drawable instance to 
+your scenario using the methods provided by 
+<a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a>.</p>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.clear_drawing" title="node.draw.Drawing.clear_drawing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code></a>()</p></td>
+<td><p>Clear the drawing for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_circle" title="node.draw.Drawing.del_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code></a>(radius)</p></td>
+<td><p>Remove an earlier added circle for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_line" title="node.draw.Drawing.del_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code></a>(other_node)</p></td>
+<td><p>Remove an earlier added line for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_sector" title="node.draw.Drawing.del_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Remove an earlier added sector drawing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_text" title="node.draw.Drawing.del_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code></a>(dx, dy, text)</p></td>
+<td><p>Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_circle" title="node.draw.Drawing.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(radius[, pen, brush])</p></td>
+<td><p>Put a circle around this node where the node is the center of the circle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_line" title="node.draw.Drawing.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(other_node[, pen, brush])</p></td>
+<td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_sector" title="node.draw.Drawing.draw_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
+<td><p>Draw a text at around this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.get_color" title="node.draw.Drawing.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
+<td><p>Get the color that is used to draw this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.reset_color" title="node.draw.Drawing.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
+<td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.set_color" title="node.draw.Drawing.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
+<td><p>Set the color to draw for this node.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.draw.Drawing.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default constructor which is called by <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a>,
+there is no reason for user simulation to instantiate this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.set_color">
+<code class="sig-name descname">set_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the color to draw for this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">color constant defined in wx</span></dt><dd><p>The color to draw.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.get_color">
+<code class="sig-name descname">get_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.get_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the color that is used to draw this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Color constant defined in wx</dt><dd><p>The color for this node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.reset_color">
+<code class="sig-name descname">reset_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.reset_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.clear_drawing">
+<code class="sig-name descname">clear_drawing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.clear_drawing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the drawing for this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.draw_circle">
+<code class="sig-name descname">draw_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">pen</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">brush</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put a circle around this node where the node is the center of the circle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius of the circle to put around the node.</p>
+</dd>
+<dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
+predefined pen.</p>
+</dd>
+<dt><strong>brush</strong><span class="classifier">wx.Brush, optional, default=None</span></dt><dd><p>The brush to draw the shape. If <cite>None</cite> is provided, 
+it uses the predefined brush.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_circle">
+<code class="sig-name descname">del_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an earlier added circle for this node. If there is 
+no such circle added to the node, nothing will happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the circle to be removed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.draw_line">
+<code class="sig-name descname">draw_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_node</span></em>, <em class="sig-param"><span class="n">pen</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">brush</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a line from this node to <cite>other_node</cite>.</p>
+<p>This method is useful to show a connection between this node and 
+another node. If the line already exsits, nothing will happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other_node</strong><span class="classifier">node.node.BaseNode subclass</span></dt><dd><p>The node where the line to draw to from this node.</p>
+</dd>
+<dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
+predefined pen.</p>
+</dd>
+<dt><strong>brush</strong><span class="classifier">wx.Brush, optional, default=None</span></dt><dd><p>The brush to draw the shape. If <cite>None</cite> is provided, 
+it uses the predefined brush.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_line">
+<code class="sig-name descname">del_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an earlier added line for this node.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>other_node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The line that is connected to the other node. If found, this line
+will be removed from the drawing list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.draw_sector">
+<code class="sig-name descname">draw_sector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em>, <em class="sig-param"><span class="n">width_angle</span></em>, <em class="sig-param"><span class="n">pen</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">brush</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_sector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a sector where its center is at this node, its radius is 
+<cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree) 
+is specified in <cite>width_angle</cite>.</p>
+<p>This method is useful to show the coverage of a beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the sector.</p>
+</dd>
+<dt><strong>pointing_angle</strong><span class="classifier">float</span></dt><dd><p>The pointing azimuth angle of the sector (in degrees).</p>
+</dd>
+<dt><strong>width_angle</strong><span class="classifier">float</span></dt><dd><p>The width angle of the sector (in degrees).</p>
+</dd>
+<dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
+predefined pen.</p>
+</dd>
+<dt><strong>brush</strong><span class="classifier">wx.Brush, optional, default=None</span></dt><dd><p>The brush to draw the shape. If <cite>None</cite> is provided, 
+it uses the predefined brush.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_sector">
+<code class="sig-name descname">del_sector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em>, <em class="sig-param"><span class="n">width_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_sector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an earlier added sector drawing. If there is 
+no such sector added to the node, nothing will happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the sector to be found for removal.</p>
+</dd>
+<dt><strong>pointing_angle</strong><span class="classifier">float</span></dt><dd><p>The pointing azimuth angle of the sector (in degrees) 
+to be found for removal.</p>
+</dd>
+<dt><strong>width_angle</strong><span class="classifier">float</span></dt><dd><p>The width angle of the sector (in degrees)
+to be found for removal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.draw_text">
+<code class="sig-name descname">draw_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">font</span></em>, <em class="sig-param"><span class="n">foreground</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a text at around this node.</p>
+<p>Use this method to show a text message that will following the node
+as it moves. If the text already exsits, nothing will happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dx</strong><span class="classifier">int</span></dt><dd><p>Draw the text at this x offset.</p>
+</dd>
+<dt><strong>dy</strong><span class="classifier">int</span></dt><dd><p>Draw the text at this y offset.</p>
+</dd>
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The text message to draw.</p>
+</dd>
+<dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
+predefined pen.</p>
+</dd>
+<dt><strong>brush</strong><span class="classifier">wx.Brush, optional, default=None</span></dt><dd><p>The brush to draw the shape. If <cite>None</cite> is provided, 
+it uses the predefined brush.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_text">
+<code class="sig-name descname">del_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an earlier added text message.</p>
+<p>This method is useful to show a connection between this node and 
+another node. If there is no such line added to the node, 
+nothing will happen.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>other_node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The line that is connected to the other node. If found, this line
+will be removed from the drawing list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

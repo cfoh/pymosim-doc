@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sim.simulation module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="map package" href="map.html" />
+    <link rel="prev" title="sim.simsystem module" href="sim.simsystem.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.direction.html">
+   sim.direction module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.drawable.html">
+   sim.drawable module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.event.html">
+   sim.event module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.frame.html">
+   sim.frame module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.loc.html">
+   sim.loc module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.scenario.html">
+   sim.scenario module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.simsystem.html">
+   sim.simsystem module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   sim.simulation module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-sim.simulation">
+<span id="sim-simulation-module"></span><h1>sim.simulation module<a class="headerlink" href="#module-sim.simulation" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>simulation</cite> is the main simulation module. It contains 
+a <cite>World</cite> class that carries out the event driven simulation and 
+simulation animation.</p>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="sim.simulation.World">
+<em class="property">class </em><code class="sig-prename descclassname">sim.simulation.</code><code class="sig-name descname">World</code><a class="headerlink" href="#sim.simulation.World" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the simulation world.</p>
+<p>There should only be one simulation world in a simulation. 
+It includes an event driven simulation engine.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The simulation world can be setup and run in two simple steps:</p>
+<ul class="simple">
+<li><p>Use config() to setup the simulation world.</p></li>
+<li><p>Call run() to run the simulation until the stopping condition
+is met.</p></li>
+</ul>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.config" title="sim.simulation.World.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a>([sim_stop, sim_step, sim_speed, …])</p></td>
+<td><p>The function to configure the world object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.get_scenario" title="sim.simulation.World.get_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scenario</span></code></a>()</p></td>
+<td><p>Use this method to get a scenario for the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.is_animation_shown" title="sim.simulation.World.is_animation_shown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_animation_shown</span></code></a>()</p></td>
+<td><p>Use this method to check if animation is turned on for this simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.run" title="sim.simulation.World.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
+<td><p>The function to run the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.schedule_process" title="sim.simulation.World.schedule_process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule_process</span></code></a>(process[, parameter, delay])</p></td>
+<td><p>The function to schedule a future process to run.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.set_scenario_name" title="sim.simulation.World.set_scenario_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_scenario_name</span></code></a>(name)</p></td>
+<td><p>Use this method to give a name to the scenario.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_stop_time" title="sim.simulation.World.sim__set_stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_stop_time</span></code></a>(stop_time)</p></td>
+<td><p>Set a new simulation stop time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_timer" title="sim.simulation.World.sim__set_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_timer</span></code></a>(timer[, delay])</p></td>
+<td><p>The function to set a timer in the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__user_event" title="sim.simulation.World.sim__user_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__user_event</span></code></a>(event)</p></td>
+<td><p>This is an event listenser published for the frame object to call when the user acts on the frame, and this method should implement the cooresponding responses based on the user action such as button click, menu item selection, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.version" title="sim.simulation.World.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a>()</p></td>
+<td><p>It returns the version of the simulation in <cite>(version,minor,build)</cite> format where <cite>version</cite> is the major version, <cite>minor</cite> is the minor version, and <cite>build</cite> is the build version.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="sim.simulation.World.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for World class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.config">
+<code class="sig-name descname">config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_stop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sim_step</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sim_speed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">display_option</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">scenario</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function to configure the world object.</p>
+<p>In the simulation, user simulation is called every <cite>sim_step</cite> interval in
+real-time. If <cite>sim_step=0.1</cite>, user simulation will be called 10 times every
+second. For each call, the animation engine will render the outcome of the 
+world and show on the screen. In other words, the frame rate of the animation
+in this case is 10 frames per second, calculated by <cite>sim_speed/sim_step</cite>.</p>
+<p>If <cite>sim_speed</cite> is set higher than 1, say <cite>sim_speed=3</cite>, the simulation 
+engine will now attempt to call user simulation 30 times every second, 
+and animation engine will attempt to render the outcome to produce 30 frames 
+per second. Whether 30 frames per second can be produced depends on the speed 
+of the CPU. The animation may lag behind the real-time if the CPU cannot catch 
+up with the real-time. Reducing the frame rate can help CPU to catch up with 
+the real-time. This can be done by reducing <cite>sim_step</cite>. For this example
+we can set <cite>sim_step=0.3</cite> so that <cite>sim_speed/sim_step=10</cite> frames per second.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sim_stop</strong><span class="classifier">float</span></dt><dd><p>The time that the simulation stops.</p>
+</dd>
+<dt><strong>sim_step</strong><span class="classifier">float</span></dt><dd><p>The time step (in second) that the simulator updates 
+the movement of vehicles.</p>
+</dd>
+<dt><strong>sim_speed</strong><span class="classifier">float</span></dt><dd><p>How many times faster the simulator should run. 
+Specifying 1.0 for simulation to run in real time, &gt;1.0 to 
+run faster than real time, &lt;1.0 to run slower than real time.</p>
+</dd>
+<dt><strong>display_option</strong><span class="classifier">bool</span></dt><dd><p>Whether to enable the display to see the animation. 
+Setting False to cause the simulator to run without display 
+and animation.</p>
+</dd>
+<dt><strong>scenario</strong><span class="classifier">an instance of extended sim.simulation.Scenario</span></dt><dd><p>The scenario to simulate.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.schedule_process">
+<code class="sig-name descname">schedule_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process</span></em>, <em class="sig-param"><span class="n">parameter</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.schedule_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function to schedule a future process to run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User simulation should avoid using this method. User simulation
+should use <a class="reference internal" href="node.timer.html#node.timer.NodeTimer" title="node.timer.NodeTimer"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.timer.NodeTimer</span></code></a> instead to schedule
+any future process.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>process</strong><span class="classifier"><cite>callback function</cite></span></dt><dd><p>The process to be called.</p>
+</dd>
+<dt><strong>paramater</strong><span class="classifier">optional, default=None</span></dt><dd><p>The parameter to pass to the process. If no parameter is
+speficied, the process will be called without a parameter,
+that is <cite>process()</cite> instead of <cite>process(parameter)</cite></p>
+</dd>
+<dt><strong>delay</strong><span class="classifier">float, optional, default=0</span></dt><dd><p>The time delay to apply before the process is called.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.sim__set_stop_time">
+<code class="sig-name descname">sim__set_stop_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stop_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.sim__set_stop_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a new simulation stop time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User simulation should not use this method directly. Instead, user
+simulation should set the stop time using scenario class.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.sim__set_timer">
+<code class="sig-name descname">sim__set_timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timer</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.sim__set_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function to set a timer in the simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User simulation should not use this method directly. Instead, user
+simulation should use <a class="reference internal" href="node.timer.html#node.timer.NodeTimer" title="node.timer.NodeTimer"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.timer.NodeTimer</span></code></a> to create a timer.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>timer</strong><span class="classifier">node.timer.NodeTimer</span></dt><dd><p>The timer instance to set.</p>
+</dd>
+<dt><strong>delay</strong><span class="classifier">float, optional, default=0</span></dt><dd><p>Specify a delay start to this time. The default is zero, which
+means that the timer will be triggered to run immediately.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.get_scenario">
+<code class="sig-name descname">get_scenario</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.get_scenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to get a scenario for the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a> subclass</dt><dd><p>It returns the instance of the scenario.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.set_scenario_name">
+<code class="sig-name descname">set_scenario_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.set_scenario_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to give a name to the scenario. The name will show 
+on the window in the GUI mode.
+This function is designed to be used by other core modules, not by 
+user simulation application.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.is_animation_shown">
+<code class="sig-name descname">is_animation_shown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.is_animation_shown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to check if animation is turned on for this
+simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p>It returns True if the animation is turned on, False otherwise.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.sim__user_event">
+<code class="sig-name descname">sim__user_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.sim__user_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an event listenser published for the frame object to call
+when the user acts on the frame, and this method should implement
+the cooresponding responses based on the user action such as button
+click, menu item selection, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The user simulation should not use this method. It is a callback 
+designed to be triggered by a user action.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function to run the simulation.</p>
+<p>The control will remain in this function until the simulation
+has completed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.version">
+<code class="sig-name descname">version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns the version of the simulation in <cite>(version,minor,build)</cite>
+format where <cite>version</cite> is the major version, <cite>minor</cite> is the minor
+version, and <cite>build</cite> is the build version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Tuple (version:int,minor:int,build:int)</dt><dd><p>The version of this build, e.g. version <cite>0.8.1</cite> is major version 0, 
+minor version 8, build number 1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+sim.event module
+================
+
+.. automodule:: sim.event
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,25 @@
+sim package
+===========
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   sim.direction
+   sim.drawable
+   sim.event
+   sim.frame
+   sim.loc
+   sim.scenario
+   sim.simsystem
+   sim.simulation
+
+Module contents
+---------------
+
+.. automodule:: sim
+   :members:
+   :undoc-members:
+   :show-inheritance:

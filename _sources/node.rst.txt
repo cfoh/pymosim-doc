@@ -1,0 +1,22 @@
+node package
+============
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   node.draw
+   node.mobility
+   node.node
+   node.routemobi
+   node.timer
+
+Module contents
+---------------
+
+.. automodule:: node
+   :members:
+   :undoc-members:
+   :show-inheritance:

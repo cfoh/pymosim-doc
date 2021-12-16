@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node.timer module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sim package" href="sim.html" />
+    <link rel="prev" title="node.routemobi module" href="node.routemobi.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.draw.html">
+   node.draw module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility.html">
+   node.mobility module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.node.html">
+   node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   node.timer module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-node.timer">
+<span id="node-timer-module"></span><h1>node.timer module<a class="headerlink" href="#module-node.timer" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>timer</cite> contains <a class="reference internal" href="#node.timer.NodeTimer" title="node.timer.NodeTimer"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.timer.NodeTimer</span></code></a> class which allows nodes 
+to create timers. Creating a timer from a node is simple, the following is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## create a timer via a node</span>
+<span class="n">my_node</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">NodeTimer</span><span class="p">(</span><span class="n">my_node</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">my_node</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="c1">## in own Scenario class, on_event() callback</span>
+<span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">event_obj</span><span class="o">==</span><span class="n">Event</span><span class="o">.</span><span class="n">TIMER_EXPIRED</span><span class="p">:</span> <span class="c1"># a timer expired?</span>
+        <span class="n">this_node</span> <span class="o">=</span> <span class="n">event_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">)</span>  <span class="c1"># get the node that started the timer</span>
+        <span class="n">the_timer</span> <span class="o">=</span> <span class="n">event_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;timer&quot;</span><span class="p">)</span> <span class="c1"># get the timer instance if needed</span>
+        <span class="c1"># then do something...</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="node.timer.NodeTimer">
+<em class="property">class </em><code class="sig-prename descclassname">node.timer.</code><code class="sig-name descname">NodeTimer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the class specifying a node timer.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.timer.NodeTimer.get_hosting_node" title="node.timer.NodeTimer.get_hosting_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hosting_node</span></code></a>()</p></td>
+<td><p>Use this method to return the node that hosted this timer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.timer.NodeTimer.is_killed" title="node.timer.NodeTimer.is_killed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_killed</span></code></a>()</p></td>
+<td><p>Use this method to check if this timer is killed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.timer.NodeTimer.is_running" title="node.timer.NodeTimer.is_running"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_running</span></code></a>()</p></td>
+<td><p>Use this method to check if this timer is currently running.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.timer.NodeTimer.kill" title="node.timer.NodeTimer.kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kill</span></code></a>()</p></td>
+<td><p>Use this method to kill a running timer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.timer.NodeTimer.sim__set_running_flag" title="node.timer.NodeTimer.sim__set_running_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_running_flag</span></code></a>(running_flag)</p></td>
+<td><p>This method is used by simulation engine to set the running flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.timer.NodeTimer.start" title="node.timer.NodeTimer.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([delay])</p></td>
+<td><p>Use this method to start this timer.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.timer.NodeTimer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default constructor.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node that hosts this timer.</p>
+</dd>
+<dt><strong>duration</strong><span class="classifier">float</span></dt><dd><p>The run duration of this timer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to start this timer. A killed timer can be restarted
+by using this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>delay</strong><span class="classifier">float, optional, default=0</span></dt><dd><p>Specify a delay start.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.get_hosting_node">
+<code class="sig-name descname">get_hosting_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.get_hosting_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to return the node that hosted this timer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>node.node.BaseNode subclass</dt><dd><p>It returns the node instance hosting this timer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.kill">
+<code class="sig-name descname">kill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to kill a running timer. To be effective, this method
+must be called before the timer has expired. When a timer is started,
+a corresponding process is scheduled in the event queue.
+Killing the timer won’t remove the process from the event queue. 
+Internally, the method will set a flag in this class indicating that the 
+timer is killed. Once the corresponding process is called, if the timer 
+is killed, the event simply stops relaying the event to the user 
+simulation to achieve the same effect of getting the timer killed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.is_killed">
+<code class="sig-name descname">is_killed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.is_killed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to check if this timer is killed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.is_running">
+<code class="sig-name descname">is_running</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.is_running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to check if this timer is currently running.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.timer.NodeTimer.sim__set_running_flag">
+<code class="sig-name descname">sim__set_running_flag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">running_flag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.sim__set_running_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used by simulation engine to set the running flag.
+It should not be used by user simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>running_flag</strong><span class="classifier">bool</span></dt><dd><p>The the running flag.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

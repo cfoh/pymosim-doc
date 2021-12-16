@@ -1,0 +1,7 @@
+node.timer module
+=================
+
+.. automodule:: node.timer
+   :members:
+   :undoc-members:
+   :show-inheritance:

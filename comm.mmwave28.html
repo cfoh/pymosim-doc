@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comm.mmwave28 module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="comm.signalwave module" href="comm.signalwave.html" />
+    <link rel="prev" title="comm.ltemodel module" href="comm.ltemodel.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.channel.html">
+   comm.channel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.ltemodel.html">
+   comm.ltemodel module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   comm.mmwave28 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.signalwave.html">
+   comm.signalwave module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.transceiver.html">
+   comm.transceiver module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mmwavesignal">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       MMWaveSignal
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#channel28ghz">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Channel28GHz
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transceiver28ghz">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Transceiver28GHz
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transceiver28ghzomni">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Transceiver28GHzOmni
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transceiver28ghzsteered">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Transceiver28GHzSteered
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-comm.mmwave28">
+<span id="comm-mmwave28-module"></span><h1>comm.mmwave28 module<a class="headerlink" href="#module-comm.mmwave28" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>mmwave28</cite> contains the signal, channel, and various transceivers that operate
+at 28GHz millimeter wave spectrum. The relationship among them is given in the following
+table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 32%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Channel</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Transceiver</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MMWave28GHz</p></td>
+<td><p>MMWaveSignal</p></td>
+<td><p>Transceiver28GHz</p>
+<p>Transceiver28GHzOmni</p>
+<p>Transceiver28GHzSteered</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mmwavesignal">
+<h3><a class="reference internal" href="#comm.mmwave28.MMWaveSignal" title="comm.mmwave28.MMWaveSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">MMWaveSignal</span></code></a><a class="headerlink" href="#mmwavesignal" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is the mmWave signal specification for transmission.</p>
+</div></blockquote>
+</div>
+<div class="section" id="channel28ghz">
+<h3><a class="reference internal" href="#comm.mmwave28.Channel28GHz" title="comm.mmwave28.Channel28GHz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel28GHz</span></code></a><a class="headerlink" href="#channel28ghz" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes the channel model for 28GHz transmission.</p>
+</div></blockquote>
+</div>
+<div class="section" id="transceiver28ghz">
+<h3><a class="reference internal" href="#comm.mmwave28.Transceiver28GHz" title="comm.mmwave28.Transceiver28GHz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHz</span></code></a><a class="headerlink" href="#transceiver28ghz" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is a mmWave transceiver with beamforming. 
+The receiver signal will be stronger at its pointing direction, and become
+weaker away from the pointing direction.</p>
+</div></blockquote>
+</div>
+<div class="section" id="transceiver28ghzomni">
+<h3><a class="reference internal" href="#comm.mmwave28.Transceiver28GHzOmni" title="comm.mmwave28.Transceiver28GHzOmni"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHzOmni</span></code></a><a class="headerlink" href="#transceiver28ghzomni" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is a mmWave transceiver with omni-directional transmission.</p>
+</div></blockquote>
+</div>
+<div class="section" id="transceiver28ghzsteered">
+<h3><a class="reference internal" href="#comm.mmwave28.Transceiver28GHzSteered" title="comm.mmwave28.Transceiver28GHzSteered"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver28GHzSteered</span></code></a><a class="headerlink" href="#transceiver28ghzsteered" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is a mmWave transceiver with tracking capability. It assumes
+tracking of a user is possible, and so it can always steer its pointing
+direction towards the receiver.</p>
+</div></blockquote>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="comm.mmwave28.MMWaveSignal">
+<em class="property">class </em><code class="sig-prename descclassname">comm.mmwave28.</code><code class="sig-name descname">MMWaveSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.MMWaveSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a></p>
+<p>This is an implementation of signal for mmWave communication. It extends 
+<a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a> to inherit <cite>quality</cite> and add more 
+properties related to mmWave signal properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rx_power</strong><span class="classifier">float</span></dt><dd><p>Storing the received power after propagation (mainly pathloss and fading).</p>
+</dd>
+<dt><strong>pathloss</strong><span class="classifier">float</span></dt><dd><p>Storing impact (in dB) of pathloss after propagation.</p>
+</dd>
+<dt><strong>fading</strong><span class="classifier">float</span></dt><dd><p>Storing impact (in dB) of the channel fading after propagation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.mmwave28.MMWaveSignal.copy" title="comm.mmwave28.MMWaveSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>See the description in the base class for more information.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.mmwave28.MMWaveSignal.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.MMWaveSignal.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and super() must be
+called.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="comm.transceiver.html#comm.transceiver.BaseTransceiver" title="comm.transceiver.BaseTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.BaseTransceiver</span></code></a> subclass</span></dt><dd><p>To specify which transceiver is transmitting this signal.</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>The carrier frequency of this signal.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power in dBm.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.MMWaveSignal.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.MMWaveSignal.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in the base class for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code></dt><dd><p>Return a copy of this signal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.mmwave28.Channel28GHz">
+<em class="property">class </em><code class="sig-prename descclassname">comm.mmwave28.</code><code class="sig-name descname">Channel28GHz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">slow_fading</span><span class="o">=</span><span class="default_value">(3.2, 8.6)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Channel28GHz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comm.channel.html#comm.channel.BaseChannel" title="comm.channel.BaseChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.BaseChannel</span></code></a></p>
+<p>This is a subclass of BaseChannel implementing a millimeter wave channel 
+radiation.</p>
+<p>The channel uses <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code> to record the received signal
+power. If the received power is higher than the threshold, then the signal is 
+considered delivered successfully. Otherwise, the signal cannot be detected 
+successfully and is dropped at the receiver side.</p>
+<p>By default, this class uses 3GPP Band n257 (28GHz) for Urban Micro (UMi). 
+The pathloss for 28GHz UMi setting is given by the following (see also 
+Equation (10) in <a class="reference internal" href="#r340709cabfee-c1" id="id1">[c1]</a>). We use CI model in Equation (2) in <a class="reference internal" href="#r340709cabfee-c2" id="id2">[c2]</a>, which is the same 
+as CIF model in (4) in <a class="reference internal" href="#r340709cabfee-c2" id="id3">[c2]</a> by setting b=0. The parameters for the pathloss are 
+based on Table I in <a class="reference internal" href="#r340709cabfee-c2" id="id4">[c2]</a>.</p>
+<ul class="simple">
+<li><p>Path loss PL(d) = 32.4 + 20*log10(fc) + 20*log10(d) + X_g</p></li>
+<li><p><cite>fc</cite> is the carrier frequency in GHz.</p></li>
+<li><p><cite>d</cite> is the distance between the transmitter and receiver. It is also used to decide
+whether a propagation is LOS or non-LOS, as described in Table I of Yan et al.</p></li>
+<li><p><cite>X_g</cite> is the slow and fast fading. For slow fading, it is log-normal shadowing, 
+which is a Normal Distribution with mean=0, variance=σ^2. Based on Table I
+in Sun et al, 28 GHz NLOS σ=8.6 dB, LOS=3.2 dB. For fast fading, it can be 
+Rayleigh or Racian. However, we do not include fast fading here at the moment.</p></li>
+</ul>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r340709cabfee-c1"><span class="brackets"><a class="fn-backref" href="#id1">c1</a></span></dt>
+<dd><p>Yan et al, “Stable Beamforming With Low Overhead for C/U-Plane 
+Decoupled HSR Wireless Networks,” IEEE Transactions on Vehicular 
+Technology, vol. 67, no. 7, pp. 6075-6086, July 2018.</p>
+</dd>
+<dt class="label" id="r340709cabfee-c2"><span class="brackets">c2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>)</span></dt>
+<dd><p>Sun et al, “Investigation of Prediction Accuracy, Sensitivity, and Parameter 
+Stability of Large-Scale Propagation Path Loss Models for 5G Wireless 
+Communications,” IEEE Transactions on Vehicular Technology, vol. 65, no. 5, 
+pp. 2843-2860, May 2016.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>freq</strong><span class="classifier">float, default=28</span></dt><dd><p>The frequency of this channel. This class is designed to describe the signal
+propagation of 28GHz, however, the formula can be used for similar frequencies
+around 28GHz.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.mmwave28.Channel28GHz.do_propagation" title="comm.mmwave28.Channel28GHz.do_propagation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_propagation</span></code></a>(signal)</p></td>
+<td><p>This method derives the received signal after its propagation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.mmwave28.Channel28GHz.get_range" title="comm.mmwave28.Channel28GHz.get_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_range</span></code></a>(threshold)</p></td>
+<td><p>This method returns the coverage radius.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.mmwave28.Channel28GHz.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">slow_fading</span><span class="o">=</span><span class="default_value">(3.2, 8.6)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Channel28GHz.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>slow_fading</strong><span class="classifier">Tuple (float,float), optional, default = (3.2,8.6) in dB</span></dt><dd><p>The slow fading standard deviation, σ, setup for LOS and NLOS. The tuple 
+specifies (σ for LOS, σ for NLOS). The default setting is taken from
+Yan et al. Setting it to (0,0) will disable the slow_fading.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.Channel28GHz.get_range">
+<code class="sig-name descname">get_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Channel28GHz.get_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the coverage radius. See also the base class description.
+For this subclass, the range is decided based on the SNR threshold which is set
+by the transceiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>threshold</strong><span class="classifier">float</span></dt><dd><p>The pathloss threshold which should be determined by received signal power
+with no pathloss minus SNR_threshold and minus Noise_Power.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.Channel28GHz.do_propagation">
+<code class="sig-name descname">do_propagation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#comm.mmwave28.MMWaveSignal" title="comm.mmwave28.MMWaveSignal">comm.mmwave28.MMWaveSignal</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#comm.mmwave28.MMWaveSignal" title="comm.mmwave28.MMWaveSignal">comm.mmwave28.MMWaveSignal</a><a class="headerlink" href="#comm.mmwave28.Channel28GHz.do_propagation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method derives the received signal after its propagation.</p>
+<p>In this implementation, <cite>signal</cite> is used as the data structure for inputs
+and outputs. <cite>signal</cite> contains <cite>distance</cite> and <cite>LOS_dir</cite> class properties 
+for this method to read and derive the propagation. It also contains 
+<cite>pathloss</cite> and <cite>fading</cite> class properties for this method to recorded the 
+impact of pathloss (in dB) and channel fading (in dB) after the propagation.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>signal</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code></span></dt><dd><p>The transmitted signal. This instance will be modified appropriately
+within this method. The modification describes how the signal would
+be attenuated and distorted.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code></dt><dd><p>The received <cite>signal</cite> instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.mmwave28.Transceiver28GHz">
+<em class="property">class </em><code class="sig-prename descclassname">comm.mmwave28.</code><code class="sig-name descname">Transceiver28GHz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">pointing_dir</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_3dB</span><span class="o">=</span><span class="default_value">0.6108652381980153</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comm.transceiver.html#comm.transceiver.BaseTransceiver" title="comm.transceiver.BaseTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.BaseTransceiver</span></code></a></p>
+<p>This is a class providing functions to simulate transceiver operations
+of a mmWave. When constructing the class, you may specify a tx-rx setting 
+for the transceiver.</p>
+<p>This transceiver is designed to work on mmWave, e.g. 3GPP Band n257 (28GHz).
+For communication, the transceiver creates a <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code>
+and performs transmissions (unicast, broadcast or multicast). After which,
+the receiver will detect the signal and perform a series of calculation
+to judge whether the signal can be decoded successfully. 
+Some important settings are:</p>
+<ul class="simple">
+<li><p>Carrier freq fc in GHz, e.g. 3GPP Band n257 (28GHz).</p></li>
+<li><p>Channel bandwidth B, default is the smallest bandwidth = 50MHz.</p></li>
+<li><p>Transmit power P_tx = 30 dBm.</p></li>
+<li><p>Path loss PL(d), see <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.Channel28HGz</span></code>, where <cite>d</cite> is the distance
+between the two nodes. If <cite>dist</cite> is the horizontal distance, <cite>d_min</cite> is 
+the antenna height, then d=√(dist^2+d_min^2).</p></li>
+<li><p>Receiver antenna gain G_rx is a constant.</p></li>
+<li><p>Transmitter antenna gain G_tx is a constant.</p></li>
+<li><p>Beamforming gain G_bf(Δangle) = (2π/θ_3dB) * 10^((-0.1*η)*(Δangle/θ_3dB)^2)</p>
+<ul>
+<li><p><cite>Δangle</cite> is the difference between beam pointing angle and angle to vehicle.</p></li>
+<li><p><cite>θ_3dB</cite> is the 3 dB beamwidth. Default is a 6 sector setting with
+θ_3dB=35*pi/180 rad (or 35 degree) <a class="reference internal" href="#r2c8729db0313-t2" id="id7">[t2]</a>.</p></li>
+<li><p><cite>η</cite> is a constant, η = 12</p></li>
+<li><p>see also: Equation (4) in <a class="reference internal" href="#r2c8729db0313-t1" id="id8">[t1]</a>.</p></li>
+</ul>
+</li>
+<li><p>The received Signal_Power = P_tx - PL(d) + G_bf(Δangle) + G_rx + G_tx</p></li>
+<li><p>The overall Noise_Power at the receiver is NF + N0 = -90.2 dBm.</p>
+<ul>
+<li><p>Noise Figure at receiver NF = 7 dB.</p></li>
+<li><p>Thermal Noise N0 = -174 dBm/Hz or about 3.981e-18 mW per Hz.
+So for 50 MHz, N0 = -174 dBm + 10*log10(50e6) = -97.2 dBm/50MHz.</p></li>
+</ul>
+</li>
+<li><p>Receiver SNR (in dB) = Signal_Power - Noise_Power</p></li>
+<li><p>Minimum SNR threshold is a constant, default is -5 dB. Receiver SNR lower 
+than the threshold will be considered undecodeable and the signal will be 
+dropped.</p></li>
+</ul>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r2c8729db0313-t1"><span class="brackets"><a class="fn-backref" href="#id8">t1</a></span></dt>
+<dd><p>Vakilian et al, “Effects of angle-of-arrival 
+estimation errors, angular spread and antenna beamwidth on the performance 
+of reconfigurable SISO systems,” IEEE Pac. Rim Conf. Commun. Comput. 
+Signal Process, Canada, Aug. 2011.</p>
+</dd>
+<dt class="label" id="r2c8729db0313-t2"><span class="brackets"><a class="fn-backref" href="#id7">t2</a></span></dt>
+<dd><p>3GPP, “Spatial channel model for multiple input multiple output
+(MIMO) simulations,” Tech. Rep., Sept. 2003.</p>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.mmwave28.Transceiver28GHz.can_detect" title="comm.mmwave28.Transceiver28GHz.can_detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code></a>(signal)</p></td>
+<td><p>See also the base class for description, this method allows a receiving node to  check if a receiving signal can be successfully detected and decoded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.mmwave28.Transceiver28GHz.create_signal" title="comm.mmwave28.Transceiver28GHz.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
+<td><p>Create a signal for transmissioin.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.mmwave28.Transceiver28GHz.multicast" title="comm.mmwave28.Transceiver28GHz.multicast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code></a>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast on the channel,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHz.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">pointing_dir</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_3dB</span><span class="o">=</span><span class="default_value">0.6108652381980153</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHz.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node that contains the transceiver.</p>
+</dd>
+<dt><strong>channel</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.Channel28HGz</span></code></span></dt><dd><p>The channel that the transceiver uses.</p>
+</dd>
+<dt><strong>bandwidth</strong><span class="classifier">int in Hz, optional, default = 50 MHz</span></dt><dd><p>The channel bandwidth.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float in dBm, optional, default = 30 dBm</span></dt><dd><p>The transmit power.</p>
+</dd>
+<dt><strong>antenna_height</strong><span class="classifier">float in meter, optional, default = 5 m</span></dt><dd><p>Height of the antenna.</p>
+</dd>
+<dt><strong>pointing_dir</strong><span class="classifier">float in degree, optional, default = 0 (or north)</span></dt><dd><p>The pointing direction (azimuth angle in degree) of the antenna.</p>
+</dd>
+<dt><strong>gain_tx</strong><span class="classifier">float in dBi, optional, default = 12 dBi</span></dt><dd><p>The transmitter antenna gain. This is different from the 
+beamforming gain.</p>
+</dd>
+<dt><strong>gain_rx</strong><span class="classifier">float in dBi, optional, default = 0 dBi</span></dt><dd><p>The receiver antenna gain.</p>
+</dd>
+<dt><strong>beam_3dB</strong><span class="classifier">float in rad, optional, default = 35*pi/180 for 6 sectors</span></dt><dd><p>The 3dB beamwidth. It is the width that the gain is 3dB.</p>
+</dd>
+<dt><strong>noise_figure</strong><span class="classifier">float in dB, optional, default = 7 dB</span></dt><dd><p>Noise figure at the receiver.</p>
+</dd>
+<dt><strong>snr_threshold</strong><span class="classifier">float in dB, optional, default = -5 dB</span></dt><dd><p>The SNR threshold that allows the receiver to decode the signal
+with reasonably high success rate.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHz.create_signal">
+<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#comm.mmwave28.MMWaveSignal" title="comm.mmwave28.MMWaveSignal">comm.mmwave28.MMWaveSignal</a><a class="headerlink" href="#comm.mmwave28.Transceiver28GHz.create_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a signal for transmissioin.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHz.multicast">
+<code class="sig-name descname">multicast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#comm.mmwave28.MMWaveSignal" title="comm.mmwave28.MMWaveSignal">comm.mmwave28.MMWaveSignal</a></span></em>, <em class="sig-param"><span class="n">node_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHz.multicast" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method allows a node to perform a multicast on the channel, 
+and the method returns a list of tuple (node,received_signal)
+that the multicast signal can be decoded, or None if no node can
+decode the signal.
+Note that this method can be used for unicast by putting a single node
+in <cite>node_list</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>signal</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code></span></dt><dd><p>The signal to be transmitted. Use <cite>create_signal()</cite> method to create one.</p>
+</dd>
+<dt><strong>node_list</strong><span class="classifier">a list of <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The list containing the nodes to receive the multicast signal</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A list of tuple (<a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.MMWaveSignal</span></code>)</dt><dd><p>It returns a list of (node,signal) that the node can decode the 
+signal. <cite>signal.quality</cite> contains the receiving SNR in dB.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHz.can_detect">
+<code class="sig-name descname">can_detect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#comm.mmwave28.Transceiver28GHz.can_detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>See also the base class for description, this method allows a receiving node to 
+check if a receiving signal can be successfully detected and decoded.</p>
+<p>In this implementation, the condition for successful decoding is:</p>
+<ul class="simple">
+<li><p>Received_Signal_Power + G_rx + G_bf(Δangle) - Noise_Power &gt;= SNR_threshold</p></li>
+</ul>
+<p>The received signal power is already recorded in the signal. The receiver needs to
+add beamforming gain. The noise power is a constant which is already calculated 
+during the class construction. The SNR threshold is a constant specified during 
+the class construction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.mmwave28.Transceiver28GHzOmni">
+<em class="property">class </em><code class="sig-prename descclassname">comm.mmwave28.</code><code class="sig-name descname">Transceiver28GHzOmni</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHzOmni" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comm.mmwave28.Transceiver28GHz" title="comm.mmwave28.Transceiver28GHz"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.mmwave28.Transceiver28GHz</span></code></a></p>
+<p>This is a transceiver class providing functions to simulate mmWave 
+omni-directional transmission. It is based on 
+<code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.Transceiver28GHz</span></code>
+where beamforming gain is zero regardless of the difference between
+beam pointing angle and angle to the receiver.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(signal)</p></td>
+<td><p>See also the base class for description, this method allows a receiving node to  check if a receiving signal can be successfully detected and decoded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>()</p></td>
+<td><p>Create a signal for transmissioin.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast on the channel,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHzOmni.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHzOmni.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor for mmWave used for omni-directional mode.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.mmwave28.Transceiver28GHzSteered">
+<em class="property">class </em><code class="sig-prename descclassname">comm.mmwave28.</code><code class="sig-name descname">Transceiver28GHzSteered</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_3dB</span><span class="o">=</span><span class="default_value">0.6108652381980153</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHzSteered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comm.mmwave28.Transceiver28GHz" title="comm.mmwave28.Transceiver28GHz"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.mmwave28.Transceiver28GHz</span></code></a></p>
+<p>This is a transceiver class providing functions to simulate mmWave 
+transmission that can perfectly steer its beam to point perfectly to 
+the receiver. It is based on <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.Transceiver28GHz</span></code>
+and its beamforming gain is always at the peak indicating that the 
+beam is always pointing to the receiver. Likewise, it can steer its beam to
+receive the transmission with beamforming gain.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(signal)</p></td>
+<td><p>See also the base class for description, this method allows a receiving node to  check if a receiving signal can be successfully detected and decoded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>()</p></td>
+<td><p>Create a signal for transmissioin.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast on the channel,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.mmwave28.Transceiver28GHzSteered.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">30</span></em>, <em class="sig-param"><span class="n">antenna_height</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">gain_tx</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">gain_rx</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_3dB</span><span class="o">=</span><span class="default_value">0.6108652381980153</span></em>, <em class="sig-param"><span class="n">noise_figure</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">snr_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.mmwave28.Transceiver28GHzSteered.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor for mmWave used for steered beam mode.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

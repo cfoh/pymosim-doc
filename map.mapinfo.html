@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map.mapinfo module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="map.pin module" href="map.pin.html" />
+    <link rel="prev" title="map package" href="map.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   map.mapinfo module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="map.pin.html">
+   map.pin module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-map.mapinfo">
+<span id="map-mapinfo-module"></span><h1>map.mapinfo module<a class="headerlink" href="#module-map.mapinfo" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>mapdata</cite> is the module interfacing with a digital map. It contains 
+<cite>MapInfo</cite> class that specifies interfaces to access the map during the simulation. 
+The class contains several key information for simulation use: (i) the bitmap of 
+a map, (ii) the user defined pins on the map, (iii) path-finding between two pins.
+Internally, the class also contains the graph data structure corresponding 
+to the map, which is needed for path finding. The path-finding algorithm used
+in the class is the A*STAR algorithm.</p>
+<p>To construct and make it ready to use, it provides convenient load_file() 
+functions which can load an image file for the map, and a corresponding JSON file 
+descrbing the user defined pin locations and the graph data structure. 
+To generate these two files, please use the provided map editor which 
+allows users to capture a map from OpenStreetMap and save it into a PNG image, 
+place pins on the map, and create a corresponding JSON file storing the 
+pin information and graph data structure of the map.</p>
+<p>In the simulation, a user scenario can set a background using the provided bitmap
+as well as use this class to access to pin information and perform path-finding
+between two pins.</p>
+<p>There are some methods created specifically for map editor. The method names start
+with <cite>editor_</cite>. They should not be used in the simulation.</p>
+<dl class="py class">
+<dt id="map.mapinfo.MapInfo">
+<em class="property">class </em><code class="sig-prename descclassname">map.mapinfo.</code><code class="sig-name descname">MapInfo</code><a class="headerlink" href="#map.mapinfo.MapInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is a class to provide access to information of a map during the simulation.
+A map generally contains the following:
+- a bitmap image for display
+- a graph data structure, including:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>graph vertices, also called coords, containing (id,x,y). In OSM, this is 
+called a <cite>node</cite>.</p></li>
+<li><p>graph links, describing how a vertex connects to its neighbouring vertices
+in a straight line.</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>information on the map:
+- map objects, a group of connected vertices forming either a polyline or</p>
+<blockquote>
+<div><p>polygon. Polylines are used for roads, rivers, railways, etc, and polygons
+are used for areas, buildings, train platforms, etc. In OSM, a map object
+is called a <cite>way</cite> (open-way for polyline, closed-way for polygon).</p>
+</div></blockquote>
+</li>
+<li><p>pins for user defined locations.</p></li>
+</ul>
+<p>Internally, this class contains a list of objects:
+- self._bitmap: bitmap of the map as <cite>wx.Bitmap</cite>
+- self._info: dictionary containing map info (see below, under “info”)
+- self._coords: dictionary lookup table from id to (x,y)
+- self._objs: dictionary lookup table from id to dict containing the object info
+- self._neighbour_of: graph data structure of the map for path finding
+- self._pins: pin database in dictionary (see the JSON below, under “pins”)</p>
+<p>The above information is constructed from the map data JSON file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>                     <span class="c1"># dict</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span>           <span class="c1"># integer, pixels</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span>         <span class="c1"># integer, pixels</span>
+        <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="n">resolution</span>  <span class="c1"># integer, pixels per km</span>
+        <span class="s2">&quot;minlat&quot;</span><span class="p">:</span> <span class="n">min_latitude</span>    <span class="c1"># float</span>
+        <span class="s2">&quot;maxlat&quot;</span><span class="p">:</span> <span class="n">max_latitude</span>    <span class="c1"># float</span>
+        <span class="s2">&quot;minlon&quot;</span><span class="p">:</span> <span class="n">min_longitude</span>   <span class="c1"># float</span>
+        <span class="s2">&quot;maxlon&quot;</span><span class="p">:</span> <span class="n">max_longitude</span>   <span class="c1"># float</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">map_version</span>    <span class="c1"># str, in &quot;Major.Minor.Build&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;graph.vertices&quot;</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="n">vertex_id1</span><span class="p">:</span> <span class="p">[</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">],</span>  <span class="c1"># a list of two integers for (x,y)</span>
+        <span class="n">vertex_id2</span><span class="p">:</span> <span class="p">[</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">],</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;graph.links&quot;</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="n">vertex_id5</span><span class="p">:</span> <span class="p">[</span>          <span class="c1"># a list of neighbouring vertex_id (as integer)</span>
+            <span class="n">neighbour_vertex1</span><span class="p">,</span>
+            <span class="n">neighbour_vertex2</span><span class="p">,</span>
+            <span class="o">...</span>
+        <span class="p">]</span> 
+        <span class="n">vertex_id6</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;map.objects&quot;</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="n">obj_id1</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">id</span><span class="p">,</span>         <span class="c1"># integer</span>
+            <span class="s2">&quot;coords&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>  <span class="c1"># a list of containing vertex_id (as integer)</span>
+            <span class="s2">&quot;any other key&quot;</span><span class="p">:</span> <span class="n">any_value</span>
+            <span class="o">...</span>
+        <span class="p">},</span>
+        <span class="n">obj_id2</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;pins&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>                       <span class="c1"># each pin is a dict</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pin_id</span><span class="p">,</span>       <span class="c1">#&lt;--must have</span>
+            <span class="s2">&quot;coords&quot;</span><span class="p">:</span> <span class="p">[</span>         <span class="c1">#&lt;--must have</span>
+                <span class="n">coord_id1</span><span class="p">,</span>
+                <span class="n">coord_id2</span><span class="p">,</span>
+                <span class="o">...</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;.coord1&quot;</span><span class="p">:</span> <span class="n">coord_id1</span><span class="p">,</span>   <span class="c1">#&lt;--must have for waypoing &amp; junction</span>
+            <span class="s2">&quot;.coord2&quot;</span><span class="p">:</span> <span class="n">coord_id2</span><span class="p">,</span>   <span class="c1">#&lt;--must have for waypoint</span>
+            <span class="s2">&quot;.obj_id&quot;</span><span class="p">:</span> <span class="n">obj_id</span><span class="p">,</span>      <span class="c1">#&lt;--must have for waypoint</span>
+            <span class="s2">&quot;.width&quot;</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span>        <span class="c1">#&lt;--must have for region</span>
+            <span class="s2">&quot;.height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span>      <span class="c1">#&lt;--must have for region</span>
+            <span class="s2">&quot;.orientation&quot;</span><span class="p">:</span> <span class="n">angle</span><span class="p">,</span>  <span class="c1">#&lt;--must have for region</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>                 <span class="c1">#&lt;--x,y location of the pin, must have</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">pin_type_str</span><span class="p">,</span>   <span class="c1">#&lt;--must have</span>
+            <span class="s2">&quot;unique&quot;</span><span class="p">:</span> <span class="n">unique_name_str</span><span class="p">,</span> <span class="c1"># the reference name, should be unique</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">any_non_unique_display_name_str</span><span class="p">,</span>
+            <span class="s2">&quot;user define key&quot;</span><span class="p">:</span> <span class="n">any_value</span><span class="p">,</span>
+            <span class="s2">&quot;more user define key&quot;</span><span class="p">:</span> <span class="n">any_value</span><span class="p">,</span>
+            <span class="o">...</span>
+        <span class="p">},</span>
+        <span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For each pin type:</p>
+<ul class="simple">
+<li><p>landmark: <cite>id</cite> is a negative integer, <cite>coords</cite> contains only <cite>id</cite>.</p></li>
+<li><p>waypoint: <cite>id</cite> is a negative integer, <cite>coords</cite> contains three coords, which
+are <cite>[.coord1, id, .coord2]</cite>. It’s linked into the graph, so it’s navigable.</p></li>
+<li><p>junction: <cite>id</cite> is an existing map coord_id, <cite>coords</cite> contains only <cite>id</cite>.</p></li>
+<li><p>building: <cite>id</cite> is a negative integer, <cite>coords</cite> contains only <cite>id</cite>.
+<cite>.obj_id</cite> contains the id of the building on the map.</p></li>
+<li><p>region: <cite>id</cite> is a negative integer, <cite>coords</cite> contains only <cite>id</cite>.
+<cite>.width</cite>, <cite>.height</cite> and <cite>.orientation</cite> contain the region layout.</p></li>
+</ul>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.editor_load_pins" title="map.mapinfo.MapInfo.editor_load_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editor_load_pins</span></code></a>(filename)</p></td>
+<td><p>This method will load pin dictionary from the file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.find_path" title="map.mapinfo.MapInfo.find_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_path</span></code></a>(from_pin, to_pin)</p></td>
+<td><p>Perform path finding using A*Star algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_all_pins" title="map.mapinfo.MapInfo.get_all_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pins</span></code></a>([pin_type])</p></td>
+<td><p>This method returns all pin objects (in dict) in a list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_bitmap" title="map.mapinfo.MapInfo.get_bitmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bitmap</span></code></a>()</p></td>
+<td><p>This method returns the bitmap object of the map.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_err_str" title="map.mapinfo.MapInfo.get_err_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_err_str</span></code></a>()</p></td>
+<td><p>Return the error message string for this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_info" title="map.mapinfo.MapInfo.get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code></a>(info)</p></td>
+<td><p>This method returns high level information of the map.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_obj" title="map.mapinfo.MapInfo.get_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_obj</span></code></a>(obj_id)</p></td>
+<td><p>This method is a map object lookup using <cite>obj_id</cite> to retrieve the full object info.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_pin" title="map.mapinfo.MapInfo.get_pin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pin</span></code></a>(pin_name)</p></td>
+<td><p>This method is a pin lookup using the unique reference <cite>pin_name</cite>  to retrieve full info of the pin in dict.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_pin_xy" title="map.mapinfo.MapInfo.get_pin_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pin_xy</span></code></a>(pin_name)</p></td>
+<td><p>This method returns the (x,y) location of the given pin.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_xy" title="map.mapinfo.MapInfo.get_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xy</span></code></a>(coord_id)</p></td>
+<td><p>This method is a coordinate lookup using <cite>coord_id</cite> to retrieve the (x,y) pixel location of the <cite>coord_id</cite> on the map image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.is_ready" title="map.mapinfo.MapInfo.is_ready"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ready</span></code></a>()</p></td>
+<td><p>Test if the instance has a valid map to enable other methods in this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.km" title="map.mapinfo.MapInfo.km"><code class="xref py py-obj docutils literal notranslate"><span class="pre">km</span></code></a>(length_in_kilometer)</p></td>
+<td><p>It returns the number of pixels given a length in kilometers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.kph" title="map.mapinfo.MapInfo.kph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kph</span></code></a>(speed[, speed_up_factor])</p></td>
+<td><p>It translates the input parameter <cite>speed</cite> specified in km/h to the  number of pixels per second that an object should move on the map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.load_file" title="map.mapinfo.MapInfo.load_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_file</span></code></a>(image_file, data_file)</p></td>
+<td><p>Load external files to initialize this class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.num_pixels" title="map.mapinfo.MapInfo.num_pixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_pixels</span></code></a>(len_in_meter)</p></td>
+<td><p>It returns the number of pixels given a length in meter.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 77%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>editor_assign_coord_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>editor_assign_info_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>editor_assign_map</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>editor_assign_navigation_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>editor_assign_obj_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>editor_assign_pin_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>editor_get_pin_dict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>editor_save_file</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt id="map.mapinfo.MapInfo.min_version">
+<code class="sig-name descname">min_version</code><em class="property"> = (0, 8, 6)</em><a class="headerlink" href="#map.mapinfo.MapInfo.min_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum version supported by this simulator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_err_str">
+<code class="sig-name descname">get_err_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_err_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the error message string for this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>It returns <cite>None</cite> if there is no error, or the error message
+string. Use this method to find out the error related to 
+loading the map data and constructing this map instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.is_ready">
+<code class="sig-name descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.is_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the instance has a valid map to enable other methods in this class. 
+It is important to test before accessing to other methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p>It returns whether this instance is ready to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.load_file">
+<code class="sig-name descname">load_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image_file</span></em>, <em class="sig-param"><span class="n">data_file</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#map.mapinfo.MapInfo.load_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load external files to initialize this class. The method will load
+an image file of the map and its corresponding digital information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image_file</strong><span class="classifier">str</span></dt><dd><p>The image filename to load.</p>
+</dd>
+<dt><strong>data_file</strong><span class="classifier">str</span></dt><dd><p>The json data filename to load.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_load_pins">
+<code class="sig-name descname">editor_load_pins</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_load_pins" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will load pin dictionary from the file. This should be
+sufficient for the editor since the editor has all other information
+from the <cite>StreetMap</cite> object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_save_file">
+<code class="sig-name descname">editor_save_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image_file</span></em>, <em class="sig-param"><span class="n">data_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_save_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_map">
+<code class="sig-name descname">editor_assign_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bitmap</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_info_dict">
+<code class="sig-name descname">editor_assign_info_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_info_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_coord_dict">
+<code class="sig-name descname">editor_assign_coord_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_coord_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_obj_dict">
+<code class="sig-name descname">editor_assign_obj_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">objs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_obj_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_navigation_dict">
+<code class="sig-name descname">editor_assign_navigation_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">navigation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_navigation_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_assign_pin_dict">
+<code class="sig-name descname">editor_assign_pin_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pins</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_assign_pin_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.editor_get_pin_dict">
+<code class="sig-name descname">editor_get_pin_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_get_pin_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.find_path">
+<code class="sig-name descname">find_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_pin</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">to_pin</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#map.mapinfo.MapInfo.find_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform path finding using A*Star algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>from_pin</strong><span class="classifier">str</span></dt><dd><p>The unique name of the pin as the start location.</p>
+</dd>
+<dt><strong>to_pin</strong><span class="classifier">str</span></dt><dd><p>The unique name of the pin as the end location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_bitmap">
+<code class="sig-name descname">get_bitmap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_bitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the bitmap object of the map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_xy">
+<code class="sig-name descname">get_xy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coord_id</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is a coordinate lookup using <cite>coord_id</cite> to retrieve the
+(x,y) pixel location of the <cite>coord_id</cite> on the map image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <cite>coord_id</cite> is not found in the lookup table, the method throws 
+a KeyError exception.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coord_id</strong><span class="classifier">int</span></dt><dd><p>The input coordinate id.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Tuple[int,int]</dt><dd><p>The (x,y) coordiate of the input coordinate id.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_obj">
+<code class="sig-name descname">get_obj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj_id</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#map.mapinfo.MapInfo.get_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is a map object lookup using <cite>obj_id</cite> to retrieve the
+full object info. Only navigable map object is available. The information
+contains whatever given in the map source specified by the map provider.
+The returning dictionary contains two standard keys: <cite>id</cite> and <cite>coords</cite> 
+where <cite>id</cite> is just <cite>obj_id</cite> and <cite>coords</cite> is a list of <cite>coord_id</cite> (i.e. a list
+of waypoints specified by their <cite>coord_id</cite>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the map <cite>obj_id</cite> is not found in the lookup table, the method 
+throws a KeyError exception.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj_id</strong><span class="classifier">int</span></dt><dd><p>The map object id to lookup for.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>A dictionary containing all raw information about the map object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_pin">
+<code class="sig-name descname">get_pin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#map.mapinfo.MapInfo.get_pin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is a pin lookup using the unique reference <cite>pin_name</cite> 
+to retrieve full info of the pin in dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pin_name</strong><span class="classifier">str</span></dt><dd><p>The unique reference name of the pin.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict or None</dt><dd><p>The dictionary of the pin, or None if the pin is invalid or not found.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_info">
+<code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns high level information of the map. The information
+can be retrieved includes:
+- “width”: integer, the width of the map in pixels 
+- “height”: integer, the height of the map in pixels
+- “resolution”: integer, the resolution of the map in pixels per km
+- “version”: str, the version of the map info format</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the info is not recognized, the method throws a KeyError exception.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>info</strong><span class="classifier">str</span></dt><dd><p>The information specified in string to retrieve.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>any</dt><dd><p>The retrieved information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_pin_xy">
+<code class="sig-name descname">get_pin_xy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_pin_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the (x,y) location of the given pin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pin_name</strong><span class="classifier">str</span></dt><dd><p>The unique reference name of the pin.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple (x:int,y:int) or None</dt><dd><p>The (x,y) location of the pin on the map. If no valid pin is found 
+on the map, it returns None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_all_pins">
+<code class="sig-name descname">get_all_pins</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<a class="headerlink" href="#map.mapinfo.MapInfo.get_all_pins" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns all pin objects (in dict) in a list. 
+See the module description for the pin dict structure. If no 
+<cite>pin_type</cite> is given, all pins will be included in the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pin_type</strong><span class="classifier">str, optional, default=None</span></dt><dd><p>The type of pins to retrieve.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>List</dt><dd><p>It returns a list of pin objects. If a non-existing pin type 
+is specified in <cite>pin_type</cite>, it returns None.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.km">
+<code class="sig-name descname">km</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">length_in_kilometer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.km" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns the number of pixels given a length in kilometers. The number
+of pixels depends on the resolution of the map measured in
+pixels per km.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.num_pixels">
+<code class="sig-name descname">num_pixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">len_in_meter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.num_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns the number of pixels given a length in meter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>len_in_meter</strong><span class="classifier">float</span></dt><dd><p>The length to be converted to pixels based on the map resolution.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>The number of pixels equivalent to the length in meters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.kph">
+<code class="sig-name descname">kph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">speed</span></em>, <em class="sig-param"><span class="n">speed_up_factor</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.kph" title="Permalink to this definition">¶</a></dt>
+<dd><p>It translates the input parameter <cite>speed</cite> specified in km/h to the 
+number of pixels per second that an object should move on the map. The
+number of pixels per second is the speed unit used in all mobility modules
+in the simulation, and therefore a translation is needed.</p>
+<p>The <cite>speed_up_factor</cite> parameter is used to speed up the animation by 
+increasing the movement. This can be useful to make a node hopping a longer 
+range in each simulation step to speed up the simulation, by artificially 
+increasing the speed of movement by a factor. Controlling the speed via
+<cite>speed_up_factor</cite> may be more convenient than simultaneously adjusting the 
+playback speed and simulation time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>int</strong></dt><dd><p>It returns the rounded number of pixels for a kilometer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

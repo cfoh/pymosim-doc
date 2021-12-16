@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sim.loc module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sim.scenario module" href="sim.scenario.html" />
+    <link rel="prev" title="sim.frame module" href="sim.frame.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.direction.html">
+   sim.direction module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.drawable.html">
+   sim.drawable module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.event.html">
+   sim.event module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.frame.html">
+   sim.frame module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   sim.loc module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.scenario.html">
+   sim.scenario module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.simsystem.html">
+   sim.simsystem module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.simulation.html">
+   sim.simulation module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-sim.loc">
+<span id="sim-loc-module"></span><h1>sim.loc module<a class="headerlink" href="#module-sim.loc" title="Permalink to this headline">¶</a></h1>
+<p>The module <cite>loc</cite> provides classes to describe location in the
+simulation world. The instance is mutatable, use <cite>clone()</cite> to
+create a copy and make independent changes.</p>
+<p>The module provides the following ready-to-use classes:</p>
+<ul class="simple">
+<li><p>CartesianXY: It is suitable for a flat world. It uses (x,y) location 
+in Cartesian coordinate system to describe a location, where <cite>x</cite> and <cite>y</cite> are integer.</p></li>
+<li><p>ScreenXY: It is suitable for a flat world. It uses (x,y) location 
+in Computer Screen coordinate system to describe a location, where <cite>x</cite> and <cite>y</cite> are integer.
+In Computer Screen coordinate system, <cite>x</cite> increases rightward like Cartesian, but ‘y’ increases
+downward which is opposite of Cartesian.</p></li>
+<li><p>Origin: It is an origin location, that is (0,0,0) in a 3D world.</p></li>
+</ul>
+<dl class="py class">
+<dt id="sim.loc.LOC">
+<em class="property">class </em><code class="sig-prename descclassname">sim.loc.</code><code class="sig-name descname">LOC</code><a class="headerlink" href="#sim.loc.LOC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>This is an abstract class for location. All location classes should extend
+this class. It has several abstract methods to be reimplemented.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.LOC.azimuth_to" title="sim.loc.LOC.azimuth_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">azimuth_to</span></code></a>(other)</p></td>
+<td><p>This function the azimuth angle to <cite>other</cite> viewed from this location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.clone" title="sim.loc.LOC.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>This function returns a clone of this instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.LOC.distance_to" title="sim.loc.LOC.distance_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_to</span></code></a>(other)</p></td>
+<td><p>This function returns how far it is from <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.exactly_same_as" title="sim.loc.LOC.exactly_same_as"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exactly_same_as</span></code></a>(other)</p></td>
+<td><p>This function returns whether it is exactly at the same location  as <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.LOC.get_xy" title="sim.loc.LOC.get_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xy</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y)</cite> tuple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.get_xyz" title="sim.loc.LOC.get_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xyz</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y,z)</cite> tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.LOC.move_to" title="sim.loc.LOC.move_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_to</span></code></a>(other[, fraction])</p></td>
+<td><p>This function moves this location towards <cite>other</cite> where the new location to move to is a <cite>fraction</cite> of the two locations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.move_towards" title="sim.loc.LOC.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
+<td><p>This function moves this location towards <cite>other</cite> for a specific distance.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="sim.loc.LOC.__init__">
+<em class="property">abstract </em><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an abstract constructor to be reimplemented. Calling to super() is 
+unneccessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.clone">
+<em class="property">abstract </em><code class="sig-name descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a clone of this instance.
+This is an abstract method which should be explicitly reimplemented.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.distance_to">
+<em class="property">abstract </em><code class="sig-name descname">distance_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#sim.loc.LOC.distance_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns how far it is from <cite>other</cite>. This is an abstract
+method which should be explicitly reimplemented.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.exactly_same_as">
+<em class="property">abstract </em><code class="sig-name descname">exactly_same_as</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#sim.loc.LOC.exactly_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns whether it is exactly at the same location 
+as <cite>other</cite>. This function is only suitable to locations using 
+integers. For float locations, use <cite>distance_to</cite> instead.
+This is an abstract method which should be explicitly reimplemented.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.move_to">
+<em class="property">abstract </em><code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em>, <em class="sig-param"><span class="n">fraction</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.move_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function moves this location towards <cite>other</cite> where the new
+location to move to is a <cite>fraction</cite> of the two locations.
+This is an abstract method which should be explicitly reimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">an instance of extended LOC</span></dt><dd><p>The point to move towards.</p>
+</dd>
+<dt><strong>fraction</strong><span class="classifier">float</span></dt><dd><p>The fraction (between 0 and 1) of distance to move to. If fraction=0,
+the new location is its original location. If fraction=1, the new
+location is the location of <cite>other</cite>. If fraction=0.5, the new location 
+is the mid-point between the two points.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.move_towards">
+<em class="property">abstract </em><code class="sig-name descname">move_towards</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em>, <em class="sig-param"><span class="n">distance</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.move_towards" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function moves this location towards <cite>other</cite> for a specific distance.
+This is an abstract method which should be explicitly reimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">an instance of extended LOC</span></dt><dd><p>The point to move towards.</p>
+</dd>
+<dt><strong>distance</strong><span class="classifier">float</span></dt><dd><p>The distance to move towards <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.get_xy">
+<em class="property">abstract </em><code class="sig-name descname">get_xy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.get_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.get_xyz">
+<em class="property">abstract </em><code class="sig-name descname">get_xyz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.get_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y,z)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.azimuth_to">
+<em class="property">abstract </em><code class="sig-name descname">azimuth_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.azimuth_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function the azimuth angle to <cite>other</cite> viewed from this location.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="sim.loc.ScreenXY">
+<em class="property">class </em><code class="sig-prename descclassname">sim.loc.</code><code class="sig-name descname">ScreenXY</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">xy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sim.loc.LOC" title="sim.loc.LOC"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.LOC</span></code></a></p>
+<p>This is a location class used to describe location in <cite>(x,y)</cite>
+in screen coordinate system, and both <cite>x</cite> and <cite>y</cite> are an integer.</p>
+<p>In screen coordinate system, the left-top is (0,0), and the values increase
+moving rightward and downward.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.azimuth_to" title="sim.loc.ScreenXY.azimuth_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">azimuth_to</span></code></a>(other)</p></td>
+<td><p>This function returns the azimuth angle to <cite>other</cite> viewed  from this location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.clone" title="sim.loc.ScreenXY.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>This method returns a clone of this obect.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.distance_to" title="sim.loc.ScreenXY.distance_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_to</span></code></a>(other)</p></td>
+<td><p>This function returns how far it is from <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.exactly_same_as" title="sim.loc.ScreenXY.exactly_same_as"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exactly_same_as</span></code></a>(other)</p></td>
+<td><p>This function returns whether it is exactly at the same location  as <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.get_xy" title="sim.loc.ScreenXY.get_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xy</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y)</cite> tuple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.get_xyz" title="sim.loc.ScreenXY.get_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xyz</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y,z)</cite> tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.move_to" title="sim.loc.ScreenXY.move_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_to</span></code></a>(other[, fraction])</p></td>
+<td><p>See the description in base class for detail.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.move_towards" title="sim.loc.ScreenXY.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
+<td><p>See the description in base class for detail.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">xy</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x, y</strong><span class="classifier">int, default=0</span></dt><dd></dd>
+<dt><strong>xy</strong><span class="classifier">(int,int), default=None</span></dt><dd><p>The x and y coordinates in screen coordinate system. The input <cite>xy</cite>
+is the (x,y) tuple. If it is given, it will be used for the location. 
+Otherwise, the <cite>x</cite> and <cite>y</cite> inputs will be used by default.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.clone">
+<code class="sig-name descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a clone of this obect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#sim.loc.ScreenXY" title="sim.loc.ScreenXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.ScreenXY</span></code></a></dt><dd><p>The cloned object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.exactly_same_as">
+<code class="sig-name descname">exactly_same_as</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#sim.loc.ScreenXY.exactly_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns whether it is exactly at the same location 
+as <cite>other</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.get_xy">
+<code class="sig-name descname">get_xy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.get_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.get_xyz">
+<code class="sig-name descname">get_xyz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.get_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y,z)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.distance_to">
+<code class="sig-name descname">distance_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.ScreenXY" title="sim.loc.ScreenXY">sim.loc.ScreenXY</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#sim.loc.ScreenXY.distance_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns how far it is from <cite>other</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.move_to">
+<code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.ScreenXY" title="sim.loc.ScreenXY">sim.loc.ScreenXY</a></span></em>, <em class="sig-param"><span class="n">fraction</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.move_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in base class for detail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.move_towards">
+<code class="sig-name descname">move_towards</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.ScreenXY" title="sim.loc.ScreenXY">sim.loc.ScreenXY</a></span></em>, <em class="sig-param"><span class="n">distance</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.move_towards" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in base class for detail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.azimuth_to">
+<code class="sig-name descname">azimuth_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.azimuth_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the azimuth angle to <cite>other</cite> viewed 
+from this location.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="sim.loc.CartesianXY">
+<em class="property">class </em><code class="sig-prename descclassname">sim.loc.</code><code class="sig-name descname">CartesianXY</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sim.loc.LOC" title="sim.loc.LOC"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.LOC</span></code></a></p>
+<p>This is a location class used to describe location in <cite>(x,y)</cite>
+in Cartesian coordinate system, and both <cite>x</cite> and <cite>y</cite> are an integer.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.azimuth_to" title="sim.loc.CartesianXY.azimuth_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">azimuth_to</span></code></a>(other)</p></td>
+<td><p>This function returns the azimuth angle to <cite>other</cite> viewed  from this location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.clone" title="sim.loc.CartesianXY.clone"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clone</span></code></a>()</p></td>
+<td><p>This method returns a clone of this obect.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.distance_to" title="sim.loc.CartesianXY.distance_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_to</span></code></a>(other)</p></td>
+<td><p>This function returns how far it is from <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.exactly_same_as" title="sim.loc.CartesianXY.exactly_same_as"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exactly_same_as</span></code></a>(other)</p></td>
+<td><p>This function returns whether it is exactly at the same location  as <cite>other</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.get_xy" title="sim.loc.CartesianXY.get_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xy</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y)</cite> tuple.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.get_xyz" title="sim.loc.CartesianXY.get_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xyz</span></code></a>()</p></td>
+<td><p>This function returns <cite>(x,y,z)</cite> tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.move_to" title="sim.loc.CartesianXY.move_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_to</span></code></a>(other[, fraction])</p></td>
+<td><p>See the description in base class for detail.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.move_towards" title="sim.loc.CartesianXY.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
+<td><p>See the description in base class for detail.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x, y</strong><span class="classifier">int</span></dt><dd><p>The x and y coordinates in Cartesian coordinate system.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.clone">
+<code class="sig-name descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a clone of this obect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#sim.loc.CartesianXY" title="sim.loc.CartesianXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.CartesianXY</span></code></a></dt><dd><p>The cloned object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.exactly_same_as">
+<code class="sig-name descname">exactly_same_as</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#sim.loc.CartesianXY.exactly_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns whether it is exactly at the same location 
+as <cite>other</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.get_xy">
+<code class="sig-name descname">get_xy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.get_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.get_xyz">
+<code class="sig-name descname">get_xyz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.get_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns <cite>(x,y,z)</cite> tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.distance_to">
+<code class="sig-name descname">distance_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.CartesianXY" title="sim.loc.CartesianXY">sim.loc.CartesianXY</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#sim.loc.CartesianXY.distance_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns how far it is from <cite>other</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.move_to">
+<code class="sig-name descname">move_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.CartesianXY" title="sim.loc.CartesianXY">sim.loc.CartesianXY</a></span></em>, <em class="sig-param"><span class="n">fraction</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.move_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in base class for detail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.move_towards">
+<code class="sig-name descname">move_towards</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.loc.CartesianXY" title="sim.loc.CartesianXY">sim.loc.CartesianXY</a></span></em>, <em class="sig-param"><span class="n">distance</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.move_towards" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in base class for detail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.azimuth_to">
+<code class="sig-name descname">azimuth_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.azimuth_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the azimuth angle to <cite>other</cite> viewed 
+from this location.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

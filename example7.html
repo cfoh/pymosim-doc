@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>example7 module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-example7">
+<span id="example7-module"></span><h1>example7 module<a class="headerlink" href="#module-example7" title="Permalink to this headline">¶</a></h1>
+<p>This is an example demonstrating a traffic light control. The example introduces
+three features:</p>
+<ul class="simple">
+<li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
+<li><p>How to displace a text on the map.</p></li>
+<li><p>How to use <a class="reference internal" href="node.routemobi.html#node.routemobi.RoutePath" title="node.routemobi.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code></a> to create mobility. In this mobility model, 
+vehicles are aware of others and must follow the vehicles in front. The mobility 
+implementation uses a specic car following model to achieve realistic mobility.</p></li>
+</ul>
+<p>We place two traffic lights at two junctions and create some volume of traffic
+around the junctions.</p>
+<dl class="py class">
+<dt id="example7.MyTrafficLight">
+<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyTrafficLight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
+<p>MyTrafficLight: This is a traffic light design.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ID</span></code>(id_str)</p></td>
+<td><p>The data structure for the node id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code>(node_type)</p></td>
+<td><p>The defination of a node type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
+<td><p>Clear the drawing for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
+<td><p>Remove an earlier added circle for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>Remove an earlier added line for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Remove an earlier added sector drawing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<td><p>Put a circle around this node where the node is the center of the circle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<td><p>Draw a text at around this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
+<td><p>Query the node to retrieve corresponding information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<td><p>Get the color that is used to draw this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
+<td><p>Provide the list of all nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
+<td><p>Use this method to check if a node is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
+<td><p>Use this method to check if a node is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
+<td><p>Perform a lookup for the node with <cite>id</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
+<td><p>This method is used to remove this node from the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<td><p>Set the color to draw for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<td><p>Set the <cite>mobility</cite> for this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<td><p>Use this method to set a transceiver for the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<td><p>Use this method to set the visibility of a node.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_indicator</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>redraw_indicator</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>switch_indicator</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example7.MyTrafficLight.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and 
+super() must be called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+</dd>
+<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+</dd>
+<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyTrafficLight.get_indicator">
+<code class="sig-name descname">get_indicator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vehicle</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#example7.MyTrafficLight.get_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyTrafficLight.switch_indicator">
+<code class="sig-name descname">switch_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.switch_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyTrafficLight.redraw_indicator">
+<code class="sig-name descname">redraw_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.redraw_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example7.MyVehicle">
+<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
+<p>MyVehicle: This is a vehicle design.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ID</span></code>(id_str)</p></td>
+<td><p>The data structure for the node id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code>(node_type)</p></td>
+<td><p>The defination of a node type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
+<td><p>Clear the drawing for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
+<td><p>Remove an earlier added circle for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>Remove an earlier added line for this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Remove an earlier added sector drawing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<td><p>Put a circle around this node where the node is the center of the circle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<td><p>Draw a text at around this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
+<td><p>Query the node to retrieve corresponding information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<td><p>Get the color that is used to draw this node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
+<td><p>Provide the list of all nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
+<td><p>Use this method to check if a node is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
+<td><p>Use this method to check if a node is visible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
+<td><p>Perform a lookup for the node with <cite>id</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
+<td><p>This method is used to remove this node from the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<td><p>Set the color to draw for this node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<td><p>Set the <cite>mobility</cite> for this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<td><p>Use this method to set a transceiver for the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<td><p>Use this method to set the visibility of a node.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>can_see_traffic_light</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>go</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>set_route</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>stop</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example7.MyVehicle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and 
+super() must be called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+</dd>
+<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+</dd>
+<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyVehicle.set_route">
+<code class="sig-name descname">set_route</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">speed_low</span></em>, <em class="sig-param"><span class="n">speed_high</span></em>, <em class="sig-param"><span class="n">delay_start</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyVehicle.set_route" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyVehicle.can_see_traffic_light">
+<code class="sig-name descname">can_see_traffic_light</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.can_see_traffic_light" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyVehicle.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyVehicle.go">
+<code class="sig-name descname">go</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.go" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example7.MyScenario">
+<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a></p>
+<p>This is MyScenario. It reimplements on_create() and on_event().</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_drawable</span></code>(drawable)</p></td>
+<td><p>Use this method to add a persistent drawable on the scenario background.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code>(new_time)</p></td>
+<td><p>Change the simulation stop time to a new stop time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.do_mobility" title="example7.MyScenario.do_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_mobility</span></code></a>(sim_time)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.do_restart_node" title="example7.MyScenario.do_restart_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_restart_node</span></code></a>(sim_time, event_obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.do_timer" title="example7.MyScenario.do_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_timer</span></code></a>(sim_time, event_obj)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
+<td><p>Get the simulation setting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
+<td><p>Check whether this scenario has a valid street map object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.on_create" title="example7.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
+<td><p>This is an event listener which will be called when the scenario object is being created.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.on_event" title="example7.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
+<td><p>This is an event listener which will be called when an event occurs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
+<td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y])</p></td>
+<td><p>Set a background bitmap image for this scenario.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
+<td><p>Set a name for this scenario to show on the window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map)</p></td>
+<td><p>Set a street map info object for this scenario to describe the map.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example7.MyScenario.on_create">
+<code class="sig-name descname">on_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyScenario.on_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an event listener which will be called when the scenario
+object is being created. The subclass should extend this method
+to create the simulation world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd></dd>
+<dt>True if the scenario is created successfully, False otherwise.</dt><dd></dd>
+<dt>Returning False will cause the simulation to throw a runtime error.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyScenario.on_event">
+<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.on_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an event listener which will be called when an event occurs.</p>
+<p>The simulation periodically calls this method to allow user to perform
+any user simulation for every time step of mobility. In other words,
+the simulation continuously progresses a simulation time step, freezes 
+the time and calls this method.</p>
+<p>A subclass must extend this method to perform any necessary user 
+simulation on the simulation world.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>sim_time</strong><span class="classifier">float</span></dt><dd><p>The simulation time that the event happens.</p>
+</dd>
+<dt><strong>event_object</strong><span class="classifier"><a class="reference internal" href="sim.event.html#sim.event.Event" title="sim.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.event.Event</span></code></a></span></dt><dd><p>The event object describing what has happened. The user should
+check the type of the event object and handle the event accordingly.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyScenario.do_restart_node">
+<code class="sig-name descname">do_restart_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_restart_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyScenario.do_timer">
+<code class="sig-name descname">do_timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="example7.MyScenario.do_mobility">
+<code class="sig-name descname">do_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_mobility" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

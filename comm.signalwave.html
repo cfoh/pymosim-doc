@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comm.signalwave module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="comm.transceiver module" href="comm.transceiver.html" />
+    <link rel="prev" title="comm.mmwave28 module" href="comm.mmwave28.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">PyMoSim</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.channel.html">
+   comm.channel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.ltemodel.html">
+   comm.ltemodel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.mmwave28.html">
+   comm.mmwave28 module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   comm.signalwave module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.transceiver.html">
+   comm.transceiver module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basesignal">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       BaseSignal
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qualitybasedsignal">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       QualityBasedSignal
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-comm.signalwave">
+<span id="comm-signalwave-module"></span><h1>comm.signalwave module<a class="headerlink" href="#module-comm.signalwave" title="Permalink to this headline">¶</a></h1>
+<p>This module provides several classes related to signals.
+<cite>Signal</cite> is used to keep information about a transmission. A transmitter should
+create a signal with appropriate information describing key properties of the
+signal (e.g. transmit power). At the receiver, the signal is collected and
+judge whether the signal is decodeable by using the channel information to
+calculate the gain, BER, and others to draw the conclusion.
+Therefore, <cite>Signal</cite> is acting as an interface (or data structure) for:</p>
+<ul class="simple">
+<li><p>the <cite>Channel</cite> to write the distortion information during the transmission, and</p></li>
+<li><p>the <cite>Transceiver</cite> to then reads the distortion information and decide whether the 
+received signal passes the CRC check.</p></li>
+</ul>
+<p>Since <cite>Signal</cite> acts as a common interface between <cite>Transceiver</cite> and <cite>Channel</cite>, 
+thus <cite>Channel</cite> must pair with appropriate <cite>Signal</cite> and <cite>Transceiver</cite> so that 
+all agree on what distortion informtion to specify, where the channel 
+will specify the info and the signal will provide the data structure.
+So an implementation should extend <a class="reference internal" href="comm.channel.html#comm.channel.BaseChannel" title="comm.channel.BaseChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.BaseChannel</span></code></a> which provides
+descripion of signal distortion over the channel, then a corresponding signal
+implementation of <a class="reference internal" href="#comm.signalwave.BaseSignal" title="comm.signalwave.BaseSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.BaseSignal</span></code></a> subclass carrying the data 
+structure of the signal properties should be provided to pair with the channel. 
+Current known relationships are:</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 34%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Channel</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Transceiver</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DiscModel;
+LogDistanceModel</p></td>
+<td><p>QualityBasedSignal</p></td>
+<td><p>Transceiver;
+TransceiverDir</p></td>
+</tr>
+<tr class="row-odd"><td><p>(user-defined)</p></td>
+<td><p>QualityBasedSignal;
+(user-defined)</p></td>
+<td><p>UserTransceiver</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basesignal">
+<h3><a class="reference internal" href="#comm.signalwave.BaseSignal" title="comm.signalwave.BaseSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSignal</span></code></a><a class="headerlink" href="#basesignal" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is the base class providing all common properties of a signal.</p>
+</div></blockquote>
+</div>
+<div class="section" id="qualitybasedsignal">
+<h3><a class="reference internal" href="#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">QualityBasedSignal</span></code></a><a class="headerlink" href="#qualitybasedsignal" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a quality-based signal. it extends the base class to add <cite>quality</cite>
+property.</p>
+</div></blockquote>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="comm.signalwave.BaseSignal">
+<em class="property">class </em><code class="sig-prename descclassname">comm.signalwave.</code><code class="sig-name descname">BaseSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.BaseSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>This is a abstract base class for a signal. It provides specification only.</p>
+<p>The class contains properties for transceiver to set before transmitting 
+the signal. After propagation, the channel will record the propagation
+outcome to the signal onto some specific signal properties.</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The source node transmitting this signal.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>Transmit power used for this signal.</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>Carrier freq of the signal.</p>
+</dd>
+<dt><strong>distance</strong><span class="classifier">float</span></dt><dd><p>The distance for this signal to travel.</p>
+</dd>
+<dt><strong>LOS_dir</strong><span class="classifier">float</span></dt><dd><p>The signal line-of-sight (LOS) travelling direction.</p>
+</dd>
+<dt><strong>info</strong><span class="classifier">dict</span></dt><dd><p>An additional storage point for the channel or detection process to pass 
+additional information to the user simulation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.BaseSignal.copy" title="comm.signalwave.BaseSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>This method is used to make a copy of the signal of the subclass.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.signalwave.BaseSignal.__init__">
+<em class="property">abstract </em><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.BaseSignal.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and super() must be
+called.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>source_node</strong><span class="classifier"><a class="reference internal" href="comm.transceiver.html#comm.transceiver.BaseTransceiver" title="comm.transceiver.BaseTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.BaseTransceiver</span></code></a> subclass</span></dt><dd><p>To specify which transceiver is transmitting this signal.</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>The carrier frequency of this signal.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power in dBm</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.signalwave.BaseSignal.copy">
+<em class="property">abstract </em><code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.BaseSignal.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to make a copy of the signal of the subclass. 
+It must be explicitly reimplemented in a subclass.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.signalwave.QualityBasedSignal">
+<em class="property">class </em><code class="sig-prename descclassname">comm.signalwave.</code><code class="sig-name descname">QualityBasedSignal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.QualityBasedSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#comm.signalwave.BaseSignal" title="comm.signalwave.BaseSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.BaseSignal</span></code></a></p>
+<p>This is a simple implementation of signal providing a single measure of
+an overall quality of the wave transmission. It provides a property
+to indicate quality. It is up to the channel to use the indicator.
+Two methods are created for signal quality reporting and retrieval:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>quality</strong><span class="classifier">float</span></dt><dd><p>Storing the received signal quality after pathloss. The actual measure
+depends on the channel model, it is up to the channel to decide how to 
+record the channel quality. It may record a value between 0 and 1,
+it may provide an integer value describing the channel quality, or it 
+may also record the received signal power in dBm.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.QualityBasedSignal.copy" title="comm.signalwave.QualityBasedSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>See the description in the base class for more information.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.signalwave.QualityBasedSignal.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.QualityBasedSignal.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor. It must be reimplemented and super() must be
+called.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="comm.transceiver.html#comm.transceiver.BaseTransceiver" title="comm.transceiver.BaseTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.BaseTransceiver</span></code></a> subclass</span></dt><dd><p>To specify which transceiver is transmitting this signal.</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>The carrier frequency of this signal.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power in dBm.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.signalwave.QualityBasedSignal.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.QualityBasedSignal.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in the base class for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a></dt><dd><p>Return a copy of this signal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

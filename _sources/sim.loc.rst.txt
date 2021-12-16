@@ -1,0 +1,7 @@
+sim.loc module
+==============
+
+.. automodule:: sim.loc
+   :members:
+   :undoc-members:
+   :show-inheritance:

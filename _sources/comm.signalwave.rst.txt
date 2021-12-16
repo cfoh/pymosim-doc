@@ -1,0 +1,7 @@
+comm.signalwave module
+======================
+
+.. automodule:: comm.signalwave
+   :members:
+   :undoc-members:
+   :show-inheritance:

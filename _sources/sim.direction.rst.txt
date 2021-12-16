@@ -1,0 +1,7 @@
+sim.direction module
+====================
+
+.. automodule:: sim.direction
+   :members:
+   :undoc-members:
+   :show-inheritance:
