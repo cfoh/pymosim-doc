@@ -1,0 +1,7 @@
+node.type module
+================
+
+.. automodule:: node.type
+   :members:
+   :undoc-members:
+   :show-inheritance:

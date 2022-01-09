@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -200,41 +202,49 @@ pin information and graph data structure of the map.</p>
 as well as use this class to access to pin information and perform path-finding
 between two pins.</p>
 <p>There are some methods created specifically for map editor. The method names start
-with <cite>editor_</cite>. They should not be used in the simulation.</p>
+with <cite>editor_</cite>. They should not be used in the simulation. All these methods
+will soon be removed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
 <dl class="py class">
 <dt id="map.mapinfo.MapInfo">
 <em class="property">class </em><code class="sig-prename descclassname">map.mapinfo.</code><code class="sig-name descname">MapInfo</code><a class="headerlink" href="#map.mapinfo.MapInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This is a class to provide access to information of a map during the simulation.
-A map generally contains the following:
-- a bitmap image for display
-- a graph data structure, including:</p>
-<blockquote>
-<div><ul class="simple">
+A map generally contains the following:</p>
+<ul class="simple">
+<li><p>a bitmap image for display</p></li>
+<li><p>a graph data structure, including:</p>
+<ul>
 <li><p>graph vertices, also called coords, containing (id,x,y). In OSM, this is 
 called a <cite>node</cite>.</p></li>
 <li><p>graph links, describing how a vertex connects to its neighbouring vertices
 in a straight line.</p></li>
 </ul>
-</div></blockquote>
+</li>
+<li><p>information on the map:</p>
 <ul>
-<li><p>information on the map:
-- map objects, a group of connected vertices forming either a polyline or</p>
-<blockquote>
-<div><p>polygon. Polylines are used for roads, rivers, railways, etc, and polygons
+<li><p>map objects, a group of connected vertices forming either a polyline or
+polygon. Polylines are used for roads, rivers, railways, etc, and polygons
 are used for areas, buildings, train platforms, etc. In OSM, a map object
-is called a <cite>way</cite> (open-way for polyline, closed-way for polygon).</p>
-</div></blockquote>
+is called a <cite>way</cite> (open-way for polyline, closed-way for polygon).</p></li>
+</ul>
 </li>
 <li><p>pins for user defined locations.</p></li>
 </ul>
-<p>Internally, this class contains a list of objects:
-- self._bitmap: bitmap of the map as <cite>wx.Bitmap</cite>
-- self._info: dictionary containing map info (see below, under “info”)
-- self._coords: dictionary lookup table from id to (x,y)
-- self._objs: dictionary lookup table from id to dict containing the object info
-- self._neighbour_of: graph data structure of the map for path finding
-- self._pins: pin database in dictionary (see the JSON below, under “pins”)</p>
+<p>Internally, this class contains a list of objects:</p>
+<ul class="simple">
+<li><p>self._bitmap: bitmap of the map as <cite>wx.Bitmap</cite></p></li>
+<li><p>self._info: dictionary containing map info (see below, under “info”)</p></li>
+<li><p>self._coords: dictionary lookup table from id to (x,y)</p></li>
+<li><p>self._objs: dictionary lookup table from id to dict containing the object info</p></li>
+<li><p>self._neighbour_of: graph data structure of the map for path finding</p></li>
+<li><p>self._pins: pin database in dictionary (see the JSON below, under “pins”)</p></li>
+</ul>
 <p>The above information is constructed from the map data JSON file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>                     <span class="c1"># dict</span>
@@ -399,7 +409,7 @@ are <cite>[.coord1, id, .coord2]</cite>. It’s linked into the graph, so it’s
 <dl class="py attribute">
 <dt id="map.mapinfo.MapInfo.min_version">
 <code class="sig-name descname">min_version</code><em class="property"> = (0, 8, 6)</em><a class="headerlink" href="#map.mapinfo.MapInfo.min_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>Minimum version supported by this simulator.</p>
+<dd><p>Minimum map version supported by this simulator.</p>
 </dd></dl>
 
 <dl class="py method">

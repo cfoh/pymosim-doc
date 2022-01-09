@@ -9,9 +9,10 @@ Submodules
 
    node.draw
    node.mobility
+   node.mobility2
    node.node
-   node.routemobi
    node.timer
+   node.type
 
 Module contents
 ---------------

@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -145,18 +147,23 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2.html">
+   node.mobility2 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.routemobi.html">
-   node.routemobi module
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.timer.html">
-   node.timer module
+  <a class="reference internal" href="node.type.html">
+   node.type module
   </a>
  </li>
 </ul>
@@ -173,30 +180,9 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-classes">
-   List of Classes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#drawing">
-     <code class="xref py py-class docutils literal notranslate">
-      <span class="pre">
-       Drawing
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+    
 </nav>
               </div>
               
@@ -226,13 +212,12 @@ differentiate node status, shows coverage of a node, connectivity of a pair
 of nodes, text info beside a node, etc.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This class adds drawing capability to a node class. It should not be instantiated.</p>
+<p>This class adds drawing capability to <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> class. 
+It should not be instantiated.</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
 </div>
-<div class="section" id="list-of-classes">
-<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="drawing">
-<h3><a class="reference internal" href="#node.draw.Drawing" title="node.draw.Drawing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawing</span></code></a><a class="headerlink" href="#drawing" title="Permalink to this headline">¶</a></h3>
-<hr class="docutils" />
 <dl class="py class">
 <dt id="node.draw.Drawing">
 <em class="property">class </em><code class="sig-prename descclassname">node.draw.</code><code class="sig-name descname">Drawing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing" title="Permalink to this definition">¶</a></dt>
@@ -292,15 +277,6 @@ your scenario using the methods provided by
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.get_color" title="node.draw.Drawing.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
-<td><p>Get the color that is used to draw this node.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.reset_color" title="node.draw.Drawing.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
-<td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.set_color" title="node.draw.Drawing.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
-<td><p>Set the color to draw for this node.</p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py method">
@@ -308,40 +284,6 @@ your scenario using the methods provided by
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the default constructor which is called by <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a>,
 there is no reason for user simulation to instantiate this class.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.set_color">
-<code class="sig-name descname">set_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.set_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the color to draw for this node.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>color</strong><span class="classifier">color constant defined in wx</span></dt><dd><p>The color to draw.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.get_color">
-<code class="sig-name descname">get_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.get_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the color that is used to draw this node.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>Color constant defined in wx</dt><dd><p>The color for this node.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.reset_color">
-<code class="sig-name descname">reset_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.reset_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -516,8 +458,6 @@ will be removed from the drawing list.</p>
 
 </dd></dl>
 
-</div>
-</div>
 </div>
 
 

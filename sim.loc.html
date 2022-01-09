@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -188,9 +190,57 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loc">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       LOC
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cartesianxy">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       CartesianXY
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#screenxy">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       ScreenXY
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#origin">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Origin
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -215,21 +265,52 @@
 <p>The module <cite>loc</cite> provides classes to describe location in the
 simulation world. The instance is mutatable, use <cite>clone()</cite> to
 create a copy and make independent changes.</p>
-<p>The module provides the following ready-to-use classes:</p>
+<p>To write your own location class, your class must extend 
+<a class="reference internal" href="#sim.loc.LOC" title="sim.loc.LOC"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.LOC</span></code></a> abstract base class and provide implementation
+to the abstract methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>CartesianXY: It is suitable for a flat world. It uses (x,y) location 
-in Cartesian coordinate system to describe a location, where <cite>x</cite> and <cite>y</cite> are integer.</p></li>
-<li><p>ScreenXY: It is suitable for a flat world. It uses (x,y) location 
-in Computer Screen coordinate system to describe a location, where <cite>x</cite> and <cite>y</cite> are integer.
-In Computer Screen coordinate system, <cite>x</cite> increases rightward like Cartesian, but ‘y’ increases
-downward which is opposite of Cartesian.</p></li>
-<li><p>Origin: It is an origin location, that is (0,0,0) in a 3D world.</p></li>
+<li><p>Created by: CH Foh (2021)</p></li>
 </ul>
+</div>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="loc">
+<h3><a class="reference internal" href="#sim.loc.LOC" title="sim.loc.LOC"><code class="xref py py-class docutils literal notranslate"><span class="pre">LOC</span></code></a><a class="headerlink" href="#loc" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is the base location class. It mainly defines specification.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cartesianxy">
+<h3><a class="reference internal" href="#sim.loc.CartesianXY" title="sim.loc.CartesianXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">CartesianXY</span></code></a><a class="headerlink" href="#cartesianxy" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is suitable for a flat world. It uses (x,y) location
+in Cartesian coordinate system to describe a location, 
+where <cite>x</cite> and <cite>y</cite> are integer.</p>
+</div></blockquote>
+</div>
+<div class="section" id="screenxy">
+<h3><a class="reference internal" href="#sim.loc.ScreenXY" title="sim.loc.ScreenXY"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScreenXY</span></code></a><a class="headerlink" href="#screenxy" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is suitable for a flat world. It uses (x,y) location 
+in Computer Screen coordinate system to describe a location, 
+where <cite>x</cite> and <cite>y</cite> are integer. In Computer Screen coordinate system, 
+<cite>x</cite> increases rightward like Cartesian, but ‘y’ increases
+downward which is opposite of Cartesian.</p>
+</div></blockquote>
+</div>
+<div class="section" id="origin">
+<h3><code class="xref py py-class docutils literal notranslate"><span class="pre">Origin</span></code><a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a constant origin location, that is (0,0,0) in a 3D world.</p>
+</div></blockquote>
+<hr class="docutils" />
 <dl class="py class">
 <dt id="sim.loc.LOC">
 <em class="property">class </em><code class="sig-prename descclassname">sim.loc.</code><code class="sig-name descname">LOC</code><a class="headerlink" href="#sim.loc.LOC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>This is an abstract class for location. All location classes should extend
+<p>This is an abstract class for location. All location classes must extend
 this class. It has several abstract methods to be reimplemented.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -261,6 +342,12 @@ this class. It has several abstract methods to be reimplemented.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.move_towards" title="sim.loc.LOC.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
 <td><p>This function moves this location towards <cite>other</cite> for a specific distance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.LOC.rotate_azimuth" title="sim.loc.LOC.rotate_azimuth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_azimuth</span></code></a>(angle)</p></td>
+<td><p>This function rotates the location about the origin by the  given azimuth angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.LOC.shift" title="sim.loc.LOC.shift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift</span></code></a>(other)</p></td>
+<td><p>This function shifts the location by <cite>other</cite>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -347,7 +434,48 @@ This is an abstract method which should be explicitly reimplemented.</p>
 <dl class="py method">
 <dt id="sim.loc.LOC.azimuth_to">
 <em class="property">abstract </em><code class="sig-name descname">azimuth_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.azimuth_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function the azimuth angle to <cite>other</cite> viewed from this location.</p>
+<dd><p>This function the azimuth angle to <cite>other</cite> viewed from this location.
+This is an abstract method which should be explicitly reimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">an instance of extended LOC</span></dt><dd><p>The azimuth angle viewing from this point to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.rotate_azimuth">
+<em class="property">abstract </em><code class="sig-name descname">rotate_azimuth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.rotate_azimuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function rotates the location about the origin by the 
+given azimuth angle.
+This is an abstract method which should be explicitly reimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>angle</strong><span class="classifier">float</span></dt><dd><p>The angle (in degrees) to rotate. A positive value indicates rotating
+clockwise, and a negative value indicates anti-clockwise.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.LOC.shift">
+<em class="property">abstract </em><code class="sig-name descname">shift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.LOC.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function shifts the location by <cite>other</cite>.
+This is an abstract method which should be explicitly reimplemented.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">an instance of extended LOC</span></dt><dd><p>The offset given by <cite>other</cite> to shift this location to.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -390,6 +518,12 @@ moving rightward and downward.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.move_towards" title="sim.loc.ScreenXY.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
 <td><p>See the description in base class for detail.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.rotate_azimuth" title="sim.loc.ScreenXY.rotate_azimuth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_azimuth</span></code></a>(angle)</p></td>
+<td><p>This function rotates the location about the origin by the  given azimuth angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.ScreenXY.shift" title="sim.loc.ScreenXY.shift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift</span></code></a>(other)</p></td>
+<td><p>This function shifts the location by <cite>other</cite>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -468,6 +602,19 @@ as <cite>other</cite>.</p>
 from this location.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.rotate_azimuth">
+<code class="sig-name descname">rotate_azimuth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.rotate_azimuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function rotates the location about the origin by the 
+given azimuth angle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.loc.ScreenXY.shift">
+<code class="sig-name descname">shift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.ScreenXY.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function shifts the location by <cite>other</cite>.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -506,6 +653,12 @@ in Cartesian coordinate system, and both <cite>x</cite> and <cite>y</cite> are a
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.move_towards" title="sim.loc.CartesianXY.move_towards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_towards</span></code></a>(other, distance)</p></td>
 <td><p>See the description in base class for detail.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.rotate_azimuth" title="sim.loc.CartesianXY.rotate_azimuth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_azimuth</span></code></a>(angle)</p></td>
+<td><p>This function rotates the location about the origin by the  given azimuth angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.loc.CartesianXY.shift" title="sim.loc.CartesianXY.shift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift</span></code></a>(other)</p></td>
+<td><p>This function shifts the location by <cite>other</cite>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -581,8 +734,23 @@ as <cite>other</cite>.</p>
 from this location.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.rotate_azimuth">
+<code class="sig-name descname">rotate_azimuth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.rotate_azimuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function rotates the location about the origin by the 
+given azimuth angle.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="sim.loc.CartesianXY.shift">
+<code class="sig-name descname">shift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.loc.CartesianXY.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function shifts the location by <cite>other</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
 </div>
 
 

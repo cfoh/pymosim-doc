@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -212,15 +214,21 @@
                 
   <div class="section" id="module-sim.scenario">
 <span id="sim-scenario-module"></span><h1>sim.scenario module<a class="headerlink" href="#module-sim.scenario" title="Permalink to this headline">¶</a></h1>
-<p>This module contains <cite>BaseScenario</cite> which is an anstract base class providing 
+<p>This module contains <cite>BaseScenario</cite> which is an abstract base class providing 
 specification to create a scenario. It contains no implementation. 
 It should be extended to a subclass to describe the actual scenario.</p>
 <p><a class="reference internal" href="#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a> class is designed to be extended where the 
 extended subclass instance should act as a container to carry entities for 
-the simulation. 
-The subclass should use it to describe how each entity appears 
+the simulation.</p>
+<p>The subclass should use it to describe how each entity appears 
 in the world. Reimplement <a class="reference internal" href="#sim.scenario.BaseScenario.on_create" title="sim.scenario.BaseScenario.on_create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario.on_create()</span></code></a>
 method to build a scenario in the world.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
 <dl class="py class">
 <dt id="sim.scenario.BaseScenario">
 <em class="property">class </em><code class="sig-prename descclassname">sim.scenario.</code><code class="sig-name descname">BaseScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario" title="Permalink to this definition">¶</a></dt>
@@ -231,12 +239,12 @@ It should be extended to a subclass to describe the actual scenario.</p>
 <p>See example1.py to learn how to create a scenario using this
 abstract class.</p>
 <details class="summary-show-example1-py-source-code">
-<summary>Show example1.py source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simualtion can be created within 50 lines.</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<summary>Show example1.py source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simualtion can be created within 50 lines.&#39;&#39;&#39;</span>
 <span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
 <span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
 <span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
+<span class="kn">from</span> <span class="nn">node.type</span> <span class="kn">import</span> <span class="n">BaseStation</span><span class="p">,</span> <span class="n">Vehicle</span>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
@@ -244,14 +252,14 @@ abstract class.</p>
 <span class="k">class</span> <span class="nc">MyBS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyBS: This is a base station design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyVehicle: This is a vehicle design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">start_loc</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="p">,</span><span class="n">path</span><span class="p">))</span>
 

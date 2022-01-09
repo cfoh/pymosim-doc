@@ -49,9 +49,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="#">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -244,9 +246,10 @@
 <li class="toctree-l2"><a class="reference internal" href="node.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="node.draw.html">node.draw module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.mobility.html">node.mobility module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.mobility2.html">node.mobility2 module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.node.html">node.node module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.routemobi.html">node.routemobi module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.timer.html">node.timer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.type.html">node.type module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="node.html#module-node">Module contents</a></li>
@@ -333,12 +336,12 @@
 46
 47
 48
-49</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simualtion can be created within 50 lines.</span>
-<span class="sd">&#39;&#39;&#39;</span>
+49</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simualtion can be created within 50 lines.&#39;&#39;&#39;</span>
 <span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
 <span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
 <span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
+<span class="kn">from</span> <span class="nn">node.type</span> <span class="kn">import</span> <span class="n">BaseStation</span><span class="p">,</span> <span class="n">Vehicle</span>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
@@ -346,14 +349,14 @@
 <span class="k">class</span> <span class="nc">MyBS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyBS: This is a base station design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyVehicle: This is a vehicle design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">start_loc</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="p">,</span><span class="n">path</span><span class="p">))</span>
 
@@ -418,6 +421,7 @@ class to send and detect signals, and measure the signal quality of a received s
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span><span class="p">,</span> <span class="n">TransceiverDir</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 
 
 <span class="c1">####################################################################</span>
@@ -439,7 +443,7 @@ class to send and detect signals, and measure the signal quality of a received s
 <span class="sd">    MySector: This is a sector of a base station in the VANET sim world</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">sector_width</span><span class="p">,</span> <span class="n">sector_dir</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">TransceiverDir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">,</span><span class="n">sector_width</span><span class="p">,</span><span class="n">sector_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">serving_node</span> <span class="o">=</span> <span class="kc">None</span>
@@ -464,7 +468,7 @@ class to send and detect signals, and measure the signal quality of a received s
 <span class="sd">    MyVehicle: This is a transmitting node in the VANET sim world</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## initialize some properties</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">)</span>
@@ -576,7 +580,7 @@ class to send and detect signals, and measure the signal quality of a received s
             <span class="n">reply_list</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">sector</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
                 <span class="c1">## 2.1 check that the reachable node is a sector currently not serving other</span>
-                <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a base station type</span>
+                <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a base station type</span>
                 <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">serving_node</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if sector is already serving other</span>
 
                 <span class="c1">## 2.2 sector beam replies beacon for vehicle to obtain the signal quality</span>
@@ -680,8 +684,9 @@ class to send and detect signals, and measure the signal quality of a received s
                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>
@@ -756,6 +761,7 @@ to create 6 sectors.</p></li>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span><span class="p">,</span> <span class="n">TransceiverDir</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 
 <span class="c1">## for mmWave transmission, we need the following:</span>
 <span class="kn">from</span> <span class="nn">comm.mmwave28</span> <span class="kn">import</span> <span class="n">Channel28GHz</span><span class="p">,</span> <span class="n">Transceiver28GHz</span><span class="p">,</span> <span class="n">Transceiver28GHzOmni</span>
@@ -786,7 +792,7 @@ to create 6 sectors.</p></li>
 <span class="sd">    ideal sector radiation (option 1) or mmWave beamforming (option 2)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">sector_width</span><span class="p">,</span> <span class="n">sector_dir</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## create transceiver</span>
         <span class="k">if</span> <span class="n">global_var</span><span class="o">.</span><span class="n">option</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
@@ -829,7 +835,7 @@ to create 6 sectors.</p></li>
 <span class="sd">    MyVehicle: This is a transmitting node in the VANET sim world</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## create transceiver</span>
         <span class="k">if</span> <span class="n">global_var</span><span class="o">.</span><span class="n">option</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
@@ -1012,7 +1018,7 @@ to create 6 sectors.</p></li>
             <span class="n">reply_list</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">beam</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
                 <span class="c1">## 2.1 check that the reachable node is a BS sector currently not serving other</span>
-                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not BS sector</span>
+                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not BS sector</span>
                 <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">serving_node</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if BS sector is already serving other</span>
 
                 <span class="c1">## 2.2 sector beam replies beacon for vehicle to obtain the signal quality</span>
@@ -1043,8 +1049,8 @@ to create 6 sectors.</p></li>
             <span class="k">for</span> <span class="p">(</span><span class="n">beam</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
 
                 <span class="c1">## check the bs beam</span>
-                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not BS</span>
-                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">serving_node</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>     <span class="c1"># skip if the bs is not active</span>
+                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not BS</span>
+                <span class="k">if</span> <span class="n">beam</span><span class="o">.</span><span class="n">serving_node</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>         <span class="c1"># skip if the bs is not active</span>
                 <span class="k">if</span> <span class="n">beam</span><span class="o">==</span><span class="n">vehicle</span><span class="o">.</span><span class="n">associated_sector</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if it&#39;s the associated BS</span>
 
                 <span class="c1">## at this point, the beam is associated with another vehicle</span>
@@ -1097,8 +1103,9 @@ to create 6 sectors.</p></li>
                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>
@@ -1134,6 +1141,7 @@ the sector with the highest quality (i.e. strongest SNR).</p>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span><span class="p">,</span> <span class="n">TransceiverDir</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
 <span class="kn">from</span> <span class="nn">sim.event</span> <span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 
 
 <span class="c1">####################################################################</span>
@@ -1155,7 +1163,7 @@ the sector with the highest quality (i.e. strongest SNR).</p>
 <span class="sd">    MySector: This is a sector of a base station in the VANET sim world</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">sector_width</span><span class="p">,</span> <span class="n">sector_dir</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">TransceiverDir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">,</span><span class="n">sector_width</span><span class="p">,</span><span class="n">sector_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">serving_node</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1180,7 +1188,7 @@ the sector with the highest quality (i.e. strongest SNR).</p>
 <span class="sd">    MyVehicle: This is a transmitting node in the VANET sim world</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## initialize some properties</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">)</span>
@@ -1228,7 +1236,7 @@ the sector with the highest quality (i.e. strongest SNR).</p>
     <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 
         <span class="c1">## simulation title</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;Densed Sectorized Small Cells&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;Dense Sectorized Small Cells&quot;</span><span class="p">)</span>
 
         <span class="c1">## simulation setup for beam</span>
         <span class="n">beam_radius</span> <span class="o">=</span> <span class="mi">80</span>
@@ -1325,7 +1333,7 @@ the sector with the highest quality (i.e. strongest SNR).</p>
             <span class="n">reply_list</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">sector</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
                 <span class="c1">## 2.1 check that the reachable node is a BS currently not serving other</span>
-                <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a base station type</span>
+                <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a base station type</span>
                 <span class="k">if</span> <span class="n">sector</span><span class="o">.</span><span class="n">serving_node</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if sector is already serving other</span>
 
                 <span class="c1">## 2.2 sector beam replies beacon for vehicle to obtain the signal quality</span>
@@ -1435,8 +1443,9 @@ the sector with the highest quality (i.e. strongest SNR).</p>
                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>
@@ -1471,11 +1480,12 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
 <span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
 <span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
-<span class="kn">from</span> <span class="nn">sim.event</span> <span class="kn">import</span> <span class="n">Event</span>
 <span class="kn">from</span> <span class="nn">sim.drawable</span> <span class="kn">import</span> <span class="n">Drawable</span>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">UserTransceiver</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
+
 
 <span class="c1">####################################################################</span>
 <span class="c1">## Line Segment Intersection Algorithm</span>
@@ -1573,7 +1583,7 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="sd">    a user-defined transceiver.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">carrier_freq</span><span class="p">)</span>
 
@@ -1587,7 +1597,7 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="sd">    a user-defined transceiver.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## initialize some properties</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">carrier_freq</span><span class="p">)</span>
@@ -1670,7 +1680,7 @@ and full control of signal propagation and signal detection logic.</p>
             <span class="n">reply_list</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="p">(</span><span class="n">this_bs</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a BS type</span>
+                <span class="k">if</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a BS type</span>
 
                 <span class="n">beacon_reply</span> <span class="o">=</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
                 <span class="n">recv_signal</span> <span class="o">=</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">beacon_reply</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
@@ -1773,6 +1783,7 @@ with the highest quality (i.e. strongest SNR).</p>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span>
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
 <span class="kn">from</span> <span class="nn">map.mapinfo</span> <span class="kn">import</span> <span class="n">MapInfo</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 
 
 <span class="c1">####################################################################</span>
@@ -1782,7 +1793,7 @@ with the highest quality (i.e. strongest SNR).</p>
 <span class="k">class</span> <span class="nc">MyBS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyBS: This is a base station design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">BS</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coverage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">&quot;radius&quot;</span><span class="p">)</span>
 
@@ -1808,7 +1819,7 @@ with the highest quality (i.e. strongest SNR).</p>
 <span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyVehicle: This is a vehicle design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="nb">map</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">channel</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="nb">map</span>
@@ -1945,7 +1956,7 @@ with the highest quality (i.e. strongest SNR).</p>
             <span class="n">vehicle_list</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">vehicle_list</span><span class="p">:</span>
                 <span class="c1">## 2.1 check that the reachable node is a vehicle without service</span>
-                <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not Vehicle</span>
+                <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not Vehicle</span>
                 <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if already being served</span>
 
                 <span class="c1">## 2.2 vehicle sends beacon reply for bs to measure signal quality</span>
@@ -1980,6 +1991,8 @@ with the highest quality (i.e. strongest SNR).</p>
                <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
                <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
     <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1991,7 +2004,7 @@ three features:</p>
 <ul class="simple">
 <li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
 <li><p>How to displace a text on the map.</p></li>
-<li><p>How to use <a class="reference internal" href="node.routemobi.html#node.routemobi.RoutePath" title="node.routemobi.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code></a> to create mobility. In this mobility model, 
+<li><p>How to use <code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code> to create mobility. In this mobility model, 
 vehicles are aware of others and must follow the vehicles in front. The mobility 
 implementation uses a specic car following model to achieve realistic mobility.</p></li>
 </ul>
@@ -2023,10 +2036,12 @@ around the junctions.</p>
 <span class="kn">from</span> <span class="nn">sim.drawable</span> <span class="kn">import</span> <span class="n">Drawable</span><span class="p">,</span> <span class="n">Draw</span>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span>
-<span class="kn">from</span> <span class="nn">node.routemobi</span> <span class="kn">import</span> <span class="n">RouteHandler</span><span class="p">,</span> <span class="n">RoutePath</span>
+<span class="kn">from</span> <span class="nn">node.mobility2</span> <span class="kn">import</span> <span class="n">RouteHandler</span><span class="p">,</span> <span class="n">RoutePath</span>
 <span class="kn">from</span> <span class="nn">node.timer</span> <span class="kn">import</span> <span class="n">NodeTimer</span>
 <span class="kn">from</span> <span class="nn">map.mapinfo</span> <span class="kn">import</span> <span class="n">MapInfo</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 <span class="kn">import</span> <span class="nn">map.pin</span> <span class="k">as</span> <span class="nn">Pin</span>
+
 
 <span class="c1">####################################################################</span>
 <span class="c1">## Traffic Light &amp; Vehicle</span>
@@ -2035,7 +2050,7 @@ around the junctions.</p>
 <span class="k">class</span> <span class="nc">MyTrafficLight</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span> 
     <span class="sd">&#39;&#39;&#39;MyTrafficLight: This is a traffic light design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">UserDefined</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">two_sides</span> <span class="o">=</span> <span class="p">{</span> <span class="n">Dir2D</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span> <span class="n">Dir2D</span><span class="p">(</span><span class="n">angle</span><span class="o">+</span><span class="mi">180</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span>
@@ -2077,7 +2092,7 @@ around the junctions.</p>
 <span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyVehicle: This is a vehicle design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="nb">map</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseNode</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="nb">map</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">visible_range</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">num_pixels</span><span class="p">(</span><span class="n">len_in_meter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
@@ -2242,6 +2257,8 @@ around the junctions.</p>
                <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
                <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
     <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

@@ -48,9 +48,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -241,7 +243,7 @@ ideal sector radiation (option 1) or mmWave beamforming (option 2)</p>
 <td><p>The data structure for the node id.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code>(node_type)</p></td>
-<td><p>The defination of a node type.</p></td>
+<td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
 <td><p>Clear the drawing for this node.</p></td>
@@ -316,14 +318,14 @@ ideal sector radiation (option 1) or mmWave beamforming (option 2)</p>
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">sector_width</span></em>, <em class="sig-param"><span class="n">sector_dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example3.MySector.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+<dd class="field-odd"><dl>
+<dt><strong>simworld</strong><span class="classifier"><a class="reference internal" href="sim.simulation.html#sim.simulation.World" title="sim.simulation.World"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.simulation.World</span></code></a></span></dt><dd><p>To provide the container of the node to be initiated.</p>
 </dd>
-<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+<dt><strong>id</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.ID</span></code></a>, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
 </dd>
-<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+<dt><strong>type</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.Type</span></code></a>, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
 </dd>
 </dl>
 </dd>
@@ -353,7 +355,7 @@ super() must be called.</p>
 <td><p>The data structure for the node id.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code>(node_type)</p></td>
-<td><p>The defination of a node type.</p></td>
+<td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
 <td><p>Clear the drawing for this node.</p></td>
@@ -442,14 +444,14 @@ super() must be called.</p>
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example3.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+<dd class="field-odd"><dl>
+<dt><strong>simworld</strong><span class="classifier"><a class="reference internal" href="sim.simulation.html#sim.simulation.World" title="sim.simulation.World"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.simulation.World</span></code></a></span></dt><dd><p>To provide the container of the node to be initiated.</p>
 </dd>
-<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+<dt><strong>id</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.ID</span></code></a>, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
 </dd>
-<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+<dt><strong>type</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.Type</span></code></a>, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
 </dd>
 </dl>
 </dd>

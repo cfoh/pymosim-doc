@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -214,7 +216,7 @@
 <span id="sim-simsystem-module"></span><h1>sim.simsystem module<a class="headerlink" href="#module-sim.simsystem" title="Permalink to this headline">¶</a></h1>
 <p>This module provides <cite>SimSystem</cite> class which is used for simulation system control. 
 <cite>SimSystem</cite> is a static class, it should be called directly without an instance.
-It is used for:</p>
+It is used for other interna modules to do the following:</p>
 <ul class="simple">
 <li><p>reporting simulation warning due to incorrect implementation</p></li>
 <li><p>stopping simulation due to a critical error</p></li>
@@ -228,12 +230,13 @@ function will stop the running and report the provided error message.</p>
 <dt>SimSystem.warn.message(warn_str)</dt><dd><p>Call this function when a non-critical situation has occured. Calling this 
 function will show a warning on the terminal but will not stop the running.</p>
 </dd>
-<dt>SimSystem.warn.no_implementation(inspect.stack()[0][3],self)</dt><dd><p>Call this function to throw a warning in a virtual method.
-This will not stop the running, a warning will be shown and the 
-program will continue to run. Use this function in a virtual method
-to warn that a virtual method may not have implemented in a subclass.</p>
-</dd>
 </dl>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
 </div>
 <dl class="py class">
 <dt id="sim.simsystem.SimSystem">
@@ -305,9 +308,6 @@ simulation but error will stop the running immediately.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.warn.message" title="sim.simsystem.SimSystem.warn.message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">message</span></code></a>(warn_str)</p></td>
 <td><p>Throw a warning message.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.warn.no_implementation" title="sim.simsystem.SimSystem.warn.no_implementation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">no_implementation</span></code></a>(method_name, obj_name)</p></td>
-<td><p>Throw a warning message for no reimplementation of a virtual method in a subclass, but continue to run the program.</p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py method">
@@ -318,31 +318,6 @@ simulation but error will stop the running immediately.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>warn_str</strong><span class="classifier">str</span></dt><dd><p>The warning message to show on the terminal.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="sim.simsystem.SimSystem.warn.no_implementation">
-<em class="property">static </em><code class="sig-name descname">no_implementation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method_name</span></em>, <em class="sig-param"><span class="n">obj_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simsystem.SimSystem.warn.no_implementation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Throw a warning message for no reimplementation of a
-virtual method in a subclass, but continue to run the program.</p>
-<p>This is a static method that should be called directly.
-This function should be called in a virtual method that 
-expect reimplementation, but may not cause a fatal error
-if executed. Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SimSystem</span><span class="o">.</span><span class="n">warn</span><span class="o">.</span><span class="n">no_implementation</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="bp">self</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>module_name</strong><span class="classifier">str</span></dt><dd><p>To provide the name of the virtual method that is being 
-executed.</p>
-</dd>
-<dt><strong>obj_name</strong><span class="classifier">str</span></dt><dd><p>To provide the module that contains the virtual method.</p>
 </dd>
 </dl>
 </dd>

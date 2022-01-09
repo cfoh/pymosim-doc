@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -188,9 +190,48 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dir">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       DIR
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dir2d">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Dir2D
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#northdir">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       NorthDir
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -213,14 +254,37 @@
   <div class="section" id="module-sim.direction">
 <span id="sim-direction-module"></span><h1>sim.direction module<a class="headerlink" href="#module-sim.direction" title="Permalink to this headline">¶</a></h1>
 <p>The module <cite>direction</cite> provides classes to describe the direction in the
-simulation world.</p>
-<p>The module provides the following ready-to-use classes:</p>
+simulation world. It contains an abstract class for extension. To write
+your own direction class, your class must extend <a class="reference internal" href="#sim.direction.DIR" title="sim.direction.DIR"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.direction.DIR</span></code></a> 
+abstract class and implement the corresponding abstract methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Dir2D: For a flat world, use <cite>Dir2D</cite> class which describes an angle of a direction.
-The angle for a North pointing direction is 0 degree. The angle increases as
-the direction rotates clockwise.</p></li>
-<li><p>NorthDir: A constant north pointing direction.</p></li>
+<li><p>Created by: CH Foh (2021)</p></li>
 </ul>
+</div>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dir">
+<h3><a class="reference internal" href="#sim.direction.DIR" title="sim.direction.DIR"><code class="xref py py-class docutils literal notranslate"><span class="pre">DIR</span></code></a><a class="headerlink" href="#dir" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is the base direction class. It mainly defines specification.</p>
+</div></blockquote>
+</div>
+<div class="section" id="dir2d">
+<h3><a class="reference internal" href="#sim.direction.Dir2D" title="sim.direction.Dir2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dir2D</span></code></a><a class="headerlink" href="#dir2d" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>For a flat world, use <cite>Dir2D</cite> class which describes an angle of 
+a direction. The angle for a North pointing direction is 0 degree. 
+The angle increases as the direction rotates clockwise.</p>
+</div></blockquote>
+</div>
+<div class="section" id="northdir">
+<h3><a class="reference internal" href="#sim.direction.NorthDir" title="sim.direction.NorthDir"><code class="xref py py-class docutils literal notranslate"><span class="pre">NorthDir</span></code></a><a class="headerlink" href="#northdir" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a constant north pointing direction.</p>
+</div></blockquote>
+<hr class="docutils" />
 <dl class="py class">
 <dt id="sim.direction.DIR">
 <em class="property">class </em><code class="sig-prename descclassname">sim.direction.</code><code class="sig-name descname">DIR</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">azimuth</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">elevation</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.direction.DIR" title="Permalink to this definition">¶</a></dt>
@@ -486,6 +550,8 @@ direction.</p>
 
 </dd></dl>
 
+</div>
+</div>
 </div>
 
 

@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node.type module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sim package" href="sim.html" />
+    <link rel="prev" title="node.timer module" href="node.timer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/icon.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.draw.html">
+   node.draw module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility.html">
+   node.mobility module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2.html">
+   node.mobility2 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.node.html">
+   node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   node.type module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basetype">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       BaseType
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hidden">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Hidden
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basestation">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       BaseStation
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vehicle">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Vehicle
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drone">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Drone
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#irs">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       IRS
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-node.type">
+<span id="node-type-module"></span><h1>node.type module<a class="headerlink" href="#module-node.type" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>type</cite> contains all node types to specify a node.
+Each type of nodes has its unique properties to control the behaviour of the 
+nodes. Specifically, it contains properties to enable drawing of the node
+on the screen.</p>
+<p>All node types are defined directly in this module. They are not encapsulated 
+in a container class. The recommended way to import the node type classes is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the name `NodeType` to encapsulate all node types</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
+</pre></div>
+</div>
+<p>The user simulation can create a new node type specific for the simulation.
+The new node type must extend <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a> and implement
+corresponding abstract methods, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
+
+<span class="k">class</span> <span class="nc">UFO</span><span class="p">(</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseType</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="c1">## this is an abstract method needed to reimplement</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">resolution</span><span class="p">):</span>
+
+        <span class="c1">## setup parameters</span>
+        <span class="n">pixels_per_meter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">resolution</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span>
+        <span class="n">pen_size</span> <span class="o">=</span> <span class="n">pixels_per_meter</span>
+        <span class="n">circle_radius</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">pixels_per_meter</span>
+        <span class="n">wing_length</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">pixels_per_meter</span>
+
+        <span class="c1">## setup pen and brush</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">SetPen</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Pen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">(),</span> <span class="n">pen_size</span><span class="p">))</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">SetBrush</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Brush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">(),</span><span class="n">wx</span><span class="o">.</span><span class="n">TRANSPARENT</span><span class="p">))</span>
+
+        <span class="c1">## build a UFO shape with two wings, i.e. &quot;--o--&quot;</span>
+        <span class="c1">## default orientation is flying north (i.e. azimuth=0)</span>
+        <span class="n">pt0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span>
+        <span class="n">pt1</span> <span class="o">=</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="n">wing_length</span><span class="o">-</span><span class="n">circle_radius</span><span class="p">)</span>
+        <span class="n">pt2</span> <span class="o">=</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="n">circle_radius</span><span class="p">)</span>
+        <span class="n">pt3</span> <span class="o">=</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=+</span><span class="n">circle_radius</span><span class="p">)</span>
+        <span class="n">pt4</span> <span class="o">=</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=+</span><span class="n">wing_length</span><span class="o">+</span><span class="n">circle_radius</span><span class="p">)</span>
+
+        <span class="c1">## rotate and shift the UFO to pt0 for drawing</span>
+        <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="p">[</span><span class="n">pt1</span><span class="p">,</span><span class="n">pt2</span><span class="p">,</span><span class="n">pt3</span><span class="p">,</span><span class="n">pt4</span><span class="p">]:</span>
+            <span class="n">xy</span><span class="o">.</span><span class="n">rotate_azimuth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;direction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_azimuth</span><span class="p">())</span>
+            <span class="n">xy</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">pt0</span><span class="p">)</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">DrawCircle</span><span class="p">(</span><span class="n">pt0</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">pt0</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="n">circle_radius</span><span class="p">)</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pt2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">pt3</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt3</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">pt4</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pt4</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basetype">
+<h3><a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseType</span></code></a><a class="headerlink" href="#basetype" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is the base node type, all node types must extend this base class.</p>
+</div></blockquote>
+</div>
+<div class="section" id="hidden">
+<h3><a class="reference internal" href="#node.type.Hidden" title="node.type.Hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hidden</span></code></a><a class="headerlink" href="#hidden" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a hidden node which will not show itself on the scenario.</p>
+</div></blockquote>
+</div>
+<div class="section" id="basestation">
+<h3><a class="reference internal" href="#node.type.BaseStation" title="node.type.BaseStation"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStation</span></code></a><a class="headerlink" href="#basestation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a base station type.</p>
+</div></blockquote>
+</div>
+<div class="section" id="vehicle">
+<h3><a class="reference internal" href="#node.type.Vehicle" title="node.type.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a><a class="headerlink" href="#vehicle" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a vehicle type.</p>
+</div></blockquote>
+</div>
+<div class="section" id="drone">
+<h3><a class="reference internal" href="#node.type.Drone" title="node.type.Drone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drone</span></code></a><a class="headerlink" href="#drone" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a drone type.</p>
+</div></blockquote>
+</div>
+<div class="section" id="irs">
+<h3><a class="reference internal" href="#node.type.IRS" title="node.type.IRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRS</span></code></a><a class="headerlink" href="#irs" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It is a type of Intelligent Reflecting Surface (IRS).</p>
+</div></blockquote>
+<hr class="docutils" />
+<dl class="py class">
+<dt id="node.type.BaseType">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">BaseType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>This is an abstract base class of a node type, all node type
+must extend from this base class to inherit common methods.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node that sets to this type. All subclasses must call
+<cite>super().__init__(node)</cite> to properly initiate this super class. All
+subclasses can access the <cite>node</cite> by <cite>self._node</cite> stored in the super 
+class.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseType.draw" title="node.type.BaseType.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>This is an abstract method for the subclass to implement how  the node is shown on the screen.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.type.BaseType.draw_circle" title="node.type.BaseType.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseType.draw_triangle" title="node.type.BaseType.draw_triangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code></a>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.BaseType.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.BaseType.color">
+<code class="sig-name descname">color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reset</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="node.type.BaseType.draw_circle">
+<code class="sig-name descname">draw_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em>, <em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw_circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method provides the subclass to conveniently draw a circle 
+on the screen.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.BaseType.draw_triangle">
+<code class="sig-name descname">draw_triangle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">azimuth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw_triangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method provides the subclass to conveniently draw an
+isosceles triangle on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dc</strong><span class="classifier">wx.DC</span></dt><dd><p>The device context of the scenario currently showing on the screen.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>The height of the isosceles triangle in pixels.</p>
+</dd>
+<dt><strong>base</strong><span class="classifier">int</span></dt><dd><p>The base of the isosceles triangle in pixels.</p>
+</dd>
+<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>The pointing angle of the isosceles triangle in degrees. It is the
+direction where the top tip of the isosceles triangle is pointing at.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.BaseType.draw">
+<em class="property">abstract </em><code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an abstract method for the subclass to implement how 
+the node is shown on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dc</strong><span class="classifier">wx.DC</span></dt><dd><p>The device context of the scenario currently showing on the screen.</p>
+</dd>
+<dt><strong>resolution</strong><span class="classifier">float</span></dt><dd><p>The map resolution in pixels per km.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.type.Hidden">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">Hidden</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Hidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
+<p>Use this subclass for any node that will not show itself on the map.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Hidden.draw" title="node.type.Hidden.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>This node does not draw itself on the map as it is hidden.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.Hidden.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Hidden.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.Hidden.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Hidden.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>This node does not draw itself on the map as it is hidden.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.type.BaseStation">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">BaseStation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseStation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
+<p>Use this subclass for base station node. A circle is drawn for this type of node.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node that sets to this type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseStation.draw" title="node.type.BaseStation.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>It draws a small circle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.BaseStation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseStation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.BaseStation.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseStation.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>It draws a small circle.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.type.Vehicle">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">Vehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">3.5</span></em>, <em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
+<p>Use this subclass for vehicle node. A triangle is drawn for this type of node, and
+the size of the triangle is customizable during initialization.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node that sets to this type.</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float</span></dt><dd><p>The length of the vehicle in meters.</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>The width of the vehicle in meters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Vehicle.draw" title="node.type.Vehicle.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>It draws an isosceles triangle with the tip pointing to the moving direction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.Vehicle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">3.5</span></em>, <em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Vehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.Vehicle.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Vehicle.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>It draws an isosceles triangle with the tip pointing to
+the moving direction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.type.IRS">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">IRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0.3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code>(dc, resolution)</p></td>
+<td><p>This is an abstract method for the subclass to implement how  the node is shown on the screen.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.IRS.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0.3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.type.Drone">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">Drone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Drone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Drone.draw" title="node.type.Drone.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>It draws a shape that looks like ‘-o-‘ on the map.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
+<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.type.Drone.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Drone.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.type.Drone.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.Drone.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>It draws a shape that looks like ‘-o-‘ on the map.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

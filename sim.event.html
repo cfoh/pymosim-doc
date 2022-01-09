@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -212,7 +214,34 @@
                 
   <div class="section" id="module-sim.event">
 <span id="sim-event-module"></span><h1>sim.event module<a class="headerlink" href="#module-sim.event" title="Permalink to this headline">¶</a></h1>
-<p>The module <cite>event</cite> provides event description.</p>
+<p>The module <cite>event</cite> provides event description. This module provides
+two classes:</p>
+<ul>
+<li><p><a class="reference internal" href="#sim.event.BaseEvent" title="sim.event.BaseEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEvent</span></code></a>: This class is used to derive a new
+event. It defines commonly used methods for all new events to use.</p></li>
+<li><p><a class="reference internal" href="#sim.event.Event" title="sim.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a>: This class is a container holding all
+events. In the user simulation, this object will be passed to the 
+user during an event. The user simulation can check the type of
+the event and then use <cite>get()</cite> method to retrieve further 
+information. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span> 
+
+    <span class="c1">## do the following when a mobility of a node has ended</span>
+    <span class="k">if</span> <span class="n">event_obj</span><span class="o">==</span><span class="n">Event</span><span class="o">.</span><span class="n">MOBILITY_END</span><span class="p">:</span>
+        <span class="c1">## get the node whose mobility has ended and restart</span>
+        <span class="c1">## it mobility again with a random delay start</span>
+        <span class="n">this_node</span> <span class="o">=</span> <span class="n">event_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">)</span>
+        <span class="n">this_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mobility&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">restart</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
 <dl class="py class">
 <dt id="sim.event.BaseEvent">
 <em class="property">class </em><code class="sig-prename descclassname">sim.event.</code><code class="sig-name descname">BaseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em>, <em class="sig-param"><span class="n">info</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.event.BaseEvent" title="Permalink to this definition">¶</a></dt>
@@ -224,8 +253,9 @@ The user simulation will receive an event object during an event, and
 the event object is a subclass of this base class. The user simulation can 
 tell which subclass by simply checking, say, if <cite>event==Event.MOBILITY_END</cite>.
 The user simulation can further get details about the event by using
-the provided <cite>get()</cite> method, for example <cite>get(“node”)</cite> for <cite>Event.MOBILITY_END</cite>
-to find out which the mobility of which node has ended.</p>
+the provided <cite>get()</cite> method, for example <cite>get(“node”)</cite> for 
+<cite>Event.MOBILITY_END</cite> to find out which the mobility of which node 
+has ended.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>

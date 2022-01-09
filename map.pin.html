@@ -49,9 +49,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -157,9 +159,66 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of Classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#landmark">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Landmark
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#waypoint">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Waypoint
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#junction">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Junction
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Building
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region">
+     <code class="xref py py-class docutils literal notranslate">
+      <span class="pre">
+       Region
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -185,11 +244,67 @@
 as a dictionary, given that different types of pins have different properties,
 it may be unsafe to directly access the dictionary. These data strcutures or classes
 provide type-safe access to the properties since the pins are now explicitly
-casted into the appropriate classes and checked for validity before user access.</p>
+casted into the appropriate classes and checked for validity before user access.
+If a pin dictionary is casted to a wrong pin class, the method <cite>is_valid()</cite>
+will return <cite>False</cite>, and other get methods will not return any sensible
+value.</p>
 <p>The pins and their properties should be treated as immutable for read-only access. 
 For some reason if the data are modified, their new behaviour will be captured by the 
 simulation, but we do not provide any function to write the modified data back to the 
 map file for a permanent change.</p>
+<p>To add a new pin type, simply create the corresponding class which inherits the
+private base class defined in this source file.</p>
+<p>All pin types are not encapsulated in a container class, they are defined 
+directly in this module. The recommended way to import the pin classes is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the name `Pin` to encapsulate all pin types</span>
+<span class="kn">import</span> <span class="nn">map.pin</span> <span class="k">as</span> <span class="nn">Pin</span> 
+<span class="o">...</span>
+<span class="c1">## and access a pin on `my_map` by</span>
+<span class="n">my_parking</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">.</span><span class="n">Waypoint</span><span class="p">(</span><span class="n">my_map</span><span class="p">,</span> <span class="n">pin_name</span><span class="o">=</span><span class="s2">&quot;City Parking&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
+<div class="section" id="list-of-classes">
+<h2>List of Classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="landmark">
+<h3><a class="reference internal" href="#map.pin.Landmark" title="map.pin.Landmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">Landmark</span></code></a><a class="headerlink" href="#landmark" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes a landmark pin.</p>
+</div></blockquote>
+</div>
+<div class="section" id="waypoint">
+<h3><a class="reference internal" href="#map.pin.Waypoint" title="map.pin.Waypoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waypoint</span></code></a><a class="headerlink" href="#waypoint" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes a waypoint pin. A waypoint location is navigable where
+it connects to the map graph, and vehicles can be spawned and sunk.</p>
+</div></blockquote>
+</div>
+<div class="section" id="junction">
+<h3><a class="reference internal" href="#map.pin.Junction" title="map.pin.Junction"><code class="xref py py-class docutils literal notranslate"><span class="pre">Junction</span></code></a><a class="headerlink" href="#junction" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes a road intersection. Like a waypoint, it is also navigable,
+but it can only be located at a vertex of a road in the map. Unless
+we need a location precisely at a vertex, otherwise waypoint provides 
+more flexible location.</p>
+</div></blockquote>
+</div>
+<div class="section" id="building">
+<h3><a class="reference internal" href="#map.pin.Building" title="map.pin.Building"><code class="xref py py-class docutils literal notranslate"><span class="pre">Building</span></code></a><a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes the shape of a building on the map.</p>
+</div></blockquote>
+</div>
+<div class="section" id="region">
+<h3><a class="reference internal" href="#map.pin.Region" title="map.pin.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a><a class="headerlink" href="#region" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>It describes a region defined by the user via map editor.</p>
+</div></blockquote>
+<hr class="docutils" />
 <dl class="py class">
 <dt id="map.pin.Landmark">
 <em class="property">class </em><code class="sig-prename descclassname">map.pin.</code><code class="sig-name descname">Landmark</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Landmark" title="Permalink to this definition">¶</a></dt>
@@ -722,6 +837,8 @@ orientation is given in degree.</p>
 
 </dd></dl>
 
+</div>
+</div>
 </div>
 
 

@@ -1,0 +1,7 @@
+node.mobility2 module
+=====================
+
+.. automodule:: node.mobility2
+   :members:
+   :undoc-members:
+   :show-inheritance:

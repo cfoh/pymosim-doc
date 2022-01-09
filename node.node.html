@@ -34,8 +34,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="node.routemobi module" href="node.routemobi.html" />
-    <link rel="prev" title="node.mobility module" href="node.mobility.html" />
+    <link rel="next" title="node.timer module" href="node.timer.html" />
+    <link rel="prev" title="node.mobility2 module" href="node.mobility2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -144,19 +146,24 @@
    node.mobility module
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2.html">
+   node.mobility2 module
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    node.node module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.routemobi.html">
-   node.routemobi module
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.timer.html">
-   node.timer module
+  <a class="reference internal" href="node.type.html">
+   node.type module
   </a>
  </li>
 </ul>
@@ -199,6 +206,12 @@
 <span id="node-node-module"></span><h1>node.node module<a class="headerlink" href="#module-node.node" title="Permalink to this headline">¶</a></h1>
 <p>Module <cite>node</cite> contains an abstract <cite>BaseNode</cite> class which is the base class for
 all communication node entities in the simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
 <dl class="py class">
 <dt id="node.node.BaseNode">
 <em class="property">class </em><code class="sig-prename descclassname">node.node.</code><code class="sig-name descname">BaseNode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">node_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode" title="Permalink to this definition">¶</a></dt>
@@ -209,14 +222,14 @@ extend.</p>
 via the base class. Each node instance should have a unique <cite>id</cite>
 to be identified easily. Currently, the recommended data type for
 the <cite>id</cite> is string.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID</span></dt><dd><p>The <cite>id</cite> of this node. Ideally, this should be unique for each node
+<dd class="field-odd"><dl>
+<dt><strong>id</strong><span class="classifier"><a class="reference internal" href="#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.ID</span></code></a></span></dt><dd><p>The <cite>id</cite> of this node. Ideally, this should be unique for each node
 so that a lookup can always find the appropriate node instance based on the <cite>id</cite>.
 However, the code will not check for uniqueness.</p>
 </dd>
-<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type</span></dt><dd><p>The <cite>type</cite> of this node. The type is used in the simulation to draw the node
+<dt><strong>type</strong><span class="classifier"><a class="reference internal" href="#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.Type</span></code></a></span></dt><dd><p>The <cite>type</cite> of this node. The type is used in the simulation to draw the node
 on the screen. Different types will be drawn differently.</p>
 </dd>
 </dl>
@@ -233,7 +246,7 @@ on the screen. Different types will be drawn differently.</p>
 <td><p>The data structure for the node id.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code></a>(node_type)</p></td>
-<td><p>The defination of a node type.</p></td>
+<td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
 <td><p>Clear the drawing for this node.</p></td>
@@ -265,7 +278,7 @@ on the screen. Different types will be drawn differently.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get_color" title="node.node.BaseNode.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
@@ -283,10 +296,10 @@ on the screen. Different types will be drawn differently.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
@@ -318,7 +331,7 @@ uses string for the id.</p>
 <dt id="node.node.BaseNode.Type">
 <em class="property">class </em><code class="sig-name descname">Type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.Type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The defination of a node type. The animation process will use the 
+<p>The definition of a node type. The animation process will use the 
 type to decide how to draw the node on the screen. Besides, this
 can be used for user simulation to check the belonging of a node and
 also conveniently retrieve all nodes of the same type.</p>
@@ -350,7 +363,7 @@ more than one user defined types, use <cite>UserDefined+1</cite>, <cite>UserDefi
 so on to extend user defined types. Any number that is larger or equal to
 <cite>UserDefined</cite> is considered a user defined type. The animation will not draw 
 user defined types on the screen, the user simulation must manually draw a 
-shape or show an image to indicate the presence of the node.</p>
+shape or show a bitmap image to indicate the presence of the node.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -366,14 +379,14 @@ shape or show an image to indicate the presence of the node.</p>
 <em class="property">abstract </em><code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">node_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>simworld</strong><span class="classifier">sim.simulation.World</span></dt><dd><p>To provide the container of the node to be initiated.</p>
+<dd class="field-odd"><dl>
+<dt><strong>simworld</strong><span class="classifier"><a class="reference internal" href="sim.simulation.html#sim.simulation.World" title="sim.simulation.World"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.simulation.World</span></code></a></span></dt><dd><p>To provide the container of the node to be initiated.</p>
 </dd>
-<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
+<dt><strong>id</strong><span class="classifier"><a class="reference internal" href="#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.ID</span></code></a>, default=None</span></dt><dd><p>To provide the <cite>id</cite> of this node.</p>
 </dd>
-<dt><strong>type</strong><span class="classifier">node.node.BaseNode.Type, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
+<dt><strong>type</strong><span class="classifier"><a class="reference internal" href="#node.node.BaseNode.Type" title="node.node.BaseNode.Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.Type</span></code></a>, default=None</span></dt><dd><p>To specify the <cite>type</cite> of this node.</p>
 </dd>
 </dl>
 </dd>
@@ -384,6 +397,13 @@ super() must be called.</p>
 <dt id="node.node.BaseNode.get_node_list">
 <em class="property">static </em><code class="sig-name descname">get_node_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.get_node_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide the list of all nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no reason why user simulation needs to use this method
+to obtain all nodes, since user simulation creates all nodes in 
+own scenario class and should keep a record of all nodes within 
+the scenario class.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -439,18 +459,56 @@ node.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="node.node.BaseNode.set_color">
+<code class="sig-name descname">set_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the color to draw for this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">color constant defined in wx</span></dt><dd><p>The color to draw.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.get_color">
+<code class="sig-name descname">get_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.get_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the color that is used to draw this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Color constant defined in wx</dt><dd><p>The color for this node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.node.BaseNode.reset_color">
+<code class="sig-name descname">reset_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.reset_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="node.node.BaseNode.get">
 <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query_str</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the node to retrieve corresponding information.</p>
 <p>The information can be queried includes:</p>
 <ul class="simple">
 <li><p>“location”: the current location of the node, return an instance of
-<cite>sim.loc.LOC</cite> subclass.</p></li>
+<a class="reference internal" href="sim.loc.html#sim.loc.LOC" title="sim.loc.LOC"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.loc.LOC</span></code></a> subclass.</p></li>
 <li><p>“direction”: the current moving direction of the node, return an instance
-of <cite>sim.direction.DIR</cite> subclass.</p></li>
-<li><p>“speed”: the current moving direction of the node, return a float.</p></li>
+of <a class="reference internal" href="sim.direction.html#sim.direction.DIR" title="sim.direction.DIR"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.direction.DIR</span></code></a> subclass.</p></li>
+<li><p>“speed”: the targeted moving speed of the node, return a float. The actual speed
+can be lower due to other slow moving vehicles in front.</p></li>
+<li><p>“displacement”: the distance travelled in the last simulation step, return a float.
+Displacement can be useful to calculate the actual speed. (NOTE: currently not supported,
+throws system error if called)</p></li>
 <li><p>“mobility”: the mobility instance of the node, return an instance of
-<cite>node.mobility.BaseMobility</cite> subclass.</p></li>
+<a class="reference internal" href="node.mobility.html#node.mobility.BaseMobility" title="node.mobility.BaseMobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility.BaseMobility</span></code></a> subclass.</p></li>
 <li><p>“transceiver”: the transceiver instance of the node.</p></li>
 <li><p>“simworld”: the simulation world instance, user simulation is 
 already given this instance during the creation event, so it is unnecessary 
@@ -470,12 +528,12 @@ to use this method to get the instance again.</p></li>
 <dt id="node.node.BaseNode.set_mobility">
 <code class="sig-name descname">set_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mobility</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the <cite>mobility</cite> for this instance.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mobility</strong><span class="classifier">node.mobility.BaseMobility subclass</span></dt><dd><p>The <cite>mobility</cite> model for this node.</p>
+<dd class="field-odd"><dl>
+<dt><strong>mobility</strong><span class="classifier"><a class="reference internal" href="node.mobility.html#node.mobility.BaseMobility" title="node.mobility.BaseMobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility.BaseMobility</span></code></a> subclass</span></dt><dd><p>The <cite>mobility</cite> model for this node.</p>
 </dd>
-<dt><strong>direction</strong><span class="classifier">sim.direction.DIR subclass, optional, default=None</span></dt><dd><p>The <cite>direction</cite> of the node. If None is given, the default setting will
+<dt><strong>direction</strong><span class="classifier"><a class="reference internal" href="sim.direction.html#sim.direction.DIR" title="sim.direction.DIR"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.direction.DIR</span></code></a> subclass, optional, default=None</span></dt><dd><p>The <cite>direction</cite> of the node. If None is given, the default setting will
 be a constant north pointing direction.</p>
 </dd>
 </dl>
@@ -488,10 +546,10 @@ be a constant north pointing direction.</p>
 <code class="sig-name descname">set_transceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transceiver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_transceiver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to set a transceiver for the node. A transceiver is 
 needed for communications.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>transceiver</strong><span class="classifier">comm.transceiver.Transceiver</span></dt><dd><p>The transceiver for this node. The transceiver provides a collection
+<dd class="field-odd"><dl>
+<dt><strong>transceiver</strong><span class="classifier"><a class="reference internal" href="comm.transceiver.html#comm.transceiver.Transceiver" title="comm.transceiver.Transceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.Transceiver</span></code></a></span></dt><dd><p>The transceiver for this node. The transceiver provides a collection
 of functions for communications.</p>
 </dd>
 </dl>
@@ -506,16 +564,16 @@ of functions for communications.</p>
 <p>This method acts like a local DNS, but we use <cite>id</cite> instead of a DNS 
 name, and we retrieve from the global lookup table instead of via 
 network DNS query.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>id</strong><span class="classifier">node.node.BaseNode.ID</span></dt><dd><p>The <cite>id</cite> to lookup.</p>
+<dd class="field-odd"><dl>
+<dt><strong>id</strong><span class="classifier"><a class="reference internal" href="#node.node.BaseNode.ID" title="node.node.BaseNode.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode.ID</span></code></a></span></dt><dd><p>The <cite>id</cite> to lookup.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>node.node.BaseNode</dt><dd><p>The node instance that carries the <cite>id</cite>.</p>
+<dt><a class="reference internal" href="#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></dt><dd><p>The node instance that carries the <cite>id</cite>.</p>
 </dd>
 </dl>
 </dd>

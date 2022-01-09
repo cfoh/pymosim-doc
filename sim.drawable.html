@@ -50,9 +50,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">PyMoSim</p>
+  <img src="_static/icon.png" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -216,13 +218,43 @@
 drawable to be placed on the canvas of the scenario. This class provides the 
 drawable specification which can be a shape, text or bitmap image.
 Adding and removing a drawable instance can be done using the methods 
-specified in <cite>sim.scenario.BaseScenario</cite>.</p>
+specified in <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a>.</p>
+<p>There are two classes given in this module:</p>
+<ul>
+<li><p><a class="reference internal" href="#sim.drawable.Draw" title="sim.drawable.Draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">Draw</span></code></a>: it provides constants for user simulation
+to use.</p></li>
+<li><p><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a>: it is a drawable object that the user 
+simulation can create and define. After defining the object, the user
+simulation can add to the scenario using add drawable method specified 
+in <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyScenario</span><span class="p">(</span><span class="n">BaseScenario</span><span class="p">):</span>
+
+    <span class="c1">## create a scenario</span>
+    <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+        <span class="c1">## add a persistent text on the scenario</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span>
+                <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;My Landmark&quot;</span><span class="p">,</span><span class="n">position</span><span class="o">=</span><span class="n">Draw</span><span class="o">.</span><span class="n">XYCENTER</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">set_font</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span>   <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> 
+                                        <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
+                                        <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">)))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2021)</p></li>
+</ul>
+</div>
 <dl class="py class">
 <dt id="sim.drawable.Draw">
 <em class="property">class </em><code class="sig-prename descclassname">sim.drawable.</code><code class="sig-name descname">Draw</code><a class="headerlink" href="#sim.drawable.Draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This class contains drawable contants. It provide contants for the <cite>Drawable</cite> 
-class of this module.</p>
+<p>This is a static class containing drawable contants. 
+It provide constants for the <cite>Drawable</cite> class of this module and 
+some handy functions.</p>
 <dl class="py attribute">
 <dt id="sim.drawable.Draw.BEHIND">
 <code class="sig-name descname">BEHIND</code><em class="property"> = 0</em><a class="headerlink" href="#sim.drawable.Draw.BEHIND" title="Permalink to this definition">¶</a></dt>
@@ -302,19 +334,19 @@ same as applying <cite>XCENTER|YCENTER</cite>.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.drawable.Drawable.circle" title="sim.drawable.Drawable.circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle</span></code></a>(x, y, radius)</p></td>
-<td><p>Draw a circle on the scenario background.</p></td>
+<td><p>Make this drawable to be a circle on the scenario background.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.drawable.Drawable.line" title="sim.drawable.Drawable.line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></a>(x1, y1, x2, y2)</p></td>
-<td><p>Draw a line on the scenario background.</p></td>
+<td><p>Make this drawable to be a line on the scenario background.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.drawable.Drawable.many_circles" title="sim.drawable.Drawable.many_circles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">many_circles</span></code></a>(list_of_xy, radius)</p></td>
-<td><p>Draw a number of circles having the same radius on the scenario  background.</p></td>
+<td><p>Make this drawable to be a number of circles having the same radius  on the scenario background.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.drawable.Drawable.many_lines" title="sim.drawable.Drawable.many_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">many_lines</span></code></a>(list_of_xy)</p></td>
-<td><p>Draw a series of lines on the scenario background.</p></td>
+<td><p>Make this drawable to be a series of lines on the scenario background.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.drawable.Drawable.polygon" title="sim.drawable.Drawable.polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code></a>(list_of_xy)</p></td>
-<td><p>Draw a polygon on the scenario background.</p></td>
+<td><p>Make this drawable to be a polygon on the scenario background.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.drawable.Drawable.set_drawing" title="sim.drawable.Drawable.set_drawing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_drawing</span></code></a>(pen[, brush, layer, appearance])</p></td>
 <td><p>Set how a drawable shape is drawn on the screen.</p></td>
@@ -326,7 +358,7 @@ same as applying <cite>XCENTER|YCENTER</cite>.</p>
 <td><p>Call this method to execute the drawing of this instance to the  provided <cite>device context</cite>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.drawable.Drawable.text" title="sim.drawable.Drawable.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a>(x, y, text, position)</p></td>
-<td><p>Write a text on the scenario background.</p></td>
+<td><p>Make this drawable to be a text on the scenario background.</p></td>
 </tr>
 </tbody>
 </table>
@@ -349,7 +381,7 @@ layer. Use this property to group and arrange the drawables.</p>
 <dt id="sim.drawable.Drawable.appearance">
 <em class="property">property </em><code class="sig-name descname">appearance</code><a class="headerlink" href="#sim.drawable.Drawable.appearance" title="Permalink to this definition">¶</a></dt>
 <dd><p>This property is used to describe whether the drawable should
-appear behind or above the nodes. See <cite>sim.drawable.Draw</cite> class which
+appear behind or above the nodes. See <a class="reference internal" href="#sim.drawable.Draw" title="sim.drawable.Draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Draw</span></code></a> class which
 specifies the constants.</p>
 </dd></dl>
 
@@ -382,7 +414,7 @@ the possible options. If not provided, <cite>Draw.BEHIND</cite> will apply.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -410,7 +442,7 @@ text color, and set transparent for the background.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -421,8 +453,8 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.circle">
 <code class="sig-name descname">circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.circle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a circle on the scenario background. Use <cite>set_drawing()</cite> to pick a 
-pen and brush for the drawing.</p>
+<dd><p>Make this drawable to be a circle on the scenario background. 
+Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -434,7 +466,7 @@ pen and brush for the drawing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -445,8 +477,8 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.many_circles">
 <code class="sig-name descname">many_circles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_of_xy</span></em>, <em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.many_circles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a number of circles having the same radius on the scenario 
-background.
+<dd><p>Make this drawable to be a number of circles having the same radius 
+on the scenario background.
 Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -459,7 +491,7 @@ Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -470,7 +502,7 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.line">
 <code class="sig-name descname">line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x1</span></em>, <em class="sig-param"><span class="n">y1</span></em>, <em class="sig-param"><span class="n">x2</span></em>, <em class="sig-param"><span class="n">y2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a line on the scenario background.
+<dd><p>Make this drawable to be a line on the scenario background.
 Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -481,7 +513,7 @@ Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -492,7 +524,7 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.many_lines">
 <code class="sig-name descname">many_lines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_of_xy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.many_lines" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a series of lines on the scenario background. 
+<dd><p>Make this drawable to be a series of lines on the scenario background. 
 Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -503,7 +535,7 @@ Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -514,7 +546,7 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.polygon">
 <code class="sig-name descname">polygon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_of_xy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.polygon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a polygon on the scenario background.
+<dd><p>Make this drawable to be a polygon on the scenario background.
 Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -525,7 +557,7 @@ Use <cite>set_drawing()</cite> to pick a pen and brush for the drawing.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>
@@ -536,7 +568,7 @@ anonymous variable.</p>
 <dl class="py method">
 <dt id="sim.drawable.Drawable.text">
 <code class="sig-name descname">text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.drawable.Drawable.text" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write a text on the scenario background.
+<dd><p>Make this drawable to be a text on the scenario background.
 Use <cite>set_font()</cite> to pick a font type and colors for the writing.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -545,8 +577,8 @@ Use <cite>set_font()</cite> to pick a font type and colors for the writing.</p>
 </dd>
 <dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The text to write onto the scenario background.</p>
 </dd>
-<dt><strong>position</strong><span class="classifier">contants defined in <cite>sim.drawable.Draw</cite></span></dt><dd><p>The position of text alignment. The alignment constants are 
-defined in <cite>sim.drawable.Draw</cite>. To align the text so that its
+<dt><strong>position</strong><span class="classifier">contants defined in <a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></span></dt><dd><p>The position of text alignment. The alignment constants are 
+defined in <a class="reference internal" href="#sim.drawable.Draw" title="sim.drawable.Draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Draw</span></code></a>. To align the text so that its
 left-bottom position is at the given (x,y), provide the position
 as <cite>Draw.XLEFT|Draw.YBOTTOM</cite>.</p>
 </dd>
@@ -554,7 +586,7 @@ as <cite>Draw.XLEFT|Draw.YBOTTOM</cite>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>sim.drawable.Drawable</dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
+<dt><a class="reference internal" href="#sim.drawable.Drawable" title="sim.drawable.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.drawable.Drawable</span></code></a></dt><dd><p>It returns <cite>self</cite>, which can be useful when constructing it as an 
 anonymous variable.</p>
 </dd>
 </dl>

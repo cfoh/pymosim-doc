@@ -15,9 +15,9 @@ pymosim
    example6
    example7
    map
-   next_example7 (copy)
    node
    sim
+   test-irs
    test-jack
    test-mobi
    test2
