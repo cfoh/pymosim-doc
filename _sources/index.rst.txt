@@ -23,6 +23,7 @@ Example 1
 ---------
 
 .. automodule:: example1
+.. image:: _static/example1.gif
 .. literalinclude:: ../example1.py
    :language: python
    :linenos:
@@ -31,6 +32,7 @@ Example 2
 ---------
 
 .. automodule:: example2
+.. image:: _static/example2.gif
 
 .. collapse:: Show source code
 
@@ -41,6 +43,7 @@ Example 3
 ---------
 
 .. automodule:: example3
+.. image:: _static/example3.gif
 
 .. collapse:: Show source code
 
@@ -51,6 +54,7 @@ Example 4
 ---------
 
 .. automodule:: example4
+.. image:: _static/example4.gif
 
 .. collapse:: Show source code
 
@@ -61,6 +65,7 @@ Example 5
 ---------
 
 .. automodule:: example5
+.. image:: _static/example5.gif
 
 .. collapse:: Show source code
 
@@ -71,6 +76,7 @@ Example 6
 ---------
 
 .. automodule:: example6
+.. image:: _static/example6.gif
 
 .. collapse:: Show source code
 
@@ -81,6 +87,7 @@ Example 7
 ---------
 
 .. automodule:: example7
+.. image:: _static/example7.gif
 
 .. collapse:: Show source code
 

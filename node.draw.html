@@ -374,7 +374,7 @@ is specified in <cite>width_angle</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the sector.</p>
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius of the sector.</p>
 </dd>
 <dt><strong>pointing_angle</strong><span class="classifier">float</span></dt><dd><p>The pointing azimuth angle of the sector (in degrees).</p>
 </dd>
@@ -441,15 +441,17 @@ it uses the predefined brush.</p>
 <dl class="py method">
 <dt id="node.draw.Drawing.del_text">
 <code class="sig-name descname">del_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_text" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an earlier added text message.</p>
-<p>This method is useful to show a connection between this node and 
-another node. If there is no such line added to the node, 
-nothing will happen.</p>
-<dl class="field-list">
+<dd><p>Remove an earlier added text message. The text message will be 
+removed if all the provided properties match. If a matcch is not
+found, nothing will happen.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>other_node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The line that is connected to the other node. If found, this line
-will be removed from the drawing list.</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dx</strong><span class="classifier">int</span></dt><dd><p>The offset x of the text.</p>
+</dd>
+<dt><strong>dy</strong><span class="classifier">int</span></dt><dd><p>The offset y of the text.</p>
+</dd>
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The text message.</p>
 </dd>
 </dl>
 </dd>

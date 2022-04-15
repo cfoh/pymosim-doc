@@ -288,6 +288,7 @@
 <div class="section" id="module-example1">
 <span id="example-1"></span><h2>Example 1<a class="headerlink" href="#module-example1" title="Permalink to this headline">¶</a></h2>
 <p>This is a simple example to show how a simualtion can be created within 50 lines.</p>
+<img alt="_images/example1.gif" src="_images/example1.gif" />
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -397,6 +398,7 @@ The simulation will run for 10 seconds.</p>
 to collect signal quality from all sectors of all BSs, and then associate with the sector 
 with the highest quality (i.e. strongest SNR). The example shows how to use Transceiver
 class to send and detect signals, and measure the signal quality of a received signal.</p>
+<img alt="_images/example2.gif" src="_images/example2.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is an example which demonstrates a cluster of sectorized BSs serving vehicles in a </span>
@@ -719,6 +721,7 @@ to create 6 sectors.</p></li>
 </ul>
 </li>
 </ul>
+<img alt="_images/example3.gif" src="_images/example3.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is an example which demonstrates a cluster of mmWave BSs serving vehicles </span>
@@ -1117,6 +1120,7 @@ stations. The simulation runs non-stop.</p>
 <p>In this example, we use vehicle centric where vehicle will send a hello beacon message
 to collect reply packet quality from all sectors of all BSs, and then associate with 
 the sector with the highest quality (i.e. strongest SNR).</p>
+<img alt="_images/example4.gif" src="_images/example4.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is an example demonstrating a number of vehicles following random waypoint</span>
@@ -1454,19 +1458,20 @@ the sector with the highest quality (i.e. strongest SNR).</p>
 <p>This example demonstrates the use of <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>.
 It uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a> for transmission. It 
 illustrates how users can implement own signal propagation and detection logic.</p>
-<p>In this example, we have two moving vehicles and we let the base station (BS) 
-to connect both if they can detect the signal from the BS. 
+<p>In this example, we have two moving vehicles and we let the base station 
+(BS) connect to both if they can detect the signal from the BS. 
 This example shows how signal propagation and detection logic can be 
 implemented at the user simulation level if users need some special treatment 
 and full control of signal propagation and signal detection logic.</p>
+<img alt="_images/example5.gif" src="_images/example5.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This example demonstrates the use of :class:`comm.transceiver.UserTransceiver`.</span>
 <span class="sd">It uses :class:`comm.signalwave.QualityBasedSignal` for transmission. It </span>
 <span class="sd">illustrates how users can implement own signal propagation and detection logic.</span>
 
-<span class="sd">In this example, we have two moving vehicles and we let the base station (BS) </span>
-<span class="sd">to connect both if they can detect the signal from the BS. </span>
+<span class="sd">In this example, we have two moving vehicles and we let the base station </span>
+<span class="sd">(BS) connect to both if they can detect the signal from the BS. </span>
 <span class="sd">This example shows how signal propagation and detection logic can be </span>
 <span class="sd">implemented at the user simulation level if users need some special treatment </span>
 <span class="sd">and full control of signal propagation and signal detection logic.</span>
@@ -1484,25 +1489,8 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
 <span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
 <span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">UserTransceiver</span>
+<span class="kn">from</span> <span class="nn">node.obstacle</span> <span class="kn">import</span> <span class="n">Obstacle</span>
 <span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
-
-
-<span class="c1">####################################################################</span>
-<span class="c1">## Line Segment Intersection Algorithm</span>
-<span class="c1">## - Checking if two line segments cross each other</span>
-<span class="c1">## - see: https://bryceboe.com/2006/10/23/line-segment-intersection-algorithm/</span>
-<span class="c1">####################################################################</span>
-
-<span class="k">class</span> <span class="nc">LCC</span><span class="p">:</span> <span class="c1"># Line Crossing Check</span>
-
-    <span class="k">def</span> <span class="nf">ccw</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># we use tuple</span>
-        <span class="c1">#return (C.y-A.y) * (B.x-A.x) &gt; (B.y-A.y) * (C.x-A.x)</span>
-
-    <span class="c1">## it returns true if line segments AB and CD intersect</span>
-    <span class="c1">## each point is a tuple (x,y)</span>
-    <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">LCC</span><span class="o">.</span><span class="n">ccw</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span><span class="o">!=</span><span class="n">LCC</span><span class="o">.</span><span class="n">ccw</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span> <span class="ow">and</span> <span class="n">LCC</span><span class="o">.</span><span class="n">ccw</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">!=</span><span class="n">LCC</span><span class="o">.</span><span class="n">ccw</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
 
 <span class="c1">####################################################################</span>
 <span class="c1">## My Transceiver</span>
@@ -1514,29 +1502,21 @@ and full control of signal propagation and signal detection logic.</p>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
         <span class="n">signal</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># dBm</span>
         <span class="k">return</span> <span class="n">signal</span>
 
-    <span class="k">def</span> <span class="nf">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle</span> <span class="o">=</span> <span class="n">shape</span>
+    <span class="k">def</span> <span class="nf">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obstacle_list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="o">=</span> <span class="n">obstacle_list</span>
 
     <span class="k">def</span> <span class="nf">is_crossed_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_loc</span><span class="p">,</span> <span class="n">rx_loc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&#39;&#39;&#39;this isn&#39;t an efficient implementation, suggest using </span>
-<span class="sd">        `shapely` package.&#39;&#39;&#39;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
         <span class="n">point1</span> <span class="o">=</span> <span class="n">tx_loc</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()</span>
         <span class="n">point2</span> <span class="o">=</span> <span class="n">rx_loc</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()</span>
-        <span class="n">point3</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">for</span> <span class="n">point4</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">point3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">LCC</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span><span class="n">point2</span><span class="p">,</span><span class="n">point3</span><span class="p">,</span><span class="n">point4</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="kc">True</span>
-            <span class="n">point3</span> <span class="o">=</span> <span class="n">point4</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span><span class="o">.</span><span class="n">is_crossed</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span><span class="n">point2</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">can_detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_signal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;This is the function to perform signal propagation and</span>
@@ -1637,17 +1617,24 @@ and full control of signal propagation and signal detection logic.</p>
     <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 
         <span class="c1">## give a name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;A vehicle passing by a BS with an obstacle around&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;A vehicle passing by a BS with some obstacles&quot;</span><span class="p">)</span>
 
-        <span class="c1">## create an obstacle</span>
+        <span class="c1">## create two obstacles</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span> <span class="o">=</span> <span class="n">Obstacle</span><span class="p">()</span>
         <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">70</span><span class="p">);</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-        <span class="n">obstacle</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">obstacle</span><span class="p">)</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+                                    <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">80</span><span class="p">);</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
                                     <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
 
         <span class="c1">## create A BS on the map</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">MyBS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;BS-1&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="n">obstacle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
 
         <span class="c1">## create several passing vehicles</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1655,13 +1642,13 @@ and full control of signal propagation and signal detection logic.</p>
         <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">150</span><span class="p">)),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">150</span><span class="p">))</span> <span class="p">]</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle1&quot;</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="n">obstacle</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
-        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">)),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span> <span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">180</span><span class="p">)),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">180</span><span class="p">))</span> <span class="p">]</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle2&quot;</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="n">obstacle</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">180</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="kc">True</span>
@@ -1752,6 +1739,7 @@ moving on the map.</p></li>
 <p>In this example, we use base station (BS) centric where a BS will send a beacon message
 to collect reply packy quality from all vehicles, and then associate with the vehicle 
 with the highest quality (i.e. strongest SNR).</p>
+<img alt="_images/example6.gif" src="_images/example6.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is an example demonstrating how to load a map and perform some mobility. The program </span>
@@ -2004,12 +1992,13 @@ three features:</p>
 <ul class="simple">
 <li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
 <li><p>How to displace a text on the map.</p></li>
-<li><p>How to use <code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code> to create mobility. In this mobility model, 
+<li><p>How to use <a class="reference internal" href="node.mobility2.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> to create mobility. In this mobility model, 
 vehicles are aware of others and must follow the vehicles in front. The mobility 
 implementation uses a specic car following model to achieve realistic mobility.</p></li>
 </ul>
 <p>We place two traffic lights at two junctions and create some volume of traffic
 around the junctions.</p>
+<img alt="_images/example7.gif" src="_images/example7.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is an example demonstrating a traffic light control. The example introduces</span>
@@ -2017,7 +2006,7 @@ around the junctions.</p>
 
 <span class="sd">- How to create a timer. The timer is used to control the traffic lights.</span>
 <span class="sd">- How to displace a text on the map.</span>
-<span class="sd">- How to use :class:`node.routemobi.RoutePath` to create mobility. In this mobility model, </span>
+<span class="sd">- How to use :class:`node.mobility2.RoutePath` to create mobility. In this mobility model, </span>
 <span class="sd">  vehicles are aware of others and must follow the vehicles in front. The mobility </span>
 <span class="sd">  implementation uses a specic car following model to achieve realistic mobility.</span>
 

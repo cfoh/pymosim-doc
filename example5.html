@@ -173,50 +173,11 @@
 <p>This example demonstrates the use of <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>.
 It uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a> for transmission. It 
 illustrates how users can implement own signal propagation and detection logic.</p>
-<p>In this example, we have two moving vehicles and we let the base station (BS) 
-to connect both if they can detect the signal from the BS. 
+<p>In this example, we have two moving vehicles and we let the base station 
+(BS) connect to both if they can detect the signal from the BS. 
 This example shows how signal propagation and detection logic can be 
 implemented at the user simulation level if users need some special treatment 
 and full control of signal propagation and signal detection logic.</p>
-<dl class="py class">
-<dt id="example5.LCC">
-<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">LCC</code><a class="headerlink" href="#example5.LCC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p class="rubric">Methods</p>
-<table class="longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example5.LCC.intersect" title="example5.LCC.intersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersect</span></code></a>(B, C, D)</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 41%" />
-<col style="width: 59%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>ccw</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="example5.LCC.ccw">
-<code class="sig-name descname">ccw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.LCC.ccw" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example5.LCC.intersect">
-<code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em>, <em class="sig-param"><span class="n">D</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.LCC.intersect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py class">
 <dt id="example5.MyTransceiver">
 <em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver" title="Permalink to this definition">¶</a></dt>
@@ -246,27 +207,27 @@ and full control of signal propagation and signal detection logic.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
 <td><p>This method returns the type of the transceiver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example5.MyTransceiver.is_crossed_obstacle" title="example5.MyTransceiver.is_crossed_obstacle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_crossed_obstacle</span></code></a>(tx_loc, rx_loc)</p></td>
-<td><p>this isn’t an efficient implementation, suggest using  <cite>shapely</cite> package.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
 <td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
 <td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 62%" />
-<col style="width: 38%" />
+<col style="width: 70%" />
+<col style="width: 30%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>set_obstacle</strong></p></td>
+<tr class="row-odd"><td><p><strong>is_crossed_obstacle</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_obstacle</strong></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -286,15 +247,13 @@ and full control of signal propagation and signal detection logic.</p>
 
 <dl class="py method">
 <dt id="example5.MyTransceiver.set_obstacle">
-<code class="sig-name descname">set_obstacle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.set_obstacle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_obstacle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obstacle_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.set_obstacle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="example5.MyTransceiver.is_crossed_obstacle">
 <code class="sig-name descname">is_crossed_obstacle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_loc</span></em>, <em class="sig-param"><span class="n">rx_loc</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example5.MyTransceiver.is_crossed_obstacle" title="Permalink to this definition">¶</a></dt>
-<dd><p>this isn’t an efficient implementation, suggest using 
-<cite>shapely</cite> package.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="example5.MyTransceiver.can_detect">

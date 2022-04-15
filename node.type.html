@@ -274,7 +274,7 @@
 Each type of nodes has its unique properties to control the behaviour of the 
 nodes. Specifically, it contains properties to enable drawing of the node
 on the screen.</p>
-<p>All node types are defined directly in this module. They are not encapsulated 
+<p>All node types are defined directly in this module. They are now encapsulated 
 in a container class. The recommended way to import the node type classes is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the name `NodeType` to encapsulate all node types</span>
 <span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
@@ -391,11 +391,8 @@ class.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseType.draw" title="node.type.BaseType.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>This is an abstract method for the subclass to implement how  the node is shown on the screen.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.type.BaseType.draw_circle" title="node.type.BaseType.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.type.BaseType.draw_circle" title="node.type.BaseType.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseType.draw_triangle" title="node.type.BaseType.draw_triangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code></a>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>
@@ -423,27 +420,17 @@ class.</p>
 
 <dl class="py method">
 <dt id="node.type.BaseType.draw_circle">
-<code class="sig-name descname">draw_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em>, <em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw_circle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">draw_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em>, <em class="sig-param"><span class="n">radius_in_meter</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw_circle" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method provides the subclass to conveniently draw a circle 
 on the screen.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.type.BaseType.draw_triangle">
-<code class="sig-name descname">draw_triangle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">azimuth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.BaseType.draw_triangle" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method provides the subclass to conveniently draw an
-isosceles triangle on the screen.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>dc</strong><span class="classifier">wx.DC</span></dt><dd><p>The device context of the scenario currently showing on the screen.</p>
 </dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>The height of the isosceles triangle in pixels.</p>
+<dt><strong>resolution</strong><span class="classifier">float</span></dt><dd><p>The map resolution in pixels per km.</p>
 </dd>
-<dt><strong>base</strong><span class="classifier">int</span></dt><dd><p>The base of the isosceles triangle in pixels.</p>
-</dd>
-<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>The pointing angle of the isosceles triangle in degrees. It is the
-direction where the top tip of the isosceles triangle is pointing at.</p>
+<dt><strong>radius_in_meter</strong><span class="classifier">float, optional, default = 3</span></dt><dd><p>The radius of the circle in meters. Default input is 3 meters.</p>
 </dd>
 </dl>
 </dd>
@@ -484,11 +471,8 @@ the node is shown on the screen.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Hidden.draw" title="node.type.Hidden.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>This node does not draw itself on the map as it is hidden.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>
@@ -540,11 +524,8 @@ the node is shown on the screen.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.type.BaseStation.draw" title="node.type.BaseStation.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>It draws a small circle.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>
@@ -601,11 +582,8 @@ the size of the triangle is customizable during initialization.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Vehicle.draw" title="node.type.Vehicle.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>It draws an isosceles triangle with the tip pointing to the moving direction.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>
@@ -646,14 +624,11 @@ the moving direction.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code>(dc, resolution)</p></td>
-<td><p>This is an abstract method for the subclass to implement how  the node is shown on the screen.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.IRS.draw" title="node.type.IRS.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>It draws a circle on the map.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>
@@ -674,6 +649,12 @@ the moving direction.</p>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="node.type.IRS.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>It draws a circle on the map.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -690,11 +671,8 @@ the moving direction.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.type.Drone.draw" title="node.type.Drone.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>It draws a shape that looks like ‘-o-‘ on the map.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution, radius)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
 <td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_triangle</span></code>(dc, height, base, azimuth)</p></td>
-<td><p>This method provides the subclass to conveniently draw an isosceles triangle on the screen.</p></td>
 </tr>
 </tbody>
 </table>

@@ -335,6 +335,11 @@ uses string for the id.</p>
 type to decide how to draw the node on the screen. Besides, this
 can be used for user simulation to check the belonging of a node and
 also conveniently retrieve all nodes of the same type.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is now an obsolete feature and will be removed soon. Please use 
+any <a class="reference internal" href="node.type.html#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a> subclass for node type instead.</p>
+</div>
 <dl class="py attribute">
 <dt id="node.node.BaseNode.Type.BS">
 <code class="sig-name descname">BS</code><em class="property"> = 0</em><a class="headerlink" href="#node.node.BaseNode.Type.BS" title="Permalink to this definition">¶</a></dt>
@@ -505,8 +510,8 @@ of <a class="reference internal" href="sim.direction.html#sim.direction.DIR" tit
 <li><p>“speed”: the targeted moving speed of the node, return a float. The actual speed
 can be lower due to other slow moving vehicles in front.</p></li>
 <li><p>“displacement”: the distance travelled in the last simulation step, return a float.
-Displacement can be useful to calculate the actual speed. (NOTE: currently not supported,
-throws system error if called)</p></li>
+Displacement can be useful to calculate the actual speed. 
+(NOTE: currently not supported, throws system error if called)</p></li>
 <li><p>“mobility”: the mobility instance of the node, return an instance of
 <a class="reference internal" href="node.mobility.html#node.mobility.BaseMobility" title="node.mobility.BaseMobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility.BaseMobility</span></code></a> subclass.</p></li>
 <li><p>“transceiver”: the transceiver instance of the node.</p></li>
@@ -527,7 +532,9 @@ to use this method to get the instance again.</p></li>
 <dl class="py method">
 <dt id="node.node.BaseNode.set_mobility">
 <code class="sig-name descname">set_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mobility</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.set_mobility" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the <cite>mobility</cite> for this instance.</p>
+<dd><p>Set the <cite>mobility</cite> for this instance. It is important to set a mobility
+to a node even it is stationary, as mobility contains location and direction 
+information used in the simulation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
