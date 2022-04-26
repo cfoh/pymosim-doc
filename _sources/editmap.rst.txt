@@ -1,7 +1,0 @@
-editmap module
-==============
-
-.. automodule:: editmap
-   :members:
-   :undoc-members:
-   :show-inheritance:

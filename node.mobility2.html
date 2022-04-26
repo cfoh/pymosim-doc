@@ -35,7 +35,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node.node module" href="node.node.html" />
-    <link rel="prev" title="node.mobility2 (copy) module" href="node.mobility2%20%28copy%29.html" />
+    <link rel="prev" title="node.mobility module" href="node.mobility.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -146,11 +146,6 @@
    node.mobility module
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="node.mobility2%20%28copy%29.html">
-   node.mobility2 (copy) module
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    node.mobility2 module
@@ -164,11 +159,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.obstacle.html">
    node.obstacle module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="node.routemobi.html">
-   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -223,7 +213,7 @@
 <p>Every mobility instance for a vehicle is described by a <cite>route</cite>, which is a
 list of road segments. A route is an established mobility path for a vehicle
 to move from its initial location to the ending location. 
-<a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> is the class desribing a route. 
+<code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code> is the class desribing a route. 
 We also define the following:</p>
 <ul class="simple">
 <li><p>road segment: a tuple (start_loc, end_loc, speed, street_id).</p></li>
@@ -257,7 +247,7 @@ as:</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This is the route handler to manage node movement on a given map,
 all nodes moving on the same map should use the same route handler. The 
-handler is needed for <a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a>.</p>
+handler is needed for <code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code>.</p>
 <p>To make sure a vehicle can follow another vehicle in front, it needs to find 
 which other vehicles are potentially in front of itself. With hundreds
 of vehicles on the map, checking individual vehicle for their location to
@@ -282,10 +272,10 @@ search for the vehicle in front.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RouteHandler.get_next_route_id" title="node.mobility2.RouteHandler.get_next_route_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_next_route_id</span></code></a>(head_point)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_next_route_id</span></code>(head_point)</p></td>
 <td><p>This method get the next route’s route_id Returns ——- : route_id</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RouteHandler.is_ready" title="node.mobility2.RouteHandler.is_ready"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ready</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ready</span></code>()</p></td>
 <td><p>Test if the handler is ready for use.</p></td>
 </tr>
 </tbody>
@@ -342,7 +332,7 @@ to add.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>handler</strong><span class="classifier"><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RouteHandler" title="node.mobility2.RouteHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RouteHandler</span></code></a></span></dt><dd><p>The route handler which contains the map for the node to move on. The 
+<dt><strong>handler</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RouteHandler</span></code></span></dt><dd><p>The route handler which contains the map for the node to move on. The 
 method assumes that the handler is ready for use. Otherwise, the method
 may throw a run-time error.</p>
 </dd>
@@ -362,28 +352,28 @@ may throw a run-time error.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.assign_speed" title="node.mobility2.RoutePath.assign_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_speed</span></code></a>(road_segment_index, speed)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_speed</span></code>(road_segment_index, speed)</p></td>
 <td><p>Use this method to assign a speed for the node to move on a specific road segment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.get_dir" title="node.mobility2.RoutePath.get_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dir</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dir</span></code>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_displacement</span></code>()</p></td>
 <td><p>This method returns the displacement of the node in the  last simulation time step.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.get_loc" title="node.mobility2.RoutePath.get_loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_loc</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_loc</span></code>()</p></td>
 <td><p>Get the location of the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.get_name" title="node.mobility2.RoutePath.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code>()</p></td>
 <td><p>Call this method to get the name of this class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.get_road_segment_list" title="node.mobility2.RoutePath.get_road_segment_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code>()</p></td>
 <td><p>Get the establish route which is a list of tuples describing the road segments: <cite>(start_location,end_location,speed,street_id)</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.get_speed" title="node.mobility2.RoutePath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.is_active" title="node.mobility2.RoutePath.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code>()</p></td>
 <td><p>This method returns whether the node on this route is active.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
@@ -392,13 +382,13 @@ may throw a run-time error.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.restart" title="node.mobility2.RoutePath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code>([delay_start])</p></td>
 <td><p>Use this method to restart the mobility.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.set_dir" title="node.mobility2.RoutePath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code>(direction)</p></td>
 <td><p>The method in this class will not do anything, since the direction  is calculated automatically based on the moving direction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath.sim__do_move" title="node.mobility2.RoutePath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code>(time_step)</p></td>
 <td><p>This method is used within the simulation engine, not for user simulation.</p></td>
 </tr>
 </tbody>
