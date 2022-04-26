@@ -877,3 +877,27 @@ div.section > h3 {
 }
 /* -- OWN SETUP END--------------- */
 
+
+/* -- OWN SETUP START------------- */
+dl.class > dt { 
+  background: yellow;
+}
+
+dl.py.class {
+  border: solid blue;
+}
+
+dl.py.class > dd > table.longtable.table.autosummary {
+  border: solid gray;
+}
+
+dl.py.class > dd > p.rubric {
+  background: lightgray;
+}
+
+div.section > h3 {
+  background: Wheat;
+  margin: 1px;
+}
+/* -- OWN SETUP END--------------- */
+

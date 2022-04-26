@@ -211,7 +211,7 @@
     </a>
     <ul class="visible nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#id3">
        References
       </a>
      </li>
@@ -1475,11 +1475,11 @@ illustrates how users can implement own signal propagation and detection logic.<
 This example shows how signal propagation and detection logic can be 
 implemented at the user simulation level if users need some special treatment 
 and full control of signal propagation and signal detection logic.</p>
-<p>We assume that the BS can track vehicles. The channel model is based on [r1].</p>
+<p>We assume that the BS can track vehicles. The channel model is based on <a class="reference internal" href="#r0c1842856b50-wfy20" id="id1">[WFY20]</a>.</p>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <dl class="citation">
-<dt class="label" id="r0c1842856b50-r1"><span class="brackets">r1</span></dt>
+<dt class="label" id="r0c1842856b50-wfy20"><span class="brackets"><a class="fn-backref" href="#id1">WFY20</a></span></dt>
 <dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
 reflecting surface-assisted millimeter wave communications: Joint 
 active and passive precoding design,” IEEE Transactions on Vehicular 
@@ -1500,11 +1500,11 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
 <span class="sd">implemented at the user simulation level if users need some special treatment </span>
 <span class="sd">and full control of signal propagation and signal detection logic.</span>
 
-<span class="sd">We assume that the BS can track vehicles. The channel model is based on [r1].</span>
+<span class="sd">We assume that the BS can track vehicles. The channel model is based on [WFY20]_.</span>
 
 <span class="sd">References</span>
 <span class="sd">----------</span>
-<span class="sd">.. [r1] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
+<span class="sd">.. [WFY20] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
 <span class="sd">    reflecting surface-assisted millimeter wave communications: Joint </span>
 <span class="sd">    active and passive precoding design,&quot; IEEE Transactions on Vehicular </span>
 <span class="sd">    Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</span>
@@ -2335,13 +2335,13 @@ illustrates how users can implement multipath signal propagation and
 detection logic. The example is an extension of example5.py which shows 
 how to use <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It is important
 to understand example5.py first.</p>
-<p>The scenario replicates the experiment of single IRS case presented in [r1].
+<p>The scenario replicates the experiment of single IRS case presented in <a class="reference internal" href="#r89e13abb20a9-wfy20" id="id2">[WFY20]</a>.
 See also Fig. 2 in the paper for the experiment setup and Fig. 3 for the
 experiment results.</p>
-<div class="section" id="id1">
-<h3>References<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>References<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="citation">
-<dt class="label" id="r89e13abb20a9-r1"><span class="brackets">r1</span></dt>
+<dt class="label" id="r89e13abb20a9-wfy20"><span class="brackets"><a class="fn-backref" href="#id2">WFY20</a></span></dt>
 <dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
 reflecting surface-assisted millimeter wave communications: Joint 
 active and passive precoding design,” IEEE Transactions on Vehicular 
@@ -2360,13 +2360,13 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
 <span class="sd">how to use :class:`comm.transceiver.UserTransceiver`. It is important</span>
 <span class="sd">to understand example5.py first.</span>
 
-<span class="sd">The scenario replicates the experiment of single IRS case presented in [r1].</span>
+<span class="sd">The scenario replicates the experiment of single IRS case presented in [WFY20]_.</span>
 <span class="sd">See also Fig. 2 in the paper for the experiment setup and Fig. 3 for the</span>
 <span class="sd">experiment results.</span>
 
 <span class="sd">References</span>
 <span class="sd">----------</span>
-<span class="sd">.. [r1] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
+<span class="sd">.. [WFY20] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
 <span class="sd">    reflecting surface-assisted millimeter wave communications: Joint </span>
 <span class="sd">    active and passive precoding design,&quot; IEEE Transactions on Vehicular </span>
 <span class="sd">    Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</span>
@@ -2677,20 +2677,22 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
 
         <span class="c1">## create an IRS on the map</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span> <span class="o">=</span> <span class="n">MyIRS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;IRS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">119</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)),</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">irs</span> <span class="o">=</span> <span class="n">MyIRS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;IRS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">119</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)),</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+        <span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">irs</span><span class="p">)</span>
 
-        <span class="c1">## create a UEs twin, one assited by IRS, one without</span>
+        <span class="c1">## create a UE twin, one assited by IRS, one without</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">135</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle&quot;</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle1&quot;</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
         <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
         <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">135</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle-with-IRS&quot;</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle2&quot;</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
         <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
@@ -2702,31 +2704,42 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
     <span class="c1">## is ended or stopped, perform any user simulation action here</span>
     <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span>
 
-        <span class="n">snr_irs</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">snr_no_irs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">snr_irs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">snr_no_irs</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">## IRS service, here we hardcode the `IRS` to serve `Vehicle2`</span>
+        <span class="n">irs_service</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">irs_service</span><span class="p">[</span><span class="n">MyIRS</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s2">&quot;IRS&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s2">&quot;Vehicle2&quot;</span><span class="p">)</span> <span class="c1"># comment out this line to disable IRS</span>
 
         <span class="c1">## BS transmission to vehicles</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
 
-            <span class="c1">## only `Vehicle-with-IRS` receives reflection from IRS</span>
-            <span class="c1">## it will receive a multpath signal, one from IRS, another from BS</span>
-            <span class="c1">## here we create irs2node_signal first</span>
-            <span class="n">irs2node_signal</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">use_irs</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># to disable IRS, set it to False</span>
-            <span class="k">if</span> <span class="n">use_irs</span> <span class="ow">and</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="s2">&quot;Vehicle-with-IRS&quot;</span><span class="p">:</span>
-                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">()</span>
-                <span class="n">bs2irs_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">bs2irs_signal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">relay_packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">(</span><span class="n">bs2irs_signal</span><span class="o">.</span><span class="n">quality</span><span class="p">)</span>
-                    <span class="n">irs2node_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">relay_packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+            <span class="c1">## vehicle with IRS will receive a multpath signal, one from IRS, another from BS</span>
+            <span class="c1">## here we need to prepare all reflecting signals first</span>
+            <span class="n">reflecting_signal</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">reflecting_signal</span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># all reflecting signals of this `vehicle`</span>
+            <span class="n">reflecting_irs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">reflecting_irs</span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># all IRSs reflecting the signals</span>
+            <span class="k">for</span> <span class="n">this_irs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">this_irs</span> <span class="ow">in</span> <span class="n">irs_service</span> <span class="ow">and</span> <span class="n">irs_service</span><span class="p">[</span><span class="n">this_irs</span><span class="p">]</span> <span class="ow">is</span> <span class="n">vehicle</span><span class="p">:</span>
+                    <span class="c1">## first hop, BS-&gt;IRS</span>
+                    <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">()</span>
+                    <span class="n">bs2irs_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="n">this_irs</span><span class="p">)</span>
+                    <span class="c1">## second hop, IRS-&gt;UE</span>
+                    <span class="k">if</span> <span class="n">bs2irs_signal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">relay_packet</span> <span class="o">=</span> <span class="n">this_irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">(</span><span class="n">bs2irs_signal</span><span class="o">.</span><span class="n">quality</span><span class="p">)</span>
+                        <span class="n">irs2node_signal</span> <span class="o">=</span> <span class="n">this_irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">relay_packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+                        <span class="n">reflecting_signal</span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">irs2node_signal</span><span class="p">)</span>
+                        <span class="n">reflecting_irs</span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_irs</span><span class="p">)</span>
 
             <span class="c1">## check whether BS to Vehicle is single or multipath</span>
-            <span class="k">if</span> <span class="n">irs2node_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># no other path?</span>
+            <span class="c1">#if irs2node_signal is None: # no other path?</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">reflecting_signal</span><span class="p">[</span><span class="n">vehicle</span><span class="p">])</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
                 <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_final_multipath_signal</span><span class="p">([</span><span class="n">irs2node_signal</span><span class="p">])</span>
-                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span>
+                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_final_multipath_signal</span><span class="p">(</span><span class="n">reflecting_signal</span><span class="p">[</span><span class="n">vehicle</span><span class="p">])</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="n">reflecting_irs</span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span>
 
             <span class="c1">## retrieve the received signal after unicasting</span>
             <span class="n">recv_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
@@ -2738,7 +2751,7 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">crossed_obstacle</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">irs2node_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">reflecting_signal</span><span class="p">[</span><span class="n">vehicle</span><span class="p">])</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
                     <span class="n">snr_no_irs</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">-</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">snr_irs</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">-</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
@@ -2746,9 +2759,9 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
         <span class="c1">## show signal strength</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">))</span>
         <span class="n">distance</span> <span class="o">/=</span> <span class="n">resolution</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance = </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, &quot;</span>
-              <span class="sa">f</span><span class="s2">&quot;Without IRS = </span><span class="si">{</span><span class="n">snr_no_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB, &quot;</span> 
-              <span class="sa">f</span><span class="s2">&quot;With IRS = </span><span class="si">{</span><span class="n">snr_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance = </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;, Without IRS = </span><span class="si">{</span><span class="n">snr_no_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB&quot;</span> <span class="k">if</span> <span class="n">snr_no_irs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;, With IRS = </span><span class="si">{</span><span class="n">snr_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB&quot;</span> <span class="k">if</span> <span class="n">snr_irs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
         <span class="c1">## show connections</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
@@ -2769,7 +2782,7 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
     <span class="n">args</span><span class="p">:</span> <span class="n">Namespace</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
     <span class="c1">## welcome info</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A Simple VANET Environment. Press [^C] to quit&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Demonstration of IRS. Press [^C] to quit&quot;</span><span class="p">)</span>
     <span class="c1">#args.nodisplay = True  # &lt;-- hardcoding no GUI mode</span>
     <span class="n">args</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mf">0.1</span>         <span class="c1"># &lt;-- hardcoding the mobility step time</span>
     <span class="n">args</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># &lt;-- hardcoding the animation speed (times)</span>
