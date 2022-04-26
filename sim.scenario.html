@@ -318,13 +318,13 @@ abstract class.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.remove_drawable" title="sim.scenario.BaseScenario.remove_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code></a>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_background" title="sim.scenario.BaseScenario.set_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code></a>(bitmap[, x, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_background" title="sim.scenario.BaseScenario.set_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code></a>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_name" title="sim.scenario.BaseScenario.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.use_map" title="sim.scenario.BaseScenario.use_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code></a>(map)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.use_map" title="sim.scenario.BaseScenario.use_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code></a>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
 </tr>
 </tbody>
@@ -349,12 +349,18 @@ abstract class.</p>
 <dd><p>This is an event listener which will be called when the scenario
 object is being created. The subclass should extend this method
 to create the simulation world.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When creating variables for the subclass, DO NOT use variable names 
+beginning with two underscores. This might clash with the variable
+used internally in the base class.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>bool</dt><dd></dd>
-<dt>True if the scenario is created successfully, False otherwise.</dt><dd></dd>
-<dt>Returning False will cause the simulation to throw a runtime error.</dt><dd></dd>
+<dt>bool</dt><dd><p>True if the scenario is created successfully, False otherwise.
+Returning False will cause the simulation to throw a runtime error.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -385,9 +391,14 @@ check the type of the event object and handle the event accordingly.</p>
 
 <dl class="py method">
 <dt id="sim.scenario.BaseScenario.set_background">
-<code class="sig-name descname">set_background</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bitmap</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.set_background" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_background</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bitmap</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.set_background" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a background bitmap image for this scenario. The background
-image will be shown on the window at (x,y) position.</p>
+image will be placed on the window at (x,y) position. That is, the
+left-top position of the image is placed at (x,y) position of the 
+window. This method should be used when the scenario is not using
+a map. If the scenario uses a map, the associated map image will 
+be used as the background, and there is no need to provide another 
+background image.</p>
 <p>The input is an instance of <cite>wx.Bitmap</cite>. To load a bitmap from a file,
 simply use <cite>wx.Bitmap(file_name)</cite>.</p>
 <dl class="field-list simple">
@@ -395,7 +406,10 @@ simply use <cite>wx.Bitmap(file_name)</cite>.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>bitmap</strong><span class="classifier">wx.Bitmap</span></dt><dd><p>The bitmap to use for the scenario.</p>
 </dd>
-<dt><strong>x,y</strong><span class="classifier">integer, default is (0,0)</span></dt><dd><p>The position to show the bitmap on the window.</p>
+<dt><strong>x,y</strong><span class="classifier">integer, default is (0,0)</span></dt><dd><p>The position to show the bitmap on the window. The position (x,y)
+will be the left-top position of the image.</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">float, default is 1.0 which is original scale</span></dt><dd><p>The zoom scale of the image to view.</p>
 </dd>
 </dl>
 </dd>
@@ -434,7 +448,7 @@ a future simulation time, otherwise the new setting will not apply.</p>
 <dl class="py method">
 <dt id="sim.scenario.BaseScenario.get_setting">
 <code class="sig-name descname">get_setting</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">setting_str</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.get_setting" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the simulation setting. This method throw a warning if <cite>setting_str</cite> is 
+<dd><p>Get the simulation setting. This method throws a warning if <cite>setting_str</cite> is 
 unrecognized.</p>
 <p>The following is a list of available settings to get:</p>
 <ul class="simple">
@@ -463,7 +477,7 @@ requested setting string is not recognized.</p>
 
 <dl class="py method">
 <dt id="sim.scenario.BaseScenario.use_map">
-<code class="sig-name descname">use_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.use_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">use_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.use_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a street map info object for this scenario to describe the map.</p>
 <p>The input <cite>map</cite> is an object of <a class="reference internal" href="map.mapinfo.html#map.mapinfo.MapInfo" title="map.mapinfo.MapInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">map.mapinfo.MapInfo</span></code></a>. The object 
 contains graph information describing a map and user defined pins. The object
@@ -481,6 +495,11 @@ error.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
 <dt><strong>map</strong><span class="classifier"><a class="reference internal" href="map.mapinfo.html#map.mapinfo.MapInfo" title="map.mapinfo.MapInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">map.mapinfo.MapInfo</span></code></a></span></dt><dd><p>The object encapsulating the map information.</p>
+</dd>
+<dt><strong>x,y</strong><span class="classifier">integer, default is (0,0)</span></dt><dd><p>The map image position to show on the window. The position (x,y)
+on the map will be shifted to the left-top position of the window.</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">float, default is 1.0 which is original scale</span></dt><dd><p>The zoom scale of the map to view.</p>
 </dd>
 </dl>
 </dd>

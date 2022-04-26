@@ -333,8 +333,14 @@ to propagate to each channel link, only shallow copy is done.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.BaseSignal.copy" title="comm.signalwave.BaseSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.BaseSignal.add_info" title="comm.signalwave.BaseSignal.add_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info</span></code></a>(key, value)</p></td>
+<td><p>Use this method to add an info to the signal that can be retrieved later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.signalwave.BaseSignal.copy" title="comm.signalwave.BaseSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
 <td><p>This method is used to make a copy of the signal of the subclass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.BaseSignal.get_info" title="comm.signalwave.BaseSignal.get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code></a>(key)</p></td>
+<td><p>Use this method to retrieve an earlier added info.</p></td>
 </tr>
 </tbody>
 </table>
@@ -351,6 +357,44 @@ called.</p>
 <dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>The carrier frequency of this signal.</p>
 </dd>
 <dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power in dBm</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.signalwave.BaseSignal.add_info">
+<code class="sig-name descname">add_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.BaseSignal.add_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to add an info to the signal that can be retrieved
+later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">str</span></dt><dd><p>The key of the information to store.</p>
+</dd>
+<dt><strong>value</strong><span class="classifier">any</span></dt><dd><p>The value of the information to store.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.signalwave.BaseSignal.get_info">
+<code class="sig-name descname">get_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.signalwave.BaseSignal.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to retrieve an earlier added info. It returns
+<cite>None</cite> if the provied key is not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">str</span></dt><dd><p>The key of the information to retrieve.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>any</dt><dd><p>The value of the inforamtion associated with the key.</p>
 </dd>
 </dl>
 </dd>
@@ -393,8 +437,14 @@ may also record the received signal power in dBm.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#comm.signalwave.QualityBasedSignal.copy" title="comm.signalwave.QualityBasedSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info</span></code>(key, value)</p></td>
+<td><p>Use this method to add an info to the signal that can be retrieved later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.signalwave.QualityBasedSignal.copy" title="comm.signalwave.QualityBasedSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
 <td><p>See the description in the base class for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code>(key)</p></td>
+<td><p>Use this method to retrieve an earlier added info.</p></td>
 </tr>
 </tbody>
 </table>

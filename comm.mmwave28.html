@@ -349,8 +349,14 @@ properties related to mmWave signal properties.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#comm.mmwave28.MMWaveSignal.copy" title="comm.mmwave28.MMWaveSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info</span></code>(key, value)</p></td>
+<td><p>Use this method to add an info to the signal that can be retrieved later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.mmwave28.MMWaveSignal.copy" title="comm.mmwave28.MMWaveSignal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
 <td><p>See the description in the base class for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code>(key)</p></td>
+<td><p>Use this method to retrieve an earlier added info.</p></td>
 </tr>
 </tbody>
 </table>
@@ -604,7 +610,7 @@ Signal Process, Canada, Aug. 2011.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -736,7 +742,7 @@ beam pointing angle and angle to the receiver.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -790,7 +796,7 @@ receive the transmission with beamforming gain.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>

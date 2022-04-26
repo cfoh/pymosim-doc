@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node.obstacle module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="node.routemobi module" href="node.routemobi.html" />
+    <link rel="prev" title="node.node module" href="node.node.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/icon.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.draw.html">
+   node.draw module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility.html">
+   node.mobility module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2%20%28copy%29.html">
+   node.mobility2 (copy) module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2.html">
+   node.mobility2 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.node.html">
+   node.node module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.timer.html">
+   node.timer module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.type.html">
+   node.type module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-node.obstacle">
+<span id="node-obstacle-module"></span><h1>node.obstacle module<a class="headerlink" href="#module-node.obstacle" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>obstacle</cite> contains a <cite>obstacle</cite> class to encapsulate a list of polygons
+describing static obstacle on the simulation area or map. It also provide 
+useful methods to test whether a line crosses any obstacle, and number of
+obstacles crossed if required.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Although the coordinates of obstacles can be float or integer type, it is 
+strongly recommended to use integer for speed consideration.</p></li>
+<li><p>Implementing this class in Python isn’t efficient, suggest using</p></li>
+</ul>
+<p><cite>shapely</cite> package or use Cython to compile _LSI functions into C language.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2022)</p></li>
+</ul>
+</div>
+<dl class="py class">
+<dt id="node.obstacle.Obstacle">
+<em class="property">class </em><code class="sig-prename descclassname">node.obstacle.</code><code class="sig-name descname">Obstacle</code><a class="headerlink" href="#node.obstacle.Obstacle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class provides storage to keep polygons as obstacles and useful methods
+if check if a line has crossed any obstacle, and how many.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.add_poly" title="node.obstacle.Obstacle.add_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_poly</span></code></a>(polygon)</p></td>
+<td><p>This method adds a polygon as an obstacle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.add_rect" title="node.obstacle.Obstacle.add_rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_rect</span></code></a>(x, y, w, h)</p></td>
+<td><p>This method adds a rectangle as an obstacle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.get_list" title="node.obstacle.Obstacle.get_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_list</span></code></a>()</p></td>
+<td><p>This method returns a list containing all obstacle polygons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.is_crossed" title="node.obstacle.Obstacle.is_crossed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_crossed</span></code></a>(point1, point2)</p></td>
+<td><p>This method tests whether the given line crosses any obstacle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.num_crossed" title="node.obstacle.Obstacle.num_crossed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_crossed</span></code></a>(point1, point2)</p></td>
+<td><p>This method counts the number of obstacles that the given line has crossed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.obstacle.Obstacle.remove" title="node.obstacle.Obstacle.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(polygon)</p></td>
+<td><p>This method removes an obstacle from the existing list.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.obstacle.Obstacle.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.get_list">
+<code class="sig-name descname">get_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.obstacle.Obstacle.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a list containing all obstacle polygons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>List</dt><dd><p>The list of all obstacle polygons.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.add_poly">
+<code class="sig-name descname">add_poly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polygon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.obstacle.Obstacle.add_poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds a polygon as an obstacle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>polygon</strong><span class="classifier">list of a pair of float or int (be consistent) as (x,y)</span></dt><dd><p>The vertices of the polygon describing the obstacle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.add_rect">
+<code class="sig-name descname">add_rect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.obstacle.Obstacle.add_rect" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds a rectangle as an obstacle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">int</span></dt><dd><p>The left coordinate of the obstacle.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">int</span></dt><dd><p>The top coordinate of the obstacle.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">int</span></dt><dd><p>The width of the obstacle.</p>
+</dd>
+<dt><strong>h</strong><span class="classifier">int</span></dt><dd><p>The heightof the obstacle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polygon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.obstacle.Obstacle.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method removes an obstacle from the existing list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>polygon</strong><span class="classifier">list of float or int (be consistent)</span></dt><dd><p>The polygon to be removed. For this method to be effective, the
+exact same polygon object must have been added into the list earlier.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.is_crossed">
+<code class="sig-name descname">is_crossed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point1</span></em>, <em class="sig-param"><span class="n">point2</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#node.obstacle.Obstacle.is_crossed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method tests whether the given line crosses any obstacle.
+It does not tell how many obstacles the line crosses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This isn’t an efficient implementation, suggest using 
+<cite>shapely</cite> package or compile this class into C language 
+using Cython.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>point1</strong><span class="classifier">float or int</span></dt><dd><p>One end of the line.</p>
+</dd>
+<dt><strong>point2</strong><span class="classifier">float or int</span></dt><dd><p>Another end of the line.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>It returns whether the given line specified by <cite>point1</cite> and 
+<cite>point2</cite> has crossed any obstacle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.obstacle.Obstacle.num_crossed">
+<code class="sig-name descname">num_crossed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point1</span></em>, <em class="sig-param"><span class="n">point2</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#node.obstacle.Obstacle.num_crossed" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method counts the number of obstacles that the given line
+has crossed. To test whether a line has crossed any obstacle,
+use <cite>is_crossed()</cite> method instead for efficiency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>point1</strong><span class="classifier">float or int</span></dt><dd><p>One end of the line.</p>
+</dd>
+<dt><strong>point2</strong><span class="classifier">float or int</span></dt><dd><p>Another end of the line.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>int</dt><dd><p>The number of obstacles that the given line has crossed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

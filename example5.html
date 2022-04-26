@@ -146,9 +146,19 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -178,9 +188,20 @@ illustrates how users can implement own signal propagation and detection logic.<
 This example shows how signal propagation and detection logic can be 
 implemented at the user simulation level if users need some special treatment 
 and full control of signal propagation and signal detection logic.</p>
+<p>We assume that the BS can track vehicles. The channel model is based on [r1].</p>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="citation">
+<dt class="label" id="r0c1842856b50-r1"><span class="brackets">r1</span></dt>
+<dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
+reflecting surface-assisted millimeter wave communications: Joint 
+active and passive precoding design,” IEEE Transactions on Vehicular 
+Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt id="example5.MyTransceiver">
-<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em>, <em class="sig-param"><span class="n">ant_element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -195,8 +216,8 @@ and full control of signal propagation and signal detection logic.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#example5.MyTransceiver.can_detect" title="example5.MyTransceiver.can_detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code></a>(the_signal)</p></td>
 <td><p>This is the function to perform signal propagation and detection logic.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example5.MyTransceiver.create_signal" title="example5.MyTransceiver.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
-<td><p>Create a signal for transmissioin.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5.MyTransceiver.create_signal" title="example5.MyTransceiver.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>([tx_power])</p></td>
+<td><p>Use this method to create a signal.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
 <td><p>Return the carrier frequency used by the channel.</p></td>
@@ -214,7 +235,7 @@ and full control of signal propagation and signal detection logic.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -232,17 +253,40 @@ and full control of signal propagation and signal detection logic.</p>
 </tr>
 </tbody>
 </table>
+<dl class="py attribute">
+<dt id="example5.MyTransceiver.noise">
+<code class="sig-name descname">noise</code><em class="property"> = -90</em><a class="headerlink" href="#example5.MyTransceiver.noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="example5.MyTransceiver.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em>, <em class="sig-param"><span class="n">ant_element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt id="example5.MyTransceiver.snr_threshold">
+<code class="sig-name descname">snr_threshold</code><em class="property"> = 5</em><a class="headerlink" href="#example5.MyTransceiver.snr_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="example5.MyTransceiver.create_signal">
-<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.create_signal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a signal for transmissioin. By default, the method creates
-<a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">QualityBasedSignal</span></code></a> signal.</p>
+<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiver.create_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to create a signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power of the signal.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a></dt><dd><p>The created signal to be used for transmission.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -265,8 +309,132 @@ detection logic.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt id="example5.MyTransceiverBS">
+<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyTransceiverBS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiverBS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#example5.MyTransceiver" title="example5.MyTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">example5.MyTransceiver</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(the_signal)</p></td>
+<td><p>This is the function to perform signal propagation and detection logic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>([tx_power])</p></td>
+<td><p>Use this method to create a signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 70%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>is_crossed_obstacle</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_obstacle</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example5.MyTransceiverBS.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiverBS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example5.MyTransceiverVehicle">
+<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyTransceiverVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiverVehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#example5.MyTransceiver" title="example5.MyTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">example5.MyTransceiver</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(the_signal)</p></td>
+<td><p>This is the function to perform signal propagation and detection logic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>([tx_power])</p></td>
+<td><p>Use this method to create a signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 70%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>is_crossed_obstacle</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_obstacle</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example5.MyTransceiverVehicle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyTransceiverVehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="example5.MyBS">
-<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyBS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">carrier_freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyBS" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyBS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyBS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
 <p>MyBS: This is a base station in the VANET sim world implementing 
 a user-defined transceiver.</p>
@@ -331,26 +499,29 @@ a user-defined transceiver.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<td><p>Reset the global node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt id="example5.MyBS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">carrier_freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyBS.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyBS.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -371,7 +542,7 @@ super() must be called.</p>
 
 <dl class="py class">
 <dt id="example5.MyVehicle">
-<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">carrier_freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyVehicle" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">example5.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyVehicle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
 <p>MyVehicle: This is a transmitting node in the VANET sim world implementing 
 a user-defined transceiver.</p>
@@ -436,29 +607,32 @@ a user-defined transceiver.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<td><p>Reset the global node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example5.MyVehicle.show_connection" title="example5.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5.MyVehicle.show_connection" title="example5.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt id="example5.MyVehicle.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">carrier_freq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -515,13 +689,13 @@ super() must be called.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
 </tr>
 </tbody>
@@ -532,12 +706,18 @@ super() must be called.</p>
 <dd><p>This is an event listener which will be called when the scenario
 object is being created. The subclass should extend this method
 to create the simulation world.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When creating variables for the subclass, DO NOT use variable names 
+beginning with two underscores. This might clash with the variable
+used internally in the base class.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>bool</dt><dd></dd>
-<dt>True if the scenario is created successfully, False otherwise.</dt><dd></dd>
-<dt>Returning False will cause the simulation to throw a runtime error.</dt><dd></dd>
+<dt>bool</dt><dd><p>True if the scenario is created successfully, False otherwise.
+Returning False will cause the simulation to throw a runtime error.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -568,6 +748,7 @@ check the type of the event object and handle the event accordingly.</p>
 
 </dd></dl>
 
+</div>
 </div>
 
 

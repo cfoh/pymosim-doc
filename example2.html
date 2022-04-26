@@ -178,29 +178,6 @@ to collect signal quality from all sectors of all BSs, and then associate with t
 with the highest quality (i.e. strongest SNR). The example shows how to use Transceiver
 class to send and detect signals, and measure the signal quality of a received signal.</p>
 <dl class="py class">
-<dt id="example2.DebugPrint">
-<em class="property">class </em><code class="sig-prename descclassname">example2.</code><code class="sig-name descname">DebugPrint</code><a class="headerlink" href="#example2.DebugPrint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p class="rubric">Methods</p>
-<table class="table">
-<colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>print</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="example2.DebugPrint.print">
-<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kw</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example2.DebugPrint.print" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt id="example2.MySector">
 <em class="property">class </em><code class="sig-prename descclassname">example2.</code><code class="sig-name descname">MySector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">channel</span></em>, <em class="sig-param"><span class="n">sector_width</span></em>, <em class="sig-param"><span class="n">sector_dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example2.MySector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
@@ -266,22 +243,25 @@ class to send and detect signals, and measure the signal quality of a received s
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<td><p>Reset the global node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example2.MySector.show_coverage" title="example2.MySector.show_coverage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_coverage</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example2.MySector.show_coverage" title="example2.MySector.show_coverage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_coverage</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -384,22 +364,25 @@ super() must be called.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<td><p>Reset the global node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example2.MyVehicle.show_connection" title="example2.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example2.MyVehicle.show_connection" title="example2.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -443,7 +426,7 @@ super() must be called.</p>
 <dl class="py class">
 <dt id="example2.MyScenario">
 <em class="property">class </em><code class="sig-prename descclassname">example2.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example2.MyScenario" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a>, <a class="reference internal" href="#example2.DebugPrint" title="example2.DebugPrint"><code class="xref py py-class docutils literal notranslate"><span class="pre">example2.DebugPrint</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a></p>
 <p>MyScenario: This is my scenario</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -473,25 +456,14 @@ super() must be called.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>print</strong></p></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -501,12 +473,18 @@ super() must be called.</p>
 <dd><p>This is an event listener which will be called when the scenario
 object is being created. The subclass should extend this method
 to create the simulation world.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When creating variables for the subclass, DO NOT use variable names 
+beginning with two underscores. This might clash with the variable
+used internally in the base class.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>bool</dt><dd></dd>
-<dt>True if the scenario is created successfully, False otherwise.</dt><dd></dd>
-<dt>Returning False will cause the simulation to throw a runtime error.</dt><dd></dd>
+<dt>bool</dt><dd><p>True if the scenario is created successfully, False otherwise.
+Returning False will cause the simulation to throw a runtime error.</p>
+</dd>
 </dl>
 </dd>
 </dl>

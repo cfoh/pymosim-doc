@@ -261,6 +261,8 @@ directly in this module. The recommended way to import the pin classes is:</p>
 <span class="o">...</span>
 <span class="c1">## and access a pin on `my_map` by</span>
 <span class="n">my_parking</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">.</span><span class="n">Waypoint</span><span class="p">(</span><span class="n">my_map</span><span class="p">,</span> <span class="n">pin_name</span><span class="o">=</span><span class="s2">&quot;City Parking&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">my_parking</span><span class="o">.</span><span class="n">is_valid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error loading `City Parking` pin&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -309,7 +311,8 @@ more flexible location.</p>
 <dt id="map.pin.Landmark">
 <em class="property">class </em><code class="sig-prename descclassname">map.pin.</code><code class="sig-name descname">Landmark</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Landmark" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">map.pin._Pin</span></code></p>
-<p>This is a landmark pin to be constrcuted by giving the dict of an existing landmark pin.</p>
+<p>This is a landmark pin to be constrcuted by giving pin name of 
+an existing landmark pin.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -396,11 +399,12 @@ invalid instance may cause run-time error.</p>
 
 <dl class="py class">
 <dt id="map.pin.Waypoint">
-<em class="property">class </em><code class="sig-prename descclassname">map.pin.</code><code class="sig-name descname">Waypoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Waypoint" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">map.pin.</code><code class="sig-name descname">Waypoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Waypoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">map.pin._Pin</span></code></p>
-<p>This is a waypoint pin to be constrcuted by giving the dict of an existing waypoint pin.
-A waypoint pin is navigable, you can use the pin in the mobility module to create or 
-absorb traffic, or to create a mobility waypoint.</p>
+<p>This is a waypoint pin to be constrcuted by giving the pin name of an 
+existing waypoint pin. A waypoint pin is navigable, you can use the pin 
+in the mobility module to create or absorb traffic, or to create a 
+mobility waypoint.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -424,14 +428,20 @@ absorb traffic, or to create a mobility waypoint.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code>(iterable[, value])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.pin.Waypoint.create" title="map.pin.Waypoint.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create</span></code></a>(pin_name, road_id, coord_id)</p></td>
+<td><p>Use this method to create a navigable waypoint.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code>(iterable[, value])</p></td>
 <td><p>Create a new dictionary with keys from iterable and values set to value.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(key[, default])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(key[, default])</p></td>
 <td><p>Return the value for key if key is in the dictionary, else default.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_display_name</span></code>([default])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_display_name</span></code>([default])</p></td>
 <td><p>This method returns the display name of the pin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.pin.Waypoint.get_road_id" title="map.pin.Waypoint.get_road_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_id</span></code></a>()</p></td>
+<td><p>It returns road id of this waypoint.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xy</span></code>()</p></td>
 <td><p>This method returns pin location (x,y).</p></td>
@@ -462,20 +472,9 @@ absorb traffic, or to create a mobility waypoint.</p>
 </tr>
 </tbody>
 </table>
-<table class="table">
-<colgroup>
-<col style="width: 60%" />
-<col style="width: 40%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>get_road_id</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <dl class="py method">
 <dt id="map.pin.Waypoint.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Waypoint.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Waypoint.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -495,9 +494,38 @@ invalid instance may cause run-time error.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="map.pin.Waypoint.create">
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin_name</span></em>, <em class="sig-param"><span class="n">road_id</span></em>, <em class="sig-param"><span class="n">coord_id</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#map.pin.Waypoint.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to create a navigable waypoint. Usually, waypoint
+pin is created by placing a pin on the map using the provided map editor, 
+and then load the pin during the simulation runtime using the pin name.
+However, it is also possible to create a waypoint pin without placing a pin. 
+The pin can be created by directly specifying the <cite>road_id</cite> and <cite>coord_id</cite>. 
+However, this is not a recommended approach and may cause unexpected outcome
+if any id is incorrectly specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>road_id</strong><span class="classifier">int</span></dt><dd><p>The road_id where the waypoint is on.</p>
+</dd>
+<dt><strong>coord_id</strong><span class="classifier">int</span></dt><dd><p>The coord_id of the waypoint. It is also a road vertex.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Whether the creation is successful.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="map.pin.Waypoint.get_road_id">
 <code class="sig-name descname">get_road_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#map.pin.Waypoint.get_road_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>It returns road id of this waypoint.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -505,8 +533,9 @@ invalid instance may cause run-time error.</p>
 <dt id="map.pin.Junction">
 <em class="property">class </em><code class="sig-prename descclassname">map.pin.</code><code class="sig-name descname">Junction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span></em>, <em class="sig-param"><span class="n">pin_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.pin.Junction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">map.pin._Pin</span></code></p>
-<p>This is a junction pin to be constrcuted by giving the dict of an existing junction pin.
-A junction pin is not navigable, please use waypoint instead if mobility is needed.</p>
+<p>This is a junction pin to be constrcuted by giving the pin name of
+an existing junction pin. Junction pin is not navigable, please use 
+waypoint pin for navigation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>

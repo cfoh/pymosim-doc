@@ -147,6 +147,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2%20%28copy%29.html">
+   node.mobility2 (copy) module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.mobility2.html">
    node.mobility2 module
   </a>
@@ -154,6 +159,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.obstacle.html">
+   node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -615,7 +630,7 @@ the moving direction.</p>
 
 <dl class="py class">
 <dt id="node.type.IRS">
-<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">IRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0.3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">IRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -634,20 +649,28 @@ the moving direction.</p>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 53%" />
+<col style="width: 58%" />
+<col style="width: 42%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>set_colors</strong></p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt id="node.type.IRS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0.3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt id="node.type.IRS.set_colors">
+<code class="sig-name descname">set_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">face</span></em>, <em class="sig-param"><span class="n">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.set_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="node.type.IRS.draw">

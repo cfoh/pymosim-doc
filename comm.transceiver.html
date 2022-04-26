@@ -336,7 +336,7 @@ simulation level.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#comm.transceiver.BaseTransceiver.unicast" title="comm.transceiver.BaseTransceiver.unicast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code></a>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -407,17 +407,29 @@ in the simulation world to achieve broadcast.</p>
 <dt id="comm.transceiver.BaseTransceiver.unicast">
 <code class="sig-name descname">unicast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.transceiver.BaseTransceiver.unicast" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method allows a node to perform a unicast on the channel, 
-and the method returns a tuple (node,received_signal) if the 
+and the method returns a <cite>received_signal</cite> if the 
 signal can be decoded, or None. This method uses <cite>multicast()</cite> with
 a single node in the list to achieve unicast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="comm.signalwave.html#comm.signalwave.BaseSignal" title="comm.signalwave.BaseSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.BaseSignal</span></code></a> subclass</dt><dd><p>The received signal after the unicasting.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="comm.transceiver.BaseTransceiver.get_type">
 <code class="sig-name descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.transceiver.BaseTransceiver.get_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method returns the type of the transceiver.</p>
-<dl class="simple">
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
 <dt>str</dt><dd><p>The type of the transceiver.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -538,7 +550,7 @@ simulation time, for example illustrative coverage of the transceiver.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -643,7 +655,7 @@ with directional antenna. Its transmission and receiption are directional.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>
@@ -788,7 +800,7 @@ further evaluation.</p>
 <td><p>Set a property to this transceiver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
-<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a tuple (node,received_signal) if the  signal can be decoded, or None.</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
 </tr>
 </tbody>
 </table>

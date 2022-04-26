@@ -94,6 +94,17 @@ Example 7
     .. literalinclude:: ../example7.py
        :language: python
 
+Example 8
+---------
+
+.. automodule:: example8
+.. image:: _static/example8.gif
+
+.. collapse:: Show source code
+
+    .. literalinclude:: ../example8.py
+       :language: python
+
 ==================
 
 Indices and tables

@@ -240,6 +240,12 @@ update the UI.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(*args, **kwargs)</p></td>
 <td><p>Call self as a function.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.frame.MainFrame.update_mapscale" title="sim.frame.MainFrame.update_mapscale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_mapscale</span></code></a>(zoom)</p></td>
+<td><p>The simulation engine should use this method to adjust the map zoom scale.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.frame.MainFrame.update_mapshift" title="sim.frame.MainFrame.update_mapshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_mapshift</span></code></a>(x, y)</p></td>
+<td><p>The simulation engine should use this method to adjust the offset  of map view.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.frame.MainFrame.update_mapsize" title="sim.frame.MainFrame.update_mapsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_mapsize</span></code></a>(size_x, size_y)</p></td>
 <td><p>The simulation engine should use this method to update the map size.</p></td>
 </tr>
@@ -274,6 +280,20 @@ of the window frame title.</p>
 <code class="sig-name descname">update_mapsize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size_x</span></em>, <em class="sig-param"><span class="n">size_y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.frame.MainFrame.update_mapsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>The simulation engine should use this method to update the map
 size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.frame.MainFrame.update_mapshift">
+<code class="sig-name descname">update_mapshift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.frame.MainFrame.update_mapshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>The simulation engine should use this method to adjust the offset 
+of map view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.frame.MainFrame.update_mapscale">
+<code class="sig-name descname">update_mapscale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">zoom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.frame.MainFrame.update_mapscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The simulation engine should use this method to adjust the map
+zoom scale.</p>
 </dd></dl>
 
 <dl class="py method">

@@ -5,8 +5,6 @@ pymosim
    :maxdepth: 4
 
    comm
-   editmap
-   editor
    example1
    example2
    example3
@@ -14,11 +12,8 @@ pymosim
    example5
    example6
    example7
+   example8
    map
    node
    sim
-   test-irs
-   test-jack
-   test-mobi
-   test2
-   test2-old
+

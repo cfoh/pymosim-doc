@@ -187,6 +187,13 @@
     <a class="reference internal nav-link" href="#module-example5">
      Example 5
     </a>
+    <ul class="visible nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#references">
+       References
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#module-example6">
@@ -197,6 +204,18 @@
     <a class="reference internal nav-link" href="#module-example7">
      Example 7
     </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#module-example8">
+     Example 8
+    </a>
+    <ul class="visible nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       References
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -246,8 +265,11 @@
 <li class="toctree-l2"><a class="reference internal" href="node.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="node.draw.html">node.draw module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.mobility.html">node.mobility module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.mobility2%20%28copy%29.html">node.mobility2 (copy) module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.mobility2.html">node.mobility2 module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.node.html">node.node module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.obstacle.html">node.obstacle module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.routemobi.html">node.routemobi module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.timer.html">node.timer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="node.type.html">node.type module</a></li>
 </ul>
@@ -425,17 +447,6 @@ class to send and detect signals, and measure the signal quality of a received s
 <span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
 <span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
 
-
-<span class="c1">####################################################################</span>
-<span class="c1">## Helper</span>
-<span class="c1">####################################################################</span>
-
-<span class="k">class</span> <span class="nc">DebugPrint</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="c1"># comment this line out to disable debug printing</span>
-        <span class="k">pass</span>
-
-
 <span class="c1">####################################################################</span>
 <span class="c1">## Nodes</span>
 <span class="c1">####################################################################</span>
@@ -506,7 +517,7 @@ class to send and detect signals, and measure the signal quality of a received s
 <span class="c1">## Scenario</span>
 <span class="c1">####################################################################</span>
 
-<span class="k">class</span> <span class="nc">MyScenario</span><span class="p">(</span><span class="n">BaseScenario</span><span class="p">,</span><span class="n">DebugPrint</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MyScenario</span><span class="p">(</span><span class="n">BaseScenario</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    MyScenario: This is my scenario</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -567,7 +578,7 @@ class to send and detect signals, and measure the signal quality of a received s
             <span class="n">beacon</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">beacon</span><span class="p">,</span><span class="n">my_sector</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># lost connection</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">lost_sector</span><span class="p">(</span><span class="n">sim_time</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;at t=</span><span class="si">%1.2f</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> lost connection with </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">sim_time</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">my_sector</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;at t=</span><span class="si">%1.2f</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> lost connection with </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">sim_time</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">my_sector</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
 
         <span class="c1">## make associatiation with sector if needed</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">all_vehicles</span><span class="p">:</span>
@@ -598,7 +609,7 @@ class to send and detect signals, and measure the signal quality of a received s
                 <span class="n">sector_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">detection_list</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">sector_max</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">associate_sector</span><span class="p">(</span><span class="n">sector_max</span><span class="p">,</span><span class="n">sim_time</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;at t=</span><span class="si">%1.2f</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> associated with </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">sim_time</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">sector_max</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;at t=</span><span class="si">%1.2f</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> associated with </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">sim_time</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">sector_max</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
 
         <span class="c1">## draw connectivity &amp; beam coverage on the map</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">all_vehicles</span><span class="p">:</span>
@@ -659,36 +670,34 @@ class to send and detect signals, and measure the signal quality of a received s
     <span class="c1">## command line parameters</span>
     <span class="n">parser</span><span class="p">:</span> <span class="n">ArgumentParser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--nodisplay&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run in no GUI mode&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--step&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mobility step time (in sec)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--step&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mobility step time (in sec)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--speed&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Animation playback speed (x times)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--duration&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Simulation duration (in sec), -1 for non-stop&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--duration&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Simulation duration (in sec), -1 for non-stop&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
     <span class="n">args</span><span class="p">:</span> <span class="n">Namespace</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
     <span class="c1">## welcome info</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A Simple VANET Environment. Press [^C] to quit&quot;</span><span class="p">)</span>
-    <span class="c1">#args.nodisplay = True  # &lt;-- hardcoding no GUI mode</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mf">0.1</span>         <span class="c1"># &lt;-- hardcoding the mobility step time</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># &lt;-- hardcoding the animation speed (times)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">12.0</span>     <span class="c1"># &lt;-- hardcoding the sim duration (sec)</span>
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">:</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run without animation&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- animation will playback at x</span><span class="si">%1.2f</span><span class="s2"> speed&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- vehicles move a step every </span><span class="si">%1.2f</span><span class="s2"> s in simulation&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will stop at </span><span class="si">%1.2f</span><span class="s2"> s&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run non-stop&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="c1">## create, setup and run the simulation</span>
     <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
-               <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
-               <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
-               <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
-               <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
+                <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
+                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
+                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
+                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    
 </pre></div>
 </div>
 </details></div>
@@ -783,7 +792,6 @@ to create 6 sectors.</p></li>
     <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="c1"># comment this line out to disable debug printing</span>
         <span class="k">pass</span>
-
 
 <span class="c1">####################################################################</span>
 <span class="c1">## Nodes</span>
@@ -1096,19 +1104,20 @@ to create 6 sectors.</p></li>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- vehicles move a step every </span><span class="si">%1.2f</span><span class="s2"> s in simulation&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will stop at </span><span class="si">%1.2f</span><span class="s2"> s&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run non-stop&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="c1">## create, setup and run the simulation</span>
     <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
-               <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
-               <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
-               <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
-               <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
+                <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
+                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
+                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
+                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>
@@ -1382,7 +1391,10 @@ the sector with the highest quality (i.e. strongest SNR).</p>
                 <span class="n">sum_duration</span> <span class="o">+=</span> <span class="n">duration</span>
                 <span class="n">connection_count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">conn_info_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">conn_info_each</span><span class="p">)</span>
-            <span class="n">average_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sum_duration</span><span class="o">/</span><span class="n">connection_count</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">connection_count</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">average_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sum_duration</span><span class="o">/</span><span class="n">connection_count</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">average_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">print_fixed</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   </span><span class="si">{</span><span class="n">text</span><span class="si">:</span><span class="s2">15</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">all_vehicles</span><span class="p">:</span> <span class="c1"># line 1, heading</span>
@@ -1437,19 +1449,21 @@ the sector with the highest quality (i.e. strongest SNR).</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- vehicles move a step every </span><span class="si">%1.2f</span><span class="s2"> s in simulation&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will stop at </span><span class="si">%1.2f</span><span class="s2"> s&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run non-stop&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="c1">## create, setup and run the simulation</span>
     <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
-               <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
-               <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
-               <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
-               <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
+                <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
+                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
+                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
+                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        
 </pre></div>
 </div>
 </details></div>
@@ -1463,6 +1477,18 @@ illustrates how users can implement own signal propagation and detection logic.<
 This example shows how signal propagation and detection logic can be 
 implemented at the user simulation level if users need some special treatment 
 and full control of signal propagation and signal detection logic.</p>
+<p>We assume that the BS can track vehicles. The channel model is based on [r1].</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<dl class="citation">
+<dt class="label" id="r0c1842856b50-r1"><span class="brackets">r1</span></dt>
+<dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
+reflecting surface-assisted millimeter wave communications: Joint 
+active and passive precoding design,” IEEE Transactions on Vehicular 
+Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
+</dd>
+</dl>
+</div>
 <img alt="_images/example5.gif" src="_images/example5.gif" />
 <details class="summary-show-source-code">
 <summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -1475,15 +1501,26 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="sd">This example shows how signal propagation and detection logic can be </span>
 <span class="sd">implemented at the user simulation level if users need some special treatment </span>
 <span class="sd">and full control of signal propagation and signal detection logic.</span>
+
+<span class="sd">We assume that the BS can track vehicles. The channel model is based on [r1].</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">.. [r1] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
+<span class="sd">    reflecting surface-assisted millimeter wave communications: Joint </span>
+<span class="sd">    active and passive precoding design,&quot; IEEE Transactions on Vehicular </span>
+<span class="sd">    Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">wx</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span><span class="p">,</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
 <span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
+<span class="kn">from</span> <span class="nn">sim.direction</span> <span class="kn">import</span> <span class="n">Dir2D</span>
 <span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
 <span class="kn">from</span> <span class="nn">sim.drawable</span> <span class="kn">import</span> <span class="n">Drawable</span>
 <span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
@@ -1500,13 +1537,33 @@ and full control of signal propagation and signal detection logic.</p>
 
 <span class="k">class</span> <span class="nc">MyTransceiver</span><span class="p">(</span><span class="n">UserTransceiver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
+    <span class="c1">## class constants or default values</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span> <span class="c1"># dBm</span>
+    <span class="n">snr_threshold</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># dB</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">tx_power</span><span class="p">,</span> <span class="n">ant_element</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="n">tx_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span> <span class="o">=</span> <span class="n">ant_element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snr_threshold</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">snr_threshold</span>
 
-    <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_power</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Use this method to create a signal.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tx_power : float</span>
+<span class="sd">            The transmit power of the signal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The created signal to be used for transmission.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
-        <span class="n">signal</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># dBm</span>
+        <span class="k">if</span> <span class="n">tx_power</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">signal</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span><span class="p">)</span> <span class="c1"># number of antenna elements</span>
         <span class="k">return</span> <span class="n">signal</span>
 
     <span class="k">def</span> <span class="nf">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obstacle_list</span><span class="p">):</span>
@@ -1532,26 +1589,39 @@ and full control of signal propagation and signal detection logic.</p>
         <span class="c1">## check if signal is crossing obstacle</span>
         <span class="n">is_crossed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_crossed_obstacle</span><span class="p">(</span><span class="n">tx_loc</span><span class="p">,</span><span class="n">rx_loc</span><span class="p">)</span>
 
-        <span class="c1">## apply simple passloss model c_0*d^(-α), where</span>
-        <span class="c1">#  - d is the distance, in our system, 12 pixels = 1m, minimum 1m</span>
-        <span class="c1">#  - α is the pathloss exponent, 2 for normal, 2.3 when crossing an obstacle</span>
-        <span class="c1">#  - c_0 is the gain, it is set to 1 in this example</span>
-        <span class="c1">## pathloss PL_db = 10α*log10(d)</span>
-        <span class="n">distance</span> <span class="o">/=</span> <span class="mi">12</span>            <span class="c1"># convert pixel-to-meter</span>
+        <span class="c1">## apply simple passloss model c0*d^(-α), where</span>
+        <span class="c1">#  - d is the distance, in our system, 2 pixels = 1m, minimum 1m</span>
+        <span class="c1">#  - α is the pathloss exponent, 2 for normal, 2.92 when crossing an obstacle</span>
+        <span class="c1">#  - c0 is the gain/loss</span>
+        <span class="c1">## pathloss PL_db = log10(c0) + 10α*log10(d)</span>
+        <span class="n">distance</span> <span class="o">/=</span> <span class="mi">2</span>             <span class="c1"># convert pixel-to-meter</span>
         <span class="k">if</span> <span class="n">distance</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span> <span class="n">distance</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># min 1m</span>
-        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_crossed</span> <span class="k">else</span> <span class="mf">2.3</span> <span class="c1"># set pathloss exponent</span>
-        <span class="n">pathloss_db</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
-        <span class="n">received_power</span> <span class="o">=</span> <span class="n">tx_power</span> <span class="o">-</span> <span class="n">pathloss_db</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_crossed</span> <span class="k">else</span> <span class="mf">2.92</span>   <span class="c1"># set pathloss exponent</span>
+        <span class="n">log_c0</span> <span class="o">=</span> <span class="mf">61.4</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_crossed</span> <span class="k">else</span> <span class="mi">72</span> <span class="c1"># set loss</span>
+        <span class="n">pathloss_db</span> <span class="o">=</span> <span class="n">log_c0</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
 
-        <span class="c1">## threshold is, say -5 dBm</span>
-        <span class="n">threshold_dbm</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
-        <span class="k">if</span> <span class="n">received_power</span><span class="o">&gt;=</span><span class="n">threshold_dbm</span><span class="p">:</span>
+        <span class="c1">## received power including the gain from the number of antenna elements</span>
+        <span class="n">ant_element_num</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">)</span>
+        <span class="n">received_power</span> <span class="o">=</span> <span class="n">tx_power</span> <span class="o">-</span> <span class="n">pathloss_db</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ant_element_num</span><span class="p">)</span>
+
+        <span class="c1">## check if the signal is detectable, i.e. its SNR</span>
+        <span class="c1">## exceeds the threshold (default setting, see `MyTransceiver.snr_threshold`)</span>
+        <span class="n">snr</span> <span class="o">=</span> <span class="n">received_power</span><span class="o">-</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
+        <span class="k">if</span> <span class="n">snr</span><span class="o">&gt;=</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">snr_threshold</span><span class="p">:</span> 
             <span class="n">the_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="n">received_power</span>
-            <span class="n">the_signal</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_crossed</span>
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">,</span><span class="n">is_crossed</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span> <span class="c1"># can detect</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">the_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="kc">False</span> <span class="c1"># cannot detect</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiverBS</span><span class="p">(</span><span class="n">MyTransceiver</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">tx_power</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ant_element</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiverVehicle</span><span class="p">(</span><span class="n">MyTransceiver</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">tx_power</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ant_element</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1">####################################################################</span>
 <span class="c1">## Nodes</span>
@@ -1562,12 +1632,12 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="sd">    MyBS: This is a base station in the VANET sim world implementing </span>
 <span class="sd">    a user-defined transceiver.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">carrier_freq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiverBS</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-        <span class="c1">## setup the sector</span>
+        <span class="c1">## setup the BS</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
 
@@ -1576,11 +1646,11 @@ and full control of signal propagation and signal detection logic.</p>
 <span class="sd">    MyVehicle: This is a transmitting node in the VANET sim world implementing </span>
 <span class="sd">    a user-defined transceiver.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="c1">## initialize some properties</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">carrier_freq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiverVehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1591,17 +1661,25 @@ and full control of signal propagation and signal detection logic.</p>
     <span class="k">def</span> <span class="nf">show_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">%1.2f</span><span class="s2">dBm&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_quality</span><span class="p">,</span>
-                            <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
-                                        <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossed_obstacle</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">draw_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span><span class="p">,</span><span class="n">pen</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Pen</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_SHORT_DASH</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;Non-LOS: </span><span class="si">%1.2f</span><span class="s2">dB&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_quality</span><span class="o">-</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span><span class="p">),</span>
+                                <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
+                                            <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">draw_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span><span class="p">,</span><span class="n">pen</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Pen</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLACK</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">PENSTYLE_SOLID</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;LOS: </span><span class="si">%1.2f</span><span class="s2">dB&quot;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_quality</span><span class="o">-</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span><span class="p">),</span>
+                                <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
+                                            <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;No Signal&quot;</span><span class="p">,</span>
+                            <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
+                                        <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
+
 
 <span class="c1">####################################################################</span>
 <span class="c1">## Scenario</span>
@@ -1621,33 +1699,28 @@ and full control of signal propagation and signal detection logic.</p>
 
         <span class="c1">## create two obstacles</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span> <span class="o">=</span> <span class="n">Obstacle</span><span class="p">()</span>
-        <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">260</span><span class="p">,</span><span class="mi">70</span><span class="p">);</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-        <span class="n">block</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-                                    <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
-        <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">80</span><span class="p">);</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-        <span class="n">block</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-                                    <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add_rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add_rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">each_block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">get_list</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">each_block</span><span class="p">)</span>
+                                        <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
 
-        <span class="c1">## create A BS on the map</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">MyBS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;BS-1&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
+        <span class="c1">## create a BS on the map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">MyBS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;BS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
 
         <span class="c1">## create several passing vehicles</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">150</span><span class="p">)),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">150</span><span class="p">))</span> <span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle1&quot;</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">150</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">210</span><span class="p">)),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">210</span><span class="p">))</span> <span class="p">]</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle1&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">210</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
         <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
-        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">180</span><span class="p">)),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">180</span><span class="p">))</span> <span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle2&quot;</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">180</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">245</span><span class="p">)),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span><span class="mi">245</span><span class="p">))</span> <span class="p">]</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle2&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">245</span><span class="p">),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
         <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
@@ -1658,24 +1731,19 @@ and full control of signal propagation and signal detection logic.</p>
     <span class="c1">## is ended or stopped, perform any user simulation action here</span>
     <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span>
 
-        <span class="c1">## check vehicle connectivity and record signal quality</span>
+        <span class="c1">## BS transmission to vehicles</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
 
-            <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">beacon</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
-            <span class="n">reply_list</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">beacon</span><span class="p">)</span>
-
-            <span class="k">for</span> <span class="p">(</span><span class="n">this_bs</span><span class="p">,</span><span class="n">signal</span><span class="p">)</span> <span class="ow">in</span> <span class="n">reply_list</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">type</span><span class="o">!=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if not a BS type</span>
-
-                <span class="n">beacon_reply</span> <span class="o">=</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
-                <span class="n">recv_signal</span> <span class="o">=</span> <span class="n">this_bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">beacon_reply</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">recv_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># skip if failed, likely not in coverage</span>
-
-                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="n">this_bs</span>
+            <span class="c1">## send a packet to the tracked vehicle</span>
+            <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
+            <span class="n">recv_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">recv_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span>
                 <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span>
-                <span class="n">vehicle</span><span class="o">.</span><span class="n">crossed_obstacle</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">]</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">crossed_obstacle</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">)</span>
 
         <span class="c1">## show connections</span>
         <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
@@ -1707,19 +1775,20 @@ and full control of signal propagation and signal detection logic.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- vehicles move a step every </span><span class="si">%1.2f</span><span class="s2"> s in simulation&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will stop at </span><span class="si">%1.2f</span><span class="s2"> s&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run non-stop&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="c1">## create, setup and run the simulation</span>
     <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
-               <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
-               <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
-               <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
-               <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
+                <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
+                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
+                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
+                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>
@@ -1973,15 +2042,20 @@ with the highest quality (i.e. strongest SNR).</p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
-               <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
-               <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
-               <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-               <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="c1">## create, setup and run the simulation</span>
+    <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
+                <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+                <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        
 </pre></div>
 </div>
 </details></div>
@@ -1992,7 +2066,7 @@ three features:</p>
 <ul class="simple">
 <li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
 <li><p>How to displace a text on the map.</p></li>
-<li><p>How to use <a class="reference internal" href="node.mobility2.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> to create mobility. In this mobility model, 
+<li><p>How to use <a class="reference internal" href="node.mobility2%20%28copy%29.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> to create mobility. In this mobility model, 
 vehicles are aware of others and must follow the vehicles in front. The mobility 
 implementation uses a specic car following model to achieve realistic mobility.</p></li>
 </ul>
@@ -2240,15 +2314,488 @@ around the junctions.</p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
-               <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
-               <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
-               <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-               <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
+                <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+                <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</details></div>
+<div class="section" id="module-example8">
+<span id="example-8"></span><h2>Example 8<a class="headerlink" href="#module-example8" title="Permalink to this headline">¶</a></h2>
+<p>This example demonstrates how to implement intelligent reflecting 
+surface (IRS) using <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It also 
+uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a> for transmission. It 
+illustrates how users can implement multipath signal propagation and 
+detection logic. The example is an extension of example5.py which shows 
+how to use <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It is important
+to understand example5.py first.</p>
+<p>The scenario replicates the experiment of single IRS case presented in [r1].
+See also Fig. 2 in the paper for the experiment setup and Fig. 3 for the
+experiment results.</p>
+<div class="section" id="id1">
+<h3>References<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="citation">
+<dt class="label" id="r89e13abb20a9-r1"><span class="brackets">r1</span></dt>
+<dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
+reflecting surface-assisted millimeter wave communications: Joint 
+active and passive precoding design,” IEEE Transactions on Vehicular 
+Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
+</dd>
+</dl>
+</div>
+<img alt="_images/example8.gif" src="_images/example8.gif" />
+<details class="summary-show-source-code">
+<summary>Show source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This example demonstrates how to implement intelligent reflecting </span>
+<span class="sd">surface (IRS) using :class:`comm.transceiver.UserTransceiver`. It also </span>
+<span class="sd">uses :class:`comm.signalwave.QualityBasedSignal` for transmission. It </span>
+<span class="sd">illustrates how users can implement multipath signal propagation and </span>
+<span class="sd">detection logic. The example is an extension of example5.py which shows </span>
+<span class="sd">how to use :class:`comm.transceiver.UserTransceiver`. It is important</span>
+<span class="sd">to understand example5.py first.</span>
+
+<span class="sd">The scenario replicates the experiment of single IRS case presented in [r1].</span>
+<span class="sd">See also Fig. 2 in the paper for the experiment setup and Fig. 3 for the</span>
+<span class="sd">experiment results.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">.. [r1] P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, &quot;Intelligent </span>
+<span class="sd">    reflecting surface-assisted millimeter wave communications: Joint </span>
+<span class="sd">    active and passive precoding design,&quot; IEEE Transactions on Vehicular </span>
+<span class="sd">    Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">wx</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span><span class="p">,</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
+<span class="kn">from</span> <span class="nn">sim.direction</span> <span class="kn">import</span> <span class="n">Dir2D</span>
+<span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
+<span class="kn">from</span> <span class="nn">sim.drawable</span> <span class="kn">import</span> <span class="n">Drawable</span>
+<span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
+<span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
+<span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">UserTransceiver</span>
+<span class="kn">from</span> <span class="nn">node.obstacle</span> <span class="kn">import</span> <span class="n">Obstacle</span>
+<span class="kn">import</span> <span class="nn">node.type</span> <span class="k">as</span> <span class="nn">NodeType</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1">## define coordination translation to match the example in [r1]</span>
+<span class="c1">####################################################################</span>
+
+<span class="k">def</span> <span class="nf">resolution</span><span class="p">():</span> <span class="c1"># pixel-to-meter ratio</span>
+    <span class="k">return</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">x_val</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">resolution</span><span class="p">()</span><span class="o">*</span><span class="n">x_val</span> <span class="o">+</span> <span class="mi">30</span>
+
+<span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="n">y_val</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">150</span> <span class="o">-</span> <span class="n">resolution</span><span class="p">()</span><span class="o">*</span><span class="n">y_val</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1">## My Transceiver</span>
+<span class="c1">## - Perform own signal propagation and detection logic</span>
+<span class="c1">## - Aware of an obstacle</span>
+<span class="c1">####################################################################</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiver</span><span class="p">(</span><span class="n">UserTransceiver</span><span class="p">):</span>
+
+    <span class="c1">## class constants</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span> <span class="c1"># dBm</span>
+    <span class="n">snr_threshold</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># dB</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">28</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_power</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Use this method to create a signal.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tx_power : float</span>
+<span class="sd">            The transmit power of the signal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The created signal to be used for transmission.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="n">tx_power</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># number of antenna elements</span>
+        <span class="k">return</span> <span class="n">signal</span>
+
+    <span class="k">def</span> <span class="nf">create_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_power</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Use this method to create a signal that is part of a multipath </span>
+<span class="sd">        signal. A multipath signal is a signal that consists of many paths</span>
+<span class="sd">        of transmissions. It is meaningless to decode this signal alone, rather</span>
+<span class="sd">        all parts of the multipath signal should be consolidated first before</span>
+<span class="sd">        judging whether the multipath signal is detectable. To decode all parts,</span>
+<span class="sd">        use `create_final_multipath_signal()` with passing all other parts of the</span>
+<span class="sd">        signal when calling.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tx_power : float</span>
+<span class="sd">            The transmit power of the signal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The created signal to be used for transmission.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tx_power</span><span class="p">)</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;multipath&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># one part of a multipath signal</span>
+        <span class="k">return</span> <span class="n">signal</span>
+
+    <span class="k">def</span> <span class="nf">create_final_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_power</span><span class="p">,</span> <span class="n">signal_list</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Use this method to create a final multipath signal. The receiver</span>
+<span class="sd">        will finally consolidate all parts of the multipath signal and judge </span>
+<span class="sd">        whether the consolidated signal is detectable.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        signal_list : List of :class:`comm.signalwave.QualityBasedSignal`</span>
+<span class="sd">            The list of all other received parts of the multipath signal to be</span>
+<span class="sd">            consolidated for detection.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tx_power</span><span class="p">)</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;multipath signals&quot;</span><span class="p">,</span><span class="n">signal_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">signal</span>
+
+    <span class="k">def</span> <span class="nf">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obstacle_list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="o">=</span> <span class="n">obstacle_list</span>
+
+    <span class="k">def</span> <span class="nf">is_crossed_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_loc</span><span class="p">,</span> <span class="n">rx_loc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">tx_loc</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()</span>
+        <span class="n">point2</span> <span class="o">=</span> <span class="n">rx_loc</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obstacle_list</span><span class="o">.</span><span class="n">is_crossed</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span><span class="n">point2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">can_detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">the_signal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;This is the function to perform signal propagation and</span>
+<span class="sd">        detection logic.&#39;&#39;&#39;</span>
+
+        <span class="c1">## retrieve all key info first</span>
+        <span class="n">tx_power</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">tx_power</span>      <span class="c1"># get the tx power in dBm</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">distance</span>      <span class="c1"># get the distance travelled</span>
+        <span class="n">travelling_dir</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">LOS_dir</span> <span class="c1"># get the travelling direction</span>
+        <span class="n">tx_loc</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span> <span class="c1"># sender location</span>
+        <span class="n">rx_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span>              <span class="c1"># receiver location</span>
+
+        <span class="c1">## check if signal is crossing obstacle</span>
+        <span class="n">is_crossed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_crossed_obstacle</span><span class="p">(</span><span class="n">tx_loc</span><span class="p">,</span><span class="n">rx_loc</span><span class="p">)</span>
+
+        <span class="c1">## apply simple passloss model c0*d^(-α), where</span>
+        <span class="c1">#  - d is the distance, in our system, 2 pixels = 1m, minimum 1m</span>
+        <span class="c1">#  - α is the pathloss exponent, 2 for normal, 2.92 when crossing an obstacle</span>
+        <span class="c1">#  - c0 is the gain/loss</span>
+        <span class="c1">## pathloss PL_db = log10(c0) + 10α*log10(d)</span>
+        <span class="n">distance</span> <span class="o">/=</span> <span class="n">resolution</span><span class="p">()</span>  <span class="c1"># convert pixel-to-meter</span>
+        <span class="k">if</span> <span class="n">distance</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span> <span class="n">distance</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># min 1m</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_crossed</span> <span class="k">else</span> <span class="mf">2.92</span>   <span class="c1"># set pathloss exponent</span>
+        <span class="n">log_c0</span> <span class="o">=</span> <span class="mf">61.4</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_crossed</span> <span class="k">else</span> <span class="mi">72</span> <span class="c1"># set loss</span>
+        <span class="n">pathloss_db</span> <span class="o">=</span> <span class="n">log_c0</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+
+        <span class="c1">## received power including the gain from the number of antenna elements</span>
+        <span class="n">ant_element_num</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">)</span>
+        <span class="n">received_power</span> <span class="o">=</span> <span class="n">tx_power</span> <span class="o">-</span> <span class="n">pathloss_db</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ant_element_num</span><span class="p">)</span>
+
+        <span class="c1">## check if the signal is one part of a multipath signal</span>
+        <span class="c1">## if so, return True for detectability</span>
+        <span class="k">if</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;multipath&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="n">received_power</span>
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">,</span><span class="n">is_crossed</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span> <span class="c1"># can detect as one of the multipath signals</span>
+
+        <span class="c1">## check if the signal is the final part of a multipath signal</span>
+        <span class="c1">## if so, consolidate all received powers</span>
+        <span class="n">multipath_signal_list</span> <span class="o">=</span> <span class="n">the_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;multipath signals&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">multipath_signal_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">received_power_mW</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">received_power</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># from this signal</span>
+            <span class="k">for</span> <span class="n">each_signal</span> <span class="ow">in</span> <span class="n">multipath_signal_list</span><span class="p">:</span>
+                <span class="n">received_power_mW</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">each_signal</span><span class="o">.</span><span class="n">quality</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># each other part</span>
+            <span class="n">received_power</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">received_power_mW</span><span class="p">)</span>
+
+        <span class="c1">## check if the signal is detectable, i.e. its SNR</span>
+        <span class="c1">## exceeds the threshold (default setting, see `MyTransceiver.snr_threshold`)</span>
+        <span class="n">snr</span> <span class="o">=</span> <span class="n">received_power</span><span class="o">-</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
+        <span class="k">if</span> <span class="n">snr</span><span class="o">&gt;=</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">snr_threshold</span><span class="p">:</span> 
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="n">received_power</span>
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">,</span><span class="n">is_crossed</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span> <span class="c1"># can detect</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">the_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="kc">False</span> <span class="c1"># cannot detect</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiverBS</span><span class="p">(</span><span class="n">MyTransceiver</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># dBm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span> <span class="o">=</span> <span class="mi">64</span>
+
+    <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">the_signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span><span class="p">)</span>
+        <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span><span class="p">)</span> <span class="c1"># number of antenna elements</span>
+        <span class="k">return</span> <span class="n">the_signal</span>
+
+    <span class="k">def</span> <span class="nf">create_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">the_signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span><span class="p">)</span>
+        <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span><span class="p">)</span> <span class="c1"># number of antenna elements</span>
+        <span class="k">return</span> <span class="n">the_signal</span>
+
+    <span class="k">def</span> <span class="nf">create_final_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_list</span><span class="p">):</span>
+        <span class="n">the_signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_final_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tx_power</span><span class="p">,</span> <span class="n">signal_list</span><span class="p">)</span>
+        <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span><span class="p">)</span> <span class="c1"># number of antenna elements</span>
+        <span class="k">return</span> <span class="n">the_signal</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiverIRS</span><span class="p">(</span><span class="n">MyTransceiver</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span> <span class="o">=</span> <span class="mi">200</span>
+
+    <span class="k">def</span> <span class="nf">is_crossed_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_loc</span><span class="p">,</span> <span class="n">rx_loc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&#39;&#39;&#39;Use this method to ignore obstacle between BS and IRS.&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">create_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="c1"># Do not use. IRS can&#39;t create own signal, it can only relay signal</span>
+
+    <span class="k">def</span> <span class="nf">create_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx_power</span><span class="p">):</span>
+        <span class="n">the_signal</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">(</span><span class="n">tx_power</span><span class="p">)</span>
+        <span class="n">the_signal</span><span class="o">.</span><span class="n">add_info</span><span class="p">(</span><span class="s2">&quot;ant element&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ant_element</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># IRS uses squared elements</span>
+        <span class="k">return</span> <span class="n">the_signal</span>
+
+    <span class="k">def</span> <span class="nf">create_final_multipath_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="c1"># Do not use. IRS should not create final signal</span>
+
+<span class="k">class</span> <span class="nc">MyTransceiverVehicle</span><span class="p">(</span><span class="n">MyTransceiver</span><span class="p">):</span>
+    <span class="k">pass</span> <span class="c1"># there is nothing needed to customize</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1">## Nodes</span>
+<span class="c1">####################################################################</span>
+
+<span class="k">class</span> <span class="nc">MyBS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    MyBS: This is a base station in the VANET sim world implementing </span>
+<span class="sd">    a user-defined transceiver.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiverBS</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1">## setup the BS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    MyVehicle: This is a transmitting node in the VANET sim world implementing </span>
+<span class="sd">    a user-defined transceiver.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="c1">## initialize some properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiverVehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crossed_obstacle</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1">## draw a line to the connected BS, if any</span>
+    <span class="k">def</span> <span class="nf">show_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>
+        <span class="n">y_text_pos</span> <span class="o">=</span> <span class="mi">15</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">associated_irs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">30</span>
+        <span class="n">y_text</span> <span class="o">=</span> <span class="s2">&quot;Without IRS&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">associated_irs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;With IRS&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">associated_bs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">y_text_pos</span><span class="p">,</span>
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%1.2f</span><span class="s2">dB&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">y_text</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_quality</span><span class="o">-</span><span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span><span class="p">),</span>
+                    <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">y_text_pos</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: No Signal&quot;</span><span class="o">%</span><span class="n">y_text</span><span class="p">,</span>
+                            <span class="n">wx</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTFAMILY_ROMAN</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">FONTSTYLE_NORMAL</span><span class="p">,</span> 
+                                        <span class="n">wx</span><span class="o">.</span><span class="n">FONTWEIGHT_NORMAL</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">MyIRS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    MyIRS: This is an intelligent refecting surface (IRS).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">azimuth</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">IRS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span> <span class="o">=</span> <span class="n">MyTransceiverIRS</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1">## setup the sector</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transceiver</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">direction</span><span class="o">=</span><span class="n">Dir2D</span><span class="p">(</span><span class="n">azimuth</span><span class="p">)))</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1">## Scenario</span>
+<span class="c1">####################################################################</span>
+
+<span class="k">class</span> <span class="nc">MyScenario</span><span class="p">(</span><span class="n">BaseScenario</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    MyScenario: This is my scenario.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">##---------------------------------------------------------------</span>
+    <span class="c1">## This method will be called before the start of the simulation,</span>
+    <span class="c1">## build the simulation world here</span>
+    <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+        <span class="c1">## give a name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;Demonstration of IRS&quot;</span><span class="p">)</span>
+
+        <span class="c1">## create an obstacle to block the BS and the UE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span> <span class="o">=</span> <span class="n">Obstacle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">add_rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">w</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">each_block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="o">.</span><span class="n">get_list</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_drawable</span><span class="p">(</span><span class="n">Drawable</span><span class="p">()</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">each_block</span><span class="p">)</span>
+                                        <span class="o">.</span><span class="n">set_drawing</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span><span class="n">wx</span><span class="o">.</span><span class="n">YELLOW_BRUSH</span><span class="p">))</span>
+
+        <span class="c1">## create a BS on the map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">MyBS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;BS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+
+        <span class="c1">## create an IRS on the map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span> <span class="o">=</span> <span class="n">MyIRS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;IRS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">119</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)),</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+
+        <span class="c1">## create a UEs twin, one assited by IRS, one without</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">135</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="p">]</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">135</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="p">]</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MyVehicle</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;Vehicle-with-IRS&quot;</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">))</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">set_obstacle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_obstacle_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1">##-------------------------------------------------------------</span>
+    <span class="c1">## This method will be called repeatedly until the simulation</span>
+    <span class="c1">## is ended or stopped, perform any user simulation action here</span>
+    <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span>
+
+        <span class="n">snr_irs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">snr_no_irs</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1">## BS transmission to vehicles</span>
+        <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
+
+            <span class="c1">## only `Vehicle-with-IRS` receives reflection from IRS</span>
+            <span class="c1">## it will receive a multpath signal, one from IRS, another from BS</span>
+            <span class="c1">## here we create irs2node_signal first</span>
+            <span class="n">irs2node_signal</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">use_irs</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># to disable IRS, set it to False</span>
+            <span class="k">if</span> <span class="n">use_irs</span> <span class="ow">and</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="s2">&quot;Vehicle-with-IRS&quot;</span><span class="p">:</span>
+                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">()</span>
+                <span class="n">bs2irs_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">bs2irs_signal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">relay_packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_multipath_signal</span><span class="p">(</span><span class="n">bs2irs_signal</span><span class="o">.</span><span class="n">quality</span><span class="p">)</span>
+                    <span class="n">irs2node_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">relay_packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+
+            <span class="c1">## check whether BS to Vehicle is single or multipath</span>
+            <span class="k">if</span> <span class="n">irs2node_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># no other path?</span>
+                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">create_final_multipath_signal</span><span class="p">([</span><span class="n">irs2node_signal</span><span class="p">])</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">irs</span>
+
+            <span class="c1">## retrieve the received signal after unicasting</span>
+            <span class="n">recv_signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">transceiver</span><span class="o">.</span><span class="n">unicast</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">recv_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_irs</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">associated_bs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">connection_quality</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span>
+                <span class="n">vehicle</span><span class="o">.</span><span class="n">crossed_obstacle</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;crossed_obstacle&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">irs2node_signal</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">snr_no_irs</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">-</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">snr_irs</span> <span class="o">=</span> <span class="n">recv_signal</span><span class="o">.</span><span class="n">quality</span> <span class="o">-</span> <span class="n">MyTransceiver</span><span class="o">.</span><span class="n">noise</span>
+
+        <span class="c1">## show signal strength</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">))</span>
+        <span class="n">distance</span> <span class="o">/=</span> <span class="n">resolution</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance = </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;Without IRS = </span><span class="si">{</span><span class="n">snr_no_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB, &quot;</span> 
+              <span class="sa">f</span><span class="s2">&quot;With IRS = </span><span class="si">{</span><span class="n">snr_irs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB&quot;</span><span class="p">)</span>
+
+        <span class="c1">## show connections</span>
+        <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicles</span><span class="p">:</span>
+            <span class="n">vehicle</span><span class="o">.</span><span class="n">show_connection</span><span class="p">()</span>
+
+<span class="c1">####################################################################</span>
+<span class="c1">## main</span>
+<span class="c1">####################################################################</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="c1">## command line parameters</span>
+    <span class="n">parser</span><span class="p">:</span> <span class="n">ArgumentParser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--nodisplay&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run in no GUI mode&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--step&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Mobility step time (in sec)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--speed&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Animation playback speed (x times)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--duration&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Simulation duration (in sec), -1 for non-stop&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">args</span><span class="p">:</span> <span class="n">Namespace</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="c1">## welcome info</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A Simple VANET Environment. Press [^C] to quit&quot;</span><span class="p">)</span>
+    <span class="c1">#args.nodisplay = True  # &lt;-- hardcoding no GUI mode</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mf">0.1</span>         <span class="c1"># &lt;-- hardcoding the mobility step time</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># &lt;-- hardcoding the animation speed (times)</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">9.0</span>     <span class="c1"># &lt;-- hardcoding the sim duration (sec)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">:</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run without animation&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- animation will playback at x</span><span class="si">%1.2f</span><span class="s2"> speed&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- vehicles move a step every </span><span class="si">%1.2f</span><span class="s2"> s in simulation&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will stop at </span><span class="si">%1.2f</span><span class="s2"> s&quot;</span><span class="o">%</span><span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- simulation will run non-stop&quot;</span><span class="p">)</span>
+
+    <span class="c1">## create, setup and run the simulation</span>
+    <span class="c1">## note that to run a simulation, we need to create a &#39;scenario&#39;</span>
+    <span class="n">run_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">run_flag</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> 
+                <span class="n">sim_step</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> 
+                <span class="n">sim_speed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> 
+                <span class="n">display_option</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">nodisplay</span><span class="p">,</span> 
+                <span class="n">scenario</span> <span class="o">=</span> <span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running PyMoSim version v</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">sim</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">run_flag</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </details></div>

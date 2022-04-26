@@ -34,7 +34,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="node.timer module" href="node.timer.html" />
+    <link rel="next" title="node.obstacle module" href="node.obstacle.html" />
     <link rel="prev" title="node.mobility2 module" href="node.mobility2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -147,6 +147,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2%20%28copy%29.html">
+   node.mobility2 (copy) module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.mobility2.html">
    node.mobility2 module
   </a>
@@ -154,6 +159,16 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    node.node module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.obstacle.html">
+   node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -296,19 +311,22 @@ on the screen. Different types will be drawn differently.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset" title="node.node.BaseNode.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Reset the global node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>
@@ -412,6 +430,18 @@ the scenario class.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="node.node.BaseNode.reset">
+<em class="property">static </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the global node list.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User simulation should not call this method. This method is used
+for simulation engine to start a new simulation with proper
+initialization.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt id="node.node.BaseNode.remove_from_simulation">
 <code class="sig-name descname">remove_from_simulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.node.BaseNode.remove_from_simulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used to remove this node from the simulation.</p>
@@ -511,7 +541,7 @@ of <a class="reference internal" href="sim.direction.html#sim.direction.DIR" tit
 can be lower due to other slow moving vehicles in front.</p></li>
 <li><p>“displacement”: the distance travelled in the last simulation step, return a float.
 Displacement can be useful to calculate the actual speed. 
-(NOTE: currently not supported, throws system error if called)</p></li>
+(Note: currently not supported, throws system error if called)</p></li>
 <li><p>“mobility”: the mobility instance of the node, return an instance of
 <a class="reference internal" href="node.mobility.html#node.mobility.BaseMobility" title="node.mobility.BaseMobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility.BaseMobility</span></code></a> subclass.</p></li>
 <li><p>“transceiver”: the transceiver instance of the node.</p></li>
