@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sim package" href="sim.html" />
@@ -152,6 +153,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2b.html">
+   node.mobility2b module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility3.html">
+   node.mobility3 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
   </a>
@@ -159,6 +170,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.obstacle.html">
    node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -242,10 +258,10 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#irs">
+    <a class="reference internal nav-link" href="#ris">
      <code class="xref py py-class docutils literal notranslate">
       <span class="pre">
-       IRS
+       RIS
       </span>
      </code>
     </a>
@@ -363,10 +379,10 @@ corresponding abstract methods, for example:</p>
 <div><p>It is a drone type.</p>
 </div></blockquote>
 </div>
-<div class="section" id="irs">
-<h3><a class="reference internal" href="#node.type.IRS" title="node.type.IRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRS</span></code></a><a class="headerlink" href="#irs" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ris">
+<h3><a class="reference internal" href="#node.type.RIS" title="node.type.RIS"><code class="xref py py-class docutils literal notranslate"><span class="pre">RIS</span></code></a><a class="headerlink" href="#ris" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>It is a type of Intelligent Reflecting Surface (IRS).</p>
+<div><p>It is a type of Reconfigurable Intelligent Surface (RIS).</p>
 </div></blockquote>
 <hr class="docutils" />
 <dl class="py class">
@@ -619,8 +635,8 @@ the moving direction.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="node.type.IRS">
-<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">IRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS" title="Permalink to this definition">¶</a></dt>
+<dt id="node.type.RIS">
+<em class="property">class </em><code class="sig-prename descclassname">node.type.</code><code class="sig-name descname">RIS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.RIS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#node.type.BaseType" title="node.type.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.BaseType</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -629,7 +645,7 @@ the moving direction.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.IRS.draw" title="node.type.IRS.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.type.RIS.draw" title="node.type.RIS.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
 <td><p>It draws a circle on the map.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
@@ -652,19 +668,19 @@ the moving direction.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="node.type.IRS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="node.type.RIS.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.RIS.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.type.IRS.set_colors">
-<code class="sig-name descname">set_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">face</span></em>, <em class="sig-param"><span class="n">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.set_colors" title="Permalink to this definition">¶</a></dt>
+<dt id="node.type.RIS.set_colors">
+<code class="sig-name descname">set_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">face</span></em>, <em class="sig-param"><span class="n">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.RIS.set_colors" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="node.type.IRS.draw">
-<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.IRS.draw" title="Permalink to this definition">¶</a></dt>
+<dt id="node.type.RIS.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.type.RIS.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>It draws a circle on the map.</p>
 </dd></dl>
 

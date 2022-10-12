@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node.mobility module" href="node.mobility.html" />
@@ -152,6 +153,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2b.html">
+   node.mobility2b module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility3.html">
+   node.mobility3 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
   </a>
@@ -159,6 +170,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.obstacle.html">
    node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -233,13 +249,17 @@ in this class are directly useable by a node instance. For example, to
 put a circle around a node, simply call:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
 <span class="o">...</span>
-<span class="n">my_node</span><span class="o">.</span><span class="n">draw_circle</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span> <span class="n">brush</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TRANSPARENT_BRUSH</span><span class="p">)</span>
+<span class="n">my_shape</span> <span class="o">=</span> <span class="n">my_node</span><span class="o">.</span><span class="n">draw_circle</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pen</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BLUE_PEN</span><span class="p">,</span> <span class="n">brush</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TRANSPARENT_BRUSH</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">my_node</span><span class="o">.</span><span class="n">del_drawable</span><span class="p">(</span><span class="n">my_shape</span><span class="p">)</span>  <span class="c1"># remove the circle</span>
+<span class="o">...</span>
+<span class="n">my_node</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>         <span class="c1"># remove all drawables</span>
 </pre></div>
 </div>
 <p>The above will draw a blue circle around the node, and will follow the node if
 the node has moved to a new location. The circle will remain persistently 
 around the node on the screen until the user simulation explicitly delete it 
-or clear all shapes for the node.</p>
+or clear all shapes for the node (see above).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To draw a shape or text on the map which is not necessary related to 
@@ -256,30 +276,33 @@ your scenario using the methods provided by
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.clear_drawing" title="node.draw.Drawing.clear_drawing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code></a>()</p></td>
-<td><p>Clear the drawing for this node.</p></td>
+<td><p>Clear the drawing for this node by removing all drawables associated with this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_circle" title="node.draw.Drawing.del_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code></a>(radius)</p></td>
-<td><p>Remove an earlier added circle for this node.</p></td>
+<td><p>(Deprecated) Remove an earlier added circle for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_line" title="node.draw.Drawing.del_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code></a>(other_node)</p></td>
-<td><p>Remove an earlier added line for this node.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_drawable" title="node.draw.Drawing.del_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_drawable</span></code></a>(drawable)</p></td>
+<td><p>Remove a specific drawable from the drawing list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_sector" title="node.draw.Drawing.del_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
-<td><p>Remove an earlier added sector drawing.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_line" title="node.draw.Drawing.del_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code></a>(other_node)</p></td>
+<td><p>(Deprecated) Remove an earlier added line for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_text" title="node.draw.Drawing.del_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code></a>(dx, dy, text)</p></td>
-<td><p>Remove an earlier added text message.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.del_sector" title="node.draw.Drawing.del_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
+<td><p>(Deprecated) Remove an earlier added sector drawing.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_circle" title="node.draw.Drawing.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(radius[, pen, brush])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.del_text" title="node.draw.Drawing.del_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code></a>(dx, dy, text)</p></td>
+<td><p>(Deprecated) Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_circle" title="node.draw.Drawing.draw_circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code></a>(radius[, pen, brush])</p></td>
 <td><p>Put a circle around this node where the node is the center of the circle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_line" title="node.draw.Drawing.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(other_node[, pen, brush])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_line" title="node.draw.Drawing.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_sector" title="node.draw.Drawing.draw_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_sector" title="node.draw.Drawing.draw_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
 </tbody>
@@ -294,7 +317,25 @@ there is no reason for user simulation to instantiate this class.</p>
 <dl class="py method">
 <dt id="node.draw.Drawing.clear_drawing">
 <code class="sig-name descname">clear_drawing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.clear_drawing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear the drawing for this node.</p>
+<dd><p>Clear the drawing for this node by removing all drawables
+associated with this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_drawable">
+<code class="sig-name descname">del_drawable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">drawable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_drawable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a specific drawable from the drawing list. The 
+removed drawable will no longer be drawn on the screen in
+the future. If the drawable is not found, nothing will
+happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>drawable</strong><span class="classifier">a drawable reference returned by a draw function</span></dt><dd><p>The drawable to be removed from the drawing list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -314,18 +355,12 @@ it uses the predefined brush.</p>
 </dd>
 </dl>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.del_circle">
-<code class="sig-name descname">del_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_circle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an earlier added circle for this node. If there is 
-no such circle added to the node, nothing will happen.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the circle to be removed.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Reference to the drawable instance</dt><dd><p>The instance should not be used directly in the
+user simulation. To remove this drawable from the drawing
+list, simple use this reference in <cite>del_drawable()</cite> method.
+If no drawable is created, <cite>None</cite> is returned.</p>
 </dd>
 </dl>
 </dd>
@@ -351,18 +386,12 @@ it uses the predefined brush.</p>
 </dd>
 </dl>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.del_line">
-<code class="sig-name descname">del_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an earlier added line for this node.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>other_node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The line that is connected to the other node. If found, this line
-will be removed from the drawing list.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Reference to the drawable instance</dt><dd><p>The instance should not be used directly in the
+user simulation. To remove this drawable from the drawing
+list, simple use this reference in <cite>del_drawable()</cite> method.
+If no drawable is created, <cite>None</cite> is returned.</p>
 </dd>
 </dl>
 </dd>
@@ -393,24 +422,12 @@ it uses the predefined brush.</p>
 </dd>
 </dl>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="node.draw.Drawing.del_sector">
-<code class="sig-name descname">del_sector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em>, <em class="sig-param"><span class="n">width_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_sector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an earlier added sector drawing. If there is 
-no such sector added to the node, nothing will happen.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the sector to be found for removal.</p>
-</dd>
-<dt><strong>pointing_angle</strong><span class="classifier">float</span></dt><dd><p>The pointing azimuth angle of the sector (in degrees) 
-to be found for removal.</p>
-</dd>
-<dt><strong>width_angle</strong><span class="classifier">float</span></dt><dd><p>The width angle of the sector (in degrees)
-to be found for removal.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Reference to the drawable instance</dt><dd><p>The instance should not be used directly in the
+user simulation. To remove this drawable from the drawing
+list, simple use this reference in <cite>del_drawable()</cite> method.
+If no drawable is created, <cite>None</cite> is returned.</p>
 </dd>
 </dl>
 </dd>
@@ -440,15 +457,95 @@ it uses the predefined brush.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Reference to the drawable instance</dt><dd><p>The instance should not be used directly in the
+user simulation. To remove this drawable from the drawing
+list, simple use this reference in <cite>del_drawable()</cite> method.
+If no drawable is created, <cite>None</cite> is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_circle">
+<code class="sig-name descname">del_circle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Deprecated) Remove an earlier added circle for this node. 
+If there is no such circle added to the node, nothing will happen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is deprecated and will be removed in the future.
+Please use <cite>del_drawable()</cite> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the circle to be removed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_line">
+<code class="sig-name descname">del_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Deprecated) Remove an earlier added line for this node.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is deprecated and will be removed in the future.
+Please use <cite>del_drawable()</cite> instead.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>other_node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The line that is connected to the other node. If found, this line
+will be removed from the drawing list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.del_sector">
+<code class="sig-name descname">del_sector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em>, <em class="sig-param"><span class="n">width_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_sector" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Deprecated) Remove an earlier added sector drawing. If there is 
+no such sector added to the node, nothing will happen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is deprecated and will be removed in the future.
+Please use <cite>del_drawable()</cite> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The radius that the sector to be found for removal.</p>
+</dd>
+<dt><strong>pointing_angle</strong><span class="classifier">float</span></dt><dd><p>The pointing azimuth angle of the sector (in degrees) 
+to be found for removal.</p>
+</dd>
+<dt><strong>width_angle</strong><span class="classifier">float</span></dt><dd><p>The width angle of the sector (in degrees)
+to be found for removal.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="node.draw.Drawing.del_text">
 <code class="sig-name descname">del_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_text" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an earlier added text message. The text message will be 
-removed if all the provided properties match. If a matcch is not
-found, nothing will happen.</p>
+<dd><p>(Deprecated) Remove an earlier added text message. The text 
+message will be removed if all the provided properties match. 
+If a matcch is not found, nothing will happen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is deprecated and will be removed in the future.
+Please use <cite>del_drawable()</cite> instead.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">

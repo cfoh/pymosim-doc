@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node package" href="node.html" />
@@ -736,7 +737,7 @@ direction.</p>
 <dd><p>Bases: <a class="reference internal" href="#comm.transceiver.BaseTransceiver" title="comm.transceiver.BaseTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.BaseTransceiver</span></code></a></p>
 <p>This abstract class provides a transceiver specification allowing user to 
 define its behaviour. This class should be extended to a subclass for actual
-use. Bedides, this class should use a signal extended from 
+use. Besides, this class should use a signal extended from 
 <a class="reference internal" href="comm.signalwave.html#comm.signalwave.BaseSignal" title="comm.signalwave.BaseSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.BaseSignal</span></code></a>. A simple choice is to use
 <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a>. By default, this class
 provides <cite>create_signal()</cite> to create a signal of

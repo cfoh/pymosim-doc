@@ -32,9 +32,10 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="node.timer module" href="node.timer.html" />
+    <link rel="next" title="node.routemobi module" href="node.routemobi.html" />
     <link rel="prev" title="node.node module" href="node.node.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -152,6 +153,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2b.html">
+   node.mobility2b module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility3.html">
+   node.mobility3 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
   </a>
@@ -159,6 +170,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -218,9 +234,9 @@ obstacles crossed if required.</p>
 <ul class="simple">
 <li><p>Although the coordinates of obstacles can be float or integer type, it is 
 strongly recommended to use integer for speed consideration.</p></li>
-<li><p>Implementing this class in Python isn’t efficient, suggest using</p></li>
+<li><p>Implementing this class in Python isn’t efficient, suggest using 
+<cite>shapely</cite> package or use Cython to compile _LSI functions into C language.</p></li>
 </ul>
-<p><cite>shapely</cite> package or use Cython to compile _LSI functions into C language.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

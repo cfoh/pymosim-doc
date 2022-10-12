@@ -32,10 +32,11 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node.obstacle module" href="node.obstacle.html" />
-    <link rel="prev" title="node.mobility2 module" href="node.mobility2.html" />
+    <link rel="prev" title="node.mobility3 module" href="node.mobility3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -151,6 +152,16 @@
    node.mobility2 module
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2b.html">
+   node.mobility2b module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility3.html">
+   node.mobility3 module
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    node.node module
@@ -159,6 +170,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.obstacle.html">
    node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1">
@@ -254,69 +270,72 @@ on the screen. Different types will be drawn differently.</p>
 <td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
-<td><p>Clear the drawing for this node.</p></td>
+<td><p>Clear the drawing for this node by removing all drawables associated with this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
-<td><p>Remove an earlier added circle for this node.</p></td>
+<td><p>(Deprecated) Remove an earlier added circle for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
-<td><p>Remove an earlier added line for this node.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_drawable</span></code>(drawable)</p></td>
+<td><p>Remove a specific drawable from the drawing list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
-<td><p>Remove an earlier added sector drawing.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>(Deprecated) Remove an earlier added line for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
-<td><p>Remove an earlier added text message.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>(Deprecated) Remove an earlier added sector drawing.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>(Deprecated) Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
 <td><p>Put a circle around this node where the node is the center of the circle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get_color" title="node.node.BaseNode.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_color" title="node.node.BaseNode.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
 <td><p>Provide the list of all nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.is_disabled" title="node.node.BaseNode.is_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.is_disabled" title="node.node.BaseNode.is_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code></a>()</p></td>
 <td><p>Use this method to check if a node is disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.is_visible" title="node.node.BaseNode.is_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.is_visible" title="node.node.BaseNode.is_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code></a>()</p></td>
 <td><p>Use this method to check if a node is visible.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.lookup" title="node.node.BaseNode.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.lookup" title="node.node.BaseNode.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(id)</p></td>
 <td><p>This is a static method for performing a lookup for the node with <cite>id</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset" title="node.node.BaseNode.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.reset" title="node.node.BaseNode.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the global node list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>

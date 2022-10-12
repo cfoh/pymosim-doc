@@ -5,6 +5,8 @@ pymosim
    :maxdepth: 4
 
    comm
+   editmap
+   editor
    example1
    example2
    example3
@@ -16,4 +18,10 @@ pymosim
    map
    node
    sim
-
+   test-example9
+   test-irs
+   test-jack
+   test-main
+   test-traffic-light
+   test2
+   test2-old

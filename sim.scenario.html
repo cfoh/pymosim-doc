@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sim.simsystem module" href="sim.simsystem.html" />
@@ -176,6 +177,11 @@
    sim.simulation module
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.version.html">
+   sim.version module
+  </a>
+ </li>
 </ul>
 
   </div>
@@ -297,32 +303,38 @@ abstract class.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.add_drawable" title="sim.scenario.BaseScenario.add_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_drawable</span></code></a>(drawable)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.add_button" title="sim.scenario.BaseScenario.add_button"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_button</span></code></a>(id, label)</p></td>
+<td><p>Add a button to the user defined space on the simulation window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.add_drawable" title="sim.scenario.BaseScenario.add_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_drawable</span></code></a>(drawable)</p></td>
 <td><p>Use this method to add a persistent drawable on the scenario background.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.change_sim_stop_time" title="sim.scenario.BaseScenario.change_sim_stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code></a>(new_time)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.change_sim_stop_time" title="sim.scenario.BaseScenario.change_sim_stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code></a>(new_time)</p></td>
 <td><p>Change the simulation stop time to a new stop time.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.get_setting" title="sim.scenario.BaseScenario.get_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code></a>(setting_str)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.get_setting" title="sim.scenario.BaseScenario.get_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code></a>(setting_str)</p></td>
 <td><p>Get the simulation setting.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.has_map" title="sim.scenario.BaseScenario.has_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.has_map" title="sim.scenario.BaseScenario.has_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code></a>()</p></td>
 <td><p>Check whether this scenario has a valid street map object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.on_create" title="sim.scenario.BaseScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.on_create" title="sim.scenario.BaseScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>()</p></td>
 <td><p>This is an event listener which will be called when the scenario object is being created.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.on_event" title="sim.scenario.BaseScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.on_event" title="sim.scenario.BaseScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
 <td><p>This is an event listener which will be called when an event occurs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.remove_drawable" title="sim.scenario.BaseScenario.remove_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code></a>(drawable)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.remove_drawable" title="sim.scenario.BaseScenario.remove_drawable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code></a>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_background" title="sim.scenario.BaseScenario.set_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code></a>(bitmap[, x, y, zoom])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_background" title="sim.scenario.BaseScenario.set_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code></a>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_name" title="sim.scenario.BaseScenario.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.set_name" title="sim.scenario.BaseScenario.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.sim__get_control" title="sim.scenario.BaseScenario.sim__get_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code></a>()</p></td>
+<td><p>Get the user defined contols.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sim.scenario.BaseScenario.use_map" title="sim.scenario.BaseScenario.use_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code></a>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
@@ -387,6 +399,26 @@ check the type of the event object and handle the event accordingly.</p>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.scenario.BaseScenario.add_button">
+<code class="sig-name descname">add_button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">label</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.add_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a button to the user defined space on the simulation window.
+This method should only be called within <cite>on_create()</cite> event. After
+the event, calling to this method will have no effect.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.scenario.BaseScenario.sim__get_control">
+<code class="sig-name descname">sim__get_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario.sim__get_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the user defined contols.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User simulation should not use this method. It is used for the
+simulation engine to retrieve user defined controls after the
+scenario setup.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">

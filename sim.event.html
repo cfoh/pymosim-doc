@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sim.frame module" href="sim.frame.html" />
@@ -174,6 +175,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="sim.simulation.html">
    sim.simulation module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.version.html">
+   sim.version module
   </a>
  </li>
 </ul>
@@ -367,6 +373,16 @@ Use the following to retrieve the details:</p>
 <ul class="simple">
 <li><p><cite>get(“node”)</cite>: to retrieve the node that initiated the timer.</p></li>
 <li><p><cite>get(“timer”)</cite>: to retrieve the timer instance.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="sim.event.Event.BUTTON_CLICKED">
+<code class="sig-name descname">BUTTON_CLICKED</code><em class="property"> = &lt;enum.auto object&gt;</em><a class="headerlink" href="#sim.event.Event.BUTTON_CLICKED" title="Permalink to this definition">¶</a></dt>
+<dd><p>It indicates a user-defined button has been clicked.
+Use the following to retrieve the details:</p>
+<ul class="simple">
+<li><p><cite>get(“id”)</cite>: to retrieve the control id.</p></li>
 </ul>
 </dd></dl>
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>node package &#8212; PyMoSim v0.8 Manual</title>
+    <title>sim.version module &#8212; PyMoSim v0.8 Manual</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -35,8 +35,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="node.draw module" href="node.draw.html" />
-    <link rel="prev" title="comm.transceiver module" href="comm.transceiver.html" />
+    <link rel="next" title="map package" href="map.html" />
+    <link rel="prev" title="sim.simulation module" href="sim.simulation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -76,13 +76,13 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="current reference internal nav-link" href="#">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
   node package
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
+<li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="sim.html">
   sim package
  </a>
@@ -136,55 +136,50 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <ul class="nav bd-sidenav">
+    <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="node.draw.html">
-   node.draw module
+  <a class="reference internal" href="sim.direction.html">
+   sim.direction module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.mobility.html">
-   node.mobility module
+  <a class="reference internal" href="sim.drawable.html">
+   sim.drawable module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.mobility2.html">
-   node.mobility2 module
+  <a class="reference internal" href="sim.event.html">
+   sim.event module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.mobility2b.html">
-   node.mobility2b module
+  <a class="reference internal" href="sim.frame.html">
+   sim.frame module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.mobility3.html">
-   node.mobility3 module
+  <a class="reference internal" href="sim.loc.html">
+   sim.loc module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.node.html">
-   node.node module
+  <a class="reference internal" href="sim.scenario.html">
+   sim.scenario module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.obstacle.html">
-   node.obstacle module
+  <a class="reference internal" href="sim.simsystem.html">
+   sim.simsystem module
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="node.routemobi.html">
-   node.routemobi module
+  <a class="reference internal" href="sim.simulation.html">
+   sim.simulation module
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="node.timer.html">
-   node.timer module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="node.type.html">
-   node.type module
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   sim.version module
   </a>
  </li>
 </ul>
@@ -201,24 +196,9 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submodules">
-   Submodules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-node">
-   Module contents
-  </a>
- </li>
-</ul>
-
+    
 </nav>
               </div>
               
@@ -238,47 +218,36 @@
               
               <div>
                 
-  <div class="section" id="node-package">
-<h1>node package<a class="headerlink" href="#node-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="node.draw.html">node.draw module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.mobility.html">node.mobility module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="node.mobility.html#list-of-classes">List of Classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="node.mobility.html#basemobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMobility</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.mobility.html#stationary"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stationary</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.mobility.html#staticpath"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticPath</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="node.mobility2.html">node.mobility2 module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.mobility2b.html">node.mobility2b module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.mobility3.html">node.mobility3 module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.node.html">node.node module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.obstacle.html">node.obstacle module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.routemobi.html">node.routemobi module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.timer.html">node.timer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="node.type.html">node.type module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="node.type.html#list-of-classes">List of Classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#basetype"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseType</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hidden</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#basestation"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStation</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#drone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drone</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="node.type.html#ris"><code class="xref py py-class docutils literal notranslate"><span class="pre">RIS</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+  <div class="section" id="module-sim.version">
+<span id="sim-version-module"></span><h1>sim.version module<a class="headerlink" href="#module-sim.version" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>version</cite> contains <cite>Version</cite> class which is used to store
+the latest version of PyMoSim.</p>
+<p>The latest version of PyMoSim can be shown by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Running PyMoSim version v%d.%d.%d”%sim.version())</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2022)</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="module-node">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-node" title="Permalink to this headline">¶</a></h2>
-</div>
+<dl class="py class">
+<dt id="sim.version.Version">
+<em class="property">class </em><code class="sig-prename descclassname">sim.version.</code><code class="sig-name descname">Version</code><a class="headerlink" href="#sim.version.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class stores the release version of the simulator.</p>
+<dl class="py attribute">
+<dt id="sim.version.Version.release_version">
+<code class="sig-name descname">release_version</code><em class="property"> = (0, 8, 9)</em><a class="headerlink" href="#sim.version.Version.release_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current release version of PyMoSim containing <cite>(major,minor,build)</cite> version.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

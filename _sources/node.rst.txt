@@ -10,8 +10,11 @@ Submodules
    node.draw
    node.mobility
    node.mobility2
+   node.mobility2b
+   node.mobility3
    node.node
    node.obstacle
+   node.routemobi
    node.timer
    node.type
 

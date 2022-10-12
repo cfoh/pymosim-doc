@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="map.pin module" href="map.pin.html" />
@@ -243,6 +244,7 @@ is called a <cite>way</cite> (open-way for polyline, closed-way for polygon).</p
 <li><p>self._objs: dictionary lookup table from id to dict containing the object info</p></li>
 <li><p>self._neighbour_of: graph data structure of the map for path finding</p></li>
 <li><p>self._pins: pin database in dictionary (see the JSON below, under “pins”)</p></li>
+<li><p>self._intersection: a set (in dict) of data struct (in class) describing an intersection</p></li>
 </ul>
 <p>The above information is constructed from the map data JSON file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -263,8 +265,8 @@ is called a <cite>way</cite> (open-way for polyline, closed-way for polygon).</p
     <span class="p">},</span>
     <span class="s2">&quot;graph.links&quot;</span><span class="p">:</span> <span class="p">{</span> 
         <span class="n">vertex_id5</span><span class="p">:</span> <span class="p">[</span>          <span class="c1"># a list of neighbouring vertex_id (as integer)</span>
-            <span class="n">neighbour_vertex1</span><span class="p">,</span>
-            <span class="n">neighbour_vertex2</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">neighbour_vertex1</span><span class="p">,</span><span class="n">obj_id1</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">neighbour_vertex2</span><span class="p">,</span><span class="n">obj_id2</span><span class="p">],</span>
             <span class="o">...</span>
         <span class="p">]</span> 
         <span class="n">vertex_id6</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
@@ -353,20 +355,26 @@ are <cite>[.coord1, id, .coord2]</cite>. It’s linked into the graph, so it’s
 <tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.editor_load_pins" title="map.mapinfo.MapInfo.editor_load_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editor_load_pins</span></code></a>(filename)</p></td>
 <td><p>This method will load pin dictionary from the file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.find_path" title="map.mapinfo.MapInfo.find_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_path</span></code></a>(from_pin, to_pin)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.editor_save_file" title="map.mapinfo.MapInfo.editor_save_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editor_save_file</span></code></a>(image_file, data_file)</p></td>
+<td><p>Do not use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.find_path" title="map.mapinfo.MapInfo.find_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_path</span></code></a>(from_pin, to_pin)</p></td>
 <td><p>Perform path finding using A*Star algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_all_pins" title="map.mapinfo.MapInfo.get_all_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pins</span></code></a>([pin_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_all_pins" title="map.mapinfo.MapInfo.get_all_pins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pins</span></code></a>([pin_type])</p></td>
 <td><p>This method returns all pin objects (in dict) in a list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_bitmap" title="map.mapinfo.MapInfo.get_bitmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bitmap</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_bitmap" title="map.mapinfo.MapInfo.get_bitmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bitmap</span></code></a>()</p></td>
 <td><p>This method returns the bitmap object of the map.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_err_str" title="map.mapinfo.MapInfo.get_err_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_err_str</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_err_str" title="map.mapinfo.MapInfo.get_err_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_err_str</span></code></a>()</p></td>
 <td><p>Return the error message string for this class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_info" title="map.mapinfo.MapInfo.get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code></a>(info)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_info" title="map.mapinfo.MapInfo.get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code></a>(info)</p></td>
 <td><p>This method returns high level information of the map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_intersection" title="map.mapinfo.MapInfo.get_intersection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_intersection</span></code></a>(coord_id)</p></td>
+<td><p>This method checks whether a vertex of a road is an intersection.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.get_obj" title="map.mapinfo.MapInfo.get_obj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_obj</span></code></a>(obj_id)</p></td>
 <td><p>This method is a map object lookup using <cite>obj_id</cite> to retrieve the full object info.</p></td>
@@ -394,17 +402,6 @@ are <cite>[.coord1, id, .coord2]</cite>. It’s linked into the graph, so it’s
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#map.mapinfo.MapInfo.num_pixels" title="map.mapinfo.MapInfo.num_pixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_pixels</span></code></a>(len_in_meter)</p></td>
 <td><p>It returns the number of pixels given a length in meter.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>editor_save_file</strong></p></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -479,7 +476,8 @@ from the <cite>StreetMap</cite> object.</p>
 <dl class="py method">
 <dt id="map.mapinfo.MapInfo.editor_save_file">
 <code class="sig-name descname">editor_save_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image_file</span></em>, <em class="sig-param"><span class="n">data_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.editor_save_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Do not use.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="map.mapinfo.MapInfo.editor_assign_map">
@@ -543,10 +541,15 @@ from the <cite>StreetMap</cite> object.</p>
 <dt id="map.mapinfo.MapInfo.add_new_waypoint_pin">
 <code class="sig-name descname">add_new_waypoint_pin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_pin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#map.mapinfo.MapInfo.add_new_waypoint_pin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to manually add a waypoint pin to the map structure.
-User simulation should place pins using the provided map editor, and the
-placed pins will automatically loaded to the memory. Calling this method
-is unnecessary. This method will be called only when waypoint pins are
-created during the user simulation (which is not a recommended approach).</p>
+Instead of using this method, user simulation should just place a waypoint 
+pin using the provided map editor directly. A placed waypoint pin will 
+automatically be loaded to the memory.</p>
+<p>This method shall be used only when waypoint pins are to be manually
+created in the code (which is not a recommended approach). The reason
+to manually create waypoint pins can be either that there are too many 
+pins to create and using coding is more convenient, or the pins to be 
+created are of temporary use so that there is no incentive to add them 
+into the map.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -583,6 +586,28 @@ a KeyError exception.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt>Tuple[int,int]</dt><dd><p>The (x,y) coordiate of the input coordinate id.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="map.mapinfo.MapInfo.get_intersection">
+<code class="sig-name descname">get_intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coord_id</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#map.mapinfo.MapInfo.get_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method checks whether a vertex of a road is an intersection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coord_id</strong><span class="classifier">int</span></dt><dd><p>The input coordinate id of the road vertex.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>List[Tuple[int,int]]</dt><dd><p>A list of tuples (coord_id, obj_id), each of which is the arm of the intersection
+connecting to the neighbouring vertex specified by the <cite>coord_id</cite>.
+If the input vertex is not an intersection, the method returns None.</p>
 </dd>
 </dl>
 </dd>

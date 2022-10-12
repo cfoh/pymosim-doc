@@ -32,9 +32,10 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="map package" href="map.html" />
+    <link rel="next" title="sim.version module" href="sim.version.html" />
     <link rel="prev" title="sim.simsystem module" href="sim.simsystem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -176,6 +177,11 @@
    sim.simulation module
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.version.html">
+   sim.version module
+  </a>
+ </li>
 </ul>
 
   </div>
@@ -215,7 +221,7 @@
   <div class="section" id="module-sim.simulation">
 <span id="sim-simulation-module"></span><h1>sim.simulation module<a class="headerlink" href="#module-sim.simulation" title="Permalink to this headline">¶</a></h1>
 <p>Module <cite>simulation</cite> is the main simulation module. It contains 
-a <cite>World</cite> class that carries out the event driven simulation and 
+<cite>World</cite> class that carries out the event driven simulation and 
 simulation animation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -226,7 +232,7 @@ simulation animation.</p>
 <dl class="py class">
 <dt id="sim.simulation.World">
 <em class="property">class </em><code class="sig-prename descclassname">sim.simulation.</code><code class="sig-name descname">World</code><a class="headerlink" href="#sim.simulation.World" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="sim.version.html#sim.version.Version" title="sim.version.Version"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.version.Version</span></code></a></p>
 <p>This is the simulation world.</p>
 <p>There should only be one simulation world in a simulation. 
 It includes an event driven simulation engine running in the background.</p>
@@ -283,12 +289,6 @@ It includes an event driven simulation engine running in the background.</p>
 </tr>
 </tbody>
 </table>
-<dl class="py attribute">
-<dt id="sim.simulation.World.release_version">
-<code class="sig-name descname">release_version</code><em class="property"> = (0, 8, 8)</em><a class="headerlink" href="#sim.simulation.World.release_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>The current release version of PyMoSim containing <cite>(major,minor,build)</cite> version.</p>
-</dd></dl>
-
 <dl class="py method">
 <dt id="sim.simulation.World.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.__init__" title="Permalink to this definition">¶</a></dt>

@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -180,14 +181,14 @@
                 
   <div class="section" id="module-example8">
 <span id="example8-module"></span><h1>example8 module<a class="headerlink" href="#module-example8" title="Permalink to this headline">¶</a></h1>
-<p>This example demonstrates how to implement intelligent reflecting 
-surface (IRS) using <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It also 
+<p>This example demonstrates how to implement reconfigurable intelligent 
+surface (RIS) using <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It also 
 uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a> for transmission. It 
 illustrates how users can implement multipath signal propagation and 
 detection logic. The example is an extension of example5.py which shows 
 how to use <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a>. It is important
 to understand example5.py first.</p>
-<p>The scenario replicates the experiment of single IRS case presented in <a class="reference internal" href="index.html#r89e13abb20a9-wfy20" id="id1">[WFY20]</a>.
+<p>The scenario replicates the experiment of single RIS case presented in <a class="reference internal" href="index.html#r89e13abb20a9-wfy20" id="id1">[WFY20]</a>.
 See also Fig. 2 in the paper for the experiment setup and Fig. 3 for the
 experiment results.</p>
 <div class="section" id="references">
@@ -197,7 +198,8 @@ experiment results.</p>
 <dd><p>P. Wang, J. Fang, X. Yuan, Z. Chen, and H. Li, “Intelligent 
 reflecting surface-assisted millimeter wave communications: Joint 
 active and passive precoding design,” IEEE Transactions on Vehicular 
-Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
+Technology, vol. 69, no. 12, pp. 14960-14973, 2020. 
+(link: <a class="reference external" href="https://arxiv.org/pdf/1908.10734.pdf">https://arxiv.org/pdf/1908.10734.pdf</a>)</p>
 </dd>
 </dl>
 <dl class="py function">
@@ -216,8 +218,20 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
 <dd></dd></dl>
 
 <dl class="py class">
+<dt id="example8.Result">
+<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">Result</code><a class="headerlink" href="#example8.Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="example8.Result.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example8.Result.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="example8.MyTransceiver">
-<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -287,8 +301,22 @@ Technology, vol. 69, no. 12, pp. 14960-14973, 2020.</p>
 
 <dl class="py method">
 <dt id="example8.MyTransceiver.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the constructor.</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize and customize a transceiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>azimuth_angle</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If it is not None, it specifies the transceiver facing angle.</p>
+</dd>
+<dt><strong>beam_width</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If <cite>azimuth_angle</cite> is not None, it specifies supported angle width.
+The supported angle is within the range
+[azimuth_angle-0.5*beam_width,azimuth_angle+0.5*beam_width].</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float, optional, default=28</span></dt><dd><p>The carrier frequency. Default is 28 (or 28 GHz mmWave).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -436,7 +464,21 @@ detection logic.</p>
 <dl class="py method">
 <dt id="example8.MyTransceiverBS.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverBS.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the constructor.</p>
+<dd><p>Initialize and customize a transceiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>azimuth_angle</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If it is not None, it specifies the transceiver facing angle.</p>
+</dd>
+<dt><strong>beam_width</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If <cite>azimuth_angle</cite> is not None, it specifies supported angle width.
+The supported angle is within the range
+[azimuth_angle-0.5*beam_width,azimuth_angle+0.5*beam_width].</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float, optional, default=28</span></dt><dd><p>The carrier frequency. Default is 28 (or 28 GHz mmWave).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -505,8 +547,8 @@ consolidated for detection.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="example8.MyTransceiverIRS">
-<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiverIRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverIRS" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyTransceiverRIS">
+<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiverRIS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span></em>, <em class="sig-param"><span class="n">beam_width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverRIS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#example8.MyTransceiver" title="example8.MyTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">example8.MyTransceiver</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -521,13 +563,13 @@ consolidated for detection.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(the_signal)</p></td>
 <td><p>This is the function to perform signal propagation and detection logic.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverIRS.create_final_multipath_signal" title="example8.MyTransceiverIRS.create_final_multipath_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_final_multipath_signal</span></code></a>(signal_list)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverRIS.create_final_multipath_signal" title="example8.MyTransceiverRIS.create_final_multipath_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_final_multipath_signal</span></code></a>(signal_list)</p></td>
 <td><p>Use this method to create a final multipath signal.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example8.MyTransceiverIRS.create_multipath_signal" title="example8.MyTransceiverIRS.create_multipath_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_multipath_signal</span></code></a>(tx_power)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example8.MyTransceiverRIS.create_multipath_signal" title="example8.MyTransceiverRIS.create_multipath_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_multipath_signal</span></code></a>(tx_power)</p></td>
 <td><p>Use this method to create a signal that is part of a multipath  signal.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverIRS.create_signal" title="example8.MyTransceiverIRS.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverRIS.create_signal" title="example8.MyTransceiverRIS.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
 <td><p>Use this method to create a signal.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
@@ -539,8 +581,8 @@ consolidated for detection.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
 <td><p>This method returns the type of the transceiver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverIRS.is_crossed_obstacle" title="example8.MyTransceiverIRS.is_crossed_obstacle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_crossed_obstacle</span></code></a>(tx_loc, rx_loc)</p></td>
-<td><p>Use this method to ignore obstacle between BS and IRS.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyTransceiverRIS.is_crossed_obstacle" title="example8.MyTransceiverRIS.is_crossed_obstacle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_crossed_obstacle</span></code></a>(tx_loc, rx_loc)</p></td>
+<td><p>Use this method to ignore obstacle between BS and RIS.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
 <td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
@@ -565,20 +607,34 @@ consolidated for detection.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example8.MyTransceiverIRS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverIRS.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the constructor.</p>
+<dt id="example8.MyTransceiverRIS.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span></em>, <em class="sig-param"><span class="n">beam_width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverRIS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize and customize a transceiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>azimuth_angle</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If it is not None, it specifies the transceiver facing angle.</p>
+</dd>
+<dt><strong>beam_width</strong><span class="classifier">float, optional, default=None</span></dt><dd><p>If <cite>azimuth_angle</cite> is not None, it specifies supported angle width.
+The supported angle is within the range
+[azimuth_angle-0.5*beam_width,azimuth_angle+0.5*beam_width].</p>
+</dd>
+<dt><strong>freq</strong><span class="classifier">float, optional, default=28</span></dt><dd><p>The carrier frequency. Default is 28 (or 28 GHz mmWave).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example8.MyTransceiverIRS.is_crossed_obstacle">
-<code class="sig-name descname">is_crossed_obstacle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_loc</span></em>, <em class="sig-param"><span class="n">rx_loc</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example8.MyTransceiverIRS.is_crossed_obstacle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use this method to ignore obstacle between BS and IRS.</p>
+<dt id="example8.MyTransceiverRIS.is_crossed_obstacle">
+<code class="sig-name descname">is_crossed_obstacle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_loc</span></em>, <em class="sig-param"><span class="n">rx_loc</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example8.MyTransceiverRIS.is_crossed_obstacle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to ignore obstacle between BS and RIS.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example8.MyTransceiverIRS.create_signal">
-<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverIRS.create_signal" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyTransceiverRIS.create_signal">
+<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverRIS.create_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to create a signal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -597,8 +653,8 @@ consolidated for detection.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example8.MyTransceiverIRS.create_multipath_signal">
-<code class="sig-name descname">create_multipath_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverIRS.create_multipath_signal" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyTransceiverRIS.create_multipath_signal">
+<code class="sig-name descname">create_multipath_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverRIS.create_multipath_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to create a signal that is part of a multipath 
 signal. A multipath signal is a signal that consists of many paths
 of transmissions. It is meaningless to decode this signal alone, rather
@@ -623,8 +679,8 @@ signal when calling.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example8.MyTransceiverIRS.create_final_multipath_signal">
-<code class="sig-name descname">create_final_multipath_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverIRS.create_final_multipath_signal" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyTransceiverRIS.create_final_multipath_signal">
+<code class="sig-name descname">create_final_multipath_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverRIS.create_final_multipath_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to create a final multipath signal. The receiver
 will finally consolidate all parts of the multipath signal and judge 
 whether the consolidated signal is detectable.</p>
@@ -643,7 +699,7 @@ consolidated for detection.</p>
 
 <dl class="py class">
 <dt id="example8.MyTransceiverVehicle">
-<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiverVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverVehicle" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyTransceiverVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">freq</span><span class="o">=</span><span class="default_value">28</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyTransceiverVehicle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#example8.MyTransceiver" title="example8.MyTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">example8.MyTransceiver</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
@@ -723,69 +779,72 @@ a user-defined transceiver.</p>
 <td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
-<td><p>Clear the drawing for this node.</p></td>
+<td><p>Clear the drawing for this node by removing all drawables associated with this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
-<td><p>Remove an earlier added circle for this node.</p></td>
+<td><p>(Deprecated) Remove an earlier added circle for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
-<td><p>Remove an earlier added line for this node.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_drawable</span></code>(drawable)</p></td>
+<td><p>Remove a specific drawable from the drawing list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
-<td><p>Remove an earlier added sector drawing.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>(Deprecated) Remove an earlier added line for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
-<td><p>Remove an earlier added text message.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>(Deprecated) Remove an earlier added sector drawing.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>(Deprecated) Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
 <td><p>Put a circle around this node where the node is the center of the circle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
 <td><p>Provide the list of all nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
 <td><p>Use this method to check if a node is disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
 <td><p>Use this method to check if a node is visible.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
 <td><p>This is a static method for performing a lookup for the node with <cite>id</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
 <td><p>Reset the global node list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>
@@ -831,72 +890,75 @@ a user-defined transceiver.</p>
 <td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
-<td><p>Clear the drawing for this node.</p></td>
+<td><p>Clear the drawing for this node by removing all drawables associated with this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
-<td><p>Remove an earlier added circle for this node.</p></td>
+<td><p>(Deprecated) Remove an earlier added circle for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
-<td><p>Remove an earlier added line for this node.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_drawable</span></code>(drawable)</p></td>
+<td><p>Remove a specific drawable from the drawing list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
-<td><p>Remove an earlier added sector drawing.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>(Deprecated) Remove an earlier added line for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
-<td><p>Remove an earlier added text message.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>(Deprecated) Remove an earlier added sector drawing.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>(Deprecated) Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
 <td><p>Put a circle around this node where the node is the center of the circle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
 <td><p>Provide the list of all nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
 <td><p>Use this method to check if a node is disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
 <td><p>Use this method to check if a node is visible.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
 <td><p>This is a static method for performing a lookup for the node with <cite>id</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
 <td><p>Reset the global node list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyVehicle.show_connection" title="example8.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example8.MyVehicle.show_connection" title="example8.MyVehicle.show_connection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_connection</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -928,10 +990,10 @@ super() must be called.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="example8.MyIRS">
-<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyIRS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">azimuth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyIRS" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyRIS">
+<em class="property">class </em><code class="sig-prename descclassname">example8.</code><code class="sig-name descname">MyRIS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyRIS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
-<p>MyIRS: This is an intelligent refecting surface (IRS).</p>
+<p>MyRIS: This is an reconfigurable intelligent surface (RIS).</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -946,76 +1008,79 @@ super() must be called.</p>
 <td><p>The definition of a node type.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_drawing</span></code>()</p></td>
-<td><p>Clear the drawing for this node.</p></td>
+<td><p>Clear the drawing for this node by removing all drawables associated with this node.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_circle</span></code>(radius)</p></td>
-<td><p>Remove an earlier added circle for this node.</p></td>
+<td><p>(Deprecated) Remove an earlier added circle for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
-<td><p>Remove an earlier added line for this node.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_drawable</span></code>(drawable)</p></td>
+<td><p>Remove a specific drawable from the drawing list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
-<td><p>Remove an earlier added sector drawing.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_line</span></code>(other_node)</p></td>
+<td><p>(Deprecated) Remove an earlier added line for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
-<td><p>Remove an earlier added text message.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<td><p>(Deprecated) Remove an earlier added sector drawing.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_text</span></code>(dx, dy, text)</p></td>
+<td><p>(Deprecated) Remove an earlier added text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(radius[, pen, brush])</p></td>
 <td><p>Put a circle around this node where the node is the center of the circle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code>()</p></td>
 <td><p>Provide the list of all nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code>()</p></td>
 <td><p>Use this method to check if a node is disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code>()</p></td>
 <td><p>Use this method to check if a node is visible.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code>(id)</p></td>
 <td><p>This is a static method for performing a lookup for the node with <cite>id</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code>()</p></td>
 <td><p>Reset the global node list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example8.MyIRS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">azimuth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyIRS.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="example8.MyRIS.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">azimuth_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example8.MyRIS.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -1046,32 +1111,38 @@ super() must be called.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_drawable</span></code>(drawable)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_button</span></code>(id, label)</p></td>
+<td><p>Add a button to the user defined space on the simulation window.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to add a persistent drawable on the scenario background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code>(new_time)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code>(new_time)</p></td>
 <td><p>Change the simulation stop time to a new stop time.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
 <td><p>Get the simulation setting.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
 <td><p>Check whether this scenario has a valid street map object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyScenario.on_create" title="example8.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example8.MyScenario.on_create" title="example8.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
 <td><p>This is an event listener which will be called when the scenario object is being created.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example8.MyScenario.on_event" title="example8.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example8.MyScenario.on_event" title="example8.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
 <td><p>This is an event listener which will be called when an event occurs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code>()</p></td>
+<td><p>Get the user defined contols.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>

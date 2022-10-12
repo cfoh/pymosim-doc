@@ -32,10 +32,11 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node.type module" href="node.type.html" />
-    <link rel="prev" title="node.obstacle module" href="node.obstacle.html" />
+    <link rel="prev" title="node.routemobi module" href="node.routemobi.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -152,6 +153,16 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2b.html">
+   node.mobility2b module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility3.html">
+   node.mobility3 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="node.node.html">
    node.node module
   </a>
@@ -159,6 +170,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="node.obstacle.html">
    node.obstacle module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.routemobi.html">
+   node.routemobi module
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -234,7 +250,16 @@ to create timers. Creating a timer from a node is simple, the following is an ex
 <dt id="node.timer.NodeTimer">
 <em class="property">class </em><code class="sig-prename descclassname">node.timer.</code><code class="sig-name descname">NodeTimer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This is the class specifying a node timer.</p>
+<p>This is the class specifying a node timer. A timer is in an
+idle state when created. Use start() method to trigger 
+the timer, and the timer transits to running state. Use
+is_running() method to check if the timer is still running.
+Once expired, the timer will transit back to idle state.
+To stop a running timer, use kill() method to force the 
+timer to transit to killed state. While a killed timer is
+still running, it will automatically return back to idle state 
+when it expires, and will not trigger an event since the
+timer is already killed.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -243,7 +268,7 @@ to create timers. Creating a timer from a node is simple, the following is an ex
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.timer.NodeTimer.get_hosting_node" title="node.timer.NodeTimer.get_hosting_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hosting_node</span></code></a>()</p></td>
-<td><p>Use this method to return the node that hosted this timer.</p></td>
+<td><p>Use this method to return the node that hosts this timer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.timer.NodeTimer.is_killed" title="node.timer.NodeTimer.is_killed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_killed</span></code></a>()</p></td>
 <td><p>Use this method to check if this timer is killed.</p></td>
@@ -296,7 +321,7 @@ by using this method.</p>
 <dl class="py method">
 <dt id="node.timer.NodeTimer.get_hosting_node">
 <code class="sig-name descname">get_hosting_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.timer.NodeTimer.get_hosting_node" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use this method to return the node that hosted this timer.</p>
+<dd><p>Use this method to return the node that hosts this timer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">

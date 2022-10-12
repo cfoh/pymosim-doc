@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>node.mobility2 module &#8212; PyMoSim v0.8 Manual</title>
+    <title>node.routemobi module &#8212; PyMoSim v0.8 Manual</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -35,8 +35,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="node.mobility2b module" href="node.mobility2b.html" />
-    <link rel="prev" title="node.mobility module" href="node.mobility.html" />
+    <link rel="next" title="node.timer module" href="node.timer.html" />
+    <link rel="prev" title="node.obstacle module" href="node.obstacle.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -147,8 +147,8 @@
    node.mobility module
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="node.mobility2.html">
    node.mobility2 module
   </a>
  </li>
@@ -172,8 +172,8 @@
    node.obstacle module
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="node.routemobi.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    node.routemobi module
   </a>
  </li>
@@ -223,61 +223,40 @@
               
               <div>
                 
-  <div class="section" id="module-node.mobility2">
-<span id="node-mobility2-module"></span><h1>node.mobility2 module<a class="headerlink" href="#module-node.mobility2" title="Permalink to this headline">¶</a></h1>
-<p>Module <cite>mobility2</cite> contains node mobility for cars moving on a map.
-This module has the following features:</p>
-<ul class="simple">
-<li><p>car following</p></li>
-<li><p>number of lanes is 1 for all roads</p></li>
-<li><p>all junctions must have traffic light control at the user simulation 
-level</p></li>
-</ul>
+  <div class="section" id="module-node.routemobi">
+<span id="node-routemobi-module"></span><h1>node.routemobi module<a class="headerlink" href="#module-node.routemobi" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an experimental code attempting to implement multi-lanes
+and car merger. The implementation has yet to be tested fully. Do 
+not use this module.</p>
+</div>
+<p>Module <cite>routemobi</cite> contains node mobility for cars moving on a map.</p>
 <p>Every mobility instance for a vehicle is described by a <cite>route</cite>, which is a
-list of road segments. A route is an established mobility path for a vehicle
-to move from its initial location to the ending location. 
-<a class="reference internal" href="#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> is the class desribing a route. 
-We also define the following:</p>
+list of road segments. <a class="reference internal" href="#node.routemobi.RoutePath" title="node.routemobi.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code></a> is the class desribing
+a route. We also define the following:</p>
 <ul class="simple">
 <li><p>road segment: a tuple (start_loc, end_loc, speed, street_id).</p></li>
 <li><p>segment list: an ordered list of road segments forming a route.</p></li>
 <li><p>_RoutePoint: a internal class desribing a point on a route. It contains the location 
 of the point, and segment index pointing to the segment in the segment list 
-where this point is currently on. Each vehicle mobility records two route points, 
+where this point is currently on. Each mobility records two route points, 
 <cite>head</cite> and <cite>tail</cite> points of the vehicle.</p></li>
 </ul>
-<p>One can visualize the relationship between route, road segments, and route points
-as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="n">road_segment</span>        <span class="n">vehicle</span> <span class="o">-&gt;</span>
-<span class="n">X</span><span class="o">------</span><span class="n">X</span><span class="o">--------------</span><span class="n">X</span><span class="o">--------</span><span class="p">[</span><span class="n">CAR</span><span class="o">&gt;---------</span><span class="n">X</span><span class="o">-------</span><span class="n">X</span>  <span class="o">&lt;--</span> <span class="n">a</span> <span class="n">route</span> <span class="k">with</span> <span class="mi">4</span>
-<span class="o">^</span>                     <span class="o">^</span>        <span class="o">^</span>   <span class="o">^</span>         <span class="o">^</span>       <span class="o">^</span>       <span class="n">road</span> <span class="n">segments</span>
-<span class="o">|</span>                     <span class="o">|</span>        <span class="o">|</span>   <span class="o">|</span>         <span class="o">|</span>       <span class="o">|</span>
-<span class="n">initial</span>           <span class="n">current</span>      <span class="o">|</span>   <span class="o">|</span>    <span class="n">current</span>     <span class="n">end</span> <span class="n">of</span>
-<span class="n">location</span>          <span class="n">startpoint</span>   <span class="o">|</span>   <span class="o">|</span>    <span class="n">endpoint</span>    <span class="n">mobility</span>
-                      <span class="n">tail_point</span>   <span class="n">head_point</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Created by: CH Foh (2021)</p></li>
-<li><p>Contributed by: …</p></li>
-</ul>
-</div>
 <dl class="py class">
-<dt id="node.mobility2.RouteHandler">
-<em class="property">class </em><code class="sig-prename descclassname">node.mobility2.</code><code class="sig-name descname">RouteHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scenario</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RouteHandler" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RouteHandler">
+<em class="property">class </em><code class="sig-prename descclassname">node.routemobi.</code><code class="sig-name descname">RouteHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scenario</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RouteHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This is the route handler to manage node movement on a given map,
 all nodes moving on the same map should use the same route handler. The 
-handler is needed for <a class="reference internal" href="#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a>.</p>
+handler is needed for <a class="reference internal" href="#node.routemobi.RoutePath" title="node.routemobi.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RoutePath</span></code></a>.</p>
 <p>To make sure a vehicle can follow another vehicle in front, it needs to find 
 which other vehicles are potentially in front of itself. With hundreds
 of vehicles on the map, checking individual vehicle for their location to
-find one that is in front of a vehicle can be inefficiency. Here we use
-a lookup table to efficiently narrow down to those vehicles on the same 
-street_id for the checking. This class handles the lookup and perform the 
-search for the vehicle in front.</p>
+find one that is in front of a vehicle can be inefficiency. Here We use
+a lookup table to efficiently narrow down to vehicles on the same street_id for 
+the checking. This class handles the lookup and perform the search for a 
+vehicle in front.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -295,23 +274,26 @@ search for the vehicle in front.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RouteHandler.get_next_route_id" title="node.mobility2.RouteHandler.get_next_route_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_next_route_id</span></code></a>(head_point)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RouteHandler.get_next_route_id" title="node.routemobi.RouteHandler.get_next_route_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_next_route_id</span></code></a>(head_point)</p></td>
 <td><p>This method get the next route’s route_id Returns ——- : route_id</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RouteHandler.is_ready" title="node.mobility2.RouteHandler.is_ready"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ready</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RouteHandler.give_way" title="node.routemobi.RouteHandler.give_way"><code class="xref py py-obj docutils literal notranslate"><span class="pre">give_way</span></code></a>(next_route_id)</p></td>
+<td><p>This method determines whether a node is merging into a single lane Returns ——- : True or False</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RouteHandler.is_ready" title="node.routemobi.RouteHandler.is_ready"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ready</span></code></a>()</p></td>
 <td><p>Test if the handler is ready for use.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="node.mobility2.RouteHandler.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scenario</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RouteHandler.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RouteHandler.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scenario</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RouteHandler.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RouteHandler.is_ready">
-<code class="sig-name descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#node.mobility2.RouteHandler.is_ready" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RouteHandler.is_ready">
+<code class="sig-name descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#node.routemobi.RouteHandler.is_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if the handler is ready for use. The readiness of the handler 
 mainly depends on the readiness of the map. If the handler is not ready,
 none of its methods will work properly. To improve execution efficiency,
@@ -328,19 +310,28 @@ check. Indiviual methods will not repeatedly check for readiness.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RouteHandler.get_next_route_id">
-<code class="sig-name descname">get_next_route_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">head_point</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RouteHandler.get_next_route_id" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RouteHandler.get_next_route_id">
+<code class="sig-name descname">get_next_route_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">head_point</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RouteHandler.get_next_route_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method get the next route’s route_id
 Returns
 ——-
 : route_id</p>
 </dd></dl>
 
+<dl class="py method">
+<dt id="node.routemobi.RouteHandler.give_way">
+<code class="sig-name descname">give_way</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">next_route_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RouteHandler.give_way" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method determines whether a node is merging into a single lane
+Returns
+——-
+: True or False</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
-<dt id="node.mobility2.RoutePath">
-<em class="property">class </em><code class="sig-prename descclassname">node.mobility2.</code><code class="sig-name descname">RoutePath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">delay_start</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath">
+<em class="property">class </em><code class="sig-prename descclassname">node.routemobi.</code><code class="sig-name descname">RoutePath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">delay_start</span></em>, <em class="sig-param"><span class="n">lane</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.mobility.html#node.mobility.BaseMobility" title="node.mobility.BaseMobility"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility.BaseMobility</span></code></a></p>
 <p>This class provides a specification of a route for a node to move with
 other vehicles on the same route. The mobility observes lanes, junctions and
@@ -355,7 +346,7 @@ to add.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>handler</strong><span class="classifier"><a class="reference internal" href="#node.mobility2.RouteHandler" title="node.mobility2.RouteHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RouteHandler</span></code></a></span></dt><dd><p>The route handler which contains the map for the node to move on. The 
+<dt><strong>handler</strong><span class="classifier"><a class="reference internal" href="#node.routemobi.RouteHandler" title="node.routemobi.RouteHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.routemobi.RouteHandler</span></code></a></span></dt><dd><p>The route handler which contains the map for the node to move on. The 
 method assumes that the handler is ready for use. Otherwise, the method
 may throw a run-time error.</p>
 </dd>
@@ -375,28 +366,28 @@ may throw a run-time error.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.assign_speed" title="node.mobility2.RoutePath.assign_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_speed</span></code></a>(road_segment_index, speed)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.assign_speed" title="node.routemobi.RoutePath.assign_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_speed</span></code></a>(road_segment_index, speed)</p></td>
 <td><p>Use this method to assign a speed for the node to move on a specific road segment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.get_dir" title="node.mobility2.RoutePath.get_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dir</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.get_dir" title="node.routemobi.RoutePath.get_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dir</span></code></a>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_displacement</span></code>()</p></td>
 <td><p>This method returns the displacement of the node in the  last simulation time step.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.get_loc" title="node.mobility2.RoutePath.get_loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_loc</span></code></a>()</p></td>
-<td><p>Get the location of the node.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.get_loc" title="node.routemobi.RoutePath.get_loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_loc</span></code></a>()</p></td>
+<td><p>Get the head location of the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.get_name" title="node.mobility2.RoutePath.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.get_name" title="node.routemobi.RoutePath.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Call this method to get the name of this class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.get_road_segment_list" title="node.mobility2.RoutePath.get_road_segment_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.get_road_segment_list" title="node.routemobi.RoutePath.get_road_segment_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code></a>()</p></td>
 <td><p>Get the establish route which is a list of tuples describing the road segments: <cite>(start_location,end_location,speed,street_id)</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.get_speed" title="node.mobility2.RoutePath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.get_speed" title="node.routemobi.RoutePath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.is_active" title="node.mobility2.RoutePath.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.is_active" title="node.routemobi.RoutePath.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
 <td><p>This method returns whether the node on this route is active.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
@@ -405,26 +396,43 @@ may throw a run-time error.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.restart" title="node.mobility2.RoutePath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.restart" title="node.routemobi.RoutePath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
 <td><p>Use this method to restart the mobility.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.set_dir" title="node.mobility2.RoutePath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.set_dir" title="node.routemobi.RoutePath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
 <td><p>The method in this class will not do anything, since the direction  is calculated automatically based on the moving direction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2.RoutePath.sim__do_move" title="node.mobility2.RoutePath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.routemobi.RoutePath.sim__do_move" title="node.routemobi.RoutePath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
 <td><p>This method is used within the simulation engine, not for user simulation.</p></td>
 </tr>
 </tbody>
 </table>
+<table class="table">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>change_lane</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>init_single_lane</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>merge_lane</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">delay_start</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">delay_start</span></em>, <em class="sig-param"><span class="n">lane</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.get_road_segment_list">
-<code class="sig-name descname">get_road_segment_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.get_road_segment_list" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.get_road_segment_list">
+<code class="sig-name descname">get_road_segment_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.get_road_segment_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the establish route which is a list of tuples describing the road segments:
 <cite>(start_location,end_location,speed,street_id)</cite>. The speed is set 
 to -1 initially for user simulation to fill in. A negative speed means
@@ -452,8 +460,8 @@ list of tuples:
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.assign_speed">
-<code class="sig-name descname">assign_speed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">road_segment_index</span></em>, <em class="sig-param"><span class="n">speed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.assign_speed" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.assign_speed">
+<code class="sig-name descname">assign_speed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">road_segment_index</span></em>, <em class="sig-param"><span class="n">speed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.assign_speed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to assign a speed for the node to move on a specific road segment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -468,8 +476,8 @@ list of tuples:
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.get_name">
-<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.get_name" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.get_name">
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.get_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call this method to get the name of this class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -482,8 +490,8 @@ list of tuples:
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.is_active">
-<code class="sig-name descname">is_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.is_active" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.is_active">
+<code class="sig-name descname">is_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.is_active" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method returns whether the node on this route is active. the node
 is considered active if it has started to move (i.e. passed the delayed start)
 and yet to reach the final destination.</p>
@@ -498,8 +506,18 @@ and yet to reach the final destination.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.sim__do_move">
-<code class="sig-name descname">sim__do_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_step</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#node.mobility2.RoutePath.sim__do_move" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.init_single_lane">
+<code class="sig-name descname">init_single_lane</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">single_line_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.init_single_lane" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="node.routemobi.RoutePath.merge_lane">
+<code class="sig-name descname">merge_lane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.merge_lane" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="node.routemobi.RoutePath.sim__do_move">
+<code class="sig-name descname">sim__do_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_step</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#node.routemobi.RoutePath.sim__do_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used within the simulation engine, not for user simulation.
 This method to used by the simulation engine to make this node to move 
 over a <cite>time_step</cite>. See the base class for details.</p>
@@ -521,35 +539,74 @@ when the movement is paused.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.get_speed">
-<code class="sig-name descname">get_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.get_speed" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.change_lane">
+<code class="sig-name descname">change_lane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.change_lane" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="node.routemobi.RoutePath.get_speed">
+<code class="sig-name descname">get_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.get_speed" title="Permalink to this definition">¶</a></dt>
 <dd><p>See the base class for details.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.get_loc">
-<code class="sig-name descname">get_loc</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="sim.loc.html#sim.loc.ScreenXY" title="sim.loc.ScreenXY">sim.loc.ScreenXY</a><a class="headerlink" href="#node.mobility2.RoutePath.get_loc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the location of the node. See the base class for details.</p>
+<dt id="node.routemobi.RoutePath.get_loc">
+<code class="sig-name descname">get_loc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.get_loc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the head location of the node. See the base class for details.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.set_dir">
-<code class="sig-name descname">set_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">direction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.set_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.set_dir">
+<code class="sig-name descname">set_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">direction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.set_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method in this class will not do anything, since the direction 
 is calculated automatically based on the moving direction.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.get_dir">
-<code class="sig-name descname">get_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.get_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.get_dir">
+<code class="sig-name descname">get_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.get_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>See the base class for details.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="node.mobility2.RoutePath.restart">
-<code class="sig-name descname">restart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay_start</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility2.RoutePath.restart" title="Permalink to this definition">¶</a></dt>
+<dt id="node.routemobi.RoutePath.restart">
+<code class="sig-name descname">restart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay_start</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.routemobi.RoutePath.restart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to restart the mobility.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.routemobi.mutex_lock">
+<em class="property">class </em><code class="sig-prename descclassname">node.routemobi.</code><code class="sig-name descname">mutex_lock</code><a class="headerlink" href="#node.routemobi.mutex_lock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="node.routemobi.mutex_lock.state">
+<code class="sig-name descname">state</code><em class="property"> = None</em><a class="headerlink" href="#node.routemobi.mutex_lock.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="node.routemobi.mutex_lock.time">
+<code class="sig-name descname">time</code><em class="property"> = 0</em><a class="headerlink" href="#node.routemobi.mutex_lock.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="node.routemobi.mutex_Handler">
+<em class="property">class </em><code class="sig-prename descclassname">node.routemobi.</code><code class="sig-name descname">mutex_Handler</code><a class="headerlink" href="#node.routemobi.mutex_Handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="node.routemobi.mutex_Handler.single_lane_dic">
+<code class="sig-name descname">single_lane_dic</code><em class="property"> = {}</em><a class="headerlink" href="#node.routemobi.mutex_Handler.single_lane_dic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

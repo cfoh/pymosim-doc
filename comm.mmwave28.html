@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="comm.signalwave module" href="comm.signalwave.html" />
@@ -410,14 +411,16 @@ The pathloss for 28GHz UMi setting is given by the following (see also
 Equation (10) in <a class="reference internal" href="#r340709cabfee-c1" id="id1">[c1]</a>). We use CI model in Equation (2) in <a class="reference internal" href="#r340709cabfee-c2" id="id2">[c2]</a>, which is the same 
 as CIF model in (4) in <a class="reference internal" href="#r340709cabfee-c2" id="id3">[c2]</a> by setting b=0. The parameters for the pathloss are 
 based on Table I in <a class="reference internal" href="#r340709cabfee-c2" id="id4">[c2]</a>.</p>
+<p>Pathloss: <span class="math notranslate nohighlight">\(PL(d) = 32.4 + 20 log_{10}(f_c) + 20 log_{10}(d) + X_g\)</span></p>
 <ul class="simple">
-<li><p>Path loss PL(d) = 32.4 + 20*log10(fc) + 20*log10(d) + X_g</p></li>
-<li><p><cite>fc</cite> is the carrier frequency in GHz.</p></li>
-<li><p><cite>d</cite> is the distance between the transmitter and receiver. It is also used to decide
-whether a propagation is LOS or non-LOS, as described in Table I of Yan et al.</p></li>
-<li><p><cite>X_g</cite> is the slow and fast fading. For slow fading, it is log-normal shadowing, 
-which is a Normal Distribution with mean=0, variance=σ^2. Based on Table I
-in Sun et al, 28 GHz NLOS σ=8.6 dB, LOS=3.2 dB. For fast fading, it can be 
+<li><p><span class="math notranslate nohighlight">\(f_c\)</span> is the carrier frequency in GHz.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the distance between the transmitter and receiver. It is also 
+used to decide whether a propagation is LOS or non-LOS, as described 
+in Table I of Yan et al.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_g\)</span> is the slow and fast fading. For slow fading, it is 
+log-normal shadowing, which is a Normal Distribution with mean = 0, 
+variance = <span class="math notranslate nohighlight">\(\sigma^2\)</span>. Based on Table I in Sun et al, 28 GHz 
+NLOS <span class="math notranslate nohighlight">\(\sigma=8.6\)</span> dB, LOS is 3.2 dB. For fast fading, it can be 
 Rayleigh or Racian. However, we do not include fast fading here at the moment.</p></li>
 </ul>
 <p class="rubric">References</p>
@@ -466,9 +469,10 @@ around 28GHz.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>slow_fading</strong><span class="classifier">Tuple (float,float), optional, default = (3.2,8.6) in dB</span></dt><dd><p>The slow fading standard deviation, σ, setup for LOS and NLOS. The tuple 
-specifies (σ for LOS, σ for NLOS). The default setting is taken from
-Yan et al. Setting it to (0,0) will disable the slow_fading.</p>
+<dt><strong>slow_fading</strong><span class="classifier">Tuple (float,float), optional, default = (3.2,8.6) in dB</span></dt><dd><p>The slow fading standard deviation, <span class="math notranslate nohighlight">\(\sigma\)</span>, setup for LOS and 
+NLOS. The tuple specifies (<span class="math notranslate nohighlight">\(\sigma\)</span> for LOS, <span class="math notranslate nohighlight">\(\sigma\)</span> 
+for NLOS). The default setting is taken from Yan et al. 
+Setting it to (0,0) will disable the slow_fading.</p>
 </dd>
 </dl>
 </dd>
@@ -535,29 +539,32 @@ the receiver will detect the signal and perform a series of calculation
 to judge whether the signal can be decoded successfully. 
 Some important settings are:</p>
 <ul class="simple">
-<li><p>Carrier freq fc in GHz, e.g. 3GPP Band n257 (28GHz).</p></li>
-<li><p>Channel bandwidth B, default is the smallest bandwidth = 50MHz.</p></li>
-<li><p>Transmit power P_tx = 30 dBm.</p></li>
-<li><p>Path loss PL(d), see <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.Channel28HGz</span></code>, where <cite>d</cite> is the distance
-between the two nodes. If <cite>dist</cite> is the horizontal distance, <cite>d_min</cite> is 
-the antenna height, then d=√(dist^2+d_min^2).</p></li>
-<li><p>Receiver antenna gain G_rx is a constant.</p></li>
-<li><p>Transmitter antenna gain G_tx is a constant.</p></li>
-<li><p>Beamforming gain G_bf(Δangle) = (2π/θ_3dB) * 10^((-0.1*η)*(Δangle/θ_3dB)^2)</p>
+<li><p>Carrier freq <span class="math notranslate nohighlight">\(f_c\)</span> in GHz, e.g. 3GPP Band n257 (28GHz).</p></li>
+<li><p>Channel bandwidth <span class="math notranslate nohighlight">\(B\)</span>, default is the smallest bandwidth = 50MHz.</p></li>
+<li><p>Transmit power <span class="math notranslate nohighlight">\(P_{tx}\)</span> = 30 dBm.</p></li>
+<li><p>Path loss <span class="math notranslate nohighlight">\(PL(d)\)</span>, see <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.channel.Channel28HGz</span></code>, 
+where <span class="math notranslate nohighlight">\(d\)</span> is the distance between the two nodes. 
+If <span class="math notranslate nohighlight">\(d_{hor}\)</span> is the horizontal distance, <span class="math notranslate nohighlight">\(d_{min}\)</span> is the 
+antenna height, then <span class="math notranslate nohighlight">\(d=\sqrt{d_{hor}^2+d_{min}^2}\)</span>.</p></li>
+<li><p>Receiver antenna gain <span class="math notranslate nohighlight">\(G_{rx}\)</span> is a constant.</p></li>
+<li><p>Transmitter antenna gain <span class="math notranslate nohighlight">\(G_{tx}\)</span> is a constant.</p></li>
+<li><p>Beamforming gain <span class="math notranslate nohighlight">\(G_{bf}(Δa)\)</span> = 
+<span class="math notranslate nohighlight">\((2π/θ_{3dB}) 10^{(-0.1η)(Δa/θ_{3dB})^2}\)</span>:</p>
 <ul>
-<li><p><cite>Δangle</cite> is the difference between beam pointing angle and angle to vehicle.</p></li>
-<li><p><cite>θ_3dB</cite> is the 3 dB beamwidth. Default is a 6 sector setting with
-θ_3dB=35*pi/180 rad (or 35 degree) <a class="reference internal" href="#r2c8729db0313-t2" id="id7">[t2]</a>.</p></li>
-<li><p><cite>η</cite> is a constant, η = 12</p></li>
+<li><p><span class="math notranslate nohighlight">\(Δa\)</span> is the difference between beam pointing angle and angle to vehicle.</p></li>
+<li><p><span class="math notranslate nohighlight">\(θ_{3dB}\)</span> is the 3 dB beamwidth. Default is a 6 sector setting with
+<span class="math notranslate nohighlight">\(θ_{3dB}=35π/180\)</span> rad (or 35 degree) <a class="reference internal" href="#r2c8729db0313-t2" id="id7">[t2]</a>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(η\)</span> is a constant, <span class="math notranslate nohighlight">\(η = 12\)</span>.</p></li>
 <li><p>see also: Equation (4) in <a class="reference internal" href="#r2c8729db0313-t1" id="id8">[t1]</a>.</p></li>
 </ul>
 </li>
-<li><p>The received Signal_Power = P_tx - PL(d) + G_bf(Δangle) + G_rx + G_tx</p></li>
-<li><p>The overall Noise_Power at the receiver is NF + N0 = -90.2 dBm.</p>
+<li><p>The received Signal_Power = <span class="math notranslate nohighlight">\(P_{tx} - PL(d) + G_{bf}(Δa) + G_{rx} + G_{tx}\)</span></p></li>
+<li><p>The overall Noise_Power at the receiver is <span class="math notranslate nohighlight">\(NF + N_0\)</span> = -90.2 dBm.</p>
 <ul>
-<li><p>Noise Figure at receiver NF = 7 dB.</p></li>
-<li><p>Thermal Noise N0 = -174 dBm/Hz or about 3.981e-18 mW per Hz.
-So for 50 MHz, N0 = -174 dBm + 10*log10(50e6) = -97.2 dBm/50MHz.</p></li>
+<li><p>Noise Figure at receiver <span class="math notranslate nohighlight">\(NF\)</span> = 7 dB.</p></li>
+<li><p>Thermal Noise <span class="math notranslate nohighlight">\(N_0\)</span> = -174 dBm/Hz or about 3.981e-18 mW per Hz.
+So for 50 MHz, <span class="math notranslate nohighlight">\(N_0\)</span> = -174 dBm + <span class="math notranslate nohighlight">\(10 log{10}(50\cdot 10^6)\)</span> 
+= -97.2 dBm/50MHz.</p></li>
 </ul>
 </li>
 <li><p>Receiver SNR (in dB) = Signal_Power - Noise_Power</p></li>
@@ -638,7 +645,7 @@ beamforming gain.</p>
 </dd>
 <dt><strong>gain_rx</strong><span class="classifier">float in dBi, optional, default = 0 dBi</span></dt><dd><p>The receiver antenna gain.</p>
 </dd>
-<dt><strong>beam_3dB</strong><span class="classifier">float in rad, optional, default = 35*pi/180 for 6 sectors</span></dt><dd><p>The 3dB beamwidth. It is the width that the gain is 3dB.</p>
+<dt><strong>beam_3dB</strong><span class="classifier">float in rad, optional, default = 35π/180 for 6 sectors</span></dt><dd><p>The 3dB beamwidth. It is the width that the gain is 3dB.</p>
 </dd>
 <dt><strong>noise_figure</strong><span class="classifier">float in dB, optional, default = 7 dB</span></dt><dd><p>Noise figure at the receiver.</p>
 </dd>
@@ -691,7 +698,7 @@ signal. <cite>signal.quality</cite> contains the receiving SNR in dB.</p>
 check if a receiving signal can be successfully detected and decoded.</p>
 <p>In this implementation, the condition for successful decoding is:</p>
 <ul class="simple">
-<li><p>Received_Signal_Power + G_rx + G_bf(Δangle) - Noise_Power &gt;= SNR_threshold</p></li>
+<li><p>Received_Signal_Power + <span class="math notranslate nohighlight">\(G_{rx}\)</span> + <span class="math notranslate nohighlight">\(G_{bf}(Δa)\)</span> - Noise_Power &gt;= SNR_threshold</p></li>
 </ul>
 <p>The received signal power is already recorded in the signal. The receiver needs to
 add beamforming gain. The noise power is a constant which is already calculated 

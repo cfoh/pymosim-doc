@@ -32,6 +32,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sim.drawable module" href="sim.drawable.html" />
@@ -174,6 +175,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="sim.simulation.html">
    sim.simulation module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sim.version.html">
+   sim.version module
   </a>
  </li>
 </ul>
@@ -419,12 +425,15 @@ This class has a constant elevation angle of zero.</p>
 <td><p>Return the elevation angle.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sim.direction.Dir2D.is_within" title="sim.direction.Dir2D.is_within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_within</span></code></a>(other, range)</p></td>
-<td><p>This function returns a bool describing if the direction of <cite>other</cite> is within a specific range of its direction.</p></td>
+<td><p>This function returns a bool describing if the direction of <cite>other</cite> is within a specific range of its direction on either side.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.direction.Dir2D.rotate_to" title="sim.direction.Dir2D.rotate_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_to</span></code></a>(other)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.direction.Dir2D.rotate" title="sim.direction.Dir2D.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a>(angle)</p></td>
+<td><p>Use this method to rotate its direction clockwise by an <cite>angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.direction.Dir2D.rotate_to" title="sim.direction.Dir2D.rotate_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_to</span></code></a>(other)</p></td>
 <td><p>This is a method to set its direction to <cite>other</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_azimuth_given</span></code>(from_loc, to_loc)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_azimuth_given</span></code>(from_loc, to_loc)</p></td>
 <td><p>Set the direction to the azimuth angle from a point viewing to  another point.</p></td>
 </tr>
 </tbody>
@@ -463,6 +472,12 @@ The angle increases as the direction rotates clockwise.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="sim.direction.Dir2D.rotate">
+<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.direction.Dir2D.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to rotate its direction clockwise by an <cite>angle</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="sim.direction.Dir2D.rotate_to">
 <code class="sig-name descname">rotate_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.direction.Dir2D" title="sim.direction.Dir2D">sim.direction.Dir2D</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.direction.Dir2D.rotate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a method to set its direction to <cite>other</cite>.</p>
@@ -479,8 +494,8 @@ That is, what is the angle of <cite>other</cite> if its angle is zero.</p>
 <dt id="sim.direction.Dir2D.is_within">
 <code class="sig-name descname">is_within</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#sim.direction.Dir2D" title="sim.direction.Dir2D">sim.direction.Dir2D</a></span></em>, <em class="sig-param"><span class="n">range</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#sim.direction.Dir2D.is_within" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function returns a bool describing if the direction of <cite>other</cite> is
-within a specific range of its direction. See description in base class 
-for detail.</p>
+within a specific range of its direction on either side. See description in 
+base class for detail.</p>
 </dd></dl>
 
 </dd></dl>
@@ -510,12 +525,15 @@ for detail.</p>
 <td><p>Return the elevation angle.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_within</span></code>(other, range)</p></td>
-<td><p>This function returns a bool describing if the direction of <cite>other</cite> is within a specific range of its direction.</p></td>
+<td><p>This function returns a bool describing if the direction of <cite>other</cite> is within a specific range of its direction on either side.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.direction.NorthDir.rotate_to" title="sim.direction.NorthDir.rotate_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_to</span></code></a>(other)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code>(angle)</p></td>
+<td><p>Use this method to rotate its direction clockwise by an <cite>angle</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.direction.NorthDir.rotate_to" title="sim.direction.NorthDir.rotate_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate_to</span></code></a>(other)</p></td>
 <td><p>The method does nothing, since this instance describes a constant  direction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_azimuth_given</span></code>(from_loc, to_loc)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_azimuth_given</span></code>(from_loc, to_loc)</p></td>
 <td><p>Set the direction to the azimuth angle from a point viewing to  another point.</p></td>
 </tr>
 </tbody>

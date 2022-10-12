@@ -15,6 +15,7 @@ Submodules
    sim.scenario
    sim.simsystem
    sim.simulation
+   sim.version
 
 Module contents
 ---------------
