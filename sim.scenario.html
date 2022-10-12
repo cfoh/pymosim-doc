@@ -407,6 +407,18 @@ check the type of the event object and handle the event accordingly.</p>
 <dd><p>Add a button to the user defined space on the simulation window.
 This method should only be called within <cite>on_create()</cite> event. After
 the event, calling to this method will have no effect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>The id of the button. When this button is clicked, an event
+will be triggered and user simulation will be called to pass
+the button clicked event carrying this id.</p>
+</dd>
+<dt><strong>label :</strong></dt><dd><p>The text to show on the button.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
