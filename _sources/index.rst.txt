@@ -3,6 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+PyMoSim
+=======
+
+**PyMoSim** is a mobility simulator written in Python. We plan to release 
+the source code to public in the near future. 
+If you want to access to the code, you need to make a request to
+`c.foh@surrey.ac.uk`, we will grant you access to the code on our github
+at: https://github.com/cfoh/pymosim.
+
+----
+
 List of Packages and Modules
 ============================
 

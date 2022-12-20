@@ -2,6 +2,6 @@ node.mobility module
 ====================
 
 .. automodule:: node.mobility
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

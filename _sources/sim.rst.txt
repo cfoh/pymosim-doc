@@ -5,7 +5,6 @@ Submodules
 ----------
 
 .. toctree::
-   :maxdepth: 4
 
    sim.direction
    sim.drawable
@@ -21,6 +20,6 @@ Module contents
 ---------------
 
 .. automodule:: sim
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

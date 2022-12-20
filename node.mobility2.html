@@ -236,12 +236,12 @@ level</p></li>
 <p>Every mobility instance for a vehicle is described by a <cite>route</cite>, which is a
 list of road segments. A route is an established mobility path for a vehicle
 to move from its initial location to the ending location. 
-<a class="reference internal" href="#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> is the class desribing a route. 
+<a class="reference internal" href="#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> is the class describing a route. 
 We also define the following:</p>
 <ul class="simple">
 <li><p>road segment: a tuple (start_loc, end_loc, speed, street_id).</p></li>
 <li><p>segment list: an ordered list of road segments forming a route.</p></li>
-<li><p>_RoutePoint: a internal class desribing a point on a route. It contains the location 
+<li><p>_RoutePoint: an internal class describing a point on a route. It contains the location 
 of the point, and segment index pointing to the segment in the segment list 
 where this point is currently on. Each vehicle mobility records two route points, 
 <cite>head</cite> and <cite>tail</cite> points of the vehicle.</p></li>
@@ -316,7 +316,7 @@ search for the vehicle in front.</p>
 mainly depends on the readiness of the map. If the handler is not ready,
 none of its methods will work properly. To improve execution efficiency,
 the user simulation should ensure the handler is ready which is a one-time
-check. Indiviual methods will not repeatedly check for readiness.</p>
+check. Individual methods will not repeatedly check for readiness.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">

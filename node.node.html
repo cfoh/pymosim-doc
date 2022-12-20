@@ -239,7 +239,7 @@ all communication node entities in the simulation.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="node.draw.html#node.draw.Drawing" title="node.draw.Drawing"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.draw.Drawing</span></code></a></p>
 <p>This is an abstract base class for all communication node entities to
 extend.</p>
-<p>The subclass can access to several convenicent functions
+<p>The subclass can access to several convenient functions
 via the base class. Each node instance should have a unique <cite>id</cite>
 to be identified easily. Currently, the recommended data type for
 the <cite>id</cite> is string.</p>
@@ -293,49 +293,52 @@ on the screen. Different types will be drawn differently.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line_segments</span></code>(points[, pen, brush])</p></td>
+<td><p>Draw line segments around this node where (0,0) is the center of the node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get" title="node.node.BaseNode.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(query_str)</p></td>
 <td><p>Query the node to retrieve corresponding information.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_color" title="node.node.BaseNode.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get_color" title="node.node.BaseNode.get_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_color</span></code></a>()</p></td>
 <td><p>Get the color that is used to draw this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.get_node_list" title="node.node.BaseNode.get_node_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_list</span></code></a>()</p></td>
 <td><p>Provide the list of all nodes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.is_disabled" title="node.node.BaseNode.is_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.is_disabled" title="node.node.BaseNode.is_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_disabled</span></code></a>()</p></td>
 <td><p>Use this method to check if a node is disabled.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.is_visible" title="node.node.BaseNode.is_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.is_visible" title="node.node.BaseNode.is_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_visible</span></code></a>()</p></td>
 <td><p>Use this method to check if a node is visible.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.lookup" title="node.node.BaseNode.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(id)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.lookup" title="node.node.BaseNode.lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookup</span></code></a>(id)</p></td>
 <td><p>This is a static method for performing a lookup for the node with <cite>id</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.remove_from_simulation" title="node.node.BaseNode.remove_from_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_simulation</span></code></a>()</p></td>
 <td><p>This method is used to remove this node from the simulation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.reset" title="node.node.BaseNode.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset" title="node.node.BaseNode.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the global node list.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.reset_color" title="node.node.BaseNode.reset_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_color</span></code></a>()</p></td>
 <td><p>Reset the color for the node to the default color of <cite>wx.BLACK</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_color" title="node.node.BaseNode.set_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color</span></code></a>(color)</p></td>
 <td><p>Set the color to draw for this node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_mobility" title="node.node.BaseNode.set_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mobility</span></code></a>(mobility[, direction])</p></td>
 <td><p>Set the <cite>mobility</cite> for this instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_transceiver" title="node.node.BaseNode.set_transceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_transceiver</span></code></a>(transceiver)</p></td>
 <td><p>Use this method to set a transceiver for the node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.node.BaseNode.set_visible" title="node.node.BaseNode.set_visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visible</span></code></a>([flag])</p></td>
 <td><p>Use this method to set the visibility of a node.</p></td>
 </tr>
 </tbody>
@@ -475,7 +478,7 @@ in the user simulation.</p>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
 <dt>bool</dt><dd><p>Whether the node is disabled. Disabled nodes will not appear on the
-simualtion world.</p>
+simulation world.</p>
 </dd>
 </dl>
 </dd>

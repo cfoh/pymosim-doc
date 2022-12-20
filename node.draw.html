@@ -299,10 +299,13 @@ your scenario using the methods provided by
 <tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_line" title="node.draw.Drawing.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(other_node[, pen, brush])</p></td>
 <td><p>Draw a line from this node to <cite>other_node</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_sector" title="node.draw.Drawing.draw_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_line_segments" title="node.draw.Drawing.draw_line_segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line_segments</span></code></a>(points[, pen, brush])</p></td>
+<td><p>Draw line segments around this node where (0,0) is the center of the node.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_sector" title="node.draw.Drawing.draw_sector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_sector</span></code></a>(radius, pointing_angle, width_angle)</p></td>
 <td><p>Draw a sector where its center is at this node, its radius is  <cite>radius</cite> its pointing angle is <cite>pointing_angle</cite>, its width (in degree)  is specified in <cite>width_angle</cite>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.draw.Drawing.draw_text" title="node.draw.Drawing.draw_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_text</span></code></a>(dx, dy, text, font[, foreground, …])</p></td>
 <td><p>Draw a text at around this node.</p></td>
 </tr>
 </tbody>
@@ -372,7 +375,7 @@ If no drawable is created, <cite>None</cite> is returned.</p>
 <code class="sig-name descname">draw_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_node</span></em>, <em class="sig-param"><span class="n">pen</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">brush</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw a line from this node to <cite>other_node</cite>.</p>
 <p>This method is useful to show a connection between this node and 
-another node. If the line already exsits, nothing will happen.</p>
+another node. If the line already exists, nothing will happen.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -439,7 +442,7 @@ If no drawable is created, <cite>None</cite> is returned.</p>
 <code class="sig-name descname">draw_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">font</span></em>, <em class="sig-param"><span class="n">foreground</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">background</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw a text at around this node.</p>
 <p>Use this method to show a text message that will following the node
-as it moves. If the text already exsits, nothing will happen.</p>
+as it moves. If the text already exists, nothing will happen.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -448,6 +451,37 @@ as it moves. If the text already exsits, nothing will happen.</p>
 <dt><strong>dy</strong><span class="classifier">int</span></dt><dd><p>Draw the text at this y offset.</p>
 </dd>
 <dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The text message to draw.</p>
+</dd>
+<dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
+predefined pen.</p>
+</dd>
+<dt><strong>brush</strong><span class="classifier">wx.Brush, optional, default=None</span></dt><dd><p>The brush to draw the shape. If <cite>None</cite> is provided, 
+it uses the predefined brush.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Reference to the drawable instance</dt><dd><p>The instance should not be used directly in the
+user simulation. To remove this drawable from the drawing
+list, simple use this reference in <cite>del_drawable()</cite> method.
+If no drawable is created, <cite>None</cite> is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="node.draw.Drawing.draw_line_segments">
+<code class="sig-name descname">draw_line_segments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points</span></em>, <em class="sig-param"><span class="n">pen</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">brush</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.draw_line_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw line segments around this node where (0,0) is the center of the node.</p>
+<p>This method is useful to draw a series of connected straight lines around the node
+with a start point and an end point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points</strong><span class="classifier">list of (x,y) tuple</span></dt><dd><p>A list of (x,y) tuples describing the lines to draw.</p>
 </dd>
 <dt><strong>pen</strong><span class="classifier">wx.Pen, optional, default=None</span></dt><dd><p>The pen to draw the shape. If <cite>None</cite> is provided, it uses the 
 predefined pen.</p>
@@ -540,7 +574,7 @@ to be found for removal.</p>
 <code class="sig-name descname">del_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dx</span></em>, <em class="sig-param"><span class="n">dy</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#node.draw.Drawing.del_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>(Deprecated) Remove an earlier added text message. The text 
 message will be removed if all the provided properties match. 
-If a matcch is not found, nothing will happen.</p>
+If a match is not found, nothing will happen.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is deprecated and will be removed in the future.

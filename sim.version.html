@@ -239,11 +239,47 @@ the latest version of PyMoSim.</p>
 <dt id="sim.version.Version">
 <em class="property">class </em><code class="sig-prename descclassname">sim.version.</code><code class="sig-name descname">Version</code><a class="headerlink" href="#sim.version.Version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This class stores the release version of the simulator.</p>
+<p>This class stores the release version of the simulator and provide 
+some useful methods to compare versions.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.version.Version.compare" title="sim.version.Version.compare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare</span></code></a>(other)</p></td>
+<td><p>It compare the release version with <cite>other</cite>, and returns 1 if <cite>other</cite> is higher, 0 if same, -1 if lower.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py attribute">
 <dt id="sim.version.Version.release_version">
 <code class="sig-name descname">release_version</code><em class="property"> = (0, 8, 9)</em><a class="headerlink" href="#sim.version.Version.release_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>The current release version of PyMoSim containing <cite>(major,minor,build)</cite> version.</p>
+<dd><p>The current release version of PyMoSim containing 
+<cite>(major,minor,build)</cite> version.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.version.Version.compare">
+<em class="property">static </em><code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#sim.version.Version.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>It compare the release version with <cite>other</cite>, and returns 1
+if <cite>other</cite> is higher, 0 if same, -1 if lower.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">tuple (int,int,int)</span></dt><dd><p>The version to compare with the released version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>int</dt><dd><p>It returns 1 if <cite>other</cite> is a higher (or more recent)
+release, 0 if same, or -1 if lower (or earlier release).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

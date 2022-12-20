@@ -5,7 +5,6 @@ Submodules
 ----------
 
 .. toctree::
-   :maxdepth: 4
 
    comm.channel
    comm.ltemodel
@@ -17,6 +16,6 @@ Module contents
 ---------------
 
 .. automodule:: comm
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

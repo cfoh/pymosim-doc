@@ -2,6 +2,6 @@ example6 module
 ===============
 
 .. automodule:: example6
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

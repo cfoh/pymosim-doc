@@ -2,6 +2,6 @@ node.obstacle module
 ====================
 
 .. automodule:: node.obstacle
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

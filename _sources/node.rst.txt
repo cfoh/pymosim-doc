@@ -5,7 +5,6 @@ Submodules
 ----------
 
 .. toctree::
-   :maxdepth: 4
 
    node.draw
    node.mobility
@@ -22,6 +21,6 @@ Module contents
 ---------------
 
 .. automodule:: node
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:
