@@ -362,28 +362,31 @@ may throw a run-time error.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.get_name" title="node.mobility2b.RoutePath.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Call this method to get the name of this class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.get_road_segment_list" title="node.mobility2b.RoutePath.get_road_segment_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node</span></code>()</p></td>
+<td><p>Get the node that uses this mobility instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.get_road_segment_list" title="node.mobility2b.RoutePath.get_road_segment_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_road_segment_list</span></code></a>()</p></td>
 <td><p>Get the establish route which is a list of tuples describing the road segments: <cite>(start_location,end_location,speed,street_id)</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.get_speed" title="node.mobility2b.RoutePath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.get_speed" title="node.mobility2b.RoutePath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.is_active" title="node.mobility2b.RoutePath.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.is_active" title="node.mobility2b.RoutePath.is_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_active</span></code></a>()</p></td>
 <td><p>This method returns whether the node on this route is active.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
 <td><p>Check if the movement of the node is paused.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.restart" title="node.mobility2b.RoutePath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.restart" title="node.mobility2b.RoutePath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
 <td><p>Use this method to restart the mobility.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.set_dir" title="node.mobility2b.RoutePath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.set_dir" title="node.mobility2b.RoutePath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
 <td><p>The method in this class will not do anything, since the direction  is calculated automatically based on the moving direction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.sim__do_move" title="node.mobility2b.RoutePath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility2b.RoutePath.sim__do_move" title="node.mobility2b.RoutePath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
 <td><p>This method is used within the simulation engine, not for user simulation.</p></td>
 </tr>
 </tbody>

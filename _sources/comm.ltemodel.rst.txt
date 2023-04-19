@@ -2,6 +2,6 @@ comm.ltemodel module
 ====================
 
 .. automodule:: comm.ltemodel
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="node package" href="node.html" />
-    <link rel="prev" title="comm.signalwave module" href="comm.signalwave.html" />
+    <link rel="prev" title="comm.t28 module" href="comm.t28.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -155,6 +155,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="comm.signalwave.html">
    comm.signalwave module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.t28.html">
+   comm.t28 module
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -280,7 +285,7 @@ useful methods.</p>
 <div class="section" id="transceiver">
 <h3><a class="reference internal" href="#comm.transceiver.Transceiver" title="comm.transceiver.Transceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transceiver</span></code></a><a class="headerlink" href="#transceiver" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>This is a simple omni-directional transceiver design.
+<div><p>This is a simple omnidirectional transceiver design.
 It uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a>.</p>
 </div></blockquote>
 </div>
@@ -295,7 +300,7 @@ It uses <a class="reference internal" href="comm.signalwave.html#comm.signalwave
 <h3><a class="reference internal" href="#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code></a><a class="headerlink" href="#usertransceiver" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This is a user-defined transceiver design. It allows the
-user to spefify a callback function to perform the
+user to specify a callback function to perform the
 signal propagation and detection logic at the user
 simulation level.</p>
 </div></blockquote>
@@ -319,7 +324,7 @@ simulation level.</p>
 <td><p>This method allows a receiving node to check if a receiving signal can be successfully detected and decoded.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#comm.transceiver.BaseTransceiver.create_signal" title="comm.transceiver.BaseTransceiver.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
-<td><p>Create a signal for transmissioin.</p></td>
+<td><p>Create a signal for transmission.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#comm.transceiver.BaseTransceiver.get_carrier_freq" title="comm.transceiver.BaseTransceiver.get_carrier_freq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code></a>()</p></td>
 <td><p>Return the carrier frequency used by the channel.</p></td>
@@ -372,7 +377,7 @@ simulation level.</p>
 <dl class="py method">
 <dt id="comm.transceiver.BaseTransceiver.create_signal">
 <em class="property">abstract </em><code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.transceiver.BaseTransceiver.create_signal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a signal for transmissioin. This is an abstract method 
+<dd><p>Create a signal for transmission. This is an abstract method 
 to be properly implemented in the subclass.</p>
 </dd></dl>
 

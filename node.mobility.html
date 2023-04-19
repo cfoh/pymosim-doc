@@ -323,19 +323,22 @@ via the base class.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.get_name" title="node.mobility.BaseMobility.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Call this method to get the name of this class, which is useful to find out which subclass this instance belong to.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.get_speed" title="node.mobility.BaseMobility.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.get_node" title="node.mobility.BaseMobility.get_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node</span></code></a>()</p></td>
+<td><p>Get the node that uses this mobility instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.get_speed" title="node.mobility.BaseMobility.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
 <td><p>This method returns the targeted travelling speed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.is_pause" title="node.mobility.BaseMobility.is_pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.is_pause" title="node.mobility.BaseMobility.is_pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code></a>()</p></td>
 <td><p>Check if the movement of the node is paused.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.pause" title="node.mobility.BaseMobility.pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code></a>([pause_flag])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.pause" title="node.mobility.BaseMobility.pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code></a>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.set_dir" title="node.mobility.BaseMobility.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.set_dir" title="node.mobility.BaseMobility.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
 <td><p>This method provides a direction to this mobility model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.sim__do_move" title="node.mobility.BaseMobility.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.BaseMobility.sim__do_move" title="node.mobility.BaseMobility.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
 <td><p>Call this method to make this node to move over a <cite>time_step</cite>.</p></td>
 </tr>
 </tbody>
@@ -492,6 +495,20 @@ resumed from a pause.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="node.mobility.BaseMobility.get_node">
+<code class="sig-name descname">get_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node.mobility.BaseMobility.get_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the node that uses this mobility instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</dt><dd><p>It returns the node that uses this mobility.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -530,19 +547,22 @@ sim.direction.NorthDir object.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.Stationary.get_name" title="node.mobility.Stationary.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Call this method to get the name of this class.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.Stationary.get_speed" title="node.mobility.Stationary.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node</span></code>()</p></td>
+<td><p>Get the node that uses this mobility instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.Stationary.get_speed" title="node.mobility.Stationary.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
 <td><p>Check if the movement of the node is paused.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.Stationary.set_dir" title="node.mobility.Stationary.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.Stationary.set_dir" title="node.mobility.Stationary.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
 <td><p>This is a stationary class, thus explicitly setting a direction  is needed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.Stationary.sim__do_move" title="node.mobility.Stationary.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.Stationary.sim__do_move" title="node.mobility.Stationary.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
 <td><p>This is a stationary mobility class, so calling this method  does nothing.</p></td>
 </tr>
 </tbody>
@@ -656,25 +676,28 @@ to the next <cite>location</cite> with <cite>speed</cite> based on the current t
 <tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.get_name" title="node.mobility.StaticPath.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Call this method to get the name of this class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.StaticPath.get_speed" title="node.mobility.StaticPath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node</span></code>()</p></td>
+<td><p>Get the node that uses this mobility instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.get_speed" title="node.mobility.StaticPath.get_speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_speed</span></code></a>()</p></td>
 <td><p>See the base class for details.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pause</span></code>()</p></td>
 <td><p>Check if the movement of the node is paused.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code>([pause_flag])</p></td>
 <td><p>Apply a pause to the movement of the node, or resume the movement from a pause.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.reset_path" title="node.mobility.StaticPath.reset_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_path</span></code></a>(speed, loc[, delay_start])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.StaticPath.reset_path" title="node.mobility.StaticPath.reset_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_path</span></code></a>(speed, loc[, delay_start])</p></td>
 <td><p>Use this method to clear all existing paths and add a new path without changing the current location.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.StaticPath.restart" title="node.mobility.StaticPath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.restart" title="node.mobility.StaticPath.restart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart</span></code></a>([delay_start])</p></td>
 <td><p>Use this method to restart the mobility.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.set_dir" title="node.mobility.StaticPath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.StaticPath.set_dir" title="node.mobility.StaticPath.set_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dir</span></code></a>(direction)</p></td>
 <td><p>The method in this class will not do anything, since the direction  is calculated automatically based on the moving direction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#node.mobility.StaticPath.sim__do_move" title="node.mobility.StaticPath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#node.mobility.StaticPath.sim__do_move" title="node.mobility.StaticPath.sim__do_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__do_move</span></code></a>(time_step)</p></td>
 <td><p>This method is used within the simulation engine, not for user simulation.</p></td>
 </tr>
 </tbody>

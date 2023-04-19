@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>example7 module &#8212; PyMoSim v0.8 Manual</title>
+    <title>example5a module &#8212; PyMoSim v0.8 Manual</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -168,24 +168,122 @@
               
               <div>
                 
-  <div class="section" id="module-example7">
-<span id="example7-module"></span><h1>example7 module<a class="headerlink" href="#module-example7" title="Permalink to this headline">¶</a></h1>
-<p>This is an example demonstrating a traffic light control. The example introduces
-three features:</p>
-<ul class="simple">
-<li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
-<li><p>How to displace a text on the map.</p></li>
-<li><p>How to use <a class="reference internal" href="node.mobility2.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> to create mobility. In this mobility model, 
-vehicles are aware of others and must follow the vehicles in front. The mobility 
-implementation uses a specific car following model to achieve realistic mobility.</p></li>
-</ul>
-<p>We place two traffic lights at two junctions and create some volume of traffic
-around the junctions.</p>
+  <div class="section" id="module-example5a">
+<span id="example5a-module"></span><h1>example5a module<a class="headerlink" href="#module-example5a" title="Permalink to this headline">¶</a></h1>
+<p>This example is used to test the radiation footprint of a transceiver design.
+In this example, we place a transmitting BS on the south,
+and interfering BS on north, and many vehicles on the map from the
+north to the south.</p>
+<p>If a vehicle can decode a transmission from the transmitting BS, then 
+it shows red (strong SNR). If it can receive the transmission but failed 
+to decode due to interference, it shows blue (strong SNR but weak SINR). 
+If it is outside of the coverage, it shows black (poor SNR).</p>
+<p>To demonstrate how this test code can be used, we applied a built-in
+transceiver design and built a mmWave 28GHz transceiver model based on 
+<code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code>, and we test their radiation
+footprints.</p>
+<p>To test your own transceiver design, simply change <cite>create_transceiver_bs2()</cite> 
+and <cite>create_transceiver_vehicle2()</cite> to include your design and pick 
+option 2 to run.</p>
+<dl class="py function">
+<dt id="example5a.dbm_to_watts">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">dbm_to_watts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dbm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.dbm_to_watts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert power from dBm to Watt.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="example5a.watts_to_dbm">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">watts_to_dbm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">watts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.watts_to_dbm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert power from Watt to dBm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="example5a.to_dB">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">to_dB</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snr_ratio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.to_dB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert S/N ratio to SNR dB.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_bs1">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_bs1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_bs1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_vehicle1">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_vehicle1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_vehicle1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_bs2">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_bs2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_bs2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_vehicle2">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_vehicle2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_vehicle2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_bs">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_bs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_bs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="example5a.create_transceiver_vehicle">
+<code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">create_transceiver_vehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.create_transceiver_vehicle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
-<dt id="example7.MyTrafficLight">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyTrafficLight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyType">
+<em class="property">class </em><code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">MyType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="node.type.html#node.type.Vehicle" title="node.type.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.type.Vehicle</span></code></a></p>
+<p>Use a new type to draw a small circle for the stationary vehicles.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5a.MyType.draw" title="example5a.MyType.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(dc, resolution)</p></td>
+<td><p>It draws an isosceles triangle with the tip pointing to the moving direction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_circle</span></code>(dc, resolution[, radius_in_meter])</p></td>
+<td><p>This method provides the subclass to conveniently draw a circle  on the screen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>color</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example5a.MyType.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyType.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example5a.MyType.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dc</span></em>, <em class="sig-param"><span class="n">resolution</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyType.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>It draws an isosceles triangle with the tip pointing to
+the moving direction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example5a.MySector">
+<em class="property">class </em><code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">MySector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MySector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
-<p>MyTrafficLight: This is a traffic light design.</p>
+<p>This class builds a default base station.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -275,24 +373,18 @@ around the junctions.</p>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 63%" />
+<col style="width: 37%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>get_indicator</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>redraw_indicator</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>switch_indicator</strong></p></td>
+<tr class="row-odd"><td><p><strong>get_bandwidth</strong></p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example7.MyTrafficLight.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MySector.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MySector.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -310,27 +402,17 @@ super() must be called.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyTrafficLight.get_indicator">
-<code class="sig-name descname">get_indicator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vehicle</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#example7.MyTrafficLight.get_indicator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyTrafficLight.switch_indicator">
-<code class="sig-name descname">switch_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.switch_indicator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyTrafficLight.redraw_indicator">
-<code class="sig-name descname">redraw_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.redraw_indicator" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MySector.get_bandwidth">
+<code class="sig-name descname">get_bandwidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MySector.get_bandwidth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="example7.MyVehicle">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyVehicle">
+<em class="property">class </em><code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyVehicle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
-<p>MyVehicle: This is a vehicle design.</p>
+<p>This class builds a default vehicle.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -418,29 +500,9 @@ super() must be called.</p>
 </tr>
 </tbody>
 </table>
-<table class="table">
-<colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>can_see_traffic_light</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>go</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>set_route</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>stop</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <dl class="py method">
-<dt id="example7.MyVehicle.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyVehicle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -457,31 +519,11 @@ super() must be called.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="example7.MyVehicle.set_route">
-<code class="sig-name descname">set_route</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">speed_low</span></em>, <em class="sig-param"><span class="n">speed_high</span></em>, <em class="sig-param"><span class="n">delay_start</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyVehicle.set_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.can_see_traffic_light">
-<code class="sig-name descname">can_see_traffic_light</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.can_see_traffic_light" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.stop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.go">
-<code class="sig-name descname">go</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.go" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
-<dt id="example7.MyScenario">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyScenario">
+<em class="property">class </em><code class="sig-prename descclassname">example5a.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyScenario" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a></p>
 <p>This is MyScenario. It reimplements on_create() and on_event().</p>
 <p class="rubric">Methods</p>
@@ -500,47 +542,38 @@ super() must be called.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code>(new_time)</p></td>
 <td><p>Change the simulation stop time to a new stop time.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.do_mobility" title="example7.MyScenario.do_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_mobility</span></code></a>(sim_time)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.do_restart_node" title="example7.MyScenario.do_restart_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_restart_node</span></code></a>(sim_time, event_obj)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.do_timer" title="example7.MyScenario.do_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_timer</span></code></a>(sim_time, event_obj)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
 <td><p>Get the simulation setting.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
 <td><p>Check whether this scenario has a valid street map object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.on_create" title="example7.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example5a.MyScenario.on_create" title="example5a.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
 <td><p>This is an event listener which will be called when the scenario object is being created.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.on_event" title="example7.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5a.MyScenario.on_event" title="example5a.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
 <td><p>This is an event listener which will be called when an event occurs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code>()</p></td>
 <td><p>Get the user defined contols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example7.MyScenario.on_create">
-<code class="sig-name descname">on_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyScenario.on_create" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyScenario.on_create">
+<code class="sig-name descname">on_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example5a.MyScenario.on_create" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an event listener which will be called when the scenario
 object is being created. The subclass should extend this method
 to create the simulation world.</p>
@@ -562,8 +595,8 @@ Returning False will cause the simulation to throw a runtime error.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyScenario.on_event">
-<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.on_event" title="Permalink to this definition">¶</a></dt>
+<dt id="example5a.MyScenario.on_event">
+<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5a.MyScenario.on_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an event listener which will be called when an event occurs.</p>
 <p>The simulation periodically calls this method to allow user to perform
 any user simulation for every time step of mobility. In other words,
@@ -583,21 +616,6 @@ check the type of the event object and handle the event accordingly.</p>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyScenario.do_restart_node">
-<code class="sig-name descname">do_restart_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_restart_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyScenario.do_timer">
-<code class="sig-name descname">do_timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_timer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyScenario.do_mobility">
-<code class="sig-name descname">do_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_mobility" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 

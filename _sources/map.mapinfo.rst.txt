@@ -2,6 +2,6 @@ map.mapinfo module
 ==================
 
 .. automodule:: map.mapinfo
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

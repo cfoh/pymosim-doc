@@ -254,37 +254,40 @@ It includes an event driven simulation engine running in the background.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.config" title="sim.simulation.World.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a>([sim_stop, sim_step, sim_speed, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.banner" title="sim.simulation.World.banner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">banner</span></code></a>()</p></td>
+<td><p>It returns an ASC banner text for PyMoSim. The ASC banner  it returns is::.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.config" title="sim.simulation.World.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a>([sim_stop, sim_step, sim_speed, …])</p></td>
 <td><p>The function to configure the world object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.get_scenario" title="sim.simulation.World.get_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scenario</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.get_scenario" title="sim.simulation.World.get_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scenario</span></code></a>()</p></td>
 <td><p>Use this method to get the associated scenario object of the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.is_animation_shown" title="sim.simulation.World.is_animation_shown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_animation_shown</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.is_animation_shown" title="sim.simulation.World.is_animation_shown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_animation_shown</span></code></a>()</p></td>
 <td><p>Use this method to check if animation is turned on for this simulation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.run" title="sim.simulation.World.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.run" title="sim.simulation.World.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
 <td><p>The function to run the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__exit" title="sim.simulation.World.sim__exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__exit</span></code></a>(restart_flag)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__exit" title="sim.simulation.World.sim__exit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__exit</span></code></a>(restart_flag)</p></td>
 <td><p>This method will open a dialog to confirm closing of the simulation and trigger termination or restart process based on the user action.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_scenario_name" title="sim.simulation.World.sim__set_scenario_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_scenario_name</span></code></a>(name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_scenario_name" title="sim.simulation.World.sim__set_scenario_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_scenario_name</span></code></a>(name)</p></td>
 <td><p>Use this method to give a name to the scenario.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_stop_time" title="sim.simulation.World.sim__set_stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_stop_time</span></code></a>(stop_time)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_stop_time" title="sim.simulation.World.sim__set_stop_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_stop_time</span></code></a>(stop_time)</p></td>
 <td><p>Set a new simulation stop time.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_timer" title="sim.simulation.World.sim__set_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_timer</span></code></a>(timer[, delay])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_timer" title="sim.simulation.World.sim__set_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_timer</span></code></a>(timer[, delay])</p></td>
 <td><p>The function to set a timer in the simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_zoom_scale" title="sim.simulation.World.sim__set_zoom_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_zoom_scale</span></code></a>(zoom)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__set_zoom_scale" title="sim.simulation.World.sim__set_zoom_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__set_zoom_scale</span></code></a>(zoom)</p></td>
 <td><p>Use this method to adjust the zoom scale of the map on the screen.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.sim__user_event" title="sim.simulation.World.sim__user_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__user_event</span></code></a>(event)</p></td>
-<td><p>This is an event listenser published for the frame object to call when the user acts on the frame, and this method should implement the cooresponding responses based on the user action such as button click, menu item selection, etc.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.sim__user_event" title="sim.simulation.World.sim__user_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__user_event</span></code></a>(event)</p></td>
+<td><p>This is an event listener published for the frame object to call when the user acts on the frame, and this method should implement the corresponding responses based on the user action such as button click, menu item selection, etc.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simulation.World.version" title="sim.simulation.World.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simulation.World.version" title="sim.simulation.World.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a>()</p></td>
 <td><p>It returns the version of the simulation in <cite>(version,minor,build)</cite> format where <cite>version</cite> is the major version, <cite>minor</cite> is the minor version, and <cite>build</cite> is the build version.</p></td>
 </tr>
 </tbody>
@@ -425,9 +428,9 @@ simulation.</p>
 <dl class="py method">
 <dt id="sim.simulation.World.sim__user_event">
 <code class="sig-name descname">sim__user_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.sim__user_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is an event listenser published for the frame object to call
+<dd><p>This is an event listener published for the frame object to call
 when the user acts on the frame, and this method should implement
-the cooresponding responses based on the user action such as button
+the corresponding responses based on the user action such as button
 click, menu item selection, etc.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -475,6 +478,29 @@ version, and <cite>build</cite> is the build version.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>Tuple (version:int,minor:int,build:int)</dt><dd><p>The version of this build, e.g. version <cite>0.8.1</cite> is major version 0, 
 minor version 8, build number 1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sim.simulation.World.banner">
+<code class="sig-name descname">banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sim.simulation.World.banner" title="Permalink to this definition">¶</a></dt>
+<dd><p>It returns an ASC banner text for PyMoSim. The ASC banner 
+it returns is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~</span>  <span class="n">___</span>    <span class="n">_</span>  <span class="n">_</span>   <span class="n">__</span>  <span class="n">__</span>            <span class="n">___</span>      <span class="n">_</span>            
+<span class="o">~</span> <span class="o">|</span> <span class="n">_</span> \  <span class="o">|</span> <span class="o">||</span> <span class="o">|</span> <span class="o">|</span>  \<span class="o">/</span>  <span class="o">|</span>   <span class="n">___</span>    <span class="o">/</span> <span class="n">__</span><span class="o">|</span>    <span class="p">(</span><span class="n">_</span><span class="p">)</span>    <span class="n">_</span> <span class="n">__</span>   
+<span class="o">~</span> <span class="o">|</span>  <span class="n">_</span><span class="o">/</span>   \<span class="n">_</span><span class="p">,</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>\<span class="o">/|</span> <span class="o">|</span>  <span class="o">/</span> <span class="n">_</span> \   \<span class="n">__</span> \    <span class="o">|</span> <span class="o">|</span>   <span class="o">|</span> <span class="s1">&#39;  \  </span>
+<span class="o">.</span><span class="n">_</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="n">_</span>   <span class="n">_</span><span class="o">|</span><span class="n">__</span><span class="o">/</span>  <span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="n">__</span><span class="o">|</span><span class="n">_</span><span class="o">|</span>  \<span class="n">___</span><span class="o">/</span>   <span class="o">|</span><span class="n">___</span><span class="o">/</span>   <span class="n">_</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="n">_</span>  <span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="n">_</span><span class="o">|</span> 
+<span class="o">|</span> <span class="s2">&quot;&quot;&quot; | | &quot;&quot;&quot;&quot;| |&quot;&quot;&quot;&quot;&quot;&quot;| |&quot;&quot;&quot;&quot;&quot;</span><span class="o">|</span> <span class="o">|</span><span class="s2">&quot;&quot;&quot;&quot;&quot;| |&quot;&quot;&quot;&quot;&quot;</span><span class="o">|</span> <span class="o">|</span><span class="s2">&quot;&quot;&quot;&quot;&quot;| </span>
+<span class="s2">`-0-0-&#39; `-0-0-&#39; `-0--0-&#39; `-0-0-&#39; `-0-0-&#39; `-0-0-&#39; `-0-0-&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>The ASC banner string.</p>
 </dd>
 </dl>
 </dd>

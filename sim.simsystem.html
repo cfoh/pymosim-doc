@@ -220,9 +220,10 @@
                 
   <div class="section" id="module-sim.simsystem">
 <span id="sim-simsystem-module"></span><h1>sim.simsystem module<a class="headerlink" href="#module-sim.simsystem" title="Permalink to this headline">¶</a></h1>
-<p>This module provides <cite>SimSystem</cite> class which is used for simulation system control. 
-<cite>SimSystem</cite> is a static class, it should be called directly without an instance.
-It is used for other interna modules to do the following:</p>
+<p>This module provides <cite>SimSystem</cite> class which is used for simulation 
+system control. <cite>SimSystem</cite> is a static class, it should be called 
+directly without an instance. It is used for other internal 
+modules to do the following:</p>
 <ul class="simple">
 <li><p>reporting simulation warning due to incorrect implementation</p></li>
 <li><p>stopping simulation due to a critical error</p></li>
@@ -230,11 +231,13 @@ It is used for other interna modules to do the following:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
-<dt>SimSystem.err.message(err_str)</dt><dd><p>Call this function when a fatal error has occured. Calling this 
-function will stop the running and report the provided error message.</p>
+<dt>SimSystem.err(err_str)</dt><dd><p>Call this function when a fatal error has occurred. 
+Calling this function will stop the running and report 
+the provided error message.</p>
 </dd>
-<dt>SimSystem.warn.message(warn_str)</dt><dd><p>Call this function when a non-critical situation has occured. Calling this 
-function will show a warning on the terminal but will not stop the running.</p>
+<dt>SimSystem.warn(warn_str)</dt><dd><p>Call this function when a non-critical situation has 
+occurred. Calling this function will show a warning on 
+the terminal but will not stop the running.</p>
 </dd>
 </dl>
 </div>
@@ -258,34 +261,17 @@ simulation but error will stop the running immediately.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.err" title="sim.simsystem.SimSystem.err"><code class="xref py py-obj docutils literal notranslate"><span class="pre">err</span></code></a>()</p></td>
-<td><p>For error.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.warn" title="sim.simsystem.SimSystem.warn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warn</span></code></a>()</p></td>
-<td><p>For warning.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py class">
-<dt id="sim.simsystem.SimSystem.err">
-<em class="property">class </em><code class="sig-name descname">err</code><a class="headerlink" href="#sim.simsystem.SimSystem.err" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>For error.</p>
-<p class="rubric">Methods</p>
-<table class="longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.err.message" title="sim.simsystem.SimSystem.err.message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">message</span></code></a>(err_str)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.err" title="sim.simsystem.SimSystem.err"><code class="xref py py-obj docutils literal notranslate"><span class="pre">err</span></code></a>(err_str)</p></td>
 <td><p>Throw an error message and stop the running.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.warn" title="sim.simsystem.SimSystem.warn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warn</span></code></a>(warn_str)</p></td>
+<td><p>Throw a warning message.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="sim.simsystem.SimSystem.err.message">
-<em class="property">static </em><code class="sig-name descname">message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">err_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simsystem.SimSystem.err.message" title="Permalink to this definition">¶</a></dt>
+<dt id="sim.simsystem.SimSystem.err">
+<em class="property">static </em><code class="sig-name descname">err</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">err_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simsystem.SimSystem.err" title="Permalink to this definition">¶</a></dt>
 <dd><p>Throw an error message and stop the running.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -297,28 +283,9 @@ simulation but error will stop the running immediately.</p>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt id="sim.simsystem.SimSystem.warn">
-<em class="property">class </em><code class="sig-name descname">warn</code><a class="headerlink" href="#sim.simsystem.SimSystem.warn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>For warning.</p>
-<p class="rubric">Methods</p>
-<table class="longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sim.simsystem.SimSystem.warn.message" title="sim.simsystem.SimSystem.warn.message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">message</span></code></a>(warn_str)</p></td>
-<td><p>Throw a warning message.</p></td>
-</tr>
-</tbody>
-</table>
 <dl class="py method">
-<dt id="sim.simsystem.SimSystem.warn.message">
-<em class="property">static </em><code class="sig-name descname">message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">warn_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simsystem.SimSystem.warn.message" title="Permalink to this definition">¶</a></dt>
+<dt id="sim.simsystem.SimSystem.warn">
+<em class="property">static </em><code class="sig-name descname">warn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">warn_str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.simsystem.SimSystem.warn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Throw a warning message.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -328,8 +295,6 @@ simulation but error will stop the running immediately.</p>
 </dl>
 </dd>
 </dl>
-</dd></dl>
-
 </dd></dl>
 
 </dd></dl>

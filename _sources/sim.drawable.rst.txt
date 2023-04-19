@@ -2,6 +2,6 @@ sim.drawable module
 ===================
 
 .. automodule:: sim.drawable
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

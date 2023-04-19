@@ -87,6 +87,39 @@ Example 5
     .. literalinclude:: ../example5.py
        :language: python
    
+Example 5a
+^^^^^^^^^^
+
+.. automodule:: example5a
+.. image:: _static/example5a.png
+
+.. collapse:: Show source code
+
+    .. literalinclude:: ../example5.py
+       :language: python
+   
+Example 5b
+^^^^^^^^^^
+
+.. automodule:: example5b
+.. image:: _static/example5b.gif
+
+.. collapse:: Show source code
+
+    .. literalinclude:: ../example5.py
+       :language: python
+   
+Example 5c
+^^^^^^^^^^
+
+.. automodule:: example5c
+.. image:: _static/example5c.gif
+
+.. collapse:: Show source code
+
+    .. literalinclude:: ../example5.py
+       :language: python
+   
 Example 6
 ---------
 
@@ -118,6 +151,7 @@ Example 8
 Result Comparison
 ^^^^^^^^^^^^^^^^^
 .. image:: _static/example8-comparison.png
+
 From the paper (left) versus from our simulation (right).
 
 .. collapse:: Show source code

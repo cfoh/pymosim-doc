@@ -158,6 +158,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="comm.t28.html">
+   comm.t28 module
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="comm.transceiver.html">
    comm.transceiver module
   </a>
@@ -248,6 +253,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="comm.t28.html">comm.t28 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comm.transceiver.html">comm.transceiver module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="comm.transceiver.html#list-of-classes">List of Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="comm.transceiver.html#basetransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransceiver</span></code></a></li>
@@ -392,6 +398,18 @@ V       V       |   V       |   and inform User Simulation the final outcome
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
+</div>
+<p>The following modules can be imported directly 
+from <cite>comm</cite> package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">comm</span> <span class="kn">import</span> <span class="n">Transceiver</span><span class="p">,</span> <span class="n">TransceiverDir</span>
+<span class="kn">from</span> <span class="nn">comm</span> <span class="kn">import</span> <span class="n">UserTransceiver</span>
+<span class="kn">from</span> <span class="nn">comm</span> <span class="kn">import</span> <span class="n">DiscModel</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are other advanced transceiver modules in the package, 
+we’ll let users import corresponding ones based on the need.</p>
 </div>
 </div>
 </div>

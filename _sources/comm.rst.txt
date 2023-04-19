@@ -5,17 +5,19 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    comm.channel
    comm.ltemodel
    comm.mmwave28
    comm.signalwave
+   comm.t28
    comm.transceiver
 
 Module contents
 ---------------
 
 .. automodule:: comm
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

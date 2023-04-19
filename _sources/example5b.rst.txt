@@ -1,7 +1,7 @@
-sim.frame module
+example5b module
 ================
 
-.. automodule:: sim.frame
+.. automodule:: example5b
    :members:
    :undoc-members:
    :show-inheritance:

@@ -2,6 +2,6 @@ comm.channel module
 ===================
 
 .. automodule:: comm.channel
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

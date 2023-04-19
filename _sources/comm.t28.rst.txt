@@ -1,7 +1,7 @@
-example3 module
+comm.t28 module
 ===============
 
-.. automodule:: example3
+.. automodule:: comm.t28
    :members:
    :undoc-members:
    :show-inheritance:

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>example7 module &#8212; PyMoSim v0.8 Manual</title>
+    <title>example5c module &#8212; PyMoSim v0.8 Manual</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -168,24 +168,176 @@
               
               <div>
                 
-  <div class="section" id="module-example7">
-<span id="example7-module"></span><h1>example7 module<a class="headerlink" href="#module-example7" title="Permalink to this headline">¶</a></h1>
-<p>This is an example demonstrating a traffic light control. The example introduces
-three features:</p>
-<ul class="simple">
-<li><p>How to create a timer. The timer is used to control the traffic lights.</p></li>
-<li><p>How to displace a text on the map.</p></li>
-<li><p>How to use <a class="reference internal" href="node.mobility2.html#node.mobility2.RoutePath" title="node.mobility2.RoutePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.mobility2.RoutePath</span></code></a> to create mobility. In this mobility model, 
-vehicles are aware of others and must follow the vehicles in front. The mobility 
-implementation uses a specific car following model to achieve realistic mobility.</p></li>
-</ul>
-<p>We place two traffic lights at two junctions and create some volume of traffic
-around the junctions.</p>
+  <div class="section" id="module-example5c">
+<span id="example5c-module"></span><h1>example5c module<a class="headerlink" href="#module-example5c" title="Permalink to this headline">¶</a></h1>
+<p>This example demonstrates how to further extends a new user-defined 
+transceiver. The earlier example created a mmWave 28GHz transceiver 
+model which supports omnidirectional and predefined fixed directional
+antenna designs. Here we extend the transceiver design to include 
+the feature of tracking of senders and receivers.</p>
+<p>The first vehicle uses an onmidirectional antenna. The second vehicle
+uses a directional antenna with fixed pointing angle. The third
+vehicle uses the directional antenna with tracking feature.</p>
+<dl class="py function">
+<dt id="example5c.dbm_to_watts">
+<code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">dbm_to_watts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dbm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.dbm_to_watts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert power from dBm to Watt.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="example5c.watts_to_dbm">
+<code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">watts_to_dbm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">watts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.watts_to_dbm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert power from Watt to dBm.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="example5c.to_dB">
+<code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">to_dB</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snr_ratio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.to_dB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to convert S/N ratio to SNR dB.</p>
+</dd></dl>
+
 <dl class="py class">
-<dt id="example7.MyTrafficLight">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyTrafficLight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyTransceiver">
+<em class="property">class </em><code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">MyTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">ant_mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTransceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">comm.t28.Transceiver</span></code></p>
+<p>We extend our user-defined transceiver to make the existing 
+transceiver suitable to work with others that has a tracking feature.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code>(sent_signal)</p></td>
+<td><p>A callback function triggered by a transmission, use this  method to check whether the input signal can be detected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>()</p></td>
+<td><p>Create a signal for transmission.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example5c.MyTransceiver.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">ant_mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example5c.MyTrackedTransceiver">
+<em class="property">class </em><code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">MyTrackedTransceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTrackedTransceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#example5c.MyTransceiver" title="example5c.MyTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">example5c.MyTransceiver</span></code></a></p>
+<p>This is the class that implements the tracking feature.</p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#example5c.MyTrackedTransceiver.can_detect" title="example5c.MyTrackedTransceiver.can_detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code></a>(sent_signal)</p></td>
+<td><p>A callback function triggered by a transmission, use this  method to check whether the input signal can be detected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code>()</p></td>
+<td><p>Create a signal for transmission.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5c.MyTrackedTransceiver.set_rx_sweep" title="example5c.MyTrackedTransceiver.set_rx_sweep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rx_sweep</span></code></a>([mode])</p></td>
+<td><p>Set the receiver to sweep mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#example5c.MyTrackedTransceiver.track_receiver" title="example5c.MyTrackedTransceiver.track_receiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_receiver</span></code></a>(receiver_loc)</p></td>
+<td><p>Align the transmitting antenna to point to the receiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5c.MyTrackedTransceiver.track_sender" title="example5c.MyTrackedTransceiver.track_sender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_sender</span></code></a>(sender_loc)</p></td>
+<td><p>Align the receiving antenna to point to the sender.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="example5c.MyTrackedTransceiver.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTrackedTransceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example5c.MyTrackedTransceiver.track_sender">
+<code class="sig-name descname">track_sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sender_loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTrackedTransceiver.track_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align the receiving antenna to point to the sender.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example5c.MyTrackedTransceiver.track_receiver">
+<code class="sig-name descname">track_receiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver_loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTrackedTransceiver.track_receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align the transmitting antenna to point to the receiver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example5c.MyTrackedTransceiver.set_rx_sweep">
+<code class="sig-name descname">set_rx_sweep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyTrackedTransceiver.set_rx_sweep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the receiver to sweep mode. In this mode, the
+receiver will sweep all directions to listen to any incoming
+transmission. This is equivalent to omnidirectional over 
+the sweep time period. In the simulation, we use omnidirectional
+to mimic this operation to eliminate simulation loops.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="example5c.MyTrackedTransceiver.can_detect">
+<code class="sig-name descname">can_detect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent_signal</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example5c.MyTrackedTransceiver.can_detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A callback function triggered by a transmission, use this 
+method to check whether the input signal can be detected.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="example5c.MySector">
+<em class="property">class </em><code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">MySector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MySector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
-<p>MyTrafficLight: This is a traffic light design.</p>
+<p>This class builds a default base station.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -275,24 +427,18 @@ around the junctions.</p>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 63%" />
+<col style="width: 37%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>get_indicator</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>redraw_indicator</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>switch_indicator</strong></p></td>
+<tr class="row-odd"><td><p><strong>get_bandwidth</strong></p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example7.MyTrafficLight.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MySector.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">pointing_angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MySector.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -310,27 +456,17 @@ super() must be called.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyTrafficLight.get_indicator">
-<code class="sig-name descname">get_indicator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vehicle</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#example7.MyTrafficLight.get_indicator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyTrafficLight.switch_indicator">
-<code class="sig-name descname">switch_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.switch_indicator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyTrafficLight.redraw_indicator">
-<code class="sig-name descname">redraw_indicator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyTrafficLight.redraw_indicator" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MySector.get_bandwidth">
+<code class="sig-name descname">get_bandwidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MySector.get_bandwidth" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="example7.MyVehicle">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyVehicle">
+<em class="property">class </em><code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">MyVehicle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">delay_start</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyVehicle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a></p>
-<p>MyVehicle: This is a vehicle design.</p>
+<p>This class builds a default vehicle.</p>
 <p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
@@ -420,27 +556,18 @@ super() must be called.</p>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
+<col style="width: 70%" />
+<col style="width: 30%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>can_see_traffic_light</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>go</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>set_route</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>stop</strong></p></td>
+<tr class="row-odd"><td><p><strong>install_transceiver</strong></p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example7.MyVehicle.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyVehicle.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">delay_start</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyVehicle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the constructor. It must be reimplemented and 
 super() must be called.</p>
 <dl class="field-list">
@@ -458,30 +585,15 @@ super() must be called.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyVehicle.set_route">
-<code class="sig-name descname">set_route</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">start_pin</span></em>, <em class="sig-param"><span class="n">end_pin</span></em>, <em class="sig-param"><span class="n">speed_low</span></em>, <em class="sig-param"><span class="n">speed_high</span></em>, <em class="sig-param"><span class="n">delay_start</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyVehicle.set_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.can_see_traffic_light">
-<code class="sig-name descname">can_see_traffic_light</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.can_see_traffic_light" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.stop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyVehicle.go">
-<code class="sig-name descname">go</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyVehicle.go" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyVehicle.install_transceiver">
+<code class="sig-name descname">install_transceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transceiver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyVehicle.install_transceiver" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="example7.MyScenario">
-<em class="property">class </em><code class="sig-prename descclassname">example7.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyScenario">
+<em class="property">class </em><code class="sig-prename descclassname">example5c.</code><code class="sig-name descname">MyScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyScenario" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="sim.scenario.html#sim.scenario.BaseScenario" title="sim.scenario.BaseScenario"><code class="xref py py-class docutils literal notranslate"><span class="pre">sim.scenario.BaseScenario</span></code></a></p>
 <p>This is MyScenario. It reimplements on_create() and on_event().</p>
 <p class="rubric">Methods</p>
@@ -500,47 +612,44 @@ super() must be called.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_sim_stop_time</span></code>(new_time)</p></td>
 <td><p>Change the simulation stop time to a new stop time.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.do_mobility" title="example7.MyScenario.do_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_mobility</span></code></a>(sim_time)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example5c.MyScenario.do_mobility" title="example5c.MyScenario.do_mobility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_mobility</span></code></a>(sim_time, event_obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.do_restart_node" title="example7.MyScenario.do_restart_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_restart_node</span></code></a>(sim_time, event_obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5c.MyScenario.do_restart_node" title="example5c.MyScenario.do_restart_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_restart_node</span></code></a>(sim_time, event_obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.do_timer" title="example7.MyScenario.do_timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_timer</span></code></a>(sim_time, event_obj)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code>(setting_str)</p></td>
 <td><p>Get the simulation setting.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_map</span></code>()</p></td>
 <td><p>Check whether this scenario has a valid street map object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#example7.MyScenario.on_create" title="example7.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#example5c.MyScenario.on_create" title="example5c.MyScenario.on_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_create</span></code></a>(simworld)</p></td>
 <td><p>This is an event listener which will be called when the scenario object is being created.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#example7.MyScenario.on_event" title="example7.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#example5c.MyScenario.on_event" title="example5c.MyScenario.on_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_event</span></code></a>(sim_time, event_obj)</p></td>
 <td><p>This is an event listener which will be called when an event occurs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_drawable</span></code>(drawable)</p></td>
 <td><p>Use this method to remove a persistent drawable from the scenario  background.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_background</span></code>(bitmap[, x, y, zoom])</p></td>
 <td><p>Set a background bitmap image for this scenario.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code>(name)</p></td>
 <td><p>Set a name for this scenario to show on the window.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim__get_control</span></code>()</p></td>
 <td><p>Get the user defined contols.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_map</span></code>(map[, x, y, zoom])</p></td>
 <td><p>Set a street map info object for this scenario to describe the map.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="example7.MyScenario.on_create">
-<code class="sig-name descname">on_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example7.MyScenario.on_create" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyScenario.on_create">
+<code class="sig-name descname">on_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#example5c.MyScenario.on_create" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an event listener which will be called when the scenario
 object is being created. The subclass should extend this method
 to create the simulation world.</p>
@@ -562,8 +671,8 @@ Returning False will cause the simulation to throw a runtime error.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyScenario.on_event">
-<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.on_event" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyScenario.on_event">
+<code class="sig-name descname">on_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyScenario.on_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an event listener which will be called when an event occurs.</p>
 <p>The simulation periodically calls this method to allow user to perform
 any user simulation for every time step of mobility. In other words,
@@ -585,18 +694,13 @@ check the type of the event object and handle the event accordingly.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyScenario.do_restart_node">
-<code class="sig-name descname">do_restart_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_restart_node" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyScenario.do_restart_node">
+<code class="sig-name descname">do_restart_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyScenario.do_restart_node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="example7.MyScenario.do_timer">
-<code class="sig-name descname">do_timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_timer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="example7.MyScenario.do_mobility">
-<code class="sig-name descname">do_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example7.MyScenario.do_mobility" title="Permalink to this definition">¶</a></dt>
+<dt id="example5c.MyScenario.do_mobility">
+<code class="sig-name descname">do_mobility</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sim_time</span></em>, <em class="sig-param"><span class="n">event_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#example5c.MyScenario.do_mobility" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

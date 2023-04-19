@@ -2,6 +2,6 @@ sim.scenario module
 ===================
 
 .. automodule:: sim.scenario
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

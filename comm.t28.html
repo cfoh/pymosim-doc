@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comm.t28 module &#8212; PyMoSim v0.8 Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="comm.transceiver module" href="comm.transceiver.html" />
+    <link rel="prev" title="comm.signalwave module" href="comm.signalwave.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/icon.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="comm.html">
+  comm package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="node.html">
+  node package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sim.html">
+  sim package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="map.html">
+  map package
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/cfoh/pymosim" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.channel.html">
+   comm.channel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.ltemodel.html">
+   comm.ltemodel module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.mmwave28.html">
+   comm.mmwave28 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.signalwave.html">
+   comm.signalwave module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   comm.t28 module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comm.transceiver.html">
+   comm.transceiver module
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-comm.t28">
+<span id="comm-t28-module"></span><h1>comm.t28 module<a class="headerlink" href="#module-comm.t28" title="Permalink to this headline">¶</a></h1>
+<p>Module <cite>t28</cite> is a demonstration on how to use 
+<a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code></a> to build own transceiver model. 
+Users can learn how <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code></a> can be
+used from this demonstration, or use this module to build further 
+features.</p>
+<p>The module contains two classes <cite>Signal</cite> and <cite>Transceiver</cite>:</p>
+<ul class="simple">
+<li><p><cite>Signal</cite> class: to hold the signal information.</p></li>
+<li><p><cite>Transceiver</cite> class: a transceiver design using 28GHz. The transceiver
+uses <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserTransceiver</span></code></a> to implement a
+specific transceiver design. In this design, the signal radiates within
+the predefined beamwidth towards a given pointing angle.</p></li>
+</ul>
+<p>The pathloss is based on [1] which is the 3GPP Band n257 (28GHz) for 
+Urban Micro (UMi). The parameters used in the model are taken from 
+Table I in [1].</p>
+<p>Beam coverage has a shape of a sector. Signals radiate to all directions
+within the beamwidth with the same gains and behaviour. Outside of the
+beamwidth, no signal is radiated. 
+Within the beamwidth, the antenna gain is the same, and no signal appears 
+outside of the beanwidth.
+See <cite>example5a.py</cite> for the radiation of this transceiver model.</p>
+<p>To create this transceiver design, we did the following:</p>
+<ul class="simple">
+<li><p>created a <cite>Signal</cite> class (or reuse an existing one).</p>
+<ul>
+<li><p>in the constructor, added any attribute needed for the design</p></li>
+<li><p>in <cite>copy()</cite> method, made sure all attributes were copied over</p></li>
+</ul>
+</li>
+<li><p>create a <cite>Transceiver</cite> class.</p>
+<ul>
+<li><p>in the constructor, performed all necessary initialization</p></li>
+<li><p>in <cite>create_signal()</cite> method, created the <cite>Signal</cite> object</p></li>
+<li><p>in <cite>can_detect()</cite> method, implemented the logic to decide whether
+the input signal could be detected. This method will be called at 
+the receiver side.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[1] Sun et al, “Investigation of Prediction Accuracy, Sensitivity, 
+and Parameter Stability of Large-Scale Propagation Path Loss Models 
+for 5G Wireless Communications,” IEEE Transactions on Vehicular 
+Technology, vol. 65, no. 5, pp. 2843-2860, May 2016.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Created by: CH Foh (2023)</p></li>
+</ul>
+</div>
+<dl class="py class">
+<dt id="comm.t28.Signal">
+<em class="property">class </em><code class="sig-prename descclassname">comm.t28.</code><code class="sig-name descname">Signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.t28.Signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comm.signalwave.html#comm.signalwave.QualityBasedSignal" title="comm.signalwave.QualityBasedSignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.signalwave.QualityBasedSignal</span></code></a></p>
+<p>This is an implementation of signal for mmWave communication.</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>freq</strong><span class="classifier">float</span></dt><dd><p>Carrier frequency.</p>
+</dd>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The source node that transmitted this signal.</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">float</span></dt><dd><p>The transmit power in dBm.</p>
+</dd>
+<dt><strong>rx_power</strong><span class="classifier">float, default is None</span></dt><dd><p>The received power in dBm, this will be filled automatically 
+after it detects a transmission triggered by <cite>unicast()</cite>, <cite>multicast()</cite>
+or <cite>broadcast()</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_info</span></code>(key, value)</p></td>
+<td><p>Use this method to add an info to the signal that can be retrieved later.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.t28.Signal.copy" title="comm.t28.Signal.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>See the description in the base class for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_info</span></code>(key)</p></td>
+<td><p>Use this method to retrieve an earlier added info.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.t28.Signal.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">freq</span></em>, <em class="sig-param"><span class="n">tx_power</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.t28.Signal.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.t28.Signal.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#comm.t28.Signal.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the description in the base class for more information.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comm.t28.Transceiver">
+<em class="property">class </em><code class="sig-prename descclassname">comm.t28.</code><code class="sig-name descname">Transceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">ant_mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.t28.Transceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="comm.transceiver.html#comm.transceiver.UserTransceiver" title="comm.transceiver.UserTransceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">comm.transceiver.UserTransceiver</span></code></a></p>
+<p>This class specifies the transceiver model assuming 28GHz mmWave
+transmission.</p>
+<p>For the pathloss, we implement the model presented in [1] which 
+is the 3GPP Band n257 (28GHz) for Urban Micro (UMi). 
+The parameters used in the model are taken from Table I in [1].</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[1] Sun et al, “Investigation of Prediction Accuracy, Sensitivity, 
+and Parameter Stability of Large-Scale Propagation Path Loss Models 
+for 5G Wireless Communications,” IEEE Transactions on Vehicular 
+Technology, vol. 65, no. 5, pp. 2843-2860, May 2016.</p>
+</div>
+<p>The antenna can operate in three modes set by <cite>ant_mode</cite>:</p>
+<ul class="simple">
+<li><p>Mode 0: (default mode) omnidirectional</p></li>
+<li><p>Mode 1: fixed directional transmission, omnidirectional reception</p></li>
+<li><p>Mode 2: fixed directional transmission and reception</p></li>
+</ul>
+<p>For directional, we assume sectored radiation footprint where the 
+antenna gain for all transmitting angles is the same within the 
+beam width, and no signal outside of the beam width. The beam width
+is given by <cite>beam_width</cite> and the point angle is given by <cite>azimuth</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>node</strong><span class="classifier"><a class="reference internal" href="node.node.html#node.node.BaseNode" title="node.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">node.node.BaseNode</span></code></a> subclass</span></dt><dd><p>The node where this transceiver belongs to</p>
+</dd>
+<dt><strong>ant_mode</strong><span class="classifier">int, optional, default is 0 (default)</span></dt><dd><p>Antenna mode of the transceiver, 0 means omnidirectional,
+1 means directional transmitter and omnidirectional 
+receiver, 2 means directional transmitter and receiver.</p>
+</dd>
+<dt><strong>beam_width</strong><span class="classifier">int or float</span></dt><dd><p>The beam width of the directional transmission (in degree).
+This is common to both transmitter and receiver.
+For omnidirectional transceiver, this input is not used.</p>
+</dd>
+<dt><strong>azimuth</strong><span class="classifier">int, float</span></dt><dd><p>The pointing angle (in degree) of the antenna, 
+0 degree means north and increases clockwise.
+For omnidirectional transceiver, this input is not used.</p>
+</dd>
+<dt><strong>bandwidth</strong><span class="classifier">int, optional</span></dt><dd><p>The bandwidth used for this transceiver in Hz</p>
+</dd>
+<dt><strong>tx_power</strong><span class="classifier">int or float, optional</span></dt><dd><p>The transmit power in dBm.</p>
+</dd>
+<dt><strong>SNR_threshold</strong><span class="classifier">int or float, optional</span></dt><dd><p>The SNR threshold for correct reception of the signal (in dB).</p>
+</dd>
+<dt><strong>tx_gain</strong><span class="classifier">int or float, optional</span></dt><dd><p>The transmitter antenna gain, should be larger for 
+directional transmission and smaller for omnidirectional.</p>
+</dd>
+<dt><strong>rx_gain</strong><span class="classifier">int or float, optional</span></dt><dd><p>The receiver antenna gain, should be larger for 
+directional reception and smaller for omnidirectional.</p>
+</dd>
+<dt><strong>noise_fig</strong><span class="classifier">int or float, optional</span></dt><dd><p>The noise figure setting.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code>(signal)</p></td>
+<td><p>This method allows a node to perform a broadcast on the channel,  and the method returns a list of tuple (node,received_signal) that the broadcast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#comm.t28.Transceiver.can_detect" title="comm.t28.Transceiver.can_detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_detect</span></code></a>(sent_signal)</p></td>
+<td><p>A callback function triggered by a transmission, use this  method to check whether the input signal can be detected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#comm.t28.Transceiver.create_signal" title="comm.t28.Transceiver.create_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_signal</span></code></a>()</p></td>
+<td><p>Create a signal for transmission.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_freq</span></code>()</p></td>
+<td><p>Return the carrier frequency used by the channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code>([property])</p></td>
+<td><p>The method returns the property of the transceiver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code>()</p></td>
+<td><p>This method returns the type of the transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">multicast</span></code>(signal, node_list)</p></td>
+<td><p>This method allows a node to perform a multicast,  and the method returns a list of tuple (node,received_signal) that the multicast signal can be decoded, or None if no node can decode the signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code>(key, value)</p></td>
+<td><p>Set a property to this transceiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicast</span></code>(signal, node)</p></td>
+<td><p>This method allows a node to perform a unicast on the channel,  and the method returns a <cite>received_signal</cite> if the  signal can be decoded, or None.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comm.t28.Transceiver.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em>, <em class="sig-param"><span class="n">ant_mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">beam_width</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">azimuth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">50000000.0</span></em>, <em class="sig-param"><span class="n">tx_power</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">SNR_threshold</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">tx_gain</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">rx_gain</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">noise_fig</span><span class="o">=</span><span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comm.t28.Transceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.t28.Transceiver.create_signal">
+<code class="sig-name descname">create_signal</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#comm.t28.Signal" title="comm.t28.Signal">comm.t28.Signal</a><a class="headerlink" href="#comm.t28.Transceiver.create_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a signal for transmission.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comm.t28.Transceiver.can_detect">
+<code class="sig-name descname">can_detect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sent_signal</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#comm.t28.Transceiver.can_detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A callback function triggered by a transmission, use this 
+method to check whether the input signal can be detected.</p>
+<p>When unicast() is called, the signal is copied and sent to each
+potential receiver via this method. The receiver must then
+decide whether this signal can be detected successfully. If 
+so, return True, otherwise False.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, cfoh.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

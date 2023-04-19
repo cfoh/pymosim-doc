@@ -257,11 +257,11 @@ map file for a permanent change.</p>
 private base class defined in this source file.</p>
 <p>All pin types are not encapsulated in a container class, they are defined 
 directly in this module. The recommended way to import the pin classes is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the name `Pin` to encapsulate all pin types</span>
-<span class="kn">import</span> <span class="nn">map.pin</span> <span class="k">as</span> <span class="nn">Pin</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the name `MapPin` to encapsulate all pin types</span>
+<span class="kn">import</span> <span class="nn">map.pin</span> <span class="k">as</span> <span class="nn">MapPin</span> 
 <span class="o">...</span>
 <span class="c1">## and access a pin on `my_map` by</span>
-<span class="n">my_parking</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">.</span><span class="n">Waypoint</span><span class="p">(</span><span class="n">my_map</span><span class="p">,</span> <span class="n">pin_name</span><span class="o">=</span><span class="s2">&quot;City Parking&quot;</span><span class="p">)</span>
+<span class="n">my_parking</span> <span class="o">=</span> <span class="n">MapPin</span><span class="o">.</span><span class="n">Waypoint</span><span class="p">(</span><span class="n">my_map</span><span class="p">,</span> <span class="n">pin_name</span><span class="o">=</span><span class="s2">&quot;City Parking&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">my_parking</span><span class="o">.</span><span class="n">is_valid</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error loading `City Parking` pin&quot;</span><span class="p">)</span>
 </pre></div>

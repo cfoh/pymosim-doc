@@ -239,40 +239,37 @@ method to build a scenario in the world.</p>
 <dt id="sim.scenario.BaseScenario">
 <em class="property">class </em><code class="sig-prename descclassname">sim.scenario.</code><code class="sig-name descname">BaseScenario</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">simworld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sim.scenario.BaseScenario" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>This is an anstract base class providing 
+<p>This is an abstract base class providing 
 specification to create a scenario. It contains no implementation. 
 It should be extended to a subclass to describe the actual scenario.</p>
 <p>See example1.py to learn how to create a scenario using this
 abstract class.</p>
 <details class="summary-show-example1-py-source-code">
-<summary>Show example1.py source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simualtion can be created within 50 lines.&#39;&#39;&#39;</span>
-<span class="kn">from</span> <span class="nn">sim.simulation</span> <span class="kn">import</span> <span class="n">World</span>
-<span class="kn">from</span> <span class="nn">sim.loc</span> <span class="kn">import</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
-<span class="kn">from</span> <span class="nn">sim.scenario</span> <span class="kn">import</span> <span class="n">BaseScenario</span>
-<span class="kn">from</span> <span class="nn">node.node</span> <span class="kn">import</span> <span class="n">BaseNode</span>
-<span class="kn">from</span> <span class="nn">node.type</span> <span class="kn">import</span> <span class="n">BaseStation</span><span class="p">,</span> <span class="n">Vehicle</span>
-<span class="kn">from</span> <span class="nn">node.mobility</span> <span class="kn">import</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
-<span class="kn">from</span> <span class="nn">comm.transceiver</span> <span class="kn">import</span> <span class="n">Transceiver</span>
-<span class="kn">from</span> <span class="nn">comm.channel</span> <span class="kn">import</span> <span class="n">DiscModel</span>
+<summary>Show example1.py source code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;This is a simple example to show how a simulation can be created within 50 lines.&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">sim</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">BaseScenario</span><span class="p">,</span> <span class="n">ScreenXY</span> <span class="k">as</span> <span class="n">XY</span>
+<span class="kn">from</span> <span class="nn">node</span> <span class="kn">import</span> <span class="n">BaseNode</span><span class="p">,</span> <span class="n">NodeType</span><span class="p">,</span> <span class="n">Stationary</span><span class="p">,</span> <span class="n">StaticPath</span>
+<span class="kn">from</span> <span class="nn">comm</span> <span class="kn">import</span> <span class="n">Transceiver</span><span class="p">,</span> <span class="n">DiscModel</span>
 
 <span class="k">class</span> <span class="nc">MyBS</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyBS: This is a base station design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">Stationary</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">MyVehicle</span><span class="p">(</span><span class="n">BaseNode</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;MyVehicle: This is a vehicle design.&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">start_loc</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">node_type</span><span class="o">=</span><span class="n">NodeType</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_transceiver</span><span class="p">(</span><span class="n">Transceiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="n">channel</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_mobility</span><span class="p">(</span><span class="n">StaticPath</span><span class="p">(</span><span class="n">start_loc</span><span class="p">,</span><span class="n">path</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">MyScenario</span><span class="p">(</span><span class="n">BaseScenario</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;This is MyScenario. It reimplements on_create() and on_event().&#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="c1"># this will be called at the start</span>
+    <span class="c1">## this will be called at the start</span>
+    <span class="k">def</span> <span class="nf">on_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simworld</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;A simulation in less than 50 lines&quot;</span><span class="p">)</span>
         <span class="n">omni</span> <span class="o">=</span> <span class="n">DiscModel</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">my_bs</span> <span class="o">=</span> <span class="n">MyBS</span><span class="p">(</span><span class="n">simworld</span><span class="p">,</span> <span class="s2">&quot;BS&quot;</span><span class="p">,</span> <span class="n">XY</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mf">2.4</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">omni</span><span class="p">)</span>
@@ -280,7 +277,8 @@ abstract class.</p>
                                     <span class="n">start_loc</span><span class="o">=</span><span class="n">XY</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">130</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="p">[(</span><span class="mi">60</span><span class="p">,</span><span class="n">XY</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span><span class="mi">130</span><span class="p">))])</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span> <span class="c1"># this will be called repeatedly</span>
+    <span class="c1">## this will be called repeatedly</span>
+    <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim_time</span><span class="p">,</span> <span class="n">event_obj</span><span class="p">):</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">my_bs</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">my_vehicle</span><span class="o">.</span><span class="n">clear_drawing</span><span class="p">()</span>
         <span class="n">beacon_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_bs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;transceiver&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create_signal</span><span class="p">()</span>
@@ -291,7 +289,8 @@ abstract class.</p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">sim</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">sim_stop</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">sim_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sim_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+               <span class="n">display_option</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                <span class="n">scenario</span><span class="o">=</span><span class="n">MyScenario</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
     <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
