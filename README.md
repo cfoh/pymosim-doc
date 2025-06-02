@@ -1,3 +1,8 @@
+## Pymosim
+
+PyMoSim is a mobility simulator written in Python. We plan to release the source code to public in the near future. Current contributors include Chuan Heng Foh (c.foh@surrey.ac.uk), Abdulkadir Kose (abdulkadir.kose@agu.edu.tr).
+
+
 ### View this documentation online
 
 - https://agreeable-sea-05e5ceb03.2.azurestaticapps.net/index.html (hosted on azure, best)
